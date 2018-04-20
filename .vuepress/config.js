@@ -36,13 +36,27 @@ module.exports = {
           ]
         }
       ],
-      '/streams/': [
+      '/core-concepts/streams/': [
         {
           title: 'Streams',
           collapsable: false,
           children: [
-            'quickstart.md',
-            'example-projects.md'
+            '',
+            'uses-of-streams.md',
+            'stream-names.md',
+            'streams-vs-queues.md',
+          ]
+        }
+      ],
+      '/core-concepts/services/': [
+        {
+          title: 'Streams',
+          collapsable: false,
+          children: [
+            '',
+            'uses-of-streams.md',
+            'stream-names.md',
+            'streams-vs-queues.md',
           ]
         }
       ]
