@@ -10,7 +10,7 @@ features:
 - title: Event Sourcing
   details: Business logic entities projected from event streams with both in-memory, first-level caching and second-level on disk caching
 - title: Storage Options
-  details: Choose either a Postgres or EventStore implementation of the message store and transport, depending on your performance and scale needs
+  details: Support for Postgres and EventStore message stores and transports, depending on your performance and scale needs
 footer: MIT Licensed | Copyright © 2015-present The Eventide Project
 ---
 
