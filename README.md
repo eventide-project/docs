@@ -3,7 +3,7 @@ home: true
 heroImage: /eventide-icon-132.png
 description: 'Microservices and Event Sourcing for Ruby'
 actionText: Get Started →
-actionLink: /guide/
+actionLink: /examples/quickstart.md
 features:
 - title: Microservices
   details: Message-based services hosted in any number of operating system processes or machines, with actor-based pub-sub consumers, component hosting, message dispatching, and handlers

@@ -15,6 +15,7 @@ module.exports = {
         text: 'Core Concepts', items: [
           { text: 'Streams', link: '/core-concepts/streams/' },
           { text: 'Services', link: '/core-concepts/services/' },
+          { text: 'Messages', link: '/core-concepts/messages/' },
         ]
       },
       {
@@ -23,7 +24,9 @@ module.exports = {
           { text: 'Example Projects', link: '/examples/example-projects.md' },
         ]
       },
-      { text: 'Glossary', link: 'glossary.md' },
+      { text: 'User Guide', link: '/user-guide/' },
+      { text: 'API', link: '/api/' },
+      { text: 'Glossary', link: 'glossary.md' }
     ],
     sidebar: {
       '/examples/': [
@@ -50,13 +53,27 @@ module.exports = {
       ],
       '/core-concepts/services/': [
         {
-          title: 'Streams',
+          title: 'Services',
           collapsable: false,
           children: [
             '',
-            'uses-of-streams.md',
-            'stream-names.md',
-            'streams-vs-queues.md',
+            'handlers.md',
+            'entities.md',
+            'stores.md',
+            'components.md',
+            'consumers.md'
+          ]
+        }
+      ],
+      '/core-concepts/messages/': [
+        {
+          title: 'Messages',
+          collapsable: false,
+          children: [
+            '',
+            'messaging.md',
+            'commands.md',
+            'events.md'
           ]
         }
       ]
