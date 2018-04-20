@@ -1,6 +1,14 @@
-# Differences Between Streams and Message Queues or Message Buses
+---
+title: Streams vs Queues
+---
 
-> What is a queue but a degenerate form of a stream?
+# Streams vs Queues and Buses
+
+<div class="note custom-block">
+  <p>
+    What is a queue but a degenerate form of a stream?
+  </p>
+</div>
 
 Unlike [message queues and buses](/glossary.md#message-queue-and-message-bus), [messages](/glossary.md#message) don't move from the [streams](/glossary.md#stream) they're written to. They can be read later by any number of services that they were not originally sent to so that those services can catch up on what has already happened, and either choose to process those messages or ignore them.
 

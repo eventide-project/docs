@@ -8,7 +8,7 @@ See also:
 - [Entity Stream](/glossary.md#entity-stream)
 - [Entity](/glossary.md#entity)
 
-#### Parts
+## Parts
 
 Stream names typically have two parts:
 
@@ -17,13 +17,13 @@ Stream names typically have two parts:
 
 In the case of a _category stream_, the stream name would consist only of the category name, and would not have an ID.
 
-#### Two Kinds of Stream Names: Entity and Category
+## Two Kinds of Stream Names: Entity and Category
 
 An _entity_ stream name contains all of the events for one specific entity. For example, an `Account` entity with an ID of `123` would have the name, `account-123`.
 
 A _category_ stream name does not have an ID. For example, the stream name for the category of all accounts is `account`.
 
-#### Category Types
+## Category Types
 
 Category stream names can be broken down into sub-categories, or _types_.
 
@@ -37,7 +37,7 @@ Category types can be present in both entity stream names as well as category st
 
 For example, the stream name for all commands for the `account` category would be `account:command`.
 
-#### Many Category Types
+## Many Category Types
 
 A stream name can have more than one category type.
 
@@ -45,7 +45,7 @@ For example, a stream name that keeps track of a [consumer's](/glossary.md#consu
 
 ## Separators
 
-##### `-` The Entity ID Separator
+### `-` The Entity ID Separator
 
 The `-` separator is the most common separator. It's the token in a stream name that separates the category name from the entity ID. For a stream named `account-123`, the value to the left of the dash is the category name `account`, and the value to the right of the dash is the ID `123`.
 
@@ -53,19 +53,19 @@ Only the first dash is considered a separator, this allows IDs to contain dashes
 
 For example, an account with an ID of `00000001-0000-4000-8000-000000000000` would have a stream name of `account-00000001-0000-4000-8000-000000000000`.
 
-##### `:` The Category Type Separator
+### `:` The Category Type Separator
 
 The ':' character separates the category from the category type (or types) in a stream name that includes both a category and type.
 
 For example, `account:command`.
 
-##### `+` The Combined Category Type Separator
+### `+` The Combined Category Type Separator
 
 The `+` character separates category types in a stream name that has a combination of more than one category type.
 
 For example, `account:command+position`.
 
-#### Example Stream Names
+## Example Stream Names
 
 `account`
 
