@@ -12,6 +12,12 @@ module.exports = {
         ]
       },
       {
+        text: 'Core Concepts', items: [
+          { text: 'Streams', link: '/core-concepts/streams/' },
+          { text: 'Services', link: '/core-concepts/services/' },
+        ]
+      },
+      {
         text: 'Examples', items: [
           { text: 'Quickstart', link: '/examples/quickstart.md' },
           { text: 'Example Projects', link: '/examples/example-projects.md' },
@@ -23,6 +29,16 @@ module.exports = {
       '/examples/': [
         {
           title: 'Examples',
+          collapsable: false,
+          children: [
+            'quickstart.md',
+            'example-projects.md'
+          ]
+        }
+      ],
+      '/streams/': [
+        {
+          title: 'Streams',
           collapsable: false,
           children: [
             'quickstart.md',
