@@ -26,7 +26,7 @@ module.exports = {
       },
       { text: 'User Guide', link: '/user-guide/' },
       { text: 'API', link: '/api/' },
-      { text: 'Glossary', link: 'glossary.md' }
+      { text: 'Glossary', link: '/glossary.md' }
     ],
     sidebar: {
       '/examples/': [
