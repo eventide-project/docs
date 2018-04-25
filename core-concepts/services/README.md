@@ -1,6 +1,6 @@
 # Service Facts
 
-Services are autonomous units of processing that are composed
+Services are autonomous units of processing that communicate via messages and are composed of components.
 
 ## Services don't respond to queries
 
