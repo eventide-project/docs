@@ -8,7 +8,7 @@ Messages are just plain data structures. They have attributes and that's it. The
 
 ## Events and commands are kinds of messages
 
-The only real difference between a command message and an event message is the way that they are named. Command messages are named in the imperative tense (eg: _DoSomething_) and event messages are named in the past tense (eg: _SomethingDone_). Other kinds of messages in the Eventide toolkit include snapshots, reader positions
+The only real difference between a command message and an event message is the way that they are named. Command messages are named in the imperative tense (eg: _DoSomething_) and event messages are named in the past tense (eg: _SomethingDone_). Other kinds of messages in the Eventide toolkit include snapshots and consumer positions.
 
 ## Messages are formatted as JSON when stored
 
