@@ -6,6 +6,10 @@ Messages are packages of data that are the principle means of transmission of in
 
 Messages are just plain data structures. They have attributes and that's it. They don't (and should not) have methods that do anything but declare attributes, and set and get attribute values. Messages do not validate themselves, transform or serialize themselves, send themselves, or save themselves. All of these capabilities are external capabilities to a message, and therefore are not behaviors of a message.
 
+## Events and commands are kinds of messages
+
+The only real difference between a command message and an event message is the way that they are named. Command messages are named in the imperative tense (eg: _DoSomething_) and event messages are named in the past tense (eg: _SomethingDone_). Other kinds of messages in the Eventide toolkit include snapshots, reader positions
+
 ## Messages are formatted as JSON when stored
 
 Messages in Eventide are just Ruby objects that are transformed to JSON when they are written to the message store, and transformed from JSON to Ruby when they are read from the message store.
