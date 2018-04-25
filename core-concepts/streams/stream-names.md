@@ -86,3 +86,7 @@ Account entity command stream name. This stream has all of the commands specific
 `account:command+position`
 
 Account command consumer position stream name. A [consumer](/glossary.md#consumer) that is reading commands from the `account+command` stream will periodically write the position number of the last command processed to the position stream so that all commands from all time do not have to be re-processed when the consumer is restarted.
+
+`account:snapshot-123`
+
+Account entity snapshot stream name. Entity snapshots are periodically recorded to disk as a performance optimization that eliminates the need to project an event stream from its first-ever recorded event when entity is not already in the in-memory cache.
