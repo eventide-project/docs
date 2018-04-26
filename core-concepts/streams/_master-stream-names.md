@@ -25,21 +25,21 @@ A _category_ stream name does not have an ID. For example, the stream name for t
 
 ## Category Types
 
-Stream names can also have an optional list of _types_.
+Category stream names can be broken down into sub-categories, or _types_.
 
-The `command` type is one of the most common types. It's used to indicate a stream that is used to transport _commands_ rather than _events_.
+The `command` type is a very common category type. It's used to indicate a stream that is used to transport _commands_ rather than _events_.
 
 For example, a stream name for the stream that holds commands for the `account-123` entity would be named `account:command-123`.
 
-The stream name is separated from the type list by the `:` character.
+The category name is separated from the category type by the `:` character.
 
-Types can be present in both entity stream names as well as category stream names.
+Category types can be present in both entity stream names as well as category stream names.
 
 For example, the stream name for all commands for the `account` category would be `account:command`.
 
 ## Many Category Types
 
-A stream name can have more than one type.  The `+` symbol joins types when there are more than one.
+A stream name can have more than one category type.
 
 For example, a stream name that keeps track of a [consumer's](/glossary.md#consumer) last read position of a command category stream would be `account:command+position`.
 
