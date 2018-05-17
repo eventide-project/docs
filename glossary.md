@@ -6,7 +6,7 @@ sidebar: auto
 
 ## Actuator
 
-The operation that can be invoked on a unit/module/class/etc that executes it's principle objective and responsibility.
+The operation that can be invoked on a unit/module/class/etc that executes its principle objective and responsibility.
 
 ## Applicative
 
@@ -14,11 +14,11 @@ Applicative is similar to "application", as in "application logic". Because _ser
 
 ## Autonomy
 
-Autonomy is arguably the most critical quality of service design. It's the thing that can dictate whether you end up with a service architecture, or a web of web services organized as a _distributed monolith_. Autonomy is the quality that allows services to remain online when services that they communicate with become unavailable. Autonomy has the most profound influence on the design of services, the things are are inside of a service, and the things that are outside of a service. Without autonomy, services arguably aren't services at all.
+Autonomy is arguably the most critical quality of service design. It's the thing that can dictate whether you end up with a service architecture, or a web of web services organized as a _distributed monolith_. Autonomy is the quality that allows services to remain online when services that they communicate with become unavailable. Autonomy has the most profound influence on the design of services, the things that are inside of a service, and the things that are outside of a service. Without autonomy, services arguably aren't services at all.
 
 ## Category
 
-A category is a group of streams all related to the same type of [enity](/glossary.md#entitiy). An analogy would be a class in an object-oriented system.
+A category is a group of streams all related to the same type of [entity](/glossary.md#entity). An analogy would be a class in an object-oriented system.
 
 ## Category Stream
 
@@ -42,7 +42,7 @@ The component host is the outermost surface of an Eventide service. It runs righ
 
 ## Consumer
 
-The consumer is the infrastructure that runs a subscription (reader)[#message-reader] over streams, and plugs-in the [handlers](/glossary.md#handler) to those subscriptions to receive the messages they subscribe to.
+The consumer is the infrastructure that runs a subscription [reader](/glossary.md#message-reader) over streams, and plugs-in the [handlers](/glossary.md#handler) to those subscriptions to receive the messages they subscribe to.
 
 ## Entity
 
@@ -54,7 +54,7 @@ When entities are retrieved via the [entity store](/glossary.md#entity-store), t
 
 ## Entity Projection
 
-An [entity's](/glossary.md#entity) data comes from [events](/glossary.md#event). An event is a thing that has happened in a process, or its a change that has been made to an entity's state. Often, these two are one and the same. The projection is a mechanism that receives events as inputs, and modifies the state of an entity. When an entity is "retrieved", its events are _applied_ to it by the entity projection.
+An [entity's](/glossary.md#entity) data comes from [events](/glossary.md#event). An event is a thing that has happened in a process, or it's a change that has been made to an entity's state. Often, these two are one and the same. The projection is a mechanism that receives events as inputs, and modifies the state of an entity. When an entity is "retrieved", its events are _applied_ to it by the entity projection.
 
 ## Entity Snapshot
 
@@ -62,7 +62,7 @@ An entity snapshot is saved to disk (typically, in the message store) by the [en
 
 ## Entity Stream
 
-A [stream](/glossary.md#stream) that contains the messages for a single identified, entity. For example, a single account with the ID `123` has all of its events in its own stream, and that stream contains only the events for account 123.
+A [stream](/glossary.md#stream) that contains the messages for a single, identified entity. For example, a single account with the ID `123` has all of its events in its own stream, and that stream contains only the events for account 123.
 
 ## Entity Store
 
@@ -70,7 +70,7 @@ The entity store is used to do the retrieval of entities. It coordinates a [read
 
 ## Event
 
-A message that represents the results and effects of some command having been processed. It's a record of something that has happened or that has been processed. An [entity's](/glossary.md#entity) state is gathered from the events that have been written about the entity. Events are
+A message that represents the results and effects of some command having been processed. It's a record of something that has happened or that has been processed. An [entity's](/glossary.md#entity) state is gathered from the events that have been written about the entity.
 
 ## Event Sourcing
 
@@ -106,7 +106,7 @@ Retrieves ordered batches of messages from a single [stream](/glossary.md#stream
 
 ## Message Store
 
-Unlike a message broker, a message store acts not only as a message transport, but also a durable store of messages that have been written. A service receives commands by reading _new_ messages that have been written to the message store. Events are written to the message store in response to handling the in-bound commands. Entity state is gathered from the event data that is written to the message store's message streams.
+Unlike a message broker, a message store acts not only as a message transport, but also a durable store of messages that have been written. A service receives commands by reading _new_ messages that have been written to the message store. Events are written to the message store in response to handling the inbound commands. Entity state is gathered from the event data that is written to the message store's message streams.
 
 ## Message Transport
 
