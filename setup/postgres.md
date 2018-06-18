@@ -31,7 +31,9 @@ Create the database:
 evt-pg-create-db
 ```
 
-For more background on the Postgres message store database, you can explore the SQL scripts at:
+For more background on the Postgres message store database, see the [Message Store section of the User Guide](/user-guide/message-store)
+
+/glossary.md#entity
 
 [https://github.com/eventide-project/message-store-postgres-database/tree/master/database](https://github.com/eventide-project/message-store-postgres-database/tree/master/database)
 
