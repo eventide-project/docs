@@ -15,10 +15,11 @@ sidebarDepth: 0
 
 The `evt-message_store-postgres-database` gem includes a command line tool for creating the message store database.
 
-This gem will be installed by installing the
+::: tip
+This gem will be also be installed by [installing the full stack](#installing-the-full-stack)
+:::
 
-
-Install the gem:
+Install the message store database gem:
 
 ```
 gem install evt-message_store-postgres-database
@@ -30,7 +31,7 @@ Create the database:
 evt-pg-create-db
 ```
 
-Form more background on the Postgres message store database, you can explore the SQL scripts at:
+For more background on the Postgres message store database, you can explore the SQL scripts at:
 
 [https://github.com/eventide-project/message-store-postgres-database/tree/master/database](https://github.com/eventide-project/message-store-postgres-database/tree/master/database)
 
@@ -40,7 +41,7 @@ Form more background on the Postgres message store database, you can explore the
 Installing the full stack will also install the command line tool for creating the message store database described above.
 :::
 
-### Via Bundler
+### Install Via Bundler
 
 ```ruby
 # Gemfile
@@ -70,7 +71,7 @@ All examples of components built using Eventide that are produced by the Eventid
 bundle install --standalone --path=./gems
 ```
 
-### Without Bundler
+### Install Via RubyGems
 
 ```
 gem install eventide-postgres --install-dir ./gems

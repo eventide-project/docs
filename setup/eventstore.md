@@ -23,9 +23,9 @@ The EventStore implementation for Eventide is available as a commercial offering
 - GCC (required for installing the PG gem)
 - EventStore ([eventstore.org](https://eventstore.org/))
 
-## Install
+## Installation
 
-### Via Bundler
+### Install Via Bundler
 
 ```ruby
 # Gemfile
@@ -55,7 +55,7 @@ All examples of components built using Eventide that are produced by the Eventid
 bundle install --standalone --path=./gems
 ```
 
-### Without Bundler
+### Install Via RubyGems
 
 ```
 gem install eventide-event_store --install-dir ./gems
