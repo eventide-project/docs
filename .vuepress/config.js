@@ -87,10 +87,10 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'installation.md',
+            'install.md',
             'tools.md',
             'anatomy.md',
-            'message-store-database-interface.md'
+            'interface.md'
           ]
         }
       ]

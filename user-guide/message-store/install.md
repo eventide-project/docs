@@ -24,6 +24,8 @@ Or, if you've installed the tools via Bundler:
 bundle exec evt-pg-create-db
 ```
 
+See also: [Database Administration Tools](./tools.md)
+
 ## Database Name and Database User
 
 The database creation tool will create a database named `message_store` and a database user named `message_store`
@@ -45,7 +47,7 @@ Or specify both:
 DATABASE_NAME=some_other_database DATABASE_USER=some_other_user evt-pg-create-db
 ```
 
-## Write a Test Message to Message Store
+## Write a Test Message to Message Store (Optional)
 
 Once the database has been created, a test message can be written to it to prove that the installation is correct:
 

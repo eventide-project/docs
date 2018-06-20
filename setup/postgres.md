@@ -11,39 +11,14 @@ sidebarDepth: 0
 - Postgres (minimum version: 9.5)
 - GCC (required for installing the PG gem)
 
-## Create the Message Store Postgres Database
+## Install the Eventide Postgres Gem
 
-The `evt-message_store-postgres-database` gem includes a command line tool for creating the message store database.
-
-::: tip
-This gem will be also be installed by [installing the full stack](#installing-the-full-stack)
-:::
-
-Install the message store database gem:
-
+### Using RubyGems Directly
 ```
-gem install evt-message_store-postgres-database
+gem install eventide-postgres
 ```
 
-Create the database:
-
-```
-evt-pg-create-db
-```
-
-For more background on the Postgres message store database, see the [Message Store section of the User Guide](/user-guide/message-store)
-
-/glossary.md#entity
-
-[https://github.com/eventide-project/message-store-postgres-database/tree/master/database](https://github.com/eventide-project/message-store-postgres-database/tree/master/database)
-
-## Installing the Full Stack
-
-::: tip
-Installing the full stack will also install the command line tool for creating the message store database described above.
-:::
-
-### Install Via Bundler
+### Via Bundler
 
 ```ruby
 # Gemfile
@@ -51,7 +26,27 @@ source 'https://rubygems.org'
 gem 'eventide-postgres'
 ```
 
-### Target Directory
+```
+bundle install
+```
+
+## Create the Message Store Database
+
+See the [installation](/user-guide/message-store/install.md) section of the [message store documentation](/user-guide/message-store/) for instructions on running the database creation command line tool.
+
+The command to install the database is:
+
+```
+evt-pg-create-db
+```
+
+Or via Bundler:
+
+```
+bundle exec evt-pg-create-db
+```
+
+## Installation Directory
 
 ::: warning
 We recommend against installing _any_ stack or framework into the system-wide gem registry.
@@ -59,22 +54,18 @@ We recommend against installing _any_ stack or framework into the system-wide ge
 
 Rather than install the Eventide toolkit into the system-wide registry, we _recommend_ that you install the gems into the directory structure of the project that uses Eventide. This is not strictly required, but it's a habit that can help avoid time spent troubleshooting and debugging unintended consequences of having the same library installed in multiples locations in the search path.
 
-The following command installs the gems into a subdirectory named `gems` of the current directory.
+The following command installs the gems into a subdirectory named `gems` of the current directory:
+
+### Via RubyGems
+
+```
+gem install eventide-postgres --install-dir ./gems
+```
+
+### Via Bundler
 
 ```
 bundle install --path=./gems
 ```
 
 For example, if the current directory is `my-project`, then command above would install the gems into `my-project/gems`.
-
-All examples of components built using Eventide that are produced by the Eventide Project's team install gem dependencies using Bundler's _[standalone](http://bundler.io/man/bundle-install.1.html)_ mode:
-
-```
-bundle install --standalone --path=./gems
-```
-
-### Install Via RubyGems
-
-```
-gem install eventide-postgres --install-dir ./gems
-```
