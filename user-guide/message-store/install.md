@@ -28,24 +28,9 @@ See also: [Database Administration Tools](./tools.md)
 
 ## Database Name and Database User
 
-The database creation tool will create a database named `message_store` and a database user named `message_store`
+By default, the database creation tool will create a database named `message_store` and a database user named `message_store`
 
-If you prefer either a different database name or a different database user, you can specify them on the command line using environment variables:
-
-Specify the database name:
-```
-DATABASE_NAME=some_other_database evt-pg-create-db
-```
-
-Specify the database user:
-```
-DATABASE_USER=some_other_user evt-pg-create-db
-```
-
-Or specify both:
-```
-DATABASE_NAME=some_other_database DATABASE_USER=some_other_user evt-pg-create-db
-```
+If you prefer either a different database name or a different database user, see the [database administration tools instructions](./tools.md) for more info.
 
 ## Write a Test Message to Message Store (Optional)
 
