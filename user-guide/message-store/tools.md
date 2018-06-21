@@ -60,7 +60,7 @@ STREAM_NAME=someStream-111 INSTANCES=10 evt-pg-write-test-message
 evt-pg-open-database-scripts-dir
 ```
 
-## Changing the Database Name or the Database User
+## Use an Alternate Database Name or Database User
 
 The database administration tools presume a database named `message_store` and a database user named `message_store`.
 
