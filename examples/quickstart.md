@@ -19,13 +19,13 @@ The quickstart demo code is hosted on GitHub at:
 
 From the command line, run:
 
-```
+``` bash
 git clone git@github.com:eventide-examples/quickstart.git
 ```
 
 Change directory to the project's directory:
 
-```
+``` bash
 cd quickstart
 ```
 
@@ -39,7 +39,7 @@ This example project includes a script file that will install the gems correctly
 
 To install the gems, run at the command line:
 
-```
+``` bash
 ./install-gems.sh
 ```
 
@@ -49,13 +49,13 @@ This installs the gems in a directory named `./gems`, and generates the setup sc
 
 If you've installed Postgres through Homebrew on Mac:
 
-```
+``` bash
 launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 ```
 
 If you don't want to start it as a daemon, open a new terminal window and run:
 
-```
+``` bash
 postgres -D /usr/local/var/postgres
 ```
 
@@ -63,7 +63,7 @@ Note that closing the terminal window will cause the database to shut down. If y
 
 On nix:
 
-```
+``` bash
 sudo systemctl start postgresql
 ```
 
@@ -85,7 +85,7 @@ The provided settings should work for the majority of development environment se
 
 With Postgres already running, from the command line, run:
 
-```
+``` bash
 bundle exec evt-pg-create-db
 ```
 
@@ -101,7 +101,7 @@ If the connection is made, the script will print: "Connected to the database"
 
 From the command line, run:
 
-```
+``` bash
 ruby demos/connect_to_database.rb
 ```
 
@@ -111,7 +111,7 @@ The project's `demos/write_and_read.rb` script file defines a message class, con
 
 To run this demo, from the command line, run:
 
-```
+``` bash
 ruby demos/write_and_read.rb
 ```
 
@@ -121,7 +121,7 @@ Now that a message has been added to the message store, you can list the content
 
 From the command line, run:
 
-```
+``` bash
 bundle exec evt-pg-list-messages
 ```
 
@@ -133,6 +133,6 @@ You can recreate the message store database using a command line tool that is  i
 
 From the command line, run:
 
-```
+``` bash
 bundle exec evt-pg-recreate-db
 ```

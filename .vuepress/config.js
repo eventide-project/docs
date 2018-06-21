@@ -8,24 +8,28 @@ module.exports = {
       {
         text: 'Setup', items: [
           { text: 'Postgres', link: '/setup/postgres.md' },
-          { text: 'EventStore', link: '/setup/eventstore.md' },
+          { text: 'EventStore', link: '/setup/eventstore.md' }
         ]
       },
       {
         text: 'Core Concepts', items: [
           { text: 'Streams', link: '/core-concepts/streams/' },
           { text: 'Services', link: '/core-concepts/services/' },
-          { text: 'Messages', link: '/core-concepts/messages/' },
+          { text: 'Messages', link: '/core-concepts/messages/' }
         ]
       },
       {
-        text: 'Examples', items: [
-          { text: 'Quickstart', link: '/examples/quickstart.md' },
-          { text: 'Example Projects', link: '/examples/example-projects.md' },
+        text: 'User Guide', items: [
+          { text: 'Message Store', link: '/user-guide/message-store/' }
         ]
       },
-      { text: 'User Guide', link: '/user-guide/' },
       { text: 'API', link: '/api/' },
+      {
+        text: 'Examples', items: [
+          { text: 'Quickstart', link: '/examples/quickstart.md' },
+          { text: 'Example Projects', link: '/examples/example-projects.md' }
+        ]
+      },
       { text: 'Glossary', link: '/glossary.md' }
     ],
     sidebar: {
@@ -47,7 +51,7 @@ module.exports = {
             '',
             'uses-of-streams.md',
             'stream-names.md',
-            'streams-vs-queues.md',
+            'streams-vs-queues.md'
           ]
         }
       ],
@@ -74,6 +78,19 @@ module.exports = {
             'messaging.md',
             'commands.md',
             'events.md'
+          ]
+        }
+      ],
+      '/user-guide/message-store/': [
+        {
+          title: 'Message Store',
+          collapsable: false,
+          children: [
+            '',
+            'install.md',
+            'tools.md',
+            'anatomy.md',
+            'interface.md'
           ]
         }
       ]

@@ -27,7 +27,7 @@ The EventStore implementation for Eventide is available as a commercial offering
 
 ### Install Via Bundler
 
-```ruby
+``` ruby
 # Gemfile
 source 'https://rubygems.org'
 gem 'eventide-event_store'
@@ -43,7 +43,7 @@ Rather than install the Eventide toolkit into the system-wide registry, we _reco
 
 The following command installs the gems into a subdirectory named `gems` of the current directory.
 
-```
+``` bash
 bundle install --path=./gems
 ```
 
@@ -51,12 +51,12 @@ For example, if the current directory is `my-project`, then command above would 
 
 All examples of components built using Eventide that are produced by the Eventide Project's team install gem dependencies using Bundler's _[standalone](http://bundler.io/man/bundle-install.1.html)_ mode:
 
-```
+``` bash
 bundle install --standalone --path=./gems
 ```
 
 ### Install Via RubyGems
 
-```
+``` bash
 gem install eventide-event_store --install-dir ./gems
 ```
