@@ -14,13 +14,13 @@ Once the `evt-message_store-postgres-database` gem installed, the `evt-pg-create
 
 To create the message store database, run the command:
 
-```
+``` bash
 evt-pg-create-db
 ```
 
 Or, if you've installed the tools via Bundler:
 
-```
+``` bash
 bundle exec evt-pg-create-db
 ```
 
@@ -36,7 +36,7 @@ If you prefer either a different database name or a different database user, see
 
 Once the database has been created, a test message can be written to it to prove that the installation is correct:
 
-```
+``` bash
 evt-pg-write-test-message
 ```
 

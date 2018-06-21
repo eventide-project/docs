@@ -14,19 +14,19 @@ sidebarDepth: 0
 ## Install the Eventide Postgres Gem
 
 ### Using RubyGems Directly
-```
+``` bash
 gem install eventide-postgres
 ```
 
 ### Via Bundler
 
-```ruby
+``` ruby
 # Gemfile
 source 'https://rubygems.org'
 gem 'eventide-postgres'
 ```
 
-```
+``` bash
 bundle install
 ```
 
@@ -36,13 +36,13 @@ See the [installation](/user-guide/message-store/install.md) section of the [mes
 
 The command to install the database is:
 
-```
+``` bash
 evt-pg-create-db
 ```
 
 Or via Bundler:
 
-```
+``` bash
 bundle exec evt-pg-create-db
 ```
 
@@ -58,13 +58,13 @@ The following command installs the gems into a subdirectory named `gems` of the 
 
 ### Via RubyGems
 
-```
+``` bash
 gem install eventide-postgres --install-dir ./gems
 ```
 
 ### Via Bundler
 
-```
+``` bash
 bundle install --path=./gems
 ```
 
