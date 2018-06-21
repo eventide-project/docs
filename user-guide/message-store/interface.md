@@ -90,7 +90,7 @@ Retrieve messages from a category or streams, optionally specifying the starting
 
 ``` sql
 CREATE OR REPLACE FUNCTION get_category_messages(
-  _stream_name varchar,
+  _category_name varchar,
   _position bigint DEFAULT 0,
   _batch_size bigint DEFAULT 1000,
   _condition varchar DEFAULT NULL
@@ -101,7 +101,7 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| _stream_name | varchar | Name of the category to retrieve messages from | | someStream |
+| _category_name | varchar | Name of the category to retrieve messages from | | someStream |
 | _position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
 | _batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
 | _condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
