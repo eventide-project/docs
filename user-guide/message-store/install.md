@@ -42,7 +42,7 @@ evt-pg-write-test-message
 
 The output will look something like:
 ```
-Writing 1 Messages to Stream testStream-314c2b1c-0ec5-4f96-8793-c998194da014
+Writing 1 Messages to Stream testStream-ae61d996-9f2c-4b25-a2bd-440432007fda
 = = =
 
 (DATABASE_USER is not set)
@@ -50,10 +50,15 @@ Database user is: message_store
 (DATABASE_NAME is not set)
 Database name is: message_store
 
-Instance: 1, Message ID: 8a0dc58e-7c1a-494f-962b-51255f131f1b
+Instance: 1, Message ID: f59c7068-bb19-4182-b84b-9c29ff07ad33
 
-                  id                  |                   stream_name                   |   type   | position | global_position |            data             |               metadata               |            time
---------------------------------------+-------------------------------------------------+----------+----------+-----------------+-----------------------------+--------------------------------------+----------------------------
- 8a0dc58e-7c1a-494f-962b-51255f131f1b | testStream-314c2b1c-0ec5-4f96-8793-c998194da014 | SomeType |        0 |               4 | {"attribute": "some value"} | {"metaAttribute": "some meta value"} | 2018-06-20 19:49:08.313786
-(1 row)
+-[ RECORD 1 ]---+------------------------------------------------
+id              | f59c7068-bb19-4182-b84b-9c29ff07ad33
+stream_name     | testStream-ae61d996-9f2c-4b25-a2bd-440432007fda
+type            | SomeType
+position        | 0
+global_position | 64
+data            | {"attribute": "some value"}
+metadata        | {"metaAttribute": "some meta value"}
+time            | 2018-06-21 20:17:46.323037
 ```
