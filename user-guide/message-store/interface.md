@@ -27,7 +27,7 @@ write_message(
 | --- | --- | --- | --- | --- |
 | _id | varchar | UUID of the message being written | | a5eb2a97-84d9-4ccf-8a56-7160338b11e2 |
 | _stream_name | varchar | Name of stream to which the message is written | | someStream-123 |
-| _type | varchar | Name of stream to which the message is written | | Withdrawn |
+| _type | varchar | The type of the message | | Withdrawn |
 | _data | jsonb | JSON representation of the message body | | {"messageAttribute": "some value"} |
 | _metadata (optional) | jsonb | JSON representation of the message metadata | NULL | {"metaDataAttribute": "some meta data value"} |
 | _expected_version (optional) | bigint | Version that the stream is expected to be when the message is written | NULL | 11 |
