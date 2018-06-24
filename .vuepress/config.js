@@ -20,6 +20,7 @@ module.exports = {
       },
       {
         text: 'User Guide', items: [
+          { text: 'Overview', link: '/user-guide/' },
           { text: 'Message Store', link: '/user-guide/message-store/' }
         ]
       },

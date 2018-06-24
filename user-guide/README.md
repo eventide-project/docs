@@ -2,7 +2,7 @@
 
 <div class="note custom-block">
   <p>
-    This document is not yet written
+    This section is not yet written
   </p>
 </div>
 
