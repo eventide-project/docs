@@ -1,26 +1,18 @@
----
-home: true
-heroImage: /eventide-icon-132.png
-description: 'Microservices and Event Sourcing for Ruby'
-actionText: Get Started →
-actionLink: /examples/quickstart.md
-features:
-- title: Microservices
-  details: Message-based services hosted in any number of operating system processes or machines, with actor-based pub-sub consumers, component hosting, message dispatching, and handlers
-- title: Event Sourcing
-  details: Business logic entities projected from event streams with both in-memory, first-level caching and second-level on disk caching
-- title: Storage Options
-  details: Support for Postgres and EventStore message stores and transports, depending on your performance and scale needs
-footer: MIT Licensed | Copyright © 2015-present The Eventide Project
----
-
-- - -
-
-### A Brief Example...
-
-``` ruby
 class Handler
   include Messaging::Handle
+  include Messaging::StreamName
+
+  dependency :write, Messaging::Postgres::Write
+  dependency :clock, Clock::UTC
+  dependency :store, Store
+
+  def configure
+    Messaging::Postgres::Write.configure(self)
+    Clock::UTC.configure(self)
+    Store.configure(self)
+  end
+
+  category :account
 
   handle Withdraw do |withdraw|
     account_id = withdraw.account_id
@@ -32,6 +24,11 @@ class Handler
     stream_name = stream_name(account_id)
 
     unless account.sufficient_funds?(withdraw.amount)
+      withdrawal_rejected = WithdrawalRejected.follow(withdraw)
+      withdrawal_rejected.time = time
+
+      write.(withdrawal_rejected, stream_name)
+
       return
     end
 
@@ -59,6 +56,14 @@ class Withdrawn
   attribute :processed_time, String
 end
 
+class WithdrawalRejected
+  include Messaging::Message
+
+  attribute :account_id, String
+  attribute :amount, Numeric
+  attribute :time, String
+end
+
 class Account
   include Schema::DataStructure
 
@@ -77,6 +82,8 @@ end
 class Projection
   include EntityProjection
 
+  entity_name :account
+
   apply Withdrawn do |withdrawn|
     account.id = withdrawn.account_id
 
@@ -89,9 +96,17 @@ end
 class Store
   include EntityStore
 
+  category :account
   entity Account
   projection Projection
+  reader MessageStore::Postgres::Read
 end
-```
 
-Note: This example code is abridged for brevity, and some elements necessary for it to be runnable are redacted. For more complete and representative  example implementations, see the [examples](/examples/overview.md) section.
+class Consumer
+  include Consumer::Postgres
+
+  handler Handler
+end
+
+Consumer.start('account:command')
+

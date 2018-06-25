@@ -26,7 +26,9 @@ module.exports = {
       { text: 'API', link: '/api/' },
       {
         text: 'Examples', items: [
+          { text: 'Overview', link: '/examples/overview.md' },
           { text: 'Quickstart', link: '/examples/quickstart.md' },
+          { text: 'At a Glance', link: '/examples/at-a-glance.md' },
           { text: 'Example Projects', link: '/examples/example-projects.md' }
         ]
       },
@@ -39,6 +41,7 @@ module.exports = {
           collapsable: false,
           children: [
             'quickstart.md',
+            'at-a-glance.md',
             'example-projects.md'
           ]
         }
