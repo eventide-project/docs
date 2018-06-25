@@ -2,13 +2,13 @@
 
 The three examples in this section demonstrates successive levels of depth and completeness.
 
-## Quickstart
-
-The [quickstart example](./quickstart.md) demonstrates the setup of an Eventide Postgres project, configuring the message store database connection, and basic reading and writing of a message to a stream in the [Postgres message store](/user-guide/message-store/).
-
 ## Service at a Glance
 
 The [service at a glance example](./at-a-glance.md) provides a one-page implementation of the basics of a service. It's not intended to be a runnable example as much as it is to demonstrate the various parts of a service in one place.
+
+## Quickstart
+
+The [quickstart example](./quickstart.md) demonstrates the setup of an Eventide Postgres project, configuring the message store database connection, and basic reading and writing of a message to a stream in the [Postgres message store](/user-guide/message-store/).
 
 ## Example Projects
 

@@ -40,8 +40,8 @@ module.exports = {
           title: 'Examples',
           collapsable: false,
           children: [
-            'quickstart.md',
             'at-a-glance.md',
+            'quickstart.md',
             'example-projects.md'
           ]
         }
