@@ -46,7 +46,7 @@ class Handler
 end
 
 # Withdraw command message
-# Send to the account service to effect a withdrawal
+# Send to the account component to effect a withdrawal
 class Withdraw
   include Messaging::Message
 
@@ -77,7 +77,7 @@ class WithdrawalRejected
 end
 
 # Account entity
-# The account service's model object
+# The account component's model object
 class Account
   include Schema::DataStructure
 
@@ -120,16 +120,27 @@ class Store
   reader MessageStore::Postgres::Read
 end
 
-# The consumer is the runnable part of the service
-# Start the consumer and messages sent to its streams are dispatched to its handlers
+# The consumer dispatches in-bound messages to handlers
+# Consumers can have many handlers
 class Consumer
   include Consumer::Postgres
 
   handler Handler
 end
 
+# The "Start" module maps consumers to their streams
+# Until this point, handlers have no knowledge of which streams they process
+module Start
+  def self.call
+    account_command_stream_name = 'account:command'
+    Consumer.start(account_command_stream_name)
+  end
+end
 
-# Start the service
-account_command_stream_name = 'account:command'
-Consumer.start(account_command_stream_name)
+# ComponentHost is the runnable part of the service
+# Register the Start module with the component host, then start the component and messages sent to its streams are dispatched to the handlers
+component_name = 'account-component'
+ComponentHost.start(component_name) do |host|
+  host.register(Boot)
+end
 ```
