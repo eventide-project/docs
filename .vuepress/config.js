@@ -27,8 +27,8 @@ module.exports = {
       {
         text: 'Examples', items: [
           { text: 'Overview', link: '/examples/overview.md' },
+          { text: 'Service at a Glance', link: '/examples/at-a-glance.md' },
           { text: 'Quickstart', link: '/examples/quickstart.md' },
-          { text: 'At a Glance', link: '/examples/at-a-glance.md' },
           { text: 'Example Projects', link: '/examples/example-projects.md' }
         ]
       },
