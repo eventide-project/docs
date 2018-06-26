@@ -1,13 +1,49 @@
+---
+sidebarDepth: 0
+---
+
 # Handlers
 
-<div class="note custom-block">
-  <p>
-    This document is not yet written
-  </p>
-</div>
+[Messages](/glossary.md#message) that are sent to a service are processed by the service's _handlers_. They are the business logic, combined with the service's [entity](./entities.md) logic.
 
-This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
+A handler is the entry point to a service. It receives instructions from other services, apps, and clients in the form of [commands](/glossary.md#command) and [events](/glossary.md#event). You might think of them as controllers in MVC terms, but that's a very loose comparison.
 
-For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
+When a service [component](/glossary.md#component) receives messages, it sends these messages to the handlers that process them.
 
-[eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
+A handler receives a message, does its work, and when it's done with that work, it reports the status and outcome of that work by publishing an event.
+
+Messages can come from applications as well as other services, including the service handling its own messages.
+
+## Example Handler
+
+The example below is a handler does withdrawals from an account.
+
+The handler can handle a message whose class name is `Withdrawn`. The `handle` block receives an instance of the Withdrawn message that carries the information required to withdraw funds from an account, including the account ID and the amount of the withdrawal, as well the time of the withdrawal.
+
+Depending on whether there are sufficient funds for the withdrawal, the handler publishes either a `Withdrawn` event or a `WithdrawalRejected` event as a result of processing the withdrawal.
+
+``` ruby
+handle Withdraw do |withdraw|
+  account_id = withdraw.account_id
+
+  account = store.fetch(account_id)
+
+  time = clock.iso8601
+
+  stream_name = stream_name(account_id)
+
+  unless account.sufficient_funds?(withdraw.amount)
+    withdrawal_rejected = WithdrawalRejected.follow(withdraw)
+    withdrawal_rejected.time = time
+
+    write.(withdrawal_rejected, stream_name)
+
+    return
+  end
+
+  withdrawn = Withdrawn.follow(withdraw)
+  withdrawn.processed_time = time
+
+  write.(withdrawn, stream_name)
+end
+```
