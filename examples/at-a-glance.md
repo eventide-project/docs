@@ -130,8 +130,8 @@ end
 
 # The "Start" module maps consumers to their streams
 # Until this point, handlers have no knowledge of which streams they process
-module Start
 # Starting the consumers starts the stream readers and gets messages flowing through the system
+module Start
   def self.call
     account_command_stream_name = 'account:command'
     Consumer.start(account_command_stream_name)
