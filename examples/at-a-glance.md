@@ -121,6 +121,7 @@ class Store
 end
 
 # The consumer dispatches in-bound messages to handlers
+# Consumers have an internal reader that reads messages from a single stream
 # Consumers can have many handlers
 class Consumer
   include Consumer::Postgres
@@ -130,7 +131,7 @@ end
 
 # The "Start" module maps consumers to their streams
 # Until this point, handlers have no knowledge of which streams they process
-# Starting the consumers starts the stream readers and gets messages flowing through the system
+# Starting the consumers starts the stream readers and gets messages flowing into the consumer's handlers
 module Start
   def self.call
     account_command_stream_name = 'account:command'
