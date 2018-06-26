@@ -1,9 +1,14 @@
 ---
 - use withdrawal handler
 - stream name
+
+- move details to user guide
+
 ---
 
 # Handlers
+
+Messages that are sent to a service are processed by the service's _handlers_. They are the business logic, combined with the service's [entity](./entities.md) logic.
 
 A handler is the entry point to a service. It receives instructions from other services, apps, and clients in the form of [messages](/glossary.md#message). You might think of them as controllers in MVC terms, but that's a very loose comparison.
 
