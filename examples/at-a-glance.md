@@ -146,5 +146,5 @@ end
 ```
 
 ::: tip
-A "component" isn't a "service" until it's running in the component host. And the component host can host and run many different components. A component's "Start" module is the interface between the component and the service that hosts and runs it.
+A "component" isn't a "service" until it's running in the component host. The component host can host and run many different components. A component's "Start" module is the interface between the component and the service that hosts and runs it.
 :::
