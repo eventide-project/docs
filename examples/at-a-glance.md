@@ -141,6 +141,6 @@ end
 # Register the Start module with the component host, then start the component and messages sent to its streams are dispatched to the handlers
 component_name = 'account-component'
 ComponentHost.start(component_name) do |host|
-  host.register(Boot)
+  host.register(Start)
 end
 ```
