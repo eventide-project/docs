@@ -19,6 +19,8 @@ footer: MIT Licensed | Copyright © 2015-present The Eventide Project
 ### A Brief Example...
 
 ``` ruby
+# Account command handler with withdrawal implementation
+# Business logic for processing a withdrawal
 class Handler
   include Messaging::Handle
 
@@ -27,21 +29,24 @@ class Handler
 
     account = store.fetch(account_id)
 
-    time = clock.iso8601
-
-    stream_name = stream_name(account_id)
-
     unless account.sufficient_funds?(withdraw.amount)
+      logger.info('Withdrawal rejected')
       return
     end
 
     withdrawn = Withdrawn.follow(withdraw)
+
+    time = clock.iso8601
     withdrawn.processed_time = time
+
+    stream_name = stream_name(account_id)
 
     write.(withdrawn, stream_name)
   end
 end
 
+# Withdraw command message
+# Send to the account component to effect a withdrawal
 class Withdraw
   include Messaging::Message
 
@@ -50,6 +55,8 @@ class Withdraw
   attribute :time, String
 end
 
+# Withdrawn event message
+# Event is written by the handler when a withdrawal is successfully processed
 class Withdrawn
   include Messaging::Message
 
@@ -59,6 +66,8 @@ class Withdrawn
   attribute :processed_time, String
 end
 
+# Account entity
+# The account component's model object
 class Account
   include Schema::DataStructure
 
@@ -74,8 +83,12 @@ class Account
   end
 end
 
+# Account entity projection
+# Applies account events to an account entity
 class Projection
   include EntityProjection
+
+  entity_name :account
 
   apply Withdrawn do |withdrawn|
     account.id = withdrawn.account_id
@@ -86,6 +99,8 @@ class Projection
   end
 end
 
+# Account entity store
+# Projects an account entity and keeps a cache of the result
 class Store
   include EntityStore
 
@@ -94,4 +109,12 @@ class Store
 end
 ```
 
-Note: This example code is abridged for brevity, and some elements necessary for it to be runnable are redacted. For more complete and representative  example implementations, see the [examples](/examples/overview.md) section.
+::: tip
+Note: This example code is abridged for brevity, and some elements necessary for it to be runnable are redacted. For more complete and representative example implementations, as well as the unabridged version of this example, see the examples section.
+:::
+
+<div class="hero">
+  <p class="action">
+    <a href="/examples/overview.html" class="nav-link action-button">Go To Examples</a>
+  </p>
+</div>
