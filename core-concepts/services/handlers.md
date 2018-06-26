@@ -1,16 +1,12 @@
 ---
-- use withdrawal handler
-- stream name
-
-- move details to user guide
-
+sidebarDepth: 0
 ---
 
 # Handlers
 
-Messages that are sent to a service are processed by the service's _handlers_. They are the business logic, combined with the service's [entity](./entities.md) logic.
+[Messages](/glossary.md#message) that are sent to a service are processed by the service's _handlers_. They are the business logic, combined with the service's [entity](./entities.md) logic.
 
-A handler is the entry point to a service. It receives instructions from other services, apps, and clients in the form of [messages](/glossary.md#message). You might think of them as controllers in MVC terms, but that's a very loose comparison.
+A handler is the entry point to a service. It receives instructions from other services, apps, and clients in the form of [commands](/glossary.md#command) and [events](/glossary.md#event). You might think of them as controllers in MVC terms, but that's a very loose comparison.
 
 When a service [component](/glossary.md#component) receives messages, it sends these messages to the handlers that process them.
 
@@ -18,21 +14,13 @@ A handler receives a message, does its work, and when it's done with that work, 
 
 Messages can come from applications as well as other services, including the service handling its own messages.
 
-## Handler Workflow
-
-1. Retrieve the entity from the store, projecting the entity's data from events in the process
-2. Use the entity to determine whether and how to process the message
-3. Construct the resulting event that captures the effects of processing the message
-4. Assign data to its the resulting event from the input message, the system clock, and possibly other sources depending on the business scenario
-4. Write the resulting event
-
-Note that some handlers may not need to do all of these things.
-
 ## Example Handler
 
 The example below is a handler does withdrawals from an account.
 
-The handler can handle a message whose class name is `Withdrawn`. The `handle` block receives an instance of the Withdrawn message that carries the information required to withdrawn funds from an account, including the account ID and the amount of the withdrawal, as well as a timestamp.
+The handler can handle a message whose class name is `Withdrawn`. The `handle` block receives an instance of the Withdrawn message that carries the information required to withdraw funds from an account, including the account ID and the amount of the withdrawal, as well the time of the withdrawal.
+
+Depending on whether there are sufficient funds for the withdrawal, the handler publishes either a `Withdrawn` event or a `WithdrawalRejected` event as a result of processing the withdrawal.
 
 ``` ruby
 handle Withdraw do |withdraw|
@@ -59,7 +47,3 @@ handle Withdraw do |withdraw|
   write.(withdrawn, stream_name)
 end
 ```
-
-Handlers can handle many different kinds of messages:
-
-
