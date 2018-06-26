@@ -4,6 +4,7 @@ The example provides a one-page implementation of the various parts of an autono
 
 ``` ruby
 # Account command handler with withdrawal implementation
+# Business logic for processing a withdrawal
 class Handler
   include Messaging::Handle
   include Messaging::StreamName
