@@ -8,8 +8,6 @@ sidebarDepth: 0
 
 A handler is the entry point to a service. It receives instructions from other services, apps, and clients in the form of [commands](/glossary.md#command) and [events](/glossary.md#event). You might think of them as controllers in MVC terms, but that's a very loose comparison.
 
-When a service [component](/glossary.md#component) receives messages, it sends these messages to the handlers that process them.
-
 A handler receives a message, does its work, and when it's done with that work, it reports the status and outcome of that work by publishing an event.
 
 Messages can come from applications as well as other services, including the service handling its own messages.
