@@ -21,7 +21,9 @@ module.exports = {
       {
         text: 'User Guide', items: [
           { text: 'Overview', link: '/user-guide/' },
-          { text: 'Message Store', link: '/user-guide/message-store/' }
+          { text: 'Message Store', link: '/user-guide/message-store/' },
+          { text: 'Handlers', link: '/user-guide/handlers.md' },
+          { text: 'Libraries', link: '/user-guide/libraries.md' }
         ]
       },
       { text: 'API', link: '/api/' },
