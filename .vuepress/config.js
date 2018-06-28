@@ -3,6 +3,7 @@ module.exports = {
   description: 'Microservices and Event Sourcing for Ruby',
   dest: './_build',
   themeConfig: {
+    activeHeaderLinks: true,
     nav: [
       { text: 'Home', link: '/' },
       {
@@ -23,7 +24,8 @@ module.exports = {
           { text: 'Overview', link: '/user-guide/' },
           { text: 'Message Store', link: '/user-guide/message-store/' },
           { text: 'Handlers', link: '/user-guide/handlers.md' },
-          { text: 'Libraries', link: '/user-guide/libraries.md' }
+          { text: 'Libraries', link: '/user-guide/libraries.md' },
+          { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
         ]
       },
       { text: 'API', link: '/api/' },

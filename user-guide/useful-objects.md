@@ -5,7 +5,9 @@ sidebarDepth: 1
 
 # The Doctrine of Useful Objects
 
-This guide describes the standards and practices for implementation design that are used to build the Eventide toolkit and the examples provided for it by the Eventide team. Having a basic understanding of the _useful objects_ doctrine will facilitate understanding the design patterns and principles that are commonly employed throughout the various libraries and examples.
+This guide describes the standards and practices for implementation design that are used to build the Eventide toolkit and the examples provided for it by the Eventide team.
+
+Having a basic understanding of the _useful objects_ doctrine will facilitate understanding the design patterns and principles that are commonly employed throughout the various libraries and examples.
 
 [View on GitHub](https://github.com/eventide-project/useful-objects/)
 
@@ -32,7 +34,8 @@ An object may record telemetry about its execution as it is executing. The activ
 
 ## Example Implementation
 
-This repository includes an example implementation.
+The useful objects repository on GitHub includes an example implementation:<br/>
+[https://github.com/eventide-project/useful-objects/](https://github.com/eventide-project/useful-objects/)
 
 ## Substitutes
 
