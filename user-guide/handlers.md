@@ -90,7 +90,7 @@ end
 
 A class becomes a handler by including the `Handle` module from the [`Messaging` library](./libraries.md#messaging) and namespace.
 
-See [Messaging::Handle] in the API guide](/api/messaging/handle.md).
+See [Messaging::Handle](/api/messaging/handle.md) in the API guide for more.
 
 ## Defining a Handler
 
@@ -265,6 +265,49 @@ A handler method is determined to match an inbound message based on the message'
 A message class named `SomeMessage` is sent to a handler method named `handle_some_message`.
 
 Only the message's class name is taken into considering when matching a message to a handler method. The class's namespace is not significant to matching. For a message class named `Something::Messages::SomeMessage`, only the `SomeMessage` part of the message's class name is significant.
+
+## Messaging::StreamName Module
+
+The `StreamName` module from the [`Messaging` library](./libraries.md#messaging) and namespace provides a couple useful utilities to handler classes. Using this module in a handler is optional.
+
+See [Messaging::StreamName](/api/messaging/stream-name.md) in the API guide for more.
+
+The features of the `StreamName` module that are commonly used in handlers are:
+
+- `cateogry` macro
+- `stream_name` method
+
+### category Macro
+
+The `category` macro allows the declaration of the [category](/glossary.md#category) that a handler is principally concerned with.
+
+In the following code taken from the handler example above, `:account` is declared as the category.
+
+``` ruby
+category :account
+```
+
+The category macro creates an instance accessor that returns the value passed to the macro. This value is used when composing the stream name that messages are typically written to by the handler logic.
+
+### stream_name Method
+
+The `stream_name` method is used to combine a category name and an [entity](/glossary.md#entity) ID to form a valid and consistent stream name to write a handler block's resulting events to.
+
+The `stream_name` method uses the category name declared using the `category` macro to compose the stream name.
+
+``` ruby
+account_id = '123'
+stream_name = stream_name(account_id)
+# => "account-123"
+```
+
+Optionally, a category other than the one declared using the `category` macro can be passed as a second argument.
+
+``` ruby
+some_id = '456'
+stream_name = stream_name(some_id, :something)
+# => "something-123"
+```
 
 ## Handling Raw Message Data
 
