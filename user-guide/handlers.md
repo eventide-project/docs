@@ -90,7 +90,7 @@ end
 
 A class becomes a handler by including the `Handle` module from the [`Messaging` library](./libraries.md#messaging) and namespace.
 
-See [`Messaging::Handle` in the API guide](/api/messaging/handle.md).
+See [Messaging::Handle] in the API guide](/api/messaging/handle.md).
 
 ## Defining a Handler
 
@@ -206,7 +206,7 @@ some_handler = SomeHandler.new
 By constructing a handler using the initializer, the handler's [dependencies](./dependencies.md) are not set to operational dependencies. They remain _inert substitutes_.
 
 ::: tip
-See the [useful objects](./useful-objects.md#substitutes) topic for background on inert substitutes.
+See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
 :::
 
 ### Via the Constructor
@@ -270,7 +270,7 @@ Only the message's class name is taken into considering when matching a message 
 
 The raw form of a message is an instance of `MessageStore::MessageData`.
 
-See the [Message and MessageData](./message-and-message-data.md#message-data) topic for more on messages and message data.
+See the [Message and MessageData](./message-and-message-data.md#message-data) user guide for more on messages and message data.
 
 The object that is sent to a handler from a consumer is an instance of `MessageData`. The handler converts the `MessageData` into its corresponding message instance.
 
@@ -335,4 +335,4 @@ The following tags _may_ be applied to log messages logged by a handler:
 
 - `data` (Applied to log lines that record the data content of a typed message or a MessageData instance)
 
-See the [logging](./logging.md#tags) topic for more on log tags.
+See the [logging](./logging.md#tags) user guide for more on log tags.
