@@ -289,7 +289,7 @@ def handle(message_data)
 end
 ```
 
-The `handle` method will not be invoked if there's a handler block the matches the `MessageData`'s `type` attribute.
+The `handle` method will not be invoked if there's a handler block that matches the `MessageData`'s `type` attribute.
 
 ``` ruby
 class Handler
