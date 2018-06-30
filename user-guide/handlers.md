@@ -316,7 +316,7 @@ end
 
 Because the raw `MessageData` is not transformed into typed messages, handling `MessageData` in its raw form offers a slight performance improvement due to skipping the transformation step.
 
-That said, the performance improvement is negligible, so don't elect this option unless squeezing every last drop of performance out of your solution is critical to its success.
+That said, the performance improvement is negligible. Don't elect to use this option unless squeezing every last drop of performance out of your solution is critical to its success.
 
 ## Log Tags
 
