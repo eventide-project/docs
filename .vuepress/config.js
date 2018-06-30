@@ -59,6 +59,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'reading-and-writing.md',
             'uses-of-streams.md',
             'stream-names.md',
             'streams-vs-queues.md'
@@ -81,7 +82,7 @@ module.exports = {
       ],
       '/core-concepts/messages-and-messaging/': [
         {
-          title: 'Messages',
+          title: 'Messages and Messaging',
           collapsable: false,
           children: [
             '',
