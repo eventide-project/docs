@@ -16,7 +16,9 @@ module.exports = {
         text: 'Core Concepts', items: [
           { text: 'Streams', link: '/core-concepts/streams/' },
           { text: 'Services', link: '/core-concepts/services/' },
-          { text: 'Messages', link: '/core-concepts/messages/' }
+          { text: 'Messages and Messaging', link: '/core-concepts/messages-and-messaging/' },
+          { text: 'Pub/Sub (Publish and Subscribe)', link: '/core-concepts/pub-sub.md' },
+          { text: 'Event Sourcing', link: '/core-concepts/event-sourcing.md' }
         ]
       },
       {
@@ -77,15 +79,14 @@ module.exports = {
           ]
         }
       ],
-      '/core-concepts/messages/': [
+      '/core-concepts/messages-and-messaging/': [
         {
           title: 'Messages',
           collapsable: false,
           children: [
             '',
             'messaging.md',
-            'commands.md',
-            'events.md'
+            'commands-and-events.md'
           ]
         }
       ],

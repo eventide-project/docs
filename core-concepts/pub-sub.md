@@ -1,4 +1,4 @@
-# Events
+# Pub/Sub
 
 <div class="note custom-block">
   <p>

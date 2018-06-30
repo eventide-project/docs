@@ -26,7 +26,7 @@ A [stream](/glossary.md#stream) that contains the messages for every individual,
 
 ## Command
 
-A [message](/glossary.md#message) that represents an instruction sent to a [component](/glossary.md#component).
+A command is a [message](/glossary.md#message) that represents an instruction sent to a [component](/glossary.md#component). A command is an input message. Commands are sent directly to components. They are a unidirectional transmission from one endpoint directly to another.
 
 ## Command Stream
 
@@ -43,6 +43,10 @@ The component host is the outermost surface of an Eventide service. It runs righ
 ## Consumer
 
 The consumer is the infrastructure that runs a subscription [reader](/glossary.md#message-reader) over streams, and plugs-in the [handlers](/glossary.md#handler) to those subscriptions to receive the messages they subscribe to.
+
+## Endpoint
+
+An endpoint is the source process that a message comes from or the destination process where it is sent is _endpoint_. The term _endpoint_ is often used informally as a substitute for _service_.
 
 ## Entity
 

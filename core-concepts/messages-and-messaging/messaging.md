@@ -14,6 +14,6 @@ It's often presumed in a _messaging_ architecture that some kind of [message tra
 
 ## Endpoints
 
-The generic term for the source process that a message comes from or destination process where it is sent is _endpoint_.
+The generic term for the source process that a message comes from or the destination process where it is sent is _endpoint_.
 
 The term _endpoint_ is often used informally as a substitute for _service_ in Service-Oriented Architectures, like Microservice Architecture.

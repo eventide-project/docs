@@ -1,4 +1,4 @@
-# Commands
+# Event Sourcing
 
 <div class="note custom-block">
   <p>
