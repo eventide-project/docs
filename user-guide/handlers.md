@@ -82,7 +82,7 @@ end
 
 <div class="note custom-block">
   <p>
-    Note that some handlers may not need to do all of these things.
+    Note that some handlers may not need to do all of these things, and some may do more, like interacting with external APIs and gateways.
   </p>
 </div>
 
