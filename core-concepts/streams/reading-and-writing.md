@@ -10,7 +10,7 @@ The terminology of message transports refers to _publishing_ messages, and _cons
 
 Messages are _written_ to streams, and _read_ from streams.
 
-![Messaging](../../images/read-and-write.png)
+![Messaging](../../images/reading-and-writing.png)
 
 Messages are effectively left for readers and consumers to pick up and process at a time that is convenient, whether that's right now or some time later.
 
