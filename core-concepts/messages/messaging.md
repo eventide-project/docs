@@ -1,13 +1,19 @@
 # Messaging
 
-<div class="note custom-block">
-  <p>
-    This document is not yet written
-  </p>
-</div>
+_Messaging_ is the comprehensive term that refers to architectures and techniques that separate different aspects of a system into independent processes that communicate and collaborate with each other by sending and receiving messages.
 
-This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
+![Messaging](../../images/messaging.png)
 
-For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
+The term _messaging_ doesn't imply any specific kind of architectural style. It applies to any architecture that relies on message passing.
 
-[eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
+Both event sourcing and autonomous services architectural styles are examples of a _messaging architecture_.
+
+## Message Transport
+
+It's often presumed in a _messaging_ architecture that some kind of [message transport](/glossary.md#message-queue-and-message-bus) is used. Generally speaking, that transport can be a broad range of options, from something as primitive to a bare network socket to something as elaborate as an Enterprise Service Bus (ESB). In the least, some mechanism is present in the solution that allows messages to be carried from one place to another.
+
+## Endpoints
+
+The generic term for the source process that a message comes from or destination process where it is sent is _endpoint_.
+
+The term _endpoint_ is often used informally as a substitute for _service_ in Service-Oriented Architectures, like Microservice Architecture.
