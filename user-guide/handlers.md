@@ -72,6 +72,20 @@ end
 - Handlers may receive message from any number of streams
 - The typical result of processing a message is writing another message, usually an [event](/glossary.md#event)
 
+## Typical Handler Workflow
+
+1. Retrieve the entity from the store (which projects the entity's data from its events)
+2. Use the entity to determine whether and how to process the message
+3. Construct the resulting event that captures the effects of processing the message
+4. Assign data to its the resulting event from the input message, the system clock, and possibly other sources depending on the business scenario
+4. Write the resulting event
+
+<div class="note custom-block">
+  <p>
+    Note that some handlers may not need to do all of these things.
+  </p>
+</div>
+
 ## Messaging::Handle Module
 
 A class becomes a handler by including the `Handle` module from the [`Messaging` library](./libraries.md#messaging) and namespace.
