@@ -311,13 +311,13 @@ stream_name = stream_name(some_id, :something)
 
 ## Handling Raw Message Data
 
-The raw form of a message is an instance of `MessageStore::MessageData`.
+In addition to handling typed messages, handlers can handle `MessageData` instances in their raw form.
 
 See the [Message and MessageData](./message-and-message-data.md#message-data) user guide for more on messages and message data.
 
-The object that is sent to a handler from a consumer is an instance of `MessageData`. The handler converts the `MessageData` into its corresponding message instance.
+The raw form of a message is an instance of `MessageStore::MessageData`.
 
-In addition to handling typed messages, handlers can handle `MessageData` instances in their raw form.
+The object that is sent to a handler from a consumer is an instance of `MessageData`. The handler converts the `MessageData` into its corresponding message instance.
 
 If a handler implements a method named `handle` _and_ if there's no explicit handler block that specifically matches the `MessageData` object's `type` attribute, then the `MessageData` instance will be passed to the `handle` method.
 
