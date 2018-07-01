@@ -1,13 +1,17 @@
-# Pub/Sub
+---
+sidebar: auto
+---
 
-<div class="note custom-block">
-  <p>
-    This document is not yet written
-  </p>
-</div>
+# Pub/Sub (Publish and Subscribe)
 
-This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
+In a publish and subscribe system, events are written to a stream by one [endpoint](/glossary.md#endpoint) and can be reacted to by any number of other endpoints, or even by the endpoint that wrote the event.
 
-For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
+![Commands and Events](../images/pub-sub.png)
 
-[eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
+Pub/Sub pattern is a [messaging](./messages-and-messaging/messaging.md) pattern that enables a loose coupling of different parts of a system, allowing individual parts to be changed independently without concerns for other parts being affected by the change.
+
+As is the case with all messaging patterns, as long as the structure and content of the messages flowing between parts of a system do not change, individual parts are free to change without regard for other parts of the system. This is why is critical to pay significant attention to getting the message _schemas_ right so that they do not need to change later due to a need to correct oversights.
+
+::: warning
+Pub/sub only applies to events and event streams/categories. It's not a pattern that should be used for commands and command streams/categories.
+:::

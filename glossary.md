@@ -26,7 +26,7 @@ A [stream](/glossary.md#stream) that contains the messages for every individual,
 
 ## Command
 
-A command is a [message](/glossary.md#message) that represents an instruction sent to a [component](/glossary.md#component). A command is an input message. Commands are sent directly to components. They are a unidirectional transmission from one endpoint directly to another.
+A command is a [message](/glossary.md#message) that represents an instruction sent to a [component](/glossary.md#component). A command is an input message. Commands are sent directly to components. They are a unidirectional transmission from one [endpoint](/glossary.md#endpoint) directly to another.
 
 ## Command Stream
 

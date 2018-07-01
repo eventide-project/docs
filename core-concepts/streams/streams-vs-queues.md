@@ -1,8 +1,4 @@
----
-title: Streams vs Queues
----
-
-# Streams vs Queues and Buses
+# Streams vs Queues
 
 <div class="note custom-block">
   <p>
