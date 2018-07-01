@@ -74,7 +74,7 @@ The entity store is used to do the retrieval of entities. It coordinates a [read
 
 ## Event
 
-A message that represents the results and effects of some command having been processed. It's a record of something that has happened or that has been processed. An [entity's](/glossary.md#entity) state is gathered from the events that have been written about the entity.
+A message that represents the results and effects of some command having been processed. It's a record of something that has happened or that has been processed. An [entity's](/glossary.md#entity) state is gathered from the events that have been written about the entity. Each activity of an entity's life is recorded as an event, and written to the entity's stream.
 
 ## Event Sourcing
 

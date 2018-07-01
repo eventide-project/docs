@@ -6,7 +6,7 @@ sidebar: auto
 
 In a publish and subscribe system, events are written to a stream by one [endpoint](/glossary.md#endpoint) and can be reacted to by any number of other endpoints, or even by the endpoint that wrote the event.
 
-![Commands and Events](../images/pub-sub.png)
+![Publish and Subscribe](../images/pub-sub.png)
 
 ## Loose Coupling
 
@@ -26,7 +26,7 @@ The schemas of the messages that are exchanged between parts of a system are the
 
 ## Event Sourcing
 
-Because a system based on pub/sub provides ample opportunity to simplify application data storage by using [event sourcing](./event-sourcing.md). Because there is pub/sub, there is events. And once a system is based on events, event sourcing can be harnessed.
+Because a system based on pub/sub provides ample opportunity to simplify application data storage by using [event sourcing](./event-sourcing.md). Because there is pub/sub, there is events. And once a system is based on events, event sourcing can be leveraged.
 
 ::: warning
 Pub/sub only applies to events and event streams/categories. It's not a pattern that should be used for commands and command streams/categories.
