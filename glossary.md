@@ -50,7 +50,7 @@ An endpoint is the source process that a message comes from or the destination p
 
 ## Entity
 
-The entity is the core logic of the [component](/glossary.md#component). It's the _domain model_. It's analogous to a Rails model, but that's only an analogy. An entity maps to an [event stream](/glossary.md#event-stream). One entity's data is contained in a single, individual event stream. An entity collects any important information from the events in the entity's stream. It's also a data object. An entity has a corresponding [projection](/glossary.md#entity-projection), which is used to copy data from the events to the entity object, either by setting the entity's attributes or by invoking its methods. The data that an entity has collected is also used in [handler](/glossary.md#handler) code to determine whether a [command](/glossary.md#command) should be processed.
+The entity is the core logic of the [component](/glossary.md#component). It's the _domain model_. It's analogous to a Rails model, but that's only an analogy. One entity's data is contained in a single, individual [event stream](/glossary.md#event-stream). An entity collects any important information from the events in the entity's stream. It's also a data object. An entity has a corresponding [projection](/glossary.md#entity-projection), which is used to copy data from the events to the entity object, either by setting the entity's attributes or by invoking its methods. The data that an entity has collected is also used in [handler](/glossary.md#handler) code to determine whether a [command](/glossary.md#command) should be processed.
 
 ## Entity Cache
 

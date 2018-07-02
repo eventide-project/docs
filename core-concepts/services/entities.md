@@ -1,13 +1,55 @@
+---
+sidebarDepth: 0
+---
+
 # Entities
 
-<div class="note custom-block">
-  <p>
-    This document is not yet written
-  </p>
-</div>
+An entity is the core logic of a [component](/glossary.md#component).
 
-This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
+One entity's data is contained in a single, individual event stream. An entity collects any important information from the events in the entity's stream.
 
-For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
+An entity has a corresponding [projection](./projections.md), which is used to copy data from the events to the entity object, either by setting the entity's attributes or by invoking its methods.
 
-[eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
+The data that an entity has collected is also used in [handler](./.handlers.md) code to determine whether a [command](/glossary.md#command) should be processed.
+
+## Entities Have No Dependencies
+
+An entity is a data object. It's methods pertain to its data attributes.
+
+Entities have no connascence of infrastructural concerns, like storage, messaging and messages. Infrastructural concerns are the domain of design elements that surround the entities, such as [handlers](./handlers.md), which span messaging and entities, and [projections](./projections.md), which span the event stream application data storage model and entities.
+
+It's the interplay of entities with the elements that are immediately adjacent to entities that is the nexus of a component's business logic implementation.
+
+## Example Entity
+
+``` ruby
+class Account
+  include Schema::DataStructure
+
+  attribute :id, String
+  attribute :customer_id, String
+  attribute :balance, Numeric, default: 0
+  attribute :opened_time, Time
+  attribute :closed_time, Time
+
+  def open?
+    !opened_time.nil?
+  end
+
+  def closed?
+    !closed_time.nil?
+  end
+
+  def deposit(amount)
+    self.balance += amount
+  end
+
+  def withdraw(amount)
+    self.balance -= amount
+  end
+
+  def sufficient_funds?(amount)
+    balance >= amount
+  end
+end
+```
