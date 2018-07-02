@@ -74,6 +74,7 @@ module.exports = {
             '',
             'handlers.md',
             'entities.md',
+            'projections.md',
             'stores.md',
             'components.md',
             'consumers.md'

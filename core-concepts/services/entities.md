@@ -20,6 +20,12 @@ Entities have no connascence of infrastructural concerns, like storage, messagin
 
 It's the interplay of entities with the elements that are immediately adjacent to entities that is the nexus of a component's business logic implementation.
 
+## Entities are State Machines
+
+The principle purpose of an entity is to act as the state machine implementation that is the core of an autonomous service. A service itself is an implementation of a state machine, and the entity is the most central module of the design.
+
+The various state transitions that an entity tracks are recorded as events. The _projection_ of an entity's event stream is how the state machine is substantiated with its data.
+
 ## Example Entity
 
 ``` ruby
