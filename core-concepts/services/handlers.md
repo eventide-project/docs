@@ -45,3 +45,7 @@ handle Withdraw do |withdraw|
   write.(withdrawn, stream_name)
 end
 ```
+
+## More
+
+See the [Handlers](/user-guide/handlers.md) topic in the User Guide for more.

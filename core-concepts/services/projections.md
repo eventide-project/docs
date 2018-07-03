@@ -1,3 +1,7 @@
+---
+sidebarDepth: 0
+---
+
 # Projections
 
 An [entity's](./entities.md) data comes from the [events](/glossary.md#event) recorded in the entity's [event stream](/glossary.md#event-stream) as a result of [handlers](./handlers.md) handling commands and other events.

@@ -1,13 +1,24 @@
+---
+sidebarDepth: 0
+---
+
 # Consumers
 
-<div class="note custom-block">
-  <p>
-    This document is not yet written
-  </p>
-</div>
+Consumers are the element that feeds messages into a component at runtime.
 
-This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
+A consumer continually reads messages from a single stream and dispatches them to one or more handlers.
 
-For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
+Many consumers can be hosted together in a single service, allowing a component to be fed messages from many streams.
 
-[eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
+In addition, consumers keep track of its reader's progress through a stream, and controls polling rates, and pre-fetching batches of messages, and the dispatching of messages to handlers.
+
+## Example Consumer
+
+``` ruby
+class Consumer
+  include Consumer::Postgres
+
+  handler SomeHandler
+  handler SomeOtherHandler
+end
+```

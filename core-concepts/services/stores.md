@@ -1,13 +1,29 @@
+---
+sidebarDepth: 0
+---
+
 # Stores
 
-<div class="note custom-block">
-  <p>
-    This document is not yet written
-  </p>
-</div>
+A store is the data access interface for [entities](./entities.md).
 
-This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
+A store combines a [projection](./projections.md), a stream reader, and two levels of caching: an in-memory cache, and an optional on-disk cache.
 
-For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
+Entities are retrieved from the store without having to directly actuate a projection. The stream reading and projecting and caching are all transparent to the client code. To the developer, interacting with a store appears like interacting with any entity-centric data retrieval object, hiding the event-stream nature of the storage medium from the client code.
 
-[eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
+``` ruby
+account_id = 123
+account = store.fetch(account_id)
+```
+
+## Example Store
+
+``` ruby
+class Store
+  include EntityStore
+
+  category :account
+  entity Account
+  projection Projection
+  reader MessageStore::Postgres::Read
+end
+```
