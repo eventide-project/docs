@@ -1,4 +1,4 @@
-# User Guide
+# User Guide - Work in Progress
 
 This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
 

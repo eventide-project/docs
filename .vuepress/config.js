@@ -23,17 +23,21 @@ module.exports = {
       },
       {
         text: 'User Guide', items: [
-          { text: 'Overview', link: '/user-guide/' },
+          { text: 'Work in Progress', link: '/user-guide/' },
           { text: 'Message Store', link: '/user-guide/message-store/' },
           { text: 'Handlers', link: '/user-guide/handlers.md' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
           { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
         ]
       },
-      { text: 'API', link: '/api/' },
+      {
+        text: 'API', items: [
+          { text: 'Work in Progress', link: '/api/' },
+        ]
+      },
       {
         text: 'Examples', items: [
-          { text: 'Overview', link: '/examples/overview.md' },
+          { text: 'Overview', link: '/examples/' },
           { text: 'Service at a Glance', link: '/examples/at-a-glance.md' },
           { text: 'Quickstart', link: '/examples/quickstart.md' },
           { text: 'Example Projects', link: '/examples/example-projects.md' }
