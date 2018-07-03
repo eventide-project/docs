@@ -1,3 +1,7 @@
+---
+sidebarDepth: 0
+---
+
 # Components
 
 A component is a unit of design that represents a single business concern. These concerns are usually business processes, such as an account, a sale, and so forth.

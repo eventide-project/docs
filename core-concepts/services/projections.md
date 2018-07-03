@@ -1,13 +1,35 @@
 # Projections
 
-<div class="note custom-block">
-  <p>
-    This document is not yet written
-  </p>
-</div>
+An [entity's](./entities.md) data comes from the [events](/glossary.md#event) recorded in the entity's [event stream](/glossary.md#event-stream) as a result of [handlers](./handlers.md) handling commands and other events.
 
-This documentation is in the process of being written. Please accept our apologies for not having it ready yet.
+A projection is the glue between an event stream and an entity.
 
-For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
+The projection receives events as inputs, and modifies the state of an entity based on which event is being processed, and the content of the event.
 
-[eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
+When an entity is "retrieved", events from its event stream are _applied_ to it by the entity projection.
+
+## Example Projection
+
+``` ruby
+class Projection
+  include EntityProjection
+
+  entity_name :account
+
+  apply Deposited do |deposited|
+    account.id = deposited.account_id
+
+    amount = deposited.amount
+
+    account.deposit(amount)
+  end
+
+  apply Withdrawn do |withdrawn|
+    account.id = withdrawn.account_id
+
+    amount = withdrawn.amount
+
+    account.withdraw(amount)
+  end
+end
+```
