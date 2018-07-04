@@ -17,7 +17,7 @@ module.exports = {
           { text: 'Streams', link: '/core-concepts/streams/' },
           { text: 'Services', link: '/core-concepts/services/' },
           { text: 'Messages and Messaging', link: '/core-concepts/messages-and-messaging/' },
-          { text: 'Pub/Sub (Publish and Subscribe)', link: '/core-concepts/pub-sub.md' },
+          { text: 'Pub/Sub', link: '/core-concepts/pub-sub.md' },
           { text: 'Event Sourcing', link: '/core-concepts/event-sourcing.md' }
         ]
       },
@@ -26,15 +26,16 @@ module.exports = {
           { text: 'Work in Progress', link: '/user-guide/' },
           { text: 'Message Store', link: '/user-guide/message-store/' },
           { text: 'Handlers', link: '/user-guide/handlers.md' },
+          { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
           { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
         ]
       },
-      {
-        text: 'API', items: [
-          { text: 'Work in Progress', link: '/api/' },
-        ]
-      },
+      // {
+      //   text: 'API', items: [
+      //     { text: 'Work in Progress', link: '/api/' },
+      //   ]
+      // },
       {
         text: 'Examples', items: [
           { text: 'Overview', link: '/examples/' },
@@ -106,6 +107,16 @@ module.exports = {
             'tools.md',
             'anatomy.md',
             'interface.md'
+          ]
+        }
+      ],
+      '/user-guide/stream-names/': [
+        {
+          title: 'Stream Names',
+          collapsable: false,
+          children: [
+            '',
+            'messaging-stream-name.md'
           ]
         }
       ]

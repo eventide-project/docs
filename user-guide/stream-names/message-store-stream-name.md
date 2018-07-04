@@ -1,0 +1,1 @@
+# MessageStore::StreamName Module
