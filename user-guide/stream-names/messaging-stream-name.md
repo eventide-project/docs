@@ -316,6 +316,10 @@ Including `Messaging::StreamName` into a class includes the [`Messaging::Categor
 
 In addition to using the `Messaging::StreamName` module as a mixin, its methods can be invoked from the `Messaging::StreamName` constant.
 
+``` ruby
+Messaging::StreamName.stream_name('123')
+```
+
 - `stream_name`
 - `category_stream_name`
 - `command_stream_name`
