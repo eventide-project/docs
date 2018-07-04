@@ -116,7 +116,8 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'messaging-stream-name.md'
+            'messaging-stream-name.md',
+            'messaging-category.md'
           ]
         }
       ]

@@ -8,32 +8,52 @@ The `Messaging::Category` provides the `category` class macro to the class that 
 
 ## Declaring the Category
 
+Declares the category that a class will use predominantly when composing stream names.
 
-      .
+``` ruby
+category :some_entity
 ```
-module Messaging
-  module Category
-    def self.included(cls)
-      cls.extend Macro
-    end
 
-    def self.normalize(category)
-      Casing::Camel.(category, symbol_to_string: true)
-    end
+**Arguments**
 
-    module Macro
-      def category_macro(category)
-        category = Category.normalize(category)
-        self.send :define_method, :category do
-          @category ||= category
-        end
+| Name | Description | Type |
+| --- | --- | --- |
+| category | The category name | String or Symbol|
 
-        self.send :define_method, :category= do |category|
-          @category = category
-        end
-      end
-      alias :category :category_macro
-    end
-  end
-end
+The `category` class macro has the effect of defining getter and setter instance method named `category` that returns the camel cased string of the argument passed to the macro.
+
+``` ruby
+# In the class context
+category :some_entity
+
+# In the instance context
+category
+# => "someEntity"
+
+self.category = :something_else
+category
+# => "somethingElse"
+```
+
+## Normalizing the Category Name
+
+Convert or coerce a category name to a camel case string.
+
+``` ruby
+self.normalize(category)
+```
+
+**Returns**
+
+String
+
+**Arguments**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| category | The category name | String or Symbol|
+
+``` ruby
+Messaging::Category.normalize(:some_entity)
+# => "someEntity"
 ```
