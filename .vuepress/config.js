@@ -117,7 +117,8 @@ module.exports = {
           children: [
             '',
             'messaging-stream-name.md',
-            'messaging-category.md'
+            'messaging-category.md',
+            'message-store-stream-name.md'
           ]
         }
       ]
