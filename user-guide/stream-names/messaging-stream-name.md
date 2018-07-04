@@ -299,6 +299,14 @@ Messaging::StreamName.get_category('someEntity-123')
 # => 'someEntity'
 ```
 
+## Category Types are Purely Mechanical
+
+::: warning
+Category types are not intended for any use except internal infrastructure or mechanical uses. They should not be used to build hierarchical category names for applicative code.
+:::
+
+See the [Stream Names](/core-concepts/streams/stream-names.md#example-stream-names) topic in the Core Concepts section for examples of mechanical and infrastructural category types.
+
 ## Using as a Mixin
 
 ### Subordinate Mixin
