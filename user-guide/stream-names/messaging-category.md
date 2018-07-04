@@ -53,6 +53,8 @@ String
 | --- | --- | --- |
 | category | The category name | String or Symbol|
 
+The `normalize` method is callable from the `Messaging::Category` constant as a module method, and cannot be mixed in to a receiver.
+
 ``` ruby
 Messaging::Category.normalize(:some_entity)
 # => "someEntity"
