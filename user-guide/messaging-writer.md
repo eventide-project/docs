@@ -1,4 +1,4 @@
-# Message and MessageData
+# Messaging::Writer
 
 <div class="note custom-block">
   <p>
@@ -11,4 +11,3 @@ This documentation is in the process of being written. Please accept our apologi
 For immediate answers to your questions, please join the Eventide Project's Slack team and chat with one of the project principles or community members:
 
 [eventide-project-slack.herokuapp.com](https://eventide-project-slack.herokuapp.com)
-
