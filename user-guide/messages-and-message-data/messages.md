@@ -333,9 +333,9 @@ Note that when the `Messaging::Message::Copy` is extended onto a message class, 
 
 ## Message Workflows
 
-Messages frequently represent subsequent steps or stages in a process. Subsequent messages follow after preceding messages. Data from the preceding message is copied to the subsequent messages, and parts of the preceding message's metadata are constructed with the data from the preceding message.
+Messages frequently represent subsequent steps or stages in a process. Subsequent messages follow after preceding messages. Data from the preceding message is copied to the subsequent messages, and parts of the subsequent message's metadata are constructed with the data from the preceding message.
 
-Constructing a message from a preceding message in a message flow is a common pattern.
+Constructing a message from a preceding message in a message flow is a common pattern in [handler](/#a-brief-example) implementation.
 
 ``` ruby
 self.follow(preceding_message, copy: [], include: [], exclude: [], strict: true)
