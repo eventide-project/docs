@@ -42,7 +42,7 @@ A message class has the following features and capabilities:
 - Data attributes with optional data type checking
 - Message metadata
 - Copying data from one message to another
-- Procession of messages in a work flow
+- Procession of messages in a workflow
 - Determination of equality
 - Transformation to and from raw [MessageStore::MessageData](./message-data.md) representation
 
@@ -85,66 +85,6 @@ data = {
 
 withdraw = Withdraw.build(data)
 # => #<Withdraw:0x... @withdrawal_id="ABC", @account_id="123", @amount=11, @time="2000-01-01T00:00:00.000Z">
-```
-
-## Message Type
-
-The _message type_ is the name of the message class without any of the namespace information.
-
-``` ruby
-self.message_type()
-```
-
-**Returns**
-
-String
-
-``` ruby
-SomeNamespace::SomeMessage.message_type
-# => "SomeMessage"
-```
-
-## Message Type Predicate
-
-The message type predicate method determines whether a string matches the [message type](#message-type) of a message class.
-
-``` ruby
-self.message_type?(message_type)
-```
-
-**Returns**
-
-String
-
-**Arguments**
-
-| Name | Description | Type |
-| --- | --- | --- |
-| message_type | Message type to compare with the message's message type | String |
-
-``` ruby
-SomeNamespace::SomeMessage.message_type?("SomeMessage")
-# => true
-
-SomeNamespace::SomeMessage.message_type?("SomeOtherMessage")
-# => false
-```
-
-## Message Name
-
-A message's name is the underscore cased formatted name of the message class without any of the namespace information.
-
-``` ruby
-self.message_name()
-```
-
-**Returns**
-
-String.
-
-``` ruby
-SomeNamespace::SomeMessage.message_name
-# => "some_message"
 ```
 
 ## Construct a Hash Representation of the Message's Data
@@ -427,40 +367,7 @@ subsequent_message = SubsequentMessage.follow(preceding_message, copy: [
 
 While copying message data from a preceding message to a subsequent message is a convenient feature, copying message flow properties between the metadata of two messages is the feature that implements message workflow.
 
-A message's [metadata](./metadata.md) records data from a preceding message's metadata. Each message in a workflow carries [provenance](/glossary.md#provenance) data of the message that precedes it.
-
-There are three metadata attributes that comprise the identifying information of a message's preceding message. They are collectively referred to as _causation_ data.
-
-- `causation_message_stream_name`
-- `causation_message_position`
-- `causation_message_global_position`
-
-Each message's metadata in a workflow carries identifying information about the workflow that the messages participate in. That identifying information is referred to as _correlation_ data.
-
-- `correlation_stream_name`
-
-Additionally, a message's metadata may carry a _reply address_:
-
-- `reply_stream_name`
-
-See the [Messaging::Writer](../messaging-writer.md) user guide for more on replying to messages.
-
-Provenance metadata transfer logic from preceding message to subsequent message as caused by the `Message.follow` method is:
-
-``` ruby
-preceding = preceding_message.metadata
-subsequent = subsequent_message.metadata
-
-subsequent.causation_stream_name = preceding.stream_name
-subsequent.causation_position = preceding.position
-subsequent.causation_global_position = preceding.global_position
-
-subsequent.correlation_stream_name = preceding.correlation_stream_name
-
-subsequent.reply_stream_name = preceding.reply_stream_name
-```
-
-Refer to [Metadata](./metadata.md#follow) for a more complete description of metadata and message flows.
+Refer to [Metadata](./metadata.md#message-workflows) for a more complete description of metadata and message flows.
 
 ### Messaging::Message::Follow Module
 
@@ -610,4 +517,64 @@ message_data.type = 'SomeMessage'
 
 some_message = Messaging::Message::Import.(message_data, SomeMessage)
 # => #<SomeMessage:0x... @some_attribute="some value">
+```
+
+## Message Type
+
+The _message type_ is the name of the message class without any of the namespace information.
+
+``` ruby
+self.message_type()
+```
+
+**Returns**
+
+String
+
+``` ruby
+SomeNamespace::SomeMessage.message_type
+# => "SomeMessage"
+```
+
+## Message Type Predicate
+
+The message type predicate method determines whether a string matches the [message type](#message-type) of a message class.
+
+``` ruby
+self.message_type?(message_type)
+```
+
+**Returns**
+
+String
+
+**Arguments**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| message_type | Message type to compare with the message's message type | String |
+
+``` ruby
+SomeNamespace::SomeMessage.message_type?("SomeMessage")
+# => true
+
+SomeNamespace::SomeMessage.message_type?("SomeOtherMessage")
+# => false
+```
+
+## Message Name
+
+A message's name is the underscore cased formatted name of the message class without any of the namespace information.
+
+``` ruby
+self.message_name()
+```
+
+**Returns**
+
+String.
+
+``` ruby
+SomeNamespace::SomeMessage.message_name
+# => "some_message"
 ```

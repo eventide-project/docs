@@ -9,11 +9,11 @@ The message store is a single table named `messages`. Interaction with the messa
 | id | UUID | Identifier of a message entry and primary key | gen_random_uuid() | No |
 | stream_name | varchar(255) | Name of stream to which the message belongs | | No |
 | type | varchar(255) | The type of the message | | No |
-| position | bigint | The ordinal position of the message in a stream. Position is gapless. | | No |
+| position | bigint | The ordinal position of the message in its stream. Position is gapless. | | No |
 | global_position | bigint | The ordinal position of the message in the entire message store. Global position may have gaps. | | No |
 | data | jsonb | Message payload | NULL | Yes |
 | metadata | jsonb | Message metadata | NULL | Yes |
-| time | timestamp | Timestamp of message when written to the store without timezone | now() AT TIME ZONE 'utc' | No |
+| time | timestamp | Timestamp when the message was written. The timestamp does not include a time zone. | now() AT TIME ZONE 'utc' | No |
 
 ## Indexes
 
