@@ -8,6 +8,6 @@ A command is a message that represents an instruction sent to a [component](/glo
 
 An event is a message that represents the effects of processing a command.
 
-![Commands and Events](../../images/commands-and-events.png)
+![Commands and Events](../../images/commands-and-events-component.png)
 
 When a component processes a command, the result of that process is the writing of one or more events. Those events are the source material that [event sourcing](../event-sourcing.md) and [pub/sub](../pub-sub.md) patterns are built upon.

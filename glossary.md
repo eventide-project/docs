@@ -120,6 +120,10 @@ Any technology that is used to send (_transport_) messages from one process to a
 
 Writes a message, or a batch of messages, to a single stream.
 
+## Provenance
+
+Provenance is the chronology of the custody or location of a historical object. It's used in the context of messaging workflows to describe metadata of preceding messages in a sequence of messages in a causal chain of messages.
+
 ## Service
 
 In its strictest sense, a service is an autonomous unit of system operations that is made up of [components](/glossary.md#component) that the service hosts.
