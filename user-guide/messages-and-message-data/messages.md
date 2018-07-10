@@ -6,7 +6,7 @@ See [Message Facts](/core-concepts/messages-and-messaging/) for more details abo
 
 ## Messaging::Message Module
 
-A class becomes a message by including the `Messaging::Message` module into a class.
+A class becomes a message by including the `Messaging::Message` module.
 
 [View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message.rb)
 
