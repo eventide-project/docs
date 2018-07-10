@@ -61,7 +61,7 @@ withdraw = Withdraw.new
 A message has a constructor named `build` that allows for optionally providing a hash of data and a hash of metadata at the time of construction.
 
 ``` ruby
-build(data={}, metadata={})
+self.build(data={}, metadata={})
 ```
 
 **Returns**
