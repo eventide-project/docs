@@ -95,7 +95,7 @@ The _message type_ is the name of the message class without any of the namespace
 self.message_type()
 ```
 
-**returns**
+**Returns**
 
 String
 
@@ -112,7 +112,7 @@ The message type predicate method determines whether a string matches the [messa
 self.message_type?(message_type)
 ```
 
-**returns**
+**Returns**
 
 String
 
