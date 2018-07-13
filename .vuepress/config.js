@@ -28,6 +28,7 @@ module.exports = {
           { text: 'Handlers', link: '/user-guide/handlers.md' },
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
+          { text: 'Session', link: '/user-guide/session.md' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
           { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
         ]
