@@ -274,7 +274,7 @@ Handlers can be constructed in one of two ways
 ### Via the Initializer
 
 ``` ruby
-some_handler = SomeHandler.new
+SomeHandler.new()
 ```
 
 **Returns**
@@ -294,13 +294,13 @@ See the [useful objects](./useful-objects.md#substitutes) user guide for backgro
 ### Via the Constructor
 
 ``` ruby
-some_handler = SomeHandler.build
+build(strict: false, session: nil)
 ```
 
 The constructor not only instantiates the handler, but also invokes the handler's `configure` instance method, which constructs the handler's operational dependencies.
 
 ``` ruby
-build(strict: false, session: nil)
+some_handler = SomeHandler.build
 ```
 
 **Returns**
