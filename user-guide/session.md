@@ -36,10 +36,6 @@ Session.new()
 
 Instance of the session.
 
-**Parameters**
-
-_none_
-
 By constructing a session using the initializer, the session's settings are not set to operational values. A session instance in this state must still be assigned with operational connection initialization data before a database connection can be made.
 
 ### Via the Constructor

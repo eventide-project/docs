@@ -281,10 +281,6 @@ SomeHandler.new()
 
 Instance of the class that includes the `Handle` module.
 
-**Parameters**
-
-_none_
-
 By constructing a handler using the initializer, the handler's [dependencies](./dependencies.md) are not set to operational dependencies. They remain _inert substitutes_.
 
 ::: tip
