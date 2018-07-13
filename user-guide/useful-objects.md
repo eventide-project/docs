@@ -9,7 +9,7 @@ This guide describes the standards and practices for implementation design that 
 
 Having a basic understanding of the _useful objects_ doctrine will facilitate understanding the design patterns and principles that are commonly employed throughout the various libraries and examples.
 
-[View on GitHub](https://github.com/eventide-project/useful-objects/)
+[View Source](https://github.com/eventide-project/useful-objects/)
 
 ## Overview
 

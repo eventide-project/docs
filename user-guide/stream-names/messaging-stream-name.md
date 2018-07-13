@@ -2,7 +2,7 @@
 
 `Messaging::StreamName` is a module that's often mixed in to handler classes, but can also be used as a function library of methods that can be invoked from the `Messaging::StreamName` module constant.
 
-[View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/stream_name.rb)
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/stream_name.rb)
 
 ## Optional Category Declaration
 

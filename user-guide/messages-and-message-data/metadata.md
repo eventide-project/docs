@@ -8,7 +8,7 @@ Where as a message's data represents information pertinent to the business proce
 
 The message metadata implementation is provided by the Messaging::Message::Metadata class.
 
-[View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/metadata.rb)
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/metadata.rb)
 
 ## Metadata Attributes
 

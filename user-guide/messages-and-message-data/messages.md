@@ -8,7 +8,7 @@ See [Message Facts](/core-concepts/messages-and-messaging/) for more details abo
 
 A class becomes a message by including the `Messaging::Message` module.
 
-[View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message.rb)
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message.rb)
 
 ## Example Messages
 
@@ -226,7 +226,7 @@ receiver_message = ReceiverMessage.copy(source_message, copy: [
 
 The `copy` class method of a message class can be also be actuated from the `Messaging::Message::Copy` module.
 
-[View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/copy.rb)
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/copy.rb)
 
 The underlying implementation of a message class's `copy` method is the `Messaging::Message::Copy` module. It can be actuated either by including it, or via invoking its methods directly as module methods.
 
@@ -373,7 +373,7 @@ Refer to [Metadata](./metadata.md#message-workflows) for a more complete descrip
 
 The `follow` class method of a message class can be also be actuated from the `Messaging::Message::Follow` module.
 
-[View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/follow.rb)
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/follow.rb)
 
 The underlying implementation of a message class's `follow` method is the `Messaging::Message::Follow` module. It can be actuated either by including it, or via invoking its methods directly as module methods.
 

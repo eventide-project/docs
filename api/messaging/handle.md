@@ -1,6 +1,6 @@
 # Messaging::Handle
 
-[View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/handle.rb)
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/handle.rb)
 
 <div class="note custom-block">
   <p>

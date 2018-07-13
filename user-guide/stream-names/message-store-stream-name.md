@@ -6,7 +6,7 @@ The methods of the `MessageStore::StreamName` module can only be invoked from th
 
 The higher order utilities in the [`Messaging::StreamName`](./messaging-stream-name.md) module and built upon and delegate to the `MessageStore::StreamName` module.
 
-[View on GitHub](https://github.com/eventide-project/message-store/blob/master/lib/message_store/stream_name.rb)
+[View Source](https://github.com/eventide-project/message-store/blob/master/lib/message_store/stream_name.rb)
 
 ## Stream Name
 

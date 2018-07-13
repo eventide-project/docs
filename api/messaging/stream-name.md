@@ -1,6 +1,6 @@
 # Messaging::StreamName
 
-[View on GitHub](https://github.com/eventide-project/messaging/blob/master/lib/messaging/stream_name.rb)
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/stream_name.rb)
 
 <div class="note custom-block">
   <p>
