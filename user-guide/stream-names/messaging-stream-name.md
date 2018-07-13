@@ -43,7 +43,7 @@ stream_name(id, category=nil, type: nil, types: nil)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ category_stream_name(category=nil, type: nil, types: nil)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -150,7 +150,7 @@ command_stream_name(id, category=nil, type: nil, types: nil)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -205,7 +205,7 @@ command_category_stream_name(category=nil, type: nil, types: nil)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -255,7 +255,7 @@ self.get_id(stream_name)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -282,7 +282,7 @@ self.get_category(stream_name)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |

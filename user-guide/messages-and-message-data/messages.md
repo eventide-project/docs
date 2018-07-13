@@ -68,7 +68,7 @@ self.build(data={}, metadata={})
 
 An instance of the message class
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -143,7 +143,7 @@ self.copy(source, copy: [], include: [], exclude: [], strict: false, metadata: f
 
 Instance of the receiver message class initialized with the source message's data.
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -238,7 +238,7 @@ self.call(source, receiver=nil, copy: [], include: [], exclude: [], strict: fals
 
 Instance of the receiver message class initialized with the source message's data, or the receiver message object after having the source's data copied to it.
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -285,7 +285,7 @@ self.follow(preceding_message, copy: [], include: [], exclude: [], strict: true)
 
 Instance of the subsequent message class initialized with the preceding message's data.
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -385,7 +385,7 @@ self.call(preceding_message, subsequent_message=nil, copy: nil, include: nil, ex
 
 Instance of the subsequent message class initialized with the preceding message's data, or the subsequent message object after having the preceding message's data copied to it.
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -473,7 +473,7 @@ Messaging::Message::Export.call(message)
 
 An instance of `MessageStore::MessageData::Write`.
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -503,7 +503,7 @@ Messaging::Message::Import.call(message_data, message_class)
 
 An instance of the message class.
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -548,7 +548,7 @@ self.message_type?(message_type)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |

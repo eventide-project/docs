@@ -35,7 +35,7 @@ The message's implementation of `follow` specifically manages the transfer of me
 follow(preceding_metadata)
 ```
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -83,7 +83,7 @@ follows?(metadata)
 
 Boolean.
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -198,7 +198,7 @@ Boolean.
 
 `correlates?`
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |

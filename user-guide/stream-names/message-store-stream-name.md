@@ -20,7 +20,7 @@ self.stream_name(category_name, id=nil, type: nil, types: nil)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -53,7 +53,7 @@ self.get_id(stream_name)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -74,7 +74,7 @@ self.get_category(stream_name)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -95,7 +95,7 @@ def self.category?(stream_name)
 
 Boolean
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -119,7 +119,7 @@ self.get_types(stream_name)
 
 Array of Strings
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -140,7 +140,7 @@ self.get_type_list(stream_name)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |

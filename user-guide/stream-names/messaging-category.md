@@ -14,7 +14,7 @@ Declares the category that a class will use predominantly when composing stream 
 category :some_entity
 ```
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
@@ -47,7 +47,7 @@ self.normalize(category)
 
 String
 
-**Arguments**
+**Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
