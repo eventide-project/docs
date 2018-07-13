@@ -55,7 +55,7 @@ Additionally, a message's metadata may carry a _reply address_:
 
 - `reply_stream_name`
 
-See the [Messaging::Writer](../messaging-writer.md) user guide for more on replying to messages.
+See the [Messaging::Writer](../writers/messaging-writer.md) user guide for more on replying to messages.
 
 ### Metadata Data Transfer
 
