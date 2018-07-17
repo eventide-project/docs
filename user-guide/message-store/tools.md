@@ -22,11 +22,51 @@ evt-pg-delete-db
 evt-pg-recreate-db
 ```
 
+## Clear the Messages from the Message Store Database
+
+``` bash
+evt-pg-clear-messages
+```
+
 ## Print the Messages Stored the Message Store Database
 
 ``` bash
 evt-pg-print-messages
 ```
+
+**Print Messages from a Specific Stream**
+
+``` bash
+STREAM_NAME=someStream evt-pg-print-messages
+```
+
+## Print Summary Statistics by Stream Name
+
+``` bash
+evt-pg-print-stream-summary
+```
+
+**Print Stream Summary Statistics for a Stream Name**
+
+``` bash
+STREAM_NAME=someStream evt-pg-print-stream-summary
+```
+
+NOTE: The stream name is matched by substring using a SQL `LIKE` clause
+
+## Print Summary Statistics by Message Type
+
+``` bash
+evt-pg-print-type-summary
+```
+
+**Print Type Summary Statistics for a Stream Name**
+
+``` bash
+STREAM_NAME=someStream evt-pg-print-type-summary
+```
+
+NOTE: The stream name is matched by substring using a SQL `LIKE` clause
 
 ## Write a Test Message
 
@@ -36,19 +76,19 @@ evt-pg-write-test-message
 
 The number of messages and the stream name can be specified using environment variables.
 
-### Write a test messages to a stream named `someStream-111`
+**Write a test messages to a stream named `someStream-111`**
 
 ``` bash
 STREAM_NAME=someStream-111 evt-pg-write-test-message
 ```
 
-### Write 10 test messages:
+**Write 10 test messages**
 
 ``` bash
 INSTANCES=10 evt-pg-write-test-message
 ```
 
-### Write 10 test messages to a stream named `someStream-111`
+**Write 10 test messages to a stream named `someStream-111`**
 
 ``` bash
 STREAM_NAME=someStream-111 INSTANCES=10 evt-pg-write-test-message
