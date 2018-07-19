@@ -60,10 +60,10 @@ NOTE: The stream name is matched by substring using a SQL `LIKE` clause
 evt-pg-print-type-summary
 ```
 
-**Print Type Summary Statistics for a Stream Name**
+**Print Type Summary Statistics for a Type Name**
 
 ``` bash
-STREAM_NAME=someStream evt-pg-print-type-summary
+TYPE=SomeType evt-pg-print-type-summary
 ```
 
 NOTE: The stream name is matched by substring using a SQL `LIKE` clause
