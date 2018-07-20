@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Eventide',
-  description: 'Microservices and Event Sourcing for Ruby',
+  description: 'Microservices and Event Sourcing in Ruby',
   dest: './_build',
   themeConfig: {
     activeHeaderLinks: true,
