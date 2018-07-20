@@ -66,7 +66,35 @@ evt-pg-print-type-summary
 TYPE=SomeType evt-pg-print-type-summary
 ```
 
+NOTE: The type name is matched by substring using a SQL `LIKE` clause
+
+## Print Summary Statistics by Stream Name, Cross-Referenced by Message Type
+
+``` bash
+evt-pg-print-stream-type-summary
+```
+
+**Print Stream and Type Summary Statistics for a Stream Name**
+
+``` bash
+STREAM_NAME=someStream evt-pg-print-stream-type-summary
+```
+
 NOTE: The stream name is matched by substring using a SQL `LIKE` clause
+
+## Print Summary Statistics by Message Type, Cross-Referenced by Stream Name
+
+``` bash
+evt-pg-print-type-stream-summary
+```
+
+**Print Type and Stream Summary Statistics for a Type Name**
+
+``` bash
+TYPE=SomeType evt-pg-print-type-stream-summary
+```
+
+NOTE: The type is matched by substring using a SQL `LIKE` clause
 
 ## Write a Test Message
 
