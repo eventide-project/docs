@@ -63,7 +63,7 @@ Projected entity snapshotting for Postgres<br/>
 
 ### consumer-postgres
 Consumer implementation for Postgres<br/>
-[github.com/eventide-project/consumer-postgres](github.com/eventide-project/consumer-postgres)
+[github.com/eventide-project/consumer-postgres](https://github.com/eventide-project/consumer-postgres)
 
 ### command_line-component_generator
 Command line project generator for components built using the Postgres implementation<br/>
@@ -141,7 +141,7 @@ Clock interface with support for dependency configuration for real and null obje
 
 ### subst_attr
 Declare attributes that have default implementations that are substitutes or null objects<br/>
-[github.com/eventide-project/subst-attr](github.com/eventide-project/subst-attr)
+[github.com/eventide-project/subst-attr](https://github.com/eventide-project/subst-attr)
 
 ### virtual
 Virtual method declaration<br/>
@@ -149,7 +149,7 @@ github.com/eventide-project/virtual
 
 ### reflect
 Reflection of inner namespaces used for protocol discovery<br/>
-[github.com/eventide-project/reflect](github.com/eventide-project/reflect)
+[github.com/eventide-project/reflect](https://github.com/eventide-project/reflect)
 
 ### async_invocation
 Return value for async method that is accidentally invoked synchronously<br/>
