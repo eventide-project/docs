@@ -145,7 +145,7 @@ Declare attributes that have default implementations that are substitutes or nul
 
 ### virtual
 Virtual method declaration<br/>
-github.com/eventide-project/virtual
+[github.com/eventide-project/virtual](https://github.com/eventide-project/virtual)
 
 ### reflect
 Reflection of inner namespaces used for protocol discovery<br/>
@@ -175,7 +175,7 @@ Your friendly neighborhood hash library<br/>
 
 ### terminal_colors
 Apply ANSI terminal colors to strings<br/>
-github.com/ntl/terminal-colors
+[github.com/ntl/terminal-colors](https://github.com/ntl/terminal-colors)
 
 ### thread_safe
 Thread-safe collections and utilities for Ruby<br/>
