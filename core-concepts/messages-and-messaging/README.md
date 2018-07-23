@@ -20,7 +20,7 @@ Messages are not typically hierarchical tree structures with a root object and r
 
 ## JSON-transformation of messages is not recursive
 
-A message object should be easily convertible into a simple, flat key/value hash object. If a message attribute's value is a complex object (ie: it has attributes of its own), you will have to implement the transformation logic to convert the tree of objects message into JSON. The default, the built-in message transformation logic does not recurse through the depths of a message object graph.
+A message object should be easily convertible into a simple, flat key/value hash object. If a message attribute's value is a complex object (ie: it has attributes of its own), custom transformation logic to convert the tree of objects into hashes is required. The default, built-in message transformation logic does not recurse through the depths of a message object graph.
 
 ## Message names do not include namespaces
 
