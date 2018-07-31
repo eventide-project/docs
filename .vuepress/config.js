@@ -33,11 +33,6 @@ module.exports = {
           { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
         ]
       },
-      // {
-      //   text: 'API', items: [
-      //     { text: 'Work in Progress', link: '/api/' },
-      //   ]
-      // },
       {
         text: 'Examples', items: [
           { text: 'Overview', link: '/examples/' },
