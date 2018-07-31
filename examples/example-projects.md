@@ -6,6 +6,14 @@ Eventide example code is hosted on GitHub in the Eventide Examples org:
 
 - - -
 
+## Account Basics
+
+[https://github.com/eventide-examples/account-basics](https://github.com/eventide-examples/account-basics)
+
+The account basics project is the GitHub repository for the single-file, [Service at a Glance](./at-a-glance.md) example.
+
+It's a great example for getting quick familiarity with all of the basic elements of a service and its component.
+
 ## Account Component
 
 [https://github.com/eventide-examples/account-component](https://github.com/eventide-examples/account-component)
