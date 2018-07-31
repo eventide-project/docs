@@ -4,8 +4,6 @@ Eventide example code is hosted on GitHub in the Eventide Examples org:
 
 [https://github.com/eventide-examples](https://github.com/eventide-examples)
 
-- - -
-
 ## Account Basics
 
 [https://github.com/eventide-examples/account-basics](https://github.com/eventide-examples/account-basics)
