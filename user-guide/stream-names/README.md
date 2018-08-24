@@ -62,7 +62,7 @@ The casing of a stream name, however, is not enforced. The `some_stream` form ca
 
 The `-` separator is the most common separator. It's the token in a stream name that separates the category name from the entity ID. For a stream named `account-123`, the value to the left of the dash is the category name `account`, and the value to the right of the dash is the ID `123`.
 
-Only the first dash is considered a separator, this allows IDs to contain dashes with them, as is the case with UUIDs.
+Only the first dash is considered a separator, this allows IDs to contain dashes within them, as is the case with UUIDs.
 
 For example, an account with an ID of `00000001-0000-4000-8000-000000000000` would have a stream name of `account-00000001-0000-4000-8000-000000000000`.
 
