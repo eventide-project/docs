@@ -49,19 +49,19 @@ class Handler
 
     write.(withdrawn, stream_name)
   end
-end
 
-handle Deposit do |deposit|
-  account_id = deposit.account_id
+  handle Deposit do |deposit|
+    account_id = deposit.account_id
 
-  time = clock.iso8601
+    time = clock.iso8601
 
-  deposited = Deposited.follow(deposit)
-  deposited.processed_time = time
+    deposited = Deposited.follow(deposit)
+    deposited.processed_time = time
 
-  stream_name = stream_name(account_id)
+    stream_name = stream_name(account_id)
 
-  write.(deposited, stream_name, expected_version: version)
+    write.(deposited, stream_name, expected_version: version)
+  end
 end
 ```
 
