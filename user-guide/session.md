@@ -5,11 +5,7 @@ sidebarDepth: 0
 
 # Session
 
-## MessageStore::Postgres::Session Class
-
-The `MessageStore::Postgres::Session` class controls the lifecycle of a connection to the message store database, and the execution of data storage and retrieval commands and control of atomic database transactions.
-
-[View on GitHub](https://github.com/eventide-project/message-store-postgres/blob/master/lib/message_store/postgres/session.rb)
+A session controls the lifecycle of a connection to a message store database, and the execution of data storage and retrieval commands and atomic database transactions.
 
 ## Session Facts
 
@@ -18,6 +14,12 @@ The `MessageStore::Postgres::Session` class controls the lifecycle of a connecti
 - Once a connection is opened, it remains connected throughout the lifetime of the session, or until the database server resets or closes the connection
 - If a database connection is closed, it will be reconnected when the next database command is executed
 - Atomic transactions must be started and controlled explicitly (if they are used at all)
+
+## MessageStore::Postgres::Session Class
+
+The `MessageStore::Postgres::Session` class is the implementation of the session.
+
+[View on GitHub](https://github.com/eventide-project/message-store-postgres/blob/master/lib/message_store/postgres/session.rb)
 
 ## Constructing a Session
 
