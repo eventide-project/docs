@@ -29,6 +29,7 @@ module.exports = {
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
+          { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
           { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
