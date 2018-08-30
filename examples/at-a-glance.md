@@ -131,7 +131,7 @@ class Consumer
   handler Handler
 end
 
-# The "component module" maps consumers to their streams
+# The "component initiator" maps consumers to their streams
 # Until this point, handlers have no knowledge of which streams they process
 # Starting the consumers starts the stream readers and gets messages flowing
 # into the consumer's handlers
@@ -143,7 +143,7 @@ module Component
 end
 
 # ComponentHost is the runnable part of the service
-# Register the component module with the component host, then start the host
+# Register the component initiator with the component host, then start the host
 # and messages sent to its streams are dispatched to the handlers
 component_name = 'account-component'
 ComponentHost.start(component_name) do |host|
