@@ -143,7 +143,7 @@ module Component
 end
 
 # ComponentHost is the runnable part of the service
-# Register the Start module with the component host, then start the component
+# Register the component module with the component host, then start the host
 # and messages sent to its streams are dispatched to the handlers
 component_name = 'account-component'
 ComponentHost.start(component_name) do |host|
