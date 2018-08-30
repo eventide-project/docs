@@ -16,40 +16,151 @@ The component host [starts a component's consumers](./consumers.md#starting-a-co
 ## Example
 
 ``` ruby
-# The "Component" module maps consumers to their streams
+# The "component initiator" binds consumers to their streams and starts
+# the consumers
 # Until this point, handlers have no knowledge of which streams they process
 # Starting the consumers starts the stream readers and gets messages flowing
 # into the consumer's handlers
-module Component
+module SomeComponent
   def self.call
-    account_command_stream_name = 'account:command'
-    Consumer.start(account_command_stream_name)
+    command_stream_name = 'something:command'
+    SomeConsumer.start(command_stream_name)
   end
 end
 
 # ComponentHost is the runnable part of the service
-# Register the Start module with the component host, then start the component and messages sent to its streams are dispatched to the handlers
-component_name = 'account-component'
+# Register a component module with the component host, then start the host
+# and messages sent to its streams are dispatched to the handlers
+component_name = 'some-component'
 ComponentHost.start(component_name) do |host|
-  host.register(Component)
+  host.register(SomeComponent)
 end
 ```
 
-
 ## Facts
 
-- start script
-- many components
-- starts consumers
-- shut down
-- actors
-- supervising consumer actors
+- Component host can run any number of components
+- Each component runs in its own isolated [actor](https://github.com/ntl/actor)
+- Each component uses its own message store [session](./session.md)
+- When the host shuts down, each subordinate consumer is allowed to finish its current work before being shut down
+
+## Starting the Component Host
+
+``` ruby
+self.start(name, &block)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| name | Name of the process (used for logging) | String |
+| block | Block used for registering components that will be run by the host | Proc |
+
+## Registering Components
+
+``` ruby
+component_name = 'some-component'
+ComponentHost.start(component_name) do |host|
+  host.register(SomeComponent, "A Component")
+end
+```
+
+The `host` parameter passed to the registration block defines the `register` method that receives a _component initiator_ as an argument.
+
+``` ruby
+host.register(component_initiator, name=nil)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| component_initiator | A callable that starts consumers | Callable |
+| Name | Optional name of the component initiator (used for logging) | String |
+
+## Component Initiator
+
+A _component initiator_ is any callable that starts consumers. As long as the object responds to the `call` method (and consequently can be invoked with the `()` operator), it can be used as a component initiator.
+
+The following examples are all equivalent.
+
+### Using a class or module
+
+``` ruby
+module SomeClassInitator
+  def self.call
+    SomeConsumer.start('someStream')
+  end
+end
+```
+
+### Using an object
+
+``` ruby
+class SomeInstanceInitiator
+  def call
+    SomeConsumer.start('someStream')
+  end
+end
+
+initiator = SomeInstanceInitiator.new
+```
+
+###  Using a Proc
+
+``` ruby
+initiator = proc { SomeConsumer.start('someStream') }
+```
+
+## Stopping the Component Host
+
+### Graceful Shutdown
+
+The process host affords graceful and safe shutdown for all of its subordinate consumers. When the host is shut down, its subordinate consumers will finish any work-in-progress.
+
+::: danger
+If the process is terminated using the operating system's KILL signal, consumers and handlers will not shutdown gracefully. It's not safe to kill the process. Use the KILL signal only when it's absolutely unavoidable.
+:::
+
+### Unhandled Errors
+
+Any unhandled errors raised in any of a host's consumers will cause the host to safely shut down all consumers in the process, and then the process will be terminated.
+
+### Control Keys
+
+If the host process is running in a terminal window, pressing `CTRL+C` will shut it down.
+
+### Signals
+
+The component host can be stopped safely by sending either the INT or TERM signal to the process.
+
+``` bash
+kill -s SIGINT {process_id}
+```
+
+``` bash
+kill -s SIGTERM {process_id}
+```
 
 ## Signals
 
-- TODO
+<div class="note custom-block">
+  <p>
+    For more background on operating systems signals, see: <a href="https://en.wikipedia.org/wiki/Signal_(IPC)">https://en.wikipedia.org/wiki/Signal_(IPC)</a>
+  </p>
+</div>
 
+The process host responds to the following operating system signals.
 
-## Components
+### INT and TERM
 
-## Component Start Script
+Safely shuts down the process.
+
+### TSTP
+
+Pauses the process.
+
+### CONT
+
+Resumes a process paused with the TSTP signal.

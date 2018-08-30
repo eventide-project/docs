@@ -40,6 +40,10 @@ A package of code that represents a single business concern and/or business proc
 
 The component host is the outermost surface of an Eventide service. It runs right next to the operating system. It is the physical "service". It loads components into itself. It coordinates the threads that the consumers run on. It provides graceful shutdown for the components hosted in a service.
 
+## Component Module
+
+
+
 ## Consumer
 
 The consumer is the infrastructure that runs a subscription [reader](/glossary.md#message-reader) over streams, and plugs-in the [handlers](/glossary.md#handler) to those subscriptions to receive the messages they subscribe to.
