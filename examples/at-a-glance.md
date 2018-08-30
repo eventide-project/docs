@@ -68,7 +68,8 @@ class Withdrawn
 end
 
 # WithdrawalRejected event message
-# Event is written by the handler when a withdrawal cannot be successfully processed, as when there are insufficient funds
+# Event is written by the handler when a withdrawal cannot be successfully
+# processed, as when there are insufficient funds
 class WithdrawalRejected
   include Messaging::Message
 
@@ -132,7 +133,8 @@ end
 
 # The "Component" module maps consumers to their streams
 # Until this point, handlers have no knowledge of which streams they process
-# Starting the consumers starts the stream readers and gets messages flowing into the consumer's handlers
+# Starting the consumers starts the stream readers and gets messages flowing
+# into the consumer's handlers
 module Component
   def self.call
     account_command_stream_name = 'account:command'
@@ -141,7 +143,8 @@ module Component
 end
 
 # ComponentHost is the runnable part of the service
-# Register the Start module with the component host, then start the component and messages sent to its streams are dispatched to the handlers
+# Register the Start module with the component host, then start the component
+# and messages sent to its streams are dispatched to the handlers
 component_name = 'account-component'
 ComponentHost.start(component_name) do |host|
   host.register(Component)
