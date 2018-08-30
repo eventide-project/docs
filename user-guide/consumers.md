@@ -17,7 +17,7 @@ When a consumer has read through its stream's messages, it continues reading, wa
 
 In messaging parlance, a consumer acts as a _subscriber_.
 
-## Example Consumer Class
+## Example
 
 ``` ruby
 class Consumer

@@ -10,7 +10,7 @@ A class becomes a message by including the `Messaging::Message` module.
 
 [View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message.rb)
 
-## Example Messages
+## Example
 
 ``` ruby
 # A command

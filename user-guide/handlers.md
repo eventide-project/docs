@@ -7,7 +7,7 @@ sidebarDepth: 0
 
 A handler is the entry point to a service. It receives instructions from other services, apps, and clients in the form of [commands](/glossary.md#command) and [events](/glossary.md#event).
 
-## Example Handler Class
+## Example Handler
 
 ``` ruby
 class Handler
