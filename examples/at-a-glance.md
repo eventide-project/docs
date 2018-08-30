@@ -131,7 +131,7 @@ class Consumer
   handler Handler
 end
 
-# The "component initiator" maps consumers to their streams and starts
+# The "component initiator" binds consumers to their streams and starts
 # the consumers
 # Until this point, handlers have no knowledge of which streams they process
 # Starting the consumers starts the stream readers and gets messages flowing
