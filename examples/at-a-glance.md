@@ -131,7 +131,7 @@ class Consumer
   handler Handler
 end
 
-# The "Component" module maps consumers to their streams
+# The "component module" maps consumers to their streams
 # Until this point, handlers have no knowledge of which streams they process
 # Starting the consumers starts the stream readers and gets messages flowing
 # into the consumer's handlers
