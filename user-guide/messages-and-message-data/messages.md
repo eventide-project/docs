@@ -4,12 +4,6 @@ Messages are packages of data that are the principle means of transmission of in
 
 See [Message Facts](/core-concepts/messages-and-messaging/) for more details about messages.
 
-## Messaging::Message Module
-
-A class becomes a message by including the `Messaging::Message` module.
-
-[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message.rb)
-
 ## Example
 
 ``` ruby
@@ -45,6 +39,12 @@ A message class has the following features and capabilities:
 - Procession of messages in a workflow
 - Determination of equality
 - Transformation to and from raw [MessageStore::MessageData](./message-data.md) representation
+
+## Messaging::Message Module
+
+A class becomes a message by including the `Messaging::Message` module.
+
+[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message.rb)
 
 ## Constructing a Message
 
