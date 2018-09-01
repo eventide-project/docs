@@ -125,6 +125,16 @@ Withdraw.attribute_names
 # => [:withdrawal_id, :account_id, :amount, :time]
 ```
 
+## Reserved Attributes
+
+A message object has two reserved attributes. Reserved attributes are for system use only and cannot be overridden without introducing malfunctions and failures.
+
+| Name | Description | Type |
+| --- | --- | --- |
+| id | Unique identifier of the message | UUID String |
+| metadata | Mechanical data describing the message and its provenance | Messaging::Message::Metadata |
+
+
 ## Metadata
 
 A message's metadata object contains information about the stream where the message resides, the previous message in a series of messages that make up a messaging workflow, the originating process to which the message belongs, as well as other data that are pertinent to understanding the provenance and disposition of the message.
