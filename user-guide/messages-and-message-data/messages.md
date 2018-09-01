@@ -127,13 +127,16 @@ Withdraw.attribute_names
 
 ## Reserved Attributes
 
-A message object has two reserved attributes. Reserved attributes are for system use only and cannot be overridden without introducing malfunctions and failures.
+A message object has two reserved attributes.
 
 | Name | Description | Type |
 | --- | --- | --- |
 | id | Unique identifier of the message | UUID String |
 | metadata | Mechanical data describing the message and its provenance | Messaging::Message::Metadata |
 
+::: danger
+Reserved attributes are for system use only and cannot be overwritten without causing a message to become incompatible with the rest of the toolkit, and without causing malfunctions or failures.
+:::
 
 ## Metadata
 
