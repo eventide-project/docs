@@ -127,9 +127,12 @@ If the process is terminated using the operating system's KILL signal, consumers
 
 Any unhandled errors raised in any of a host's consumers will cause the host to safely shut down all consumers in the process, and then the process will be terminated.
 
-### Control Keys
+### Using the Keyboard
 
-If the host process is running in a terminal window, pressing `CTRL+C` will shut it down.
+With the host process is running in a foreground terminal window:
+
+- `CTRL+C`: Shut down the process
+- `CTRL+Z`: Pause the process
 
 ### Signals
 
