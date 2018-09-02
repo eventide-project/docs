@@ -156,14 +156,14 @@ kill -s SIGTERM {process_id}
 
 The process host responds to the following operating system signals.
 
-### INT and TERM
+### SIGINT and SIGTERM
 
 Safely shuts down the process.
 
-### TSTP
+### SIGTSTP
 
 Pauses the process.
 
-### CONT
+### SIGCONT
 
 Resumes a process paused with the TSTP signal.
