@@ -5,7 +5,7 @@ sidebarDepth: 0
 
 # Component Host
 
-The component host is the _machinery_ of a service. It's the part that is closest to the operating system. From a technical perspective, the component host _is_ the service.
+The component host is the _machinery_ of a service. It's the part that is closest to the operating system. From a technical and physical perspective, the component host _is_ the service.
 
 The word "service" has both a logical architectural meaning and a physical architectural meaning. Physically, a _service_ is just a process running on a computer. [Components](/core-concepts/services/components.md) are what is run inside a service.
 
