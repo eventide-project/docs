@@ -236,11 +236,11 @@ DATABASE_NAME=some_other_database evt-pg-create-db
 Specify the database user:
 
 ``` bash
-DATABASE_USER=some_other_user evt-pg-create-db
+DATABASE_USER=some_other_user evt-pg-print-messages
 ```
 
 Or specify both:
 
 ``` bash
-DATABASE_NAME=some_other_database DATABASE_USER=some_other_user evt-pg-create-db
+DATABASE_NAME=some_other_database DATABASE_USER=some_other_user evt-pg-print-messages
 ```
