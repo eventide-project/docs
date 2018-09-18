@@ -10,6 +10,7 @@ The Eventide message store Postgres database package installs command line tools
 - [evt-pg-clear-messages](#clear-the-messages-from-the-message-store-database)
 - [evt-pg-update-db](#update-the-database)
 - [evt-pg-install-functions](#install-functions)
+- [evt-pg-install-functions](#install-privileges)
 - [evt-pg-install-views](#install-views)
 - [evt-pg-print-messages](#print-the-messages-stored-the-message-store-database)
 - [evt-pg-print-stream-summary](#print-summary-statistics-by-stream-name)
@@ -61,12 +62,24 @@ The schema update tools are useful when upgrading to a new release of the messag
 evt-pg-update-db
 ```
 
-NOTE: This tool installs the current set of functions and views.
+NOTE: This tool installs the functions and views.
 
 ### Install Functions
 
 ``` bash
 evt-pg-install-functions
+```
+
+### Install Indexes
+
+``` bash
+evt-pg-install-indexes
+```
+
+### Install Privileges
+
+``` bash
+evt-pg-install-privileges
 ```
 
 ### Install Views
