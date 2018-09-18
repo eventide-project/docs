@@ -10,8 +10,9 @@ The Eventide message store Postgres database package installs command line tools
 - [evt-pg-clear-messages](#clear-the-messages-from-the-message-store-database)
 - [evt-pg-update-db](#update-the-database)
 - [evt-pg-install-functions](#install-functions)
-- [evt-pg-install-functions](#install-privileges)
+- [evt-pg-install-indexes](#install-indexes)
 - [evt-pg-install-views](#install-views)
+- [evt-pg-install-privileges](#install-privileges)
 - [evt-pg-print-messages](#print-the-messages-stored-the-message-store-database)
 - [evt-pg-print-stream-summary](#print-summary-statistics-by-stream-name)
 - [evt-pg-print-type-summary](#print-summary-statistics-by-message-type)
@@ -76,16 +77,16 @@ evt-pg-install-functions
 evt-pg-install-indexes
 ```
 
-### Install Privileges
-
-``` bash
-evt-pg-install-privileges
-```
-
 ### Install Views
 
 ``` bash
 evt-pg-install-views
+```
+
+### Install Privileges
+
+``` bash
+evt-pg-install-privileges
 ```
 
 ## Reporting
