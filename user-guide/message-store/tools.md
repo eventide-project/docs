@@ -63,7 +63,9 @@ The schema update tools are useful when upgrading to a new release of the messag
 evt-pg-update-db
 ```
 
-NOTE: This tool installs the functions and views.
+This tool installs the functions, indexes, views, and privileges.
+
+If any function, index, view, or privilege already exists, it will be replaced with the most recent definition. If any of these does not exist, they will be created.
 
 ### Install Functions
 
