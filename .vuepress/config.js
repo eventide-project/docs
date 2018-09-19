@@ -103,9 +103,9 @@ module.exports = {
           children: [
             '',
             'install.md',
-            'tools.md',
             'anatomy.md',
-            'interface.md'
+            'interface.md',
+            'tools.md'
           ]
         }
       ],
