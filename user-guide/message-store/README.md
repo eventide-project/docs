@@ -1,4 +1,4 @@
-# Introduction
+# Overview
 
 The message store is a Postgres database that stores the streams, events, and commands that are the fundamental building blocks of evented and autonomous services.
 

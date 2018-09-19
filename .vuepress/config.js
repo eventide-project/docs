@@ -28,6 +28,7 @@ module.exports = {
           { text: 'Handlers', link: '/user-guide/handlers.md' },
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
+          { text: 'Writers', link: '/user-guide/writers/' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
@@ -130,6 +131,18 @@ module.exports = {
             'messages.md',
             'metadata.md',
             'message-data.md'
+          ]
+        }
+      ],
+      '/user-guide/writers/': [
+        {
+          title: 'Writers',
+          collapsable: false,
+          children: [
+            '',
+            'messaging-writer.md',
+            'substitute.md',
+            'message-store-writer.md'
           ]
         }
       ]
