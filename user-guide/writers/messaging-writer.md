@@ -25,11 +25,12 @@ Messaging::Postgres::Write.(deposited, stream_name)
 
 The `Write` class is a concrete class from the [`Messaging::Postgres` library](../libraries.md#messaging-postgres) and namespace.
 
-The `Messaging::Write` class provides the following capabilities:
+The `Messaging::Write` class provides the following:
 
 - Actuator methods for both the class and instance interface that write messages to the specified stream
 - The `initial` method that writes a message and assures that the message written is the first message in a stream
 - The `reply` method that is a shortcut for writing a reply message to the reply stream name registered in the message's metadata
+- A [substitute implementation](./substitute.md) of a write than can be used in diagnostic contexts, such as testing.
 
 ## Writing a Message
 
