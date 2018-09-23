@@ -274,14 +274,14 @@ Handlers can be constructed in one of two ways
 ### Via the Initializer
 
 ``` ruby
-SomeHandler.new()
+self.new()
 ```
 
 **Returns**
 
 Instance of the class that includes the `Handle` module.
 
-By constructing a handler using the initializer, the handler's [dependencies](./dependencies.md) are not set to operational dependencies. They remain _inert substitutes_.
+By constructing a handler using the initializer, the handler's dependencies are not set to operational dependencies. They remain _inert substitutes_.
 
 ::: tip
 See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
@@ -290,7 +290,7 @@ See the [useful objects](./useful-objects.md#substitutes) user guide for backgro
 ### Via the Constructor
 
 ``` ruby
-build(strict: false, session: nil)
+self.build(strict: false, session: nil)
 ```
 
 The constructor not only instantiates the handler, but also invokes the handler's `configure` instance method, which constructs the handler's operational dependencies.
