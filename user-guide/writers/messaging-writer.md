@@ -152,7 +152,7 @@ write.initial(some_other_message, some_stream)
 
 This pattern is useful for proving uniqueness or for reserving something, for example: a seat on a flight, a purchase, or a concert ticket. It's also useful in certain idempotence protection patterns.
 
-## The `:no_stream` Expected Version
+## The :no_stream Expected Version
 
 The :no_stream symbol can be substituted for `-1` when writing with an expected version of `-1`.
 
@@ -271,7 +271,7 @@ Instance of the `Messaging::Postgres::Write` class.
 
 <div class="note custom-block">
   <p>
-    Note: If the `session` argument is nil, a new session will be constructed and assigned to the writer.
+    Note: If the <code>session</code> argument is nil, a new session will be constructed and assigned to the writer.
   </p>
 </div>
 
