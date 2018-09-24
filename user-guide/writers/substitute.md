@@ -21,6 +21,12 @@ class SomeHandler
   dependency :write, Messaging::Postgres::Write
 
   # ...
+
+  handle SomeMessage do |some_message|
+    other_message = OtherMessage.follow(some_message)
+
+    write.(other_message, stream_name)
+  end
 end
 
 handler = SomeHandler.new
@@ -28,9 +34,14 @@ handler = SomeHandler.new
 handler.write.class
 # =>  Messaging::Write::Substitute
 
+# The result of handling some_message is that
+# another message will be written
 handler.(some_message)
 
-handler.write.written?
+# Since the handler writes a message, the writer
+# substitute will respond in the affirmative
+# to a query of whether the message was written
+handler.write.written? { |message| message.instance_of? SomeMessage }
 # => true
 ```
 
