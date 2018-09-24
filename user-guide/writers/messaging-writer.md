@@ -107,7 +107,7 @@ If the expected version and the stream version no longer match at the time of th
 ### Concurrency
 
 ::: danger
-Except when applying fail-over and reservation messaging patterns, concurrent writing to an _event stream_ is considered an anomaly. It's not expected that two separate writers would be writing to the same event stream concurrently as this would violate the authority of a component over its streams. Only one instance of a [hosted](/user-guide/component-host.md) component should be empowered to write to a stream. If two instances of _the same_ component are writing to the same event stream, then appropriate measures must be taken to retry the writes.
+Except when running multiple instances of a component for hot fail-over, concurrent writing to an _event stream_ is considered an anomaly. It's not expected that two separate writers would be writing to the same event stream concurrently as this would violate the authority of a component over its streams. Only one instance of a [hosted](/user-guide/component-host.md) component should be empowered to write to a stream. If two instances of _the same_ component are writing to the same event stream, then appropriate measures must be taken to retry the writes.
 :::
 
 ## Assuring an Initial Write
