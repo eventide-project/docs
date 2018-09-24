@@ -55,9 +55,9 @@ handler.write.written? { |message| message.instance_of? SomeMessage }
 
 ## Messaging::Write::Substitute::Write Class
 
-The `Substitute` class is a concrete class from the [`Messaging` library](../libraries.md#messaging-postgres) in the `Messaging::Write` namespace.
+The `Substitute::Write` class is a concrete class from the [`Messaging` library](../libraries.md#messaging-postgres) in the `Messaging::Write` namespace.
 
-The `Messaging::Write::Substitute` class provides the following:
+The `Messaging::Write::Substitute::Write` class provides the following:
 
 - Inert implementations of the writer's instance actuator method, as well as the `initial` and the `reply` methods.
 - A telemetry recorder with an active telemetry sink that records telemetry recorded by invocations of the writer's methods
@@ -111,27 +111,52 @@ stream_name = 'someStream-123'
 
 write.(message, stream_name, expected_version: -1, reply_stream_name: 'someReplyStream')
 
+# Returns true if there is a record of any write
+write.written?
+# => true
+
+# Returns true if any recorded message equals the value of
+# the message argument
+# Equality is tested using ==
 write.written?(message)
 # => true
 
+# Returns false since the message written does not
+# equal Object.new
+some_object = Object.new
+write.written?(some_object)
+# => false
+
+# Block form passes the message written as an
+# argument to the block, making the message
+# visible to the block, and available for inspection
 write.written? { |message| message == some_message }
 # => true
 
+# Block form with message and stream_name visibility
 write.written? do |message, stream_name|
-  message.class == SomeMessage &&
+  message.instance_of? SomeMessage &&
     stream_name == 'someStream-123'
 end
 # => true
 
+# Block form with message, stream_name, expected_version,
+# and reply_stream_name visibility
 write.written? do |message, stream_name, expected_version, reply_stream_name|
-  message.class == SomeMessage &&
+  message.instance_of? SomeMessage &&
     stream_name == 'someStream-123' &&
     expected_version == -1 &&
     reply_stream_name == 'someReplyStream'
 end
 # => true
 
-write.written?(message) { |stream_name| stream_name == 'someStream-123' }
+# Note: First block argument is stream_name when message
+# argument is passed
+write.written?(message) do |stream_name|
+  stream_name == 'someStream-123' &&
+    expected_version == -1 &&
+    reply_stream_name == 'someReplyStream'
+end
 # => true
 ```
 
@@ -172,15 +197,19 @@ If `blk` argument is passed, the block is evaluated for each telemetry data reco
 
 ``` ruby
 message = SomeMessage.new
+other_message = OtherMessage.new
+
 stream_name = 'someStream-123'
 
-write.(message, stream_name, expected_version: -1, reply_stream_name: 'someReplyStream')
+write.(message, stream_name)
+write.(other_message, stream_name)
 
+# Without the block, returns all
 write.writes
-# => [ <Telemetry::Sink::Record> ]
+# => [ <SomeMessage...>, <OtherMessage...> ]
 
-write.writes { |message| message == some_message }
-# => [ <Telemetry::Sink::Record> ]
+write.writes { |message| message.instance_of? SomeMessage }
+# => [ <SomeMessage...> ]
 ```
 
 ## Query One Message Written
@@ -189,13 +218,11 @@ write.writes { |message| message == some_message }
 one_message_write(blk)
 ```
 
+Returns one matching message, or raises `Messaging::Write::Substitute::Write::Error` if there are more than one matching message.
+
 **Returns**
 
 The message written or the message for which the given block returns `true`.
-
-::: danger
-`Messaging::Write::Substitute::Write::Error` is raised if more than one message is found.
-:::
 
 **Alias**
 
@@ -211,16 +238,25 @@ The message written or the message for which the given block returns `true`.
 
 ``` ruby
 message = SomeMessage.new
-other_message = SomeMessage.new
 
 stream_name = 'someStream-123'
 
-write.([message, other_message], stream_name, expected_version: -1, reply_stream_name: 'someReplyStream')
+write.(message, stream_name)
+
+write.one_message
+# => <SomeMessage...>
+
+write.one_message { |message| message.instance_of? SomeMessage }
+# => <SomeMessage...>
+
+
+other_message = OtherMessage.new
+write.(other_message, stream_name)
 
 write.one_message
 # => Messaging::Write::Substitute::Write::Error
 
-write.one_message { |message| message.class == SomeMessage }
+write.one_message { |message| message.instance_of? SomeMessage }
 # => Messaging::Write::Substitute::Write::Error
 ```
 
@@ -378,7 +414,7 @@ end
 handler = SomeHandler.new
 
 handler.write.class
-# =>  Messaging::Write::Substitute
+# =>  Messaging::Write::Substitute::Write
 ```
 
 ::: tip
