@@ -104,7 +104,7 @@ end
 
 If the expected version and the stream version no longer match at the time of the write, the `MessageStore::ExpectedVersion::Error` is raised.
 
-The implication is that, except when applying fail-over and reservation messaging patterns, concurrency is considered an anomaly. It's not expected that two separate writers would be writing to the same stream concurrently as this would violate the authority of a service over its streams. Only one service should be empowered to write to a stream.
+The implication is that, except when applying fail-over and reservation messaging patterns, concurrent writing to an _event stream_ is considered an anomaly. It's not expected that two separate writers would be writing to the same event stream concurrently as this would violate the authority of a component over its streams. Only one instance of a [hosted](/user-guide/component-host.md) component should be empowered to write to a stream.
 
 ## Assuring an Initial Write
 
