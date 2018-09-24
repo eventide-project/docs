@@ -10,7 +10,7 @@ The writer substitute records the writes that have been actuated, and does not w
 
 <div class="note custom-block">
   <p>
-    Note: The meaning of "substitute" in this context refers to <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov Substitution Principle</a>, which describes the quality of polymorphism in object-oriented systems as objects that can legitimately replace, or <em>substitute</em>, each other without changing the correctness or intention of the program that uses the substitute. From the standpoint of their shared interface, substitutes are not considered either more real or less real than other substitutes of the same interface. In this, all substitutes are "real", and no substitute is considered <em>secondary</em>.
+    Note: The meaning of "substitute" in this context refers to <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov Substitution Principle</a>, which describes the quality of polymorphism in object-oriented systems as objects that can legitimately replace, or <em>substitute</em>, each other without changing the correctness or intention of the program that uses the substitute. From the standpoint of their shared interface, substitutes are not considered either more "real" or less real than other substitutes of the same interface. In this, all substitutes are <em>real</em>, and no substitute is considered <em>secondary</em>.
   </p>
 </div>
 
