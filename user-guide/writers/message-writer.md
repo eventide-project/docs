@@ -232,24 +232,8 @@ end
 
 Writers can be constructed in one of two ways
 
-- Via the initializer
 - Via the constructor
-
-### Via the Initializer
-
-``` ruby
-self.new()
-```
-
-**Returns**
-
-Instance of the `Messaging::Postgres::Write` class.
-
-By constructing a writer using the initializer, the writer's dependencies are not set to operational dependencies. They remain _inert substitutes_.
-
-::: tip
-See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
-:::
+- Via the initializer
 
 ### Via the Constructor
 
@@ -278,6 +262,22 @@ Instance of the `Messaging::Postgres::Write` class.
     Note: If the <code>session</code> argument is nil, a new session will be constructed and assigned to the writer.
   </p>
 </div>
+
+### Via the Initializer
+
+``` ruby
+self.new()
+```
+
+**Returns**
+
+Instance of the `Messaging::Postgres::Write` class.
+
+By constructing a writer using the initializer, the writer's dependencies are not set to operational dependencies. They remain _inert substitutes_.
+
+::: tip
+See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
+:::
 
 ## Assigning a Writer as a Dependency
 
