@@ -266,7 +266,7 @@ This is true because the `handle` macro generates a plain old method. Issuing a 
 
 ## Constructing Handlers
 
-Handlers can be constructed in one of two ways
+Handlers can be constructed in one of two ways:
 
 - Via the initializer
 - Via the constructor
