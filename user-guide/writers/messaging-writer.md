@@ -154,7 +154,7 @@ write.initial(some_other_message, some_stream)
 # => MessageStore::ExpectedVersion::Error (Wrong expected version: -1 (Stream: some_stream, Stream Version: 0)
 ```
 
-This pattern is useful for proving uniqueness or for reserving something, for example: a seat on a flight, a purchase, or a concert ticket. It's also useful in certain idempotence protection patterns.
+This pattern is useful for proving uniqueness or for reserving something, for example: a unique username, a seat on a flight, a purchase, or a concert ticket. It's also useful in certain idempotence protection patterns.
 
 ## The :no_stream Expected Version
 
