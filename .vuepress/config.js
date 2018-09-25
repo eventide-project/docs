@@ -140,9 +140,9 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'messaging-writer.md',
+            'message-writer.md',
             'substitute.md',
-            'message-store-writer.md'
+            'message-data-writer.md'
           ]
         }
       ]

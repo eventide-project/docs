@@ -1,6 +1,6 @@
-# Messaging Writer
+# Message Writer
 
-The messaging writer writes instances of message objects to the message store. It converts them to the more raw, low level [message data](/user-guide/messages-and-message-data/message-data.md) form which can then be converted to JSON and stored in the database.
+The message writer writes instances of message objects to the message store. It converts them to the more raw, low level [message data](/user-guide/messages-and-message-data/message-data.md) form which can then be converted to JSON and stored in the database.
 
 ## Example
 
@@ -14,7 +14,7 @@ Messaging::Postgres::Write.(deposited, stream_name)
 
 ## Writer Facts
 
-- The messaging writer can write one message or a batch of messages
+- The message writer can write one message or a batch of messages
 - A write is always made to a single stream
 - The writer can operate in a diagnostic mode, which records the messages written to it in-memory for later inspection
 - A writer can protect writes against concurrency using its `expected_version` argument
