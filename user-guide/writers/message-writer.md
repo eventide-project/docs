@@ -225,7 +225,7 @@ Instance of the `Messaging::Postgres::Write` class.
 By constructing a writer using the initializer, the writer's dependencies are not set to operational dependencies. They remain _inert substitutes_.
 
 ::: tip
-See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
+See the [useful objects](/user-guide/useful-objects.md#substitutes) user guide for background on inert substitutes.
 :::
 
 ## Assigning a Writer as a Dependency
