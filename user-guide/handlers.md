@@ -268,24 +268,8 @@ This is true because the `handle` macro generates a plain old method. Issuing a 
 
 Handlers can be constructed in one of two ways:
 
-- Via the initializer
 - Via the constructor
-
-### Via the Initializer
-
-``` ruby
-self.new()
-```
-
-**Returns**
-
-Instance of the class that includes the `Handle` module.
-
-By constructing a handler using the initializer, the handler's dependencies are not set to operational dependencies. They remain _inert substitutes_.
-
-::: tip
-See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
-:::
+- Via the initializer
 
 ### Via the Constructor
 
@@ -309,6 +293,22 @@ Instance of the class that includes the `Handle` module.
 | --- | --- | --- |
 | strict | Strict mode, causes an error when no handler block for the message is implemented | Boolean |
 | session | An existing [session](./session.md) object to use, rather than allowing the handler to create a new session | MessageStore::Postgres::Session |
+
+### Via the Initializer
+
+``` ruby
+self.new()
+```
+
+**Returns**
+
+Instance of the class that includes the `Handle` module.
+
+By constructing a handler using the initializer, the handler's dependencies are not set to operational dependencies. They remain _inert substitutes_.
+
+::: tip
+See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
+:::
 
 ## Configuring Dependencies
 
