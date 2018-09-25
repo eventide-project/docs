@@ -4,5 +4,5 @@
 
 There are two layers of writers:
 
-- The [messaging writer](./messaging-writer.md) converts messages to raw message data, and then delegates to the message store writer to coordinate the writing to the database
-- The [message store writer](./message-store-writer.md) writes message data to the message store
+- The [message writer](./message-writer.md) converts messages to raw message data, and then delegates to the message data writer to write to the database
+- The [message data writer](./message-data-writer.md) writes raw message data to the message store
