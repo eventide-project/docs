@@ -93,7 +93,9 @@ A class becomes a handler by including the `Handle` module from the [`Messaging`
 The `Messaging::Handle` affords the receiver with:
 
 - The `handle` class macro used for defining handler blocks
-- The `handle` instance message used for [handling raw message data](#handling-raw-message-data)
+- The principle instance actuator `.()` (or the `call` instance method) for handling a single message
+- The class actuator `.()` (or the class `call` method) that provides a convenient invocation shortcut that does not require instantiating the handler class first
+- The `handle` instance method used for [handling raw message data](#handling-raw-message-data)
 - Infrastructure for registering messages that are handled, and the dispatching logic used to handle messages and message data
 
 ## Defining a Handler
