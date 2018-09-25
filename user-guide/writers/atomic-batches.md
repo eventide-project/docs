@@ -6,6 +6,8 @@
   </p>
 </div>
 
+- - -
+
 Either a single message or an array of messages can be passed to the writer's actuator.
 
 ``` ruby

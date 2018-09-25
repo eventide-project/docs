@@ -6,6 +6,8 @@
   </p>
 </div>
 
+- - -
+
 The `expected_version` argument is typically used as an [optimistic concurrency](https://en.wikipedia.org/wiki/Optimistic_concurrency_control) protection. It can also be used to assure that a message written to a stream is the first message in the stream.
 
 In the [typical handler workflow](../handlers.html#typical-handler-workflow), a stream's version is retrieved along with the stream's projected entity at the start of a handler. That retrieved version is then included as the value of the `expected_version` argument to the writer.
