@@ -21,11 +21,11 @@ Messaging::Postgres::Write.(deposited, stream_name)
 - Coordination of workflows between streams can be effected using the writer's facility for replies and replying
 - Actuating a writer can be done either from its class interface or its instance interface
 
-## Messaging::Write Class
+## Messaging::Postgres::Write Class
 
 The `Write` class is a concrete class from the [`Messaging::Postgres` library](../libraries.md#messaging-postgres) and namespace.
 
-The `Messaging::Write` class provides the following:
+The `Messaging::Postgres::Write` class provides:
 
 - Actuator methods for both the class and instance interface that write messages to the specified stream
 - The `initial` method that writes a message and assures that the message written is the first message in a stream
@@ -68,47 +68,6 @@ Conversely, the writer can be actuated by directly invoking the `call` method. I
     Note: Streams only come into existence when messages are written to them. There's no need to create a stream before using it. A stream is created implicitly by an event having been written to it.
   </p>
 </div>
-
-## Writing Atomic Batches
-
-Either a single message or an array of messages can be passed to the writer's actuator.
-
-``` ruby
-batch = [some_message, some_other_message]
-write.(batch, some_stream)
-```
-
-When an array is passed to the writer, it is written as an atomic batch. If the write fails for any reason while the batch is being written, none of the messages will be written.
-
-<div class="note custom-block">
-  <p>
-    Note: As with individual messages, a batch is written to a single stream. Atomic writes are only possible to one stream.
-  </p>
-</div>
-
-## Expected Version and Concurrency
-
-The `expected_version` argument is typically used as an [optimistic concurrency](https://en.wikipedia.org/wiki/Optimistic_concurrency_control) protection. It can also be used to assure that a message written to a stream is the first message in the stream.
-
-In the [typical handler workflow](../handlers.html#typical-handler-workflow), a stream's version is retrieved along with the stream's projected entity at the start of a handler. That retrieved version is then included as the value of the `expected_version` argument to the writer.
-
-``` ruby
-handle Something do |something|
-  account, version = store.fetch(something.id, include: :version)
-
-  # ...
-
-  write.(some_message, some_stream, expected_version: version)
-end
-```
-
-If the expected version and the stream version no longer match at the time of the write, the `MessageStore::ExpectedVersion::Error` is raised.
-
-### Concurrency
-
-::: danger
-Except when running multiple instances of a component for hot fail-over, concurrent writing to an _event stream_ is considered an anomaly. It's not expected that two separate writers would be writing to the same event stream concurrently as this would violate the authority of a component over its streams. Only one instance of a [hosted](/user-guide/component-host.md) component should be empowered to write to a stream. If two instances of _the same_ component are writing to the same event stream, then appropriate measures must be taken to retry the writes.
-:::
 
 ## Assuring an Initial Write
 
@@ -232,24 +191,8 @@ end
 
 Writers can be constructed in one of two ways
 
-- Via the initializer
 - Via the constructor
-
-### Via the Initializer
-
-``` ruby
-self.new()
-```
-
-**Returns**
-
-Instance of the `Messaging::Postgres::Write` class.
-
-By constructing a writer using the initializer, the writer's dependencies are not set to operational dependencies. They remain _inert substitutes_.
-
-::: tip
-See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
-:::
+- Via the initializer
 
 ### Via the Constructor
 
@@ -279,6 +222,22 @@ Instance of the `Messaging::Postgres::Write` class.
   </p>
 </div>
 
+### Via the Initializer
+
+``` ruby
+self.new()
+```
+
+**Returns**
+
+Instance of the `Messaging::Postgres::Write` class.
+
+By constructing a writer using the initializer, the writer's dependencies are not set to operational dependencies. They remain _inert substitutes_.
+
+::: tip
+See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
+:::
+
 ## Assigning a Writer as a Dependency
 
 ``` ruby
@@ -306,3 +265,9 @@ something.write
 ::: tip
 See the [useful objects](../useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
 :::
+
+- - -
+**Related**
+
+- [Writing Atomic Batches](./atomic-batches.md)
+- [Expected Version and Concurrency](./expected-version.md)

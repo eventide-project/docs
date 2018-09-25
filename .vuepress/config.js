@@ -141,8 +141,10 @@ module.exports = {
           children: [
             '',
             'message-writer.md',
-            'substitute.md',
-            'message-data-writer.md'
+            'message-data-writer.md',
+            'atomic-batches.md',
+            'expected-version.md',
+            'substitute.md'
           ]
         }
       ]

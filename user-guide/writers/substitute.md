@@ -57,7 +57,7 @@ handler.write.written? { |message| message.instance_of? SomeMessage }
 
 The `Substitute::Write` class is a concrete class from the [`Messaging` library](../libraries.md#messaging-postgres) in the `Messaging::Write` namespace.
 
-The `Messaging::Write::Substitute::Write` class provides the following:
+The `Messaging::Write::Substitute::Write` class provides:
 
 - Inert implementations of the writer's instance actuator method, as well as the `initial` and the `reply` methods.
 - A telemetry recorder with an active telemetry sink that records telemetry recorded by invocations of the writer's methods
