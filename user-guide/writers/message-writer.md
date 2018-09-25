@@ -113,14 +113,6 @@ write.initial(some_other_message, some_stream)
 
 This pattern is useful for proving uniqueness or for reserving something, for example: a unique username, a seat on a flight, a purchase, or a concert ticket. It's also useful in certain idempotence protection patterns.
 
-## The :no_stream Expected Version
-
-The :no_stream symbol can be substituted for `-1` when writing with an expected version of `-1`.
-
-``` ruby
-Write.(some_message, some_stream, expected_version: :no_stream)
-```
-
 ## Replying
 
 ### The reply_stream_name Parameter

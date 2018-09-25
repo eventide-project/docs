@@ -144,6 +144,7 @@ module.exports = {
             'message-data-writer.md',
             'atomic-batches.md',
             'expected-version.md',
+            'no-stream.md',
             'substitute.md'
           ]
         }
