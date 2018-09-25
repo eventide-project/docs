@@ -1,6 +1,6 @@
 # Message Writer
 
-The message writer writes instances of message objects to the message store. It converts them to the more raw, low level [message data](/user-guide/messages-and-message-data/message-data.md) form which can then be converted to JSON and stored in the database.
+The message writer writes instances of [message objects](/user-guide/messages-and-message-data/messages.md) to the [message store](/user-guide/message-store). It converts them to the more raw, low level [message data](/user-guide/messages-and-message-data/message-data.md) form which can then be converted to JSON and stored in the database.
 
 ## Example
 
@@ -94,9 +94,7 @@ Writing an event with the `initial` method is a shortcut for writing a message w
 
 ``` ruby
 write.initial(some_message, some_stream)
-
 # Is equivalent to
-
 write.(some_message, some_stream, expected_version: -1)
 ```
 
