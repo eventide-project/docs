@@ -11,11 +11,11 @@ The entity projection is the mechanism that affects an entity with an event's da
 
 The entity projection applies one event to one entity. To apply multiple events to an entity, the projection is invoked once for each event in sequence.
 
-When an entity is "retrieved", it's the events that are retrieved, and then fed one-by-one in the order that they were written and applied to the entity via a projection.
+When an entity is "retrieved" from the [message store](./message-store), it's the events that are retrieved, and then fed one-by-one in the order that they were written and applied to the entity via a projection.
 
 <div class="note custom-block">
   <p>
-    Note: Events should be applied in the same order that they were recorded. This preserves the inherent temporal dependency between events, and allows the projection to reconstruct the state of the entity correctly.
+    Note: Events should be applied in the same order that they were recorded. This preserves any inherent order of operations of events, and allows the projection to reconstruct the state of the entity correctly.
   </p>
 </div>
 
@@ -49,6 +49,14 @@ class Account
 
   attribute :id, String
   attribute :balance, Numeric, default: 0
+
+  def deposit(amount)
+    self.balance += amount
+  end
+
+  def withdraw(amount)
+    self.balance -= amount
+  end
 end
 
 account = Account.new
@@ -74,194 +82,224 @@ account.balance
 
 ## Entity Projection Facts
 
-- Projections mutate entity state directly
+- Projections mutate an entity's state
 - An actuation of a projection applies one event to one entity
-- An event is ignored if the projection doesn't have matching `apply` block for the event
-- An `apply` block doesn't get to decide whether the event should be applied
+- An event is ignored if the projection doesn't have a matching `apply` block for the event
 - Events should be applied in the same order that the events were recorded
+- Projections do not interact with the message store
+- An `apply` block should not have any logic that decides whether an event should be applied or not. An `apply` block doesn't get to decide whether the event should be applied. An `apply` block should apply the events that it handles, or not handle them at all.
 
 ## EntityProjection Module
 
 A class becomes a projection by including the `EntityProjection` module from the [`EntityProjection` library](./libraries.md#entity-projection) and namespace.
 
-The `EntityProjection::Handle` affords the receiver with:
+The `EntityProjection` module affords the receiver with:
 
 - The `apply` class macro used for defining event application blocks
-- The principle instance actuator `.()` (or the `call` instance method and its `apply` alias) for applying a single event to an entity
+- The principle instance actuator `.()` (or the `call` instance method) for applying a single event to an entity
 - The class actuator `.()` (or the class `call` method) that provides a convenient invocation shortcut that does not require instantiating the projection class first
 - Infrastructure for registering events that are projected, and the dispatching logic used to apply events and event data
 
-## Defining a Handler
+## Defining a Projection
 
-### Using the handler Macro
+### Using the apply Macro
 
-A handler block is defined with the `handle` macro.
+A projection block is defined with the `apply` macro.
 
 ``` ruby
-handle Withdraw do |withdraw|
-  # ...
+apply Withdrawn do |withdrawn|
+  account.id = withdrawn.account_id
+  amount = withdrawn.amount
+  account.withdraw(amount)
 end
 ```
 
-The argument is a class name of the message that the handler block will process. The block argument is the instance of the message being processed.
+The argument is a class name of the event that the apply block will process. The block argument is the instance of the event being projected.
 
-The macro is merely a code generator that generates an instance method. The example above generates an instance method named `handle_withdraw`. The macro is simply an affordance intended to emphasize the code in a handler class that is directly responsible for message processing. The handler block code is used as the implementation of the generated method.
+The macro is merely a code generator that generates an instance method. The example above generates an instance method named `apply_withdrawn`. The macro is simply an affordance intended to emphasize the code in a projection class that is directly responsible for event projection. The apply block code is used as the implementation of the generated method.
 
 ### Using a Plain Old Method
 
-The `handle` macro generates methods with names of the form `handle_{message_class_name_underscore_case}`.
+The `apply` macro generates methods with names of the form `apply_{event_class_name_underscore_case}`.
 
-Handlers can be created by directly defining a method following the naming convention.
+Projections can be created by directly defining a method following the naming convention.
 
 ``` ruby
-def handle_withdraw(withdraw)
+def apply_withdrawn(withdrawn)
   # ...
 end
 ```
 
-## Sending a Message to a Handler
+## Accessing the Entity
 
-There are two ways to send a message to a handler:
+### Via the entity Accessor
 
-- Via a [consumer](./consumers.md)
-- Via direct actuation
-
-### Via a Consumer
-
-Registering handlers with consumers is how handlers process messages in live services. The combination of the consumer and the component host infrastructure will route messages from the streams that the consumer reads to the consumer's handlers.
+By default, the entity that the projection is constructed with can be accessed using the `entity` method.
 
 ``` ruby
-class Consumer
-  include Consumer::Postgres
+entity()
+```
 
-  handler SomeHandler
-  handler SomeOtherHandler
+**Returns**
+
+Instance of the entity that the projection is constructed with.
+
+``` ruby{3}
+apply Withdrawn do |withdrawn|
+  amount = withdrawn.amount
+  entity.withdraw(amount)
 end
 ```
 
+### Via the Named Accessor
+
+An alias for the `entity` accessor is generated by the `entity_name` class macro.
+
+``` ruby{4,8}
+class SomeProjection
+  include EntityProjection
+
+  entity_name :something
+
+  apply Deposited do |deposited|
+    amount = deposited.amount
+    account.deposit(amount)
+  end
+```
+
+## Sending an Event to a Projection
+
+There are two ways to send an event to a projection:
+
+- Via an [entity store](./stores.md)
+- Via direct actuation
+
+### Via an Entity Store
+
+An entity store brings event projection and event storage retrieval together in an object that has the feel of a typical data access object.
+
+``` ruby
+class Store
+  include EntityStore
+
+  category :account
+  entity Account
+  projection Projection
+  reader MessageStore::Postgres::Read
+end
+
+store = AccountStore.build
+account = store.fetch('123')
+
+account.id
+# => "123"
+
+account.balance
+# => 10
+```
+
+<div class="note custom-block">
+  <p>
+    Note: See the <a href="/user-guide/stores.html">Entity Store User Guide</a> for more information about entity stores.
+  </p>
+</div>
+
 ### Direct Actuation
 
-A handler can be actuated directly as an object, passing a message as a parameter. Direct actuation is critical for testing and exercising handlers, as it allows handlers to be exercised as plain old objects.
+A projection can be actuated directly as an object, passing an event as a parameter. Direct actuation is critical for testing and exercising handlers, as it allows handlers to be exercised as plain old objects. It's also a useful technique in some event data analysis scenarios.
 
-Handlers can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the handler.
+Projections can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the projection.
 
-Handlers are implemented as _callable objects_. Actuating them is simply a matter of invoking their `call` method.
+Projections are implemented as _callable objects_. Actuating them is simply a matter of invoking their `call` method.
 
 ``` ruby
-some_message = SomeMessage.new
+some_event = SomeEvent.new
 
 # Via the class interface
-SomeHandler.(some_message)
+SomeProjection.(some_event)
 
 # Via the object interface
-some_handler = SomeHandler.build
-some_handler.(some_message)
+some_projectioin = SomeProjection.build
+some_projectioin.(some_message)
 ```
 
-### When a Handler Doesn't Handle a Message
+### When a Projection Doesn't Handle a Message
 
-When there isn't a matching handler method for a message, the handler simply ignores the message sent to it.
+When there isn't a matching `apply` block for a message, the projection simply ignores the event sent to it.
 
-### Optional Strict Handling
+## Matching Events to Apply Blocks
 
-The handler's actuator provides an optional keyword argument named `strict`.
+When an event is sent to a projection, the projection determines whether there is an apply method that can receive the message.
 
-Handling a message when `strict` is set to `true` will require that the handler class implements a handler block for the message class.
+An apply method is determined to match an inbound event based on the event's class name and the method's name.
 
-With strict set to true, and a message sent to a handler that the handler doesn't handle, an error will be raised.
+An event class named `SomeEvent` is sent to an apply method named `apply_some_event`.
 
-``` ruby
-SomeHandler.(some_unhandled_message, strict: true)
-# => SomeHandler does not implement a handler for SomeUnhandledMessage. Cannot handle the message. (Messaging::Handle::Error)
-```
+Only the event's class name is taken into considering when matching a message to a handler method. The class's namespace is not significant to matching. For a message class named `Something::Events::SomeEvent`, only the `SomeEvent` part of the event's class name is significant.
 
-This argument is available for both the class actuator and the instance actuator.
+## Projecting Raw Message Data
 
-## Matching Messages to Handlers
-
-When a message is sent to a handler, the handler determines whether there is handler method that can receive the message.
-
-A handler method is determined to match an inbound message based on the message's class name and the method's name.
-
-A message class named `SomeMessage` is sent to a handler method named `handle_some_message`.
-
-Only the message's class name is taken into considering when matching a message to a handler method. The class's namespace is not significant to matching. For a message class named `Something::Messages::SomeMessage`, only the `SomeMessage` part of the message's class name is significant.
-
-## Handling Raw Message Data
-
-In addition to handling typed messages, handlers can handle `MessageData` instances in their raw form.
+In addition to handling typed events, projections can apply `MessageData` instances in their raw form.
 
 See the [Message and MessageData](./message-and-message-data.md#message-data) user guide for more on messages and message data.
 
 The raw form of a message is an instance of `MessageStore::MessageData`.
 
-The object that is sent to a handler from a consumer is an instance of `MessageData`. The handler converts the `MessageData` into its corresponding message instance.
+The object that is sent to a projection from an entity store is an instance of `MessageData`. The projection converts the `MessageData` into its corresponding event message instance.
 
-If a handler implements a method named `handle` _and_ if there's no explicit handler block that specifically matches the `MessageData` object's `type` attribute, then the `MessageData` instance will be passed to the `handle` method.
+If a projection implements a method named `apply` _and_ if there's no explicit handler block that specifically matches the `MessageData` object's `type` attribute, then the `MessageData` instance will be passed to the `apply` method.
 
 ``` ruby
-def handle(message_data)
+def appy(message_data)
   case message_data.type
-  when 'Withdraw'
-    # Handle Withdraw
-  when 'Deposit'
-    # Handle Deposit
+  when 'Withdrawn'
+    # Project Withdrawn
+  when 'Deposited'
+    # Project Deposited
   end
 end
 ```
 
-The `handle` method will not be invoked if there's a handler block that matches the `MessageData`'s `type` attribute.
+The `apply` method will not be invoked if there's an apply block that matches the `MessageData`'s `type` attribute.
 
 ``` ruby
 class Handler
   include Messaging::Handle
 
-  handle Withdraw do |withdraw|
+  apply Withdrawn do |withdrawn|
     # ...
   end
 
-  def handle(message_data)
+  def apply(message_data)
     case message_data.type
-    when 'Withdraw'
-      # This will never be invoked because the handler block
+    when 'Withdrawn'
+      # This will never be invoked because the apply block
       # for Withdraw takes precedence
-    when 'Deposit'
-      # This will be called when the type attribute is 'Deposit'
-      # because there's no handler block for Deposit
+    when 'Deposited'
+      # This will be called when the type attribute is 'Deposited'
+      # because there's no apply block for Deposited
     end
   end
 end
 ```
 
-### When to Handle Raw Message Data
+### When to Apply Raw Message Data
 
-Because the raw `MessageData` is not transformed into typed messages, handling `MessageData` in its raw form offers a slight performance improvement due to skipping the transformation step.
+Because the raw `MessageData` is not transformed into typed event messages, projecting `MessageData` in its raw form offers a slight performance improvement due to skipping the transformation step.
 
 That said, the performance improvement is negligible. Don't elect to use this option unless squeezing every last drop of performance out of your solution is critical to its success.
 
-## Handler Blocks Return the Input Message
+## Apply Blocks Return the Input Message
 
-Handler blocks and the `handle` method return the message that is the input to the handler.
+Apply blocks and the `apply` method return the message that is the input to the handler.
 
-When the input is an instance of `Messaging::MessageData`, and there's a typed handler block that handles the `MessageData`'s type, the instance of typed message that the `MessageData` is converted to will be returned.
+When the input is an instance of `Messaging::MessageData`, and there's a typed apply block that applies the `MessageData`'s type, the instance of typed message that the `MessageData` is converted to will be returned.
 
-When handling the raw `MessageData` using the `handle` method, the `MessageData` instance is returned.
+When projecting the raw `MessageData` using the `apply` method, the `MessageData` instance is returned.
 
-## Exiting a Handler Block Using Return
+## Constructing Projections
 
-A handler can be exited simply by using a `return` statement.
-
-This is true because the `handle` macro generates a plain old method. Issuing a `return` from within the block is effectively the same as returning from a method.
-
-<div class="note custom-block">
-  <p>
-    Note: Handler blocks and handler methods are not expected to return any values. Any value that is returned from a handler block or method is disregarded.
-  </p>
-</div>
-
-## Constructing Handlers
-
-Handlers can be constructed in one of two ways:
+Projection can be constructed in one of two ways:
 
 - Via the constructor
 - Via the initializer
@@ -269,35 +307,40 @@ Handlers can be constructed in one of two ways:
 ### Via the Constructor
 
 ``` ruby
-self.build(strict: false, session: nil)
+self.build(entity)
 ```
 
-The constructor not only instantiates the handler, but also invokes the handler's `configure` instance method, which constructs the handler's operational dependencies.
+The constructor not only instantiates the projection, but also invokes the projection's `configure` instance method, which constructs the projection's operational dependencies.
 
 ``` ruby
-some_handler = SomeHandler.build
+some_projection = SomeProjection.build
 ```
 
 **Returns**
 
-Instance of the class that includes the `Handle` module.
+Instance of the class that includes the `EntityProjection` module.
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| strict | Strict mode, causes an error when no handler block for the message is implemented | Boolean |
-| session | An existing [session](./session.md) object to use, rather than allowing the handler to create a new session | MessageStore::Postgres::Session |
+| entity | Instance of an object or data structure whose state will be mutated by the projection's apply methods | Object |
 
 ### Via the Initializer
 
 ``` ruby
-self.new()
+self.new(entity)
 ```
 
 **Returns**
 
-Instance of the class that includes the `Handle` module.
+Instance of the class that includes the `EntityProjection` module.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| entity | Instance of an object or data structure whose state will be mutated by the projection's apply methods | Object |
 
 By constructing a handler using the initializer, the handler's dependencies are not set to operational dependencies. They remain _inert substitutes_.
 
@@ -308,41 +351,45 @@ See the [useful objects](./useful-objects.md#substitutes) user guide for backgro
 ## Configuring Dependencies
 
 ``` ruby
-configure(session: nil)
+configure()
 ```
 
-**Parameters**
+If the projection implements an instance method named `configure`, the `build` constructor will invoke it.
 
-| Name | Description | Type |
-| --- | --- | --- |
-| session | If a session is provided to the handler's constructor, it will be passed to the instance's `configure` method | MessageStore::Postgres::Session |
-
-If the handler implements an instance method named `configure`, the `build` constructor will invoke it.
-
-The `configure` method provides a specialization mechanism for setting up any handler dependencies, or doing any setup necessary.
+The `configure` method provides a specialization mechanism for setting up any dependencies, or doing any setup necessary.
 
 ``` ruby
-dependency :write, Messaging::Postgres::Write
 dependency :clock, Clock::UTC
-dependency :store, Store
 
-def configure(session: nil)
-  Messaging::Postgres::Write.configure(self)
+def configure
   Clock::UTC.configure(self)
-  Store.configure(self, session: session)
 end
 ```
 
+## Always Project the Entity ID
 
-- - -
-- - -
-- - -
+It's good practice to always project the entity ID in every apply block. It's possible, due to the vagaries of computers, networks, and electricity that events may not be written, and thus projected, in the order that they are presumed to be written. Certain message transport architectures in more elaborate systems topologies may cause this. This is especially true where intermediaries are involved.
 
-API
-- entity_name
-  - refer to `entity` instead
-- construction
-  - pass entity and event
-- always project entity id
-  - it's allowed to have messages out of order, even if not entirely desirable. so don't projection incorrect state if you don't have to. if it's benign
-  - certain message transport architectures in more elaborate systems topologies may cause this (if there's intermediaries)
+The general rule is that the first event in an event stream should establish an entity's ID. Due to the possibilities that events may be in an order other than the one assumed, any event may be the first event projected.
+
+``` ruby{7,13}
+class Projection
+  include EntityProjection
+
+  entity_name :account
+
+  apply Deposited do |deposited|
+    account.id = deposited.account_id
+    amount = deposited.amount
+    account.deposit(amount)
+  end
+
+  apply Withdrawn do |withdrawn|
+    account.id = withdrawn.account_id
+    amount = withdrawn.amount
+    account.withdraw(amount)
+  end
+end
+```
+
+If this is not done, and under the right circumstances, an entity may be retrieved in a handler that does not yet have an id. In such a case, the value of the ID used in the handler logic will be `nil`. A `nil` entity will cause a number of malfunctions that would be difficult - and in some cases, impossible - to correct.
