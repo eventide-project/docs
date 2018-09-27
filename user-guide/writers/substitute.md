@@ -250,8 +250,8 @@ write.one_message { |message| message.instance_of? SomeMessage }
 # => <SomeMessage...>
 
 
-other_message = OtherMessage.new
-write.(other_message, stream_name)
+some_message_2 = SomeMessage.new
+write.(some_message_2, stream_name)
 
 write.one_message
 # => Messaging::Write::Substitute::Write::Error
