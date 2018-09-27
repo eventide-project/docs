@@ -80,7 +80,7 @@ SomeConsumer.start('someStream')
 A consumer's `start` method offers a number of parameters to control its timing.
 
 ``` ruby
-self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, position_store: nil, session: nil)
+self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, settings: nil)
 ```
 
 **Parameters**
@@ -91,8 +91,7 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
-| position_store | Position store that records the consumer's progress through the input stream | Consumer::Postgres::PositionStore |
-| session | An existing [session](./session.md) object to use, rather than allowing the consumer to create a new session | MessageStore::Postgres::Session |
+| settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | MessageStore::Postgres::Settings |
 
 ## Polling
 
@@ -200,6 +199,12 @@ Consumer.start('account:command')
 
 In the above example, the consumer's position stream would be `account:command-someConsumer`.
 
+Consumers can also be assigned an identifier when they are started. If an identifier macro is also declared on the consumer class, the one given when starting the consumer is chosen.
+
+``` ruby
+Consumer.start('account:command', identifier: 'otherIdentifier')
+```
+
 ## Constructing Consumers
 
 In general, it's not necessary to construct a consumer. The general use case of a consumer is to invoke its `start` method.
@@ -207,7 +212,7 @@ In general, it's not necessary to construct a consumer. The general use case of 
 A consumer can be constructed with its `build` method.
 
 ``` ruby
-self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, position_store: nil, session: nil)
+self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, settings: nil)
 ```
 
 **Parameters**
@@ -218,5 +223,4 @@ self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
-| position_store | Position store that records the consumer's progress through the input stream | Consumer::Postgres::PositionStore |
-| session | An existing [session](./session.md) object to use, rather than allowing the consumer to create a new session | MessageStore::Postgres::Session |
+| settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | MessageStore::Postgres::Settings |
