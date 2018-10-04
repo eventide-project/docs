@@ -186,7 +186,7 @@ This argument is available for both the class actuator and the instance actuator
 
 ## Matching Messages to Handlers
 
-When a message is sent to a handler, the handler determines whether there is handler method that can receive the message.
+When a message is sent to a handler, the handler determines whether there is a handler method that can receive the message.
 
 A handler method is determined to match an inbound message based on the message's class name and the method's name.
 
