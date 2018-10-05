@@ -70,7 +70,7 @@ withdrawn.account_id = '123'
 withdrawn.amount = 1
 
 [deposited, withdrawn].each do |event|
-  Projection.(entity, event)
+  Projection.(account, event)
 end
 
 account.id
