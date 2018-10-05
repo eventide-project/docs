@@ -393,3 +393,9 @@ end
 ```
 
 If this is not done, and under the right circumstances, an entity may be retrieved in a handler that does not yet have an id. In such a case, the value of the ID used in the handler logic will be `nil`. A `nil` entity will cause a number of malfunctions that would be difficult - and in some cases, impossible - to correct.
+
+<div class="note custom-block">
+  <p>
+    Note: While the circumstances that cause this anomaly are very rare, that rarity should not be counted upon. Projections should be constructed conservatively so that the realities of out-of-order events are never a problem.
+  </p>
+</div>
