@@ -87,7 +87,7 @@ account.balance
 - An event is ignored if the projection doesn't have a matching `apply` block for the event
 - Events should be applied in the same order that the events were recorded
 - Projections do not interact with the message store
-- An `apply` block should not have any logic that decides whether an event should be applied or not. An `apply` block doesn't get to decide whether the event should be applied. An `apply` block should apply the events that it handles, or not handle them at all.
+- An `apply` block should not have any logic that decides whether an event should be applied or not. An `apply` block should apply the events that it handles, or not handle them at all.
 
 ## EntityProjection Module
 
