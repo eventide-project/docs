@@ -163,7 +163,7 @@ class SomeProjection
 
   apply Deposited do |deposited|
     amount = deposited.amount
-    account.deposit(amount)
+    something.deposit(amount)
   end
 ```
 
