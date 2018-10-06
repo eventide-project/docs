@@ -61,11 +61,11 @@ end
 
 account = Account.new
 
-deposited = Deposited.new
+deposited = Deposited.new()
 deposited.account_id = '123'
 deposited.amount = 11
 
-withdrawn = Withdrawn.new
+withdrawn = Withdrawn.new()
 withdrawn.account_id = '123'
 withdrawn.amount = 1
 
