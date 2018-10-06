@@ -155,3 +155,7 @@ end
 ::: tip
 A "component" isn't a "service" until it's running in the component host. The component host can host and run many different components. A component's "Start" module is the interface between the component and the service that hosts and runs it.
 :::
+
+This code was extracted from the [account basics example](/examples/example-projects.md#account-basics). For a runnable implementation if this example, see the example's GitHub repo:
+
+[https://github.com/eventide-examples/account-basics](https://github.com/eventide-examples/account-basics)
