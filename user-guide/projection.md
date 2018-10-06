@@ -299,7 +299,7 @@ When projecting the raw `MessageData` using the `apply` method, the `MessageData
 
 ## Constructing Projections
 
-Projection can be constructed in one of two ways:
+Projections can be constructed in one of two ways:
 
 - Via the constructor
 - Via the initializer
