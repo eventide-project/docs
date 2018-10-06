@@ -430,8 +430,6 @@ subsequent_message = Messaging::Message::Follow.(preceding_message, SubsequentMe
 
 Note that when the `Messaging::Message::Follow` is extended onto a message class, the default value of the `subsequent_message` parameter is `self`. The value of `self` in such a case is the message class.
 
-
-
 ## Determining Message Precedence
 
 Messages can be determined to follow each other using the message's `follows?` predicate method.
