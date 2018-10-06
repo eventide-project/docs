@@ -29,7 +29,7 @@ module.exports = {
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Writers', link: '/user-guide/writers/' },
-          { text: 'Entity Projections', link: '/user-guide/projections.md' },
+          { text: 'Entity Projections', link: '/user-guide/projection.md' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },

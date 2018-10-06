@@ -3,7 +3,7 @@ sidebar: auto
 sidebarDepth: 0
 ---
 
-# Entity Projections
+# Entity Projection
 
 An entity receives its data from events. Each event may have some piece of data to contribute to the entity's state. Multiple events are typically involved in providing an entity with all of its state.
 
