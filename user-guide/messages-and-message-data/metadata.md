@@ -114,10 +114,10 @@ metadata.follows?(preceding_metadata)
 Metadata precedence is determined as:
 
 ``` ruby
-causation_message_stream_name == metadata.stream_name &&
-causation_message_position == metadata.position &&
-self.causation_message_global_position == metadata.global_position &&
-self.reply_stream_name == metadata.reply_stream_name
+metadata.causation_message_stream_name == preceding_metadata.stream_name &&
+metadata.causation_message_position == preceding_metadata.position &&
+metadata.causation_message_global_position == preceding_metadata.global_position &&
+metadata.reply_stream_name == preceding_metadata.reply_stream_name
 ```
 
 ## Determining Whether a Reply is Required

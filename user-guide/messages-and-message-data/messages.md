@@ -430,6 +430,55 @@ subsequent_message = Messaging::Message::Follow.(preceding_message, SubsequentMe
 
 Note that when the `Messaging::Message::Follow` is extended onto a message class, the default value of the `subsequent_message` parameter is `self`. The value of `self` in such a case is the message class.
 
+
+
+## Determining Message Precedence
+
+Messages can be determined to follow each other using the message's `follows?` predicate method.
+
+``` ruby
+follows?(message)
+```
+
+**Returns**
+
+Boolean.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| message | A message instance that may precede the message being inspected | Message |
+
+The `follows?` predicate method returns `true` when the message metadata's causation and provenance attributes match the message argument's metadata source attributes.
+
+``` ruby
+preceding_message = SomeMessage.new()
+preceding_message.metadata.stream_name = 'someStream'
+preceding_message.metadata.position = 11
+preceding_message.metadata.global_position = 111
+preceding_message.metadata.reply_stream_name = 'someReplyStream'
+
+message = SomeMessage.follow(preceding_message)
+
+message.follows?(preceding_message)
+# => true
+
+preceding_message.metadata.stream_name = `someOtherStream`
+
+message.follows?(preceding_message)
+# => false
+```
+
+Message precedence is determined as:
+
+``` ruby
+message.metadata.causation_message_stream_name == preceding_message.metadata.stream_name &&
+message.metadata.causation_message_position == preceding_message.metadata.position &&
+message.metadata.causation_message_global_position == preceding_message.metadata.global_position &&
+message.metadata.reply_stream_name == preceding_message.metadata.reply_stream_name
+```
+
 ## Equality
 
 Two messages are considered to be equal when their classes are the same and their attribute values are the same.
