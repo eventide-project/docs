@@ -96,7 +96,6 @@ preceding_metadata = Metadata.new()
 preceding_metadata.stream_name = 'someStream'
 preceding_metadata.position = 11
 preceding_metadata.global_position = 111
-preceding_metadata.correlation_stream_name 'someCorrelationStream'
 preceding_metadata.reply_stream_name = 'someReplyStream'
 
 metadata = Metadata.new()
@@ -115,9 +114,9 @@ metadata.follows?(preceding_metadata)
 Metadata precedence is determined as:
 
 ``` ruby
-self.causation_message_identifier == metadata.identifier &&
+causation_message_stream_name == metadata.stream_name &&
+causation_message_position == metadata.position &&
 self.causation_message_global_position == metadata.global_position &&
-self.correlation_stream_name == metadata.correlation_stream_name &&
 self.reply_stream_name == metadata.reply_stream_name
 ```
 
