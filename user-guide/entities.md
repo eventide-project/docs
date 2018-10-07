@@ -1,4 +1,4 @@
-# Entity Stores
+# Entities
 
 <div class="note custom-block">
   <p>

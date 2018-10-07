@@ -30,6 +30,7 @@ module.exports = {
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Writers', link: '/user-guide/writers/' },
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
+          { text: 'Entity Store', link: '/user-guide/store.md' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
@@ -146,6 +147,17 @@ module.exports = {
             'atomic-batches.md',
             'expected-version.md',
             'no-stream.md',
+            'substitute.md'
+          ]
+        }
+      ],
+      '/user-guide/entity-store/': [
+        {
+          title: 'Entity Store',
+          collapsable: false,
+          children: [
+            '',
+            'entity-cache.md',
             'substitute.md'
           ]
         }
