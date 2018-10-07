@@ -30,7 +30,7 @@ module.exports = {
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Writers', link: '/user-guide/writers/' },
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
-          { text: 'Entity Store', link: '/user-guide/store.md' },
+          { text: 'Entity Store', link: '/user-guide/entity-store/' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
