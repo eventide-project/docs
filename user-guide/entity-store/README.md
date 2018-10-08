@@ -2,15 +2,15 @@
 
 An entity store is the primary means of retrieving [entities](/user-guide/entities.md) from the message store database.
 
-Entity data is stored as events in an event stream. Each entity has it's own stream. When an entity is "retrieved", its events are applied to the entity by a projection.
+Entity data is stored as events in an [event stream](/glossary.md#event-stream). Each entity has it's own stream. When an entity is "retrieved", its events are applied to the entity by a projection.
 
-An entity store combines a [projection](/user-guide/projection.md), a [reader](/user-guide/reader.md), an temporary in-memory cache, and an durable on-disk cache to provide a simple and efficient interface for retrieving entities.
+An entity store combines a [projection](/user-guide/projection.md), a [reader](/user-guide/reader.md), an temporary in-memory [cache](./entity-cache.md), and an durable on-disk cache to provide a simple and efficient interface for retrieving entities.
 
-An entity's event stream is read by the reader specified by the `reader` macro, and projected by the projection specified by the `projection` macro. The entity returned from a retrieval operation is an instance of the class specified by the `entity` macro. The `category` macro declares the category of the stream name that will be read when a retrieval operation is invoked.
+An entity's event stream is read by the reader specified by the `reader` macro, and projected by the projection specified by the `projection` macro. The entity returned from a retrieval operation is an instance of the class specified by the `entity` macro. The `category` macro declares the [category](/glossary.md#category) of the stream name that will be read when a retrieval operation is invoked.
 
 To avoid the cost of projecting every event in an entity's stream when an entity is retrieved, the entity is cached when it is retrieved. The next time an entity is retrieved, only events that have been recorded since the last time the entity was retrieved are read and projected.
 
-To avoid the cost of projecting all of an entity's events when the entity is not in the cache (like when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache entry for it, the latest snapshot will be retrieved and cached before the latest events are read and projected.
+To avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache entry for it, the latest snapshot will be retrieved and cached before the latest events are read and projected.
 
 ## Example
 
