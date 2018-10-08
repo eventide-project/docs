@@ -294,7 +294,7 @@ Instance of the class that includes the `Handle` module.
 | Name | Description | Type |
 | --- | --- | --- |
 | strict | Strict mode, causes an error when no handler block for the message is implemented | Boolean |
-| session | An existing [session](./session.md) object to use, rather than allowing the handler to create a new session | MessageStore::Postgres::Session |
+| session | An existing [session](./session.md) object to use, rather than allowing the handler's dependencies to create a new session | Session |
 
 ### Via the Initializer
 
