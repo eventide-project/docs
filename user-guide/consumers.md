@@ -80,7 +80,7 @@ SomeConsumer.start('someStream')
 A consumer's `start` method offers a number of parameters to control its timing.
 
 ``` ruby
-self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, settings: nil)
+self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, settings: nil, condition: nil)
 ```
 
 **Parameters**
@@ -208,7 +208,14 @@ Consumer.start('account:command', identifier: 'otherIdentifier')
 
 ## Conditions
 
-Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed. For example, this allows a consumer to only read messages of a given type, or only a subset of the streams within a category for parallel processing across multiple consumers.
+Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed. For instance, this allows a consumer to only read messages of a given type, or only a subset of the streams within a category for parallel processing across multiple consumers.
+
+```ruby
+SomeConsumer.start('someCategory', condition: "hash64(stream_name) % 2 = 0")
+SomeConsumer.start('someCategory', condition: "hash64(stream_name) % 2 = 1")
+```
+
+In the above example, two instances of the same consumer have been started, each consuming different entity streams within the category stream `someCategory`.
 
 ::: danger
 Usage of this feature should be treated with caution, as it can cause messages to be read by consumers in a different order in which they were written. Idempotence techniques which rely on processing messages in-order therefore may not work in conjuction with `conditions`. Therefore, it is recommended that this feature be used with care, and only in cases where the ramifications are fully understood.
@@ -221,7 +228,7 @@ In general, it's not necessary to construct a consumer. The general use case of 
 A consumer can be constructed with its `build` method.
 
 ``` ruby
-self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, settings: nil)
+self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, settings: nil, condition: nil)
 ```
 
 **Parameters**
