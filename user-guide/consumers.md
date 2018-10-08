@@ -94,6 +94,22 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | condition | SQL condition fragment that constrains the messages of the stream that are read |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
+## Conditions
+
+Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed. For instance, this allows a consumer to only read messages that correlate to a given category, or only a subset of the streams within a category for parallel processing across multiple consumers.
+
+For example, the consumer can read messages from `someCategory` that correlate to `otherCategory`.
+
+```ruby
+SomeConsumer.start('someCategory', condition: "metadata->>'correlationStreamName' like 'otherCategory%'");
+```
+
+See the [correlation](/user-guide/messages-and-message-data/metadata.md#message-correlation) section of the [message metadata documentation](/user-guide/messages-and-message-data/metadata.md) for more on correlation.
+
+::: danger
+Usage of this feature should be treated with caution. While this feature _can_ be used to create isolated, parallel consumers that process the same input stream (or category), the particular technique chosen to do so can result in messages being processed out of order. Ensure that you fully understand the implications of competing consumers, concurrency, and idempotence before proceeding.
+:::
+
 ## Polling
 
 A consumer starts polling the message store for new messages if a fetch of a batch returns no messages.
@@ -205,22 +221,6 @@ Consumers can also be assigned an identifier when they are started. If an identi
 ``` ruby
 Consumer.start('account:command', identifier: 'otherIdentifier')
 ```
-
-## Conditions
-
-Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed. For instance, this allows a consumer to only read messages that correlate to a given category, or only a subset of the streams within a category for parallel processing across multiple consumers.
-
-For example, the consumer can read messages from `someCategory` that correlate to `otherCategory`.
-
-```ruby
-SomeConsumer.start('someCategory', condition: "metadata->>'correlationStreamName' like 'otherCategory%'");
-```
-
-See the [correlation](/user-guide/messages-and-message-data/metadata.md#message-correlation) section of the [message metadata documentation](/user-guide/messages-and-message-data/metadata.md) for more on correlation.
-
-::: danger
-Usage of this feature should be treated with caution. While this feature _can_ be used to create isolated, parallel consumers that process the same input stream (or category), the particular technique chosen to do so can result in messages being processed out of order. Ensure that you fully understand the implications of competing consumers, concurrency, and idempotence before proceeding.
-:::
 
 ## Constructing Consumers
 
