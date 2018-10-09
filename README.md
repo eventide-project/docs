@@ -117,6 +117,6 @@ end
 
 <div class="hero">
   <p class="action">
-    <a href="/examples/overview.html" class="nav-link action-button">Go To Examples</a>
+    <a href="/examples/" class="nav-link action-button">Go To Examples</a>
   </p>
 </div>
