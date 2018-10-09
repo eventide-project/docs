@@ -378,8 +378,6 @@ class SomeStore
 end
 ```
 
-#### TODO
-
 ## Constructing Entity Stores
 
 Entity stores can be constructed in one of two ways:
