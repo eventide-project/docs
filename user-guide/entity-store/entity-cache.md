@@ -31,6 +31,12 @@ The entity cache is composed of two parts: the in-memory cache that stores any e
 - cache record
  -->
 
+<!--
+- ReadOnly snapshot
+  - reads but doesn't write
+  - only authoritative service should write snapshots
+ -->
+
 ## Caching Entity
 
 - done for you

@@ -18,13 +18,13 @@ To avoid the cost of projecting all of an entity's events when the entity is not
 class Store
   include EntityStore
 
-  category :account
   entity Account
+  category :account
   projection Projection
   reader MessageStore::Postgres::Read
 
   # Snapshotting is optional and can be omitted
-  snapshot EntitySnapshot::Postgres, interval: 5
+  snapshot EntitySnapshot::Postgres, interval: 100
 end
 
 store = Store.build
@@ -83,8 +83,8 @@ The `EntityStore` module affords the receiver with:
 - The `fetch` method for retrieving an entity by its ID (does not return nil)
 - The `get` method for retrieving an entity by its ID (may return nil)
 - The `get_version` method for retrieving just the stream's current version
-- The `category` macro for declaring the stream category used to compose the entity's stream name
 - The `entity` macro for declaring the class of the entity that the store manages
+- The `category` macro for declaring the stream category used to compose the entity's stream name
 - The `projection` macro for declaring the projection class that the store uses
 - The `reader` macro for declaring the platform-specific reader implementation to be used by the store
 - The `snapshot` macro for declaring the snapshot implementation to be used by the store
@@ -223,6 +223,162 @@ Stream version of the stream identified by the `id` argument and the store's dec
     Note: Retrieving the version will cause a normal reading and projecting of recent, unprojected events and an update of the cache with the results.
   </p>
 </div>
+
+## Defining an Entity Store
+
+An entity store requires the declaration of:
+
+- The store's entity class
+- The stream category of the store's entity streams
+- The projection class that the store uses to give an entity its data
+- The reader used by the store to retrieve events that will be dispatched to the store's projection
+
+``` ruby
+class SomeStore
+  include EntityStore
+
+  entity SomeEntity
+  category :some_entity
+  projection SomeProjection
+  reader MessageStore::Postgres::Read
+end
+```
+
+### The entity Macro
+
+``` ruby
+self.entity(entity_class)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| entity_class | Class of the entity that the store retrieves and caches instances of | Class |
+
+The macro defines the `entity_class` instance method on the entity store that returns the class passed to the macro.
+
+``` ruby
+some_store.entity_class
+# => SomeEntity
+```
+
+The macro defines the `entity_class` class method on the entity store class that returns the class passed to the macro.
+
+``` ruby
+SomeStore.entity_class
+# => SomeEntity
+```
+
+### The category Macro
+
+``` ruby
+self.category(category)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| category | Name of the category that the store's entities are retrieved from | Symbol or String |
+
+The macro defines the `category` instance method on the entity store that returns the _normalized_ category name.
+
+``` ruby
+some_store.category
+# => "someEntity"
+```
+
+<div class="note custom-block">
+  <p>
+    Note: The category name that is specified via the category macro will be normalized to the canonical _camel-cased_ form. If the input is the symbol <code>:some_entity</code>, it will be normalized to the string <code>someEntity</code>. If the input is a camel-cased string, it is not normalized.
+  </p>
+</div>
+
+### The projection Macro
+
+``` ruby
+self.projection(projection_class)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| projection_class | Class of the projection that the store uses to project state onto an entity | Class |
+
+The macro defines the `projection_class` instance method on the entity store that returns the class passed to the macro.
+
+``` ruby
+some_store.projection_class
+# => SomeProjection
+```
+
+### The reader Macro
+
+``` ruby
+self.reader(reader_class)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| reader_class | Class of the reader that the store uses to read the event stream of the entity being retrieved | Class |
+
+The macro defines the `reader_class` instance method on the entity store that returns the class passed to the macro.
+
+``` ruby
+some_store.reader_class
+# => MessageStore::Postgres::Read
+```
+
+## Incomplete Store Definition
+
+The definition of a store must specify all of the mandatory properties required for the operation of the store.
+
+A store's definition **must** include declarations for:
+
+- The entity class
+- The category
+- The projection class
+- The reader class
+
+If any of these are missing, the `EntityStore::Error` class is raised while the store class is evaluated.
+
+## Optional Snapshotting
+
+### The snapshot Macro
+
+<div class="note custom-block">
+  <p>
+    The snapshot macro is optional and can be omitted.
+  </p>
+</div>
+
+``` ruby
+self.snapshot(snapshot_class, interval: nil)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| snapshot_class | Class of the snapshot writer that the store uses to periodically snapshot the state of an entity | Class |
+| interval | Interval, in messages read and projected, in which the entity state is written to its snapshot stream | Integer |
+
+The macro defines the `snapshot_class` instance method and the `snapshot_interval` instance method on the entity store that returns the values passed to the macros.
+
+``` ruby{8}
+class SomeStore
+  include EntityStore
+
+  # ...
+  snapshot EntitySnapshot::Postgres, interval: 100
+end
+```
+
+#### TODO
 
 ## Constructing Entity Stores
 
