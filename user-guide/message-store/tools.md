@@ -223,26 +223,12 @@ STREAM_NAME=someStream-111 INSTANCES=10 evt-pg-write-test-message
 evt-pg-open-database-scripts-dir
 ```
 
-## Use an Alternate Database Name or Database User
+## Use an Alternate Database Name
 
-The database administration tools presume a database named `message_store` and a database user named `message_store`.
+The database administration tools presume a database named `message_store`.
 
-If you prefer that either a different database name or a different database user be used, you can specify them on the command line using environment variables:
-
-Specify the database name:
+If you prefer a different database name, you can specify it on the command line using environment variables:
 
 ``` bash
 DATABASE_NAME=some_other_database evt-pg-create-db
-```
-
-Specify the database user:
-
-``` bash
-DATABASE_USER=some_other_user evt-pg-print-messages
-```
-
-Or specify both:
-
-``` bash
-DATABASE_NAME=some_other_database DATABASE_USER=some_other_user evt-pg-print-messages
 ```
