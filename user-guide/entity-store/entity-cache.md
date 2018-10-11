@@ -23,7 +23,7 @@ The entity cache is composed of two parts: the in-memory cache that stores any e
 - The cache data lifecycle can last for the life of the Ruby process, the life of the current thread, or the just life of the cache object itself
 - Entities are not cleared from the cache once they are inserted into it
 - The cache includes the in-memory _internal_ cache, and an optional _external_ entity snapshot writer
-- The on-disk snapshot of an entity is only retrieved when an entity retrieval is actuated and there is no cache record for the entity
+- The on-disk snapshot of an entity is only retrieved when an entity retrieval is actuated and there is no existing cache record for the entity in the cache
 
 ## Cache Record
 
