@@ -158,6 +158,7 @@ module.exports = {
           children: [
             '',
             'entity-cache.md',
+            'snapshotting.md',
             'substitute.md'
           ]
         }

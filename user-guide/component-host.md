@@ -42,7 +42,7 @@ end
 - Component host can run any number of components
 - Each component runs in its own isolated [actor](https://github.com/ntl/actor)
 - Each component uses its own message store [session](./session.md)
-- When the host shuts down, each subordinate consumer is allowed to finish its current work before being shut down
+- When the host shuts down, each subordinate consumer is allowed to finish its current work before the process terminates
 
 ## Starting the Component Host
 
