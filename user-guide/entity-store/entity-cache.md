@@ -10,6 +10,12 @@ As a further optimization, to avoid the cost of projecting all of an entity's ev
 
 The entity cache is composed of two parts: the in-memory cache that stores any entity retrieved by a its store, and the on-disk persistent cache of entity snapshots that are used to create an entity's cache record if one is not already present in the cache at the time of the retrieval.
 
+<div class="note custom-block">
+  <p>
+    Note: It's quite rare to have to interact directly with the entity cache. Entities are cached automatically by "retrieving" an entity from an entity store. The entity cache is transparent and in the background for the vast majority of uses. This user guide is provided as an affordance, but it's unlikely to be necessary to the use of the whole toolkit.
+  </p>
+</div>
+
 ## Entity Cache Facts
 
 - The cache stores not only the entities, but also their stream version
@@ -107,9 +113,9 @@ The reason for this is that an entity cache has accumulated current projections 
 
 A cache's scope can be one of:
 
-- Thread
-- Global
-- Exclusive
+- `:thread`
+- `:global`
+- `:exclusive`
 
 ### Thread
 
@@ -159,36 +165,74 @@ It's good practice on development machines to export the `ENTITY_CACHE_SCOPE` en
 export ENTITY_CACHE_SCOPE=exclusive
 ```
 
-## Clearing In-Memory Cache
+## Clearing the In-Memory Cache
 
-- not done
-- just restart service
-- because idempotent and resilient and graceful shutdown
+The entity cache is never cleared in an operational system. Once an entity is inserted into the entity cache, it remains there until the Ruby process that the cache is running in is terminated.
 
-### TODO
+Because services are restarted for upgrades or other maintenance and operational reasons, entity caches are typically cleared on a sufficiently-regular basis such that memory utilization does not become an issue.
 
-## Constructing
+However, long-lived services that are very stable and have no maintenance or operational reasons to be restarted will accumulate cache records in-memory indefinitely. In practice, this is usually not an issue and can be counteracted easily with system-level process monitoring tools that simply restarts a service when it reaches a given memory consumption threshold.
+
+This is a perfectly safe operation because services are designed to be both autonomous and idempotent as a matter of course, and the [component host](/user-guide/component-host.md) infrastructure does service shutdown in a safe and graceful way. If a service is either not autonomous or idempotent, then serious malfunctions will be evident long before memory consumption becomes an issue.
+
+## Constructing an Entity Cache
+
+Entity caches can be constructed in one of two ways:
+
+- Via the constructor
+- Via the initializer
+
+### Via the Constructor
+
+``` ruby
+self.build(subject, scope: thread, persist_interval: nil, external_store: nil, external_store_session: nil)
+```
+
+The constructor not only instantiates the cache, but also invokes the cache's `configure` instance method, which constructs the cache's operational dependencies.
+
+**Returns**
+
+Instance of the `EntityCache` class.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| subject | The entity class that the cache manages | Class |
+| scope | One of the three entity cache scopes, :thread, :global, or :exclusive | Symbol |
+| persist_interval | Interval, in messages read and projected, in which the entity state is written to its snapshot stream | Integer |
+| external_store | A class that implements the snapshotting protocol | Class |
+| external_store_session | An optional, existing [session](./session.md) object that the snapshot implementation uses to interact with the database, rather than allowing the cache to create a new session | MessageStore::Postgres::Session |
 
 
+``` ruby
+cache = Write.build(
+  SomeEntity,
+  scope: :thread,
+  persist_interval: 100,
+  external_store: EntitySnapshot::Postgres,
+  external_store_session: MessageStore::Postgres::Session.build
+)
+```
 
-- - -
+### Via the Initializer
 
+``` ruby
+self.new(subject)
+```
 
-:exclusive => Scope::Exclusive,
-:global => Scope::Global,
-:thread => Scope::Thread
+**Returns**
 
+Instance of the `EntityCache` class.
 
+**Parameters**
 
-- - -
+| Name | Description | Type |
+| --- | --- | --- |
+| subject | The entity class that the cache manages | Class |
 
- (the value of the `position` attribute of the last event in the entity's stream)
+By constructing a cache using the initializer, the cache's dependencies are not set to operational dependencies. They remain _inert substitutes_.
 
-- Snapshots are not deleted automatically
-
-
-
-- - -
-
-- never cleared
-- just in time cache warming from snapshot
+::: tip
+See the [useful objects](/user-guide/useful-objects.md#substitutes) user guide for background on inert substitutes.
+:::

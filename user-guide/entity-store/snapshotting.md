@@ -15,4 +15,6 @@ For immediate answers to your questions, please join the Eventide Project's Slac
 <!--
 - transform
   - by default, will transform flat entities
+- not deleted automatically
+  - can dispose of easily as a matter database administration with basic sql script and cron job
  -->
