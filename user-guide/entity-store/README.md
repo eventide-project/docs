@@ -125,6 +125,14 @@ If the optional `include` argument is specified, data from the entity's cache re
 | id | The ID of the entity to retrieve | String |
 | include | List of cache record attributes to retrieve | Symbol or Array |
 
+#### Entities Are Always Cached Before They Are Returned
+
+Once the retrieval operation has completed reading and projecting the entity's events, the entity is inserted into the store's cache.
+
+If there isn't a [cache record](./entity-cache.md#cache-record) already in the cache for the entity, a new cache record will be created. If the cache does have a cache record for the entity, that record is updated.
+
+For more details on caching, see the [entity cache user guide](./entity-cache.md)
+
 #### Including Cache Record Data in the Returned Values
 
 The `include` named parameter returns selected data from the entity's cache record along with the entity.
