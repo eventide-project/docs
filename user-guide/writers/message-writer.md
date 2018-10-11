@@ -20,6 +20,7 @@ Messaging::Postgres::Write.(deposited, stream_name)
 - A writer can protect writes against concurrency using its `expected_version` argument
 - Coordination of workflows between streams can be effected using the writer's facility for replies and replying
 - Actuating a writer can be done either from its class interface or its instance interface
+- The writer provides a [diagnostic substitute](./substitute.md) that records data about the write operations actuated
 
 ## Messaging::Postgres::Write Class
 
