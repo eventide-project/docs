@@ -232,6 +232,46 @@ Stream version of the stream identified by the `id` argument and the store's dec
   </p>
 </div>
 
+## Retrieval Workflow
+
+The following is done by the store and it's caches when an entity is retrieved:
+
+1. Retrieval by ID is actuated by using either the store's `fetch`, `get`, or `get_version` method.
+2. The in-memory, internal cache is checked for a cache record for the entity ID.
+3. If the cache record is found, the entity and the version number are retrieved from the cache.
+4. A stream reader retrieves and enumerates any events that may have been written since the entity was last cached, based on the version number that is cached with the entity.
+5. Any new events are projected on to the entity.
+6. The cache is updated with the updated entity and the updated entity version.
+7. The entity is returned to the caller.
+
+### When There Is No Cache Record
+
+When there is no cache record found in step #2 (above), the following alternative flow happens:
+
+1. Retrieval by ID is actuated by using either the store's `fetch`, `get`, or `get_version` method.
+2. The in-memory, internal cache is checked for a cache record for the entity ID.
+3. No cache record is found.
+4. If the store's snapshotting is configured, the entity's snapshot will be retrieved from the external snapshot storage.
+5. The retrieved snapshot and the entity version of the snapshot is inserted into the internal, in-memory cache.
+6. A stream reader retrieves and enumerates any events that may have been written since the entity was last cached, based on the version number that is cached with the entity.
+7. Any new events are projected on to the entity.
+8. The cache is updated with the updated entity and the updated entity version.
+9. The entity is returned to the caller.
+
+### When There Is No Cache Record and No Snapshot
+
+When neither a cache record is in the internal, in-memory cache _and_ there is no snapshot stored (or if the store's optional snapshotting is not configured), the following flow happens:
+
+1. Retrieval by ID is actuated by using either the store's `fetch`, `get`, or `get_version` method.
+2. The in-memory, internal cache is checked for a cache record for the entity ID.
+3. No cache record is found.
+4. If the store's snapshotting is configured, an attempt to retrieve the entity's snapshot is made.
+5. There is no snapshot found.
+6. A stream reader retrieves and enumerates any events that may have been written since the entity was last cached, based on the version number that is cached with the entity.
+7. Any new events are projected on to the entity.
+8. The cache is updated with the updated entity and the updated entity version.
+9. The entity is returned to the caller.
+
 ## Defining an Entity Store
 
 An entity store requires the declaration of:
