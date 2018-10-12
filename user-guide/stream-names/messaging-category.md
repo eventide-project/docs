@@ -4,8 +4,6 @@
 
 The `Messaging::Category` provides the `category` class macro to the class that includes it
 
-[View Source](https://github.com/eventide-project/messaging/blob/master/lib/messaging/category.rb)
-
 ## Declaring the Category
 
 Declares the category that a class will use predominantly when composing stream names.

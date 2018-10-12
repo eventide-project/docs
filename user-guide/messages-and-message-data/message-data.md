@@ -14,13 +14,9 @@ There are two implementations of `MessageData`: `MessageStore::MessageData::Writ
 
 The `MessageStore::MessageData` module is the generalized implementation that is common to both specific implementations. Both the `MessageStore::MessageData::Write` class and the `MessageStore::MessageData::Read` class include the `MessageStore::MessageData` module.
 
-[View Source](https://github.com/eventide-project/message-store/blob/master/lib/message_store/message_data.rb)
-
 ## MessageData::Read Class
 
 The `MessageStore::MessageData::Read` class is the implementation of the `MessageStore::MessageData` module that is the result of reading a message from the message store.
-
-[View Source](https://github.com/eventide-project/message-store/blob/master/lib/message_store/message_data/read.rb)
 
 ### Attributes
 
@@ -40,8 +36,6 @@ The `MessageStore::MessageData::Read` class is the implementation of the `Messag
 The `MessageStore::MessageData::Write` class is the implementation of the `MessageStore::MessageData` module that is used to write a message to the message store.
 
 The `Write` implementation of `MessageData` inevitably has fewer attributes than the `Read` implementation because some of a persisted message's attributes are not known until the message data is written to the store.
-
-[View Source](https://github.com/eventide-project/message-store/blob/master/lib/message_store/message_data/write.rb)
 
 ### Attributes
 
