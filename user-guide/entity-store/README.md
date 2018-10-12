@@ -234,7 +234,7 @@ Stream version of the stream identified by the `id` argument and the store's dec
 
 ## Retrieval Workflow
 
-The following is done by the store and it's caches when an entity is retrieved:
+The following is done by the store and its caches when an entity is retrieved:
 
 1. Retrieval by ID is actuated by using either the store's `fetch`, `get`, or `get_version` method.
 2. The in-memory, internal cache is checked for a cache record for the entity ID.
