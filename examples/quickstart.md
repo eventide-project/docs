@@ -89,13 +89,13 @@ With Postgres already running, from the command line, run:
 bundle exec evt-pg-create-db
 ```
 
-Form more background on the Postgres message store database, you can explore the SQL scripts at:
+For more background on the Postgres message store database, you can explore the SQL scripts at:
 
 https://github.com/eventide-project/message-store-postgres/tree/master/database
 
 ## Test the Database Connection
 
-The quickstart project includes a Ruby file that creates a Session object, and executes an inert SQL command.
+The quickstart project includes a Ruby file that creates a Session object, and executes an inert SQL command to test the connection.
 
 If the connection is made, the script will print: "Connected to the database"
 
@@ -117,7 +117,7 @@ ruby demos/write_and_read.rb
 
 ## List the Messages in the Message Store Database
 
-Now that a message has been added to the message store, you can list the contents of the message store using a command line tool included with the Eventide toolkit.
+Now that a message has been added to the message store, you can list the contents of the message store using a command line tool that is included with the Eventide toolkit.
 
 From the command line, run:
 
@@ -129,7 +129,7 @@ bundle exec evt-pg-list-messages
 
 There is no tool purpose-built for removing messages from the message store. However, by recreating the message store database, you can effect the same outcome.
 
-You can recreate the message store database using a command line tool that is  included with the Eventide toolkit.
+You can recreate the message store database using a command line tool that is included with the Eventide toolkit.
 
 From the command line, run:
 
