@@ -30,7 +30,7 @@ module.exports = {
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Writers', link: '/user-guide/writers/' },
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
-          { text: 'Entity Store', link: '/user-guide/entity-store/' },
+          { text: 'Entity Store and Cache', link: '/user-guide/entity-store/' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
@@ -153,7 +153,7 @@ module.exports = {
       ],
       '/user-guide/entity-store/': [
         {
-          title: 'Entity Store',
+          title: 'Entity Store and Cache',
           collapsable: false,
           children: [
             '',

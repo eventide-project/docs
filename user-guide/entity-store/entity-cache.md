@@ -203,13 +203,15 @@ export ENTITY_CACHE_SCOPE=exclusive
 
 ## Clearing the In-Memory Cache
 
-The entity cache is never cleared in an operational system. Once an entity is inserted into the entity cache, it remains there until the Ruby process that the cache is running in is terminated.
+The entity cache is never cleared in an operational system. Once an entity is inserted into the entity cache, it remains there until the Ruby process that the cache is running in is terminated, or until a cache record is explicitly removed using the internal store's `delete` method.
 
 Because services are restarted for upgrades or other maintenance and operational reasons, entity caches are typically cleared on a sufficiently-regular basis such that memory utilization does not become an issue.
 
 However, long-lived services that are very stable and have no maintenance or operational reasons to be restarted will accumulate cache records in-memory indefinitely. In practice, this is usually not an issue and can be counteracted easily with system-level process monitoring tools that simply restarts a service when it reaches a given memory consumption threshold.
 
-This is a perfectly safe operation because services are designed to be both autonomous and idempotent as a matter of course, and the [component host](/user-guide/component-host.md) infrastructure does service shutdown in a safe and graceful way. If a service is either not autonomous or idempotent, then serious malfunctions will be evident long before memory consumption becomes an issue.
+This is a perfectly safe operation because services are designed to be both autonomous and idempotent as a matter of course, and the [component host](/user-guide/component-host.md) infrastructure does service shutdown in a safe and graceful way.
+
+If a service is either not autonomous or not idempotent, then serious malfunctions will be evident long before memory consumption becomes an issue.
 
 ## Constructing an Entity Cache
 
