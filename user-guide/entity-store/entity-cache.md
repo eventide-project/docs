@@ -99,7 +99,7 @@ The cache record corresponding to the ID, or `nil` if no cache record is found.
 
 <div class="note custom-block">
   <p>
-    Note: If the external <a href="./snapshotting.md">snapshot store</a> is configured, and if no cache record is found in the internal cache, a retrieval of the latest snapshot is actuated. If a snapshot is retrieved, it is inserted into the cache, and subsequently returned to the caller of the <code>get</code> method.
+    Note: If the <a href="./snapshotting.html">external snapshot store</a> is configured, and if no cache record is found in the internal cache, a retrieval of the latest snapshot is actuated. If a snapshot is retrieved, it is inserted into the cache, and subsequently returned to the caller of the <code>get</code> method.
   </p>
 </div>
 

@@ -426,6 +426,28 @@ class SomeStore
 end
 ```
 
+## Deleting Cache Records from the Store's Internal Cache
+
+``` ruby
+delete_cache_record(id)
+```
+
+**Returns**
+
+Returns the cache record that corresponds to the ID, or `nil` if there is no cache record for the ID.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| id | The entity ID of the cache record being deleted | String |
+
+<div class="note custom-block">
+  <p>
+    Note: Deleting the cache record from the store's <a href="./entity-cache.html">internal cache</a> has no effect on any entity snapshots that have been recorded. If snapshots have been recorded, deleting the cache record from the internal cache does not delete the snapshot from the <a href="./snapshotting.html">external snapshot store</a>.
+  </p>
+</div>
+
 ## Constructing Entity Stores
 
 Entity stores can be constructed in one of two ways:
