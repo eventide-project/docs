@@ -6,7 +6,7 @@ When an entity is "retrieved", the events in its event stream are read and proje
 
 Each time an entity is retrieved, the resulting entity is recorded in a cache. Any subsequent retrieval of the entity requires that only the events recorded since the previous retrieval are read and projected onto the entity.
 
-As a further optimization, to avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache entry for it, the latest snapshot will be retrieved and cached before the latest events are read and projected.
+As a further optimization, to avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache entry for it, the latest [snapshot](./snapshotting.md) will be retrieved and cached before the latest events are read and projected.
 
 The entity cache is composed of two parts: the in-memory cache that stores any entity retrieved by a its store, and the on-disk persistent cache of entity snapshots that are used to create an entity's cache record if one is not already present in the cache at the time of the retrieval.
 
@@ -22,7 +22,7 @@ The entity cache is composed of two parts: the in-memory cache that stores any e
 - Caches are not shared between stores
 - The cache data lifecycle can last for the life of the Ruby process, the life of the current thread, or the just life of the cache object itself
 - Entities are not cleared from the cache once they are inserted into it
-- The cache includes the in-memory _internal_ cache, and an optional _external_ entity snapshot writer
+- The cache is made of two stores: the in-memory _internal_ cache, and an optional _external_ entity [snapshot](./snapshotting.md) writer and reader
 - The on-disk snapshot of an entity is only retrieved when an entity retrieval is actuated and there is no existing cache record for the entity in the cache
 
 ## Cache Record
@@ -99,9 +99,45 @@ The cache record corresponding to the ID, or `nil` if no cache record is found.
 
 <div class="note custom-block">
   <p>
-    Note: If the external snapshot store is configured, and if no cache record is found in the internal cache, a retrieval of the latest snapshot is actuated. If a snapshot is retrieved, it is inserted into the cache, and subsequently returned to the caller of the <code>get</code> method.
+    Note: If the external <a href="./snapshotting.md">snapshot store</a> is configured, and if no cache record is found in the internal cache, a retrieval of the latest snapshot is actuated. If a snapshot is retrieved, it is inserted into the cache, and subsequently returned to the caller of the <code>get</code> method.
   </p>
 </div>
+
+## Deleting Cache Records from the Internal Store
+
+``` ruby
+delete(id)
+```
+
+**Returns**
+
+Returns the cache record that corresponds to the ID, or `nil` if there is no cache record for the ID.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| id | The entity ID of the cache record being deleted | String |
+
+## Counting Cache Records in the Internal Store
+
+``` ruby
+count()
+```
+
+**Returns**
+
+Returns the count of records in the internal store.
+
+## Determining Whether the Cache's Internal Store Has Any Records
+
+``` ruby
+empty?()
+```
+
+**Returns**
+
+Returns `false` if the internal store has any cache records, and `true` if the internal store has no records.
 
 ## Scoping
 
