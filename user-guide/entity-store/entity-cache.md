@@ -6,9 +6,9 @@ When an entity is "retrieved", the events in its event stream are read and proje
 
 Each time an entity is retrieved, the resulting entity is recorded in a cache. Any subsequent retrieval of the entity requires that only the events recorded since the previous retrieval are read and projected onto the entity.
 
-As a further optimization, to avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache entry for it, the latest [snapshot](./snapshotting.md) will be retrieved and cached before the latest events are read and projected.
-
 The entity cache is composed of two parts: the in-memory cache that stores any entity retrieved by a its store, and the on-disk persistent cache of entity snapshots that are used to create an entity's cache record if one is not already present in the cache at the time of the retrieval.
+
+To avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache record in the in-memory cache for it, the latest snapshot will be retrieved and inserted into the in-memory cached before the latest events are read and projected.
 
 <div class="note custom-block">
   <p>
@@ -24,6 +24,15 @@ The entity cache is composed of two parts: the in-memory cache that stores any e
 - Entities are not cleared from the cache once they are inserted into it
 - The cache is made of two stores: the in-memory _internal_ cache, and an optional _external_ entity [snapshot](./snapshotting.md) writer and reader
 - The on-disk snapshot of an entity is only retrieved when an entity retrieval is actuated and there is no existing cache record for the entity in the cache
+
+## EntityCache Class
+
+The `EntityCache` class is a concrete class from the [`EntityCache` library](../libraries.md#entity-cache) and namespace.
+
+The `EntityCache` class provides:
+
+- The `get` method for retrieving a cache record by the cached entity's ID
+- The `put` method for inserting an entity and its caching metadata into the cache
 
 ## Cache Record
 
