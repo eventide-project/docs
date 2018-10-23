@@ -137,7 +137,7 @@ For more details on caching, see the [entity cache user guide](./entity-cache.md
 
 The `include` named parameter returns selected data from the entity's cache record along with the entity.
 
-It's important to know that the cache record is updated _before_ any data is returned.
+It's important to note that the cache record is updated _before_ any data is returned.
 
 The most common use of the `include` parameter is to retrieve the entity's version along with the entity.
 

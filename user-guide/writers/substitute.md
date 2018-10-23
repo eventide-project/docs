@@ -394,7 +394,7 @@ Messaging::Write::Substitute.build()
 
 **Returns**
 
-Instance of Messaging::Write::Substitute::Write class.
+Instance of the `Messaging::Write::Substitute::Write` class.
 
 ### Via the `dependency` Macro
 
