@@ -434,6 +434,10 @@ class SomeStore
 end
 ```
 
+::: tip
+For more information about snapshotting, see the [snapshotting user guide](./snapshotting.md).
+:::
+
 ## Deleting Cache Records from the Store's Internal Cache
 
 ``` ruby
