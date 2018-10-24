@@ -21,7 +21,7 @@ class Store
   entity Account
   category :account
   projection Projection
-  reader MessageStore::Postgres::Read
+  reader MessageStore::Postgres::Read, batch_size: 1000
 
   # Snapshotting is optional and can be omitted
   snapshot EntitySnapshot::Postgres, interval: 100
@@ -365,7 +365,7 @@ some_store.projection_class
 ### The reader Macro
 
 ``` ruby
-self.reader(reader_class)
+self.reader(reader_class, batch_size: 1000)
 ```
 
 **Parameters**
@@ -373,12 +373,20 @@ self.reader(reader_class)
 | Name | Description | Type |
 | --- | --- | --- |
 | reader_class | Class of the reader that the store uses to read the event stream of the entity being retrieved | Class |
+| batch_size | Number of events at-a-time to be read from the message store | Integer |
 
 The macro defines the `reader_class` instance method on the entity store that returns the class passed to the macro.
 
 ``` ruby
 some_store.reader_class
 # => MessageStore::Postgres::Read
+```
+
+The macro also defines the `reader_batch_size` instance method on the entity store that returns the batch size passed to the macro.
+
+``` ruby
+some_store.reader_batch_size
+# => 1000
 ```
 
 ## Incomplete Store Definition
