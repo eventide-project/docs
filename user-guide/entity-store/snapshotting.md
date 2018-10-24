@@ -14,6 +14,7 @@ The interval between an entity's snapshots is measured in number of events read 
 - An entity is transformed into JSON when recorded into its snapshot stream
 - A JSON snapshot is transformed into an entity instance when retrieving a snapshotted entity from its snapshot stream
 - If an entity doesn't implement the protocol explicitly, it will not be able to be converted to and from JSON for snapshotting (there is no default implementation)
+- While many external services may read an entity's stream and its snapshots, only the service to which an entity is native should write snapshots
 - Attribute names in the raw JSON representation are converted between camelCase and underscore_case when writing and reading snapshots
 - The interval between an entity's snapshots is measured in number of events read and projected between snapshots
 - The snapshot interval is tuned based on the throughput of the particular service hosting it, so there is no default snapshot interval
@@ -174,18 +175,15 @@ Deleting snapshot records is a matter of using a Postgres client to execute the 
 Only delete snapshot records if you are absolutely confident in your SQL skills. It's an easy operation to perform with even rudimentary SQL skills, but a mistake in the SQL command's condition can cause the accidental deletion of messages other than snapshot records. While deleting snapshot records is relatively harmless, deleting any other kinds of messages can be catastrophic.
 :::
 
-### Ensure Only One Writer to Snapshot Streams
-
-In certain scenarios and topologies, reusing [entity store](./) classes can be a useful choice. This must be done with great care, as it's possible to have two processes or services writing to the same snapshot stream.
-
-In practice, it's recommended that entity store classes that are configured for snapshotting not be shared by multiple processes or services.
-
-<!--
 ## ReadOnly Snapshot
+
+::: danger
+While many external services may read an entity's stream and its snapshots, only the service to which an entity is native should write snapshots.
+:::
 
 In the case where a service is required to project an entity stream from another service, it's useful to _read_ that entity's snapshot stream so that the entire stream does not have to be projected.
 
-It's critical in these cases that the service does not write to that foreign service's snapshot stream while projecting the foreign service's entity.
+It's critical in these cases that the service does not write to that external service's snapshot stream while projecting the foreign service's entity.
 
 In such a case, the store can be configured with a read only snapshot. The read only snapshot will not write snapshots, but it will read them.
 
@@ -201,7 +199,6 @@ class Store
   snapshot EntitySnapshot::Postgres::ReadOnly
 end
 ```
--->
 
 ## Constructing Entity Snapshots
 
