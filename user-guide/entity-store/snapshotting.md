@@ -181,9 +181,9 @@ Only delete snapshot records if you are absolutely confident in your SQL skills.
 While many external services may read an entity's stream and its snapshots, only the service to which an entity is native should write snapshots.
 :::
 
-In the case where a service is required to project an entity stream from another service, it's useful to _read_ that entity's snapshot stream so that the entire stream does not have to be projected.
+In the case where a service projects an entity stream from another service, it's useful to _read_ that entity's snapshot stream so that the entire stream does not have to be projected.
 
-It's critical in these cases that the service does not write to that external service's snapshot stream while projecting the foreign service's entity.
+It's critical in these cases that the service does not write to that external service's snapshot stream while projecting the external service's entity.
 
 In such a case, the store can be configured with a read only snapshot. The read only snapshot will not write snapshots, but it will read them.
 
