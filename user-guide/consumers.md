@@ -89,9 +89,7 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
-
-| position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
-
+| identifier | Qualifier appended to the consumer's position stream name | String |
 | condition | SQL condition fragment that constrains the messages of the stream that are read |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
@@ -232,7 +230,7 @@ In general, it's not necessary to construct a consumer. The general use case of 
 A consumer can be constructed with its `build` method.
 
 ``` ruby
-self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, condition: nil, settings: nil)
+self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, condition: nil, settings: nil)
 ```
 
 **Parameters**
@@ -243,5 +241,6 @@ self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
+| identifier | Qualifier appended to the consumer's position stream name | String |
 | condition | SQL condition fragment that constrains the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
