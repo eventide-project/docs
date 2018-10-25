@@ -77,10 +77,8 @@ SomeConsumer.start('someStream')
   </p>
 </div>
 
-A consumer's `start` method offers a number of parameters to control its timing.
-
 ``` ruby
-self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, condition: nil, settings: nil)
+self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, condition: nil, settings: nil)
 ```
 
 **Parameters**
@@ -91,6 +89,9 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
+
+| position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
+
 | condition | SQL condition fragment that constrains the messages of the stream that are read |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
@@ -196,11 +197,11 @@ At an interval specified by the `position_update_interval`, the global position 
 
 By default, the position is written every 100 messages. The value in controlled using the consumer's `position_update_interval`.
 
-### Position Stream and the Identifier Macro
+### Position Stream and the Consumer Identifier
 
 The consumer writes the position to a stream derived from the name of the stream that a consumer is started with. For example, if a consumer is started with a stream named `account:command`, then the position is recorded in a stream named `account:command+position`.
 
-The name of the position stream can be specialized by specifying a stream name qualifier with the `identifier` macro.
+The name of the position stream can be specialized by specifying a stream name qualifier with the `identifier` macro, or with the `identifier` parameter of the start method.
 
 ``` ruby
 class Consumer
@@ -214,9 +215,11 @@ end
 Consumer.start('account:command')
 ```
 
-In the above example, the consumer's position stream would be `account:command-someConsumer`.
+In the above example, the consumer's position stream would be `account:command+position-someConsumer`.
 
 Consumers can also be assigned an identifier when they are started. If an identifier macro is also declared on the consumer class, the one given when starting the consumer has precedence over the one declared on the consumer class.
+
+In the following example, the consumer's position stream would be `account:command+position-otherIdentifier`.
 
 ``` ruby
 Consumer.start('account:command', identifier: 'otherIdentifier')
