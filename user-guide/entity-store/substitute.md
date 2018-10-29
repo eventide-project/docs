@@ -193,11 +193,6 @@ Version of the entity identified by the `id` argument, or the `:no_stream` symbo
 | id | The ID of the entity whose version to retrieve | String |
 
 
-
-
-
-
-<!-- TODO -->
 ## Constructing an Entity Store Substitute
 
 The entity store substitute can be constructed in one of two ways:
