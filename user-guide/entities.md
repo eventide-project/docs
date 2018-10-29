@@ -67,6 +67,20 @@ end
 - Entities can be periodically snapshotted to disk
 - An entity has no external side effects and no external dependencies
 
+## Ensuring Idempotence
+
+Idempotence is the quality of a message-based system that ensures that messages that have already been processed won't be processed again.
+
+Entities are the pivotal element in a design that is idempotent.
+
+In the example above, the `sequence` attribute and the `processed?` method are the mechanisms of idempotence protection. Handlers use these mechanisms to decide whether to process a message or to ignore it.
+
+<div class="note custom-block">
+  <p>
+    Note: A discussion of the implementation of idempotence is beyond the scope of this user guide. The <a href="/examples/example-projects.html#account-component">Account Component example</a> demonstrates a complete implementation of idempotence protections.
+  </p>
+</div>
+
 ## See Also
 
 - [Projection](./projection.md)
