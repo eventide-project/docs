@@ -29,6 +29,7 @@ module.exports = {
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Writers', link: '/user-guide/writers/' },
+          { text: 'Entities', link: '/user-guide/entities.md' },
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
           { text: 'Entity Store and Cache', link: '/user-guide/entity-store/' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
