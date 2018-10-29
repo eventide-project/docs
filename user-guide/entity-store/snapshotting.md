@@ -17,6 +17,7 @@ The interval between an entity's snapshots is measured in number of events read 
 - While many external services may read an entity's stream and its snapshots, only the service to which an entity is native should write snapshots
 - Attribute names in the raw JSON representation are converted between camelCase and underscore_case when writing and reading snapshots
 - The interval between an entity's snapshots is measured in number of events read and projected between snapshots
+- Snapshots are not recorded exactly on the snapshot interval boundary
 - The snapshot interval is tuned based on the throughput of the particular service hosting it, so there is no default snapshot interval
 - There is no automatic disposal of previous snapshots, but it is relatively trivial to clean snapshot streams if it ever becomes an issue.
 
