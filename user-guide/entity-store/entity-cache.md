@@ -2,7 +2,7 @@
 
 The [entity store](./) uses the entity cache to optimize the retrieval of entities.
 
-When an entity is "retrieved", the events in its event stream are read and projected onto the entity.
+When an [entity](/user-guide/entities.md) is "retrieved", the events in its event stream are read and projected onto the entity.
 
 Each time an entity is retrieved, the resulting entity is recorded in a cache. Any subsequent retrieval of the entity requires that only the events recorded since the previous retrieval are read and projected onto the entity.
 

@@ -1,6 +1,6 @@
 # Snapshotting
 
-The entity snapshotting implementation is the second level of storage of the [entity cache](./entity-cache.md) that periodically records an entity's current state to a snapshot stream.
+The [entity](/user-guide/entities.md) snapshotting implementation is the second level of storage of the [entity cache](./entity-cache.md) that periodically records an entity's current state to a snapshot stream.
 
 Snapshots are an optimization that helps avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started). If an entity is retrieved and there's no cache record in the in-memory cache for it, the latest snapshot will be retrieved and inserted into the in-memory cached before the latest events are read and projected.
 

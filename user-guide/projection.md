@@ -5,7 +5,7 @@ sidebarDepth: 0
 
 # Entity Projection
 
-An entity receives its data from events. Each event may have some piece of data to contribute to the entity's state. Multiple events are typically involved in providing an entity with all of its state.
+An [entity](./entities.md) receives its data from events. Each event may have some piece of data to contribute to the entity's state. Multiple events are typically involved in providing an entity with all of its state.
 
 The entity projection is the mechanism that affects an entity with an event's data. The projection _applies_ the event to the entity.
 
@@ -134,7 +134,7 @@ end
 
 ### Via the entity Accessor
 
-By default, the entity that the projection is constructed with can be accessed using the `entity` method.
+By default, the [entity](./entities.md) that the projection is constructed with can be accessed using the `entity` method.
 
 ``` ruby
 entity()
