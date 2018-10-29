@@ -52,7 +52,7 @@ class Account
 
   def processed?(message_sequence)
     return false if sequence.nil?
-    sequence >= position
+    message_sequence <= sequence
   end
 end
 ```
