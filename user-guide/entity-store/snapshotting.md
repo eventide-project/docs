@@ -135,7 +135,17 @@ The snapshot interval is assigned using the [entity store's `snapshot` macro](./
 
 The interval is an integer that specified how often a snapshot should be recorded. The interval is measured in _number of events projected before recording a snapshot_.
 
-A snapshot interval of 100 would result in a snapshot of the entity being recorded after every 100 events projected by the store.
+A snapshot interval of 100 would result in a snapshot of the entity being recorded after _at least_ 100 events projected by the store.
+
+### When Snapshots Are Recorded
+
+Snapshots aren't guaranteed to be recorded precisely on the snapshot interval. The snapshot interval should be considered a _minimum_ interval.
+
+Snapshots are only recorded once a [store](./) has completed recording all outstanding events.
+
+If the snapshot interval is set to 100, and there are more than 100 outstanding events that have not been projected yet, than all of the outstanding events will be projected before the snapshot is written.
+
+If the snapshot interval is set to 100, and there are less than 100 outstanding events that have not been projected yet, than all of the outstanding events will be projected, but no snapshot will be written.
 
 ### No Default Snapshot Interval Value
 
