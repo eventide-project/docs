@@ -57,7 +57,7 @@ class Account
 end
 ```
 
-## Facts
+## Entity Facts
 
 - Entities are core business logic
 - An entity can be any kind of object or data structure
