@@ -30,7 +30,7 @@ module.exports = {
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Writers', link: '/user-guide/writers/' },
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
-          { text: 'Entity Store and Cache', link: '/user-guide/entity-store/' },
+          { text: 'Entity Store, Caching, Snapshotting', link: '/user-guide/entity-store/' },
           { text: 'Entities', link: '/user-guide/entities.md' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
@@ -154,7 +154,7 @@ module.exports = {
       ],
       '/user-guide/entity-store/': [
         {
-          title: 'Entity Store and Cache',
+          title: 'Entity Store, Caching, Snapshotting',
           collapsable: false,
           children: [
             '',
