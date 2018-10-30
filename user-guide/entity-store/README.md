@@ -4,7 +4,7 @@ An entity store is the primary means of retrieving [entities](/user-guide/entiti
 
 Entity data is stored as events in an [event stream](/glossary.md#event-stream). Each entity has it's own stream. When an entity is "retrieved", its events are applied to the entity by a projection.
 
-An entity store combines a [projection](/user-guide/projection.md), a [reader](/user-guide/reader.md), an temporary in-memory [cache](./entity-cache.md), and an durable on-disk cache to provide a simple and efficient interface for retrieving entities.
+An entity store combines a [projection](/user-guide/projection.md), a [reader](/user-guide/readers.md), an temporary in-memory [cache](./entity-cache.md), and an durable on-disk cache to provide a simple and efficient interface for retrieving entities.
 
 An entity's event stream is read by the reader specified by the `reader` macro, and projected by the projection specified by the `projection` macro. The entity returned from a retrieval operation is an instance of the class specified by the `entity` macro. The `category` macro declares the [category](/glossary.md#category) of the stream name that will be read when a retrieval operation is invoked.
 
