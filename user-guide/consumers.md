@@ -39,6 +39,7 @@ end
 - Messages are retrieved in batches whose size can be configured
 - When there are no messages retrieved the consumer polls the message store
 - The polling interval is configurable
+- A consumer can be configured with a _condition_ that filters the messages retrieved
 
 ## Consumer::Postgres Module
 

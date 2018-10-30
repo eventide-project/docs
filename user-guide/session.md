@@ -17,50 +17,16 @@ A session controls the lifecycle of a connection to a message store database, an
 
 ## MessageStore::Postgres::Session Class
 
-The `MessageStore::Postgres::Session` class is the implementation of the session.
+The `Session` class is a concrete class from the [`MessageStore::Postgres` library](../libraries.md#message-store-postgres) and namespace.
 
-[View on GitHub](https://github.com/eventide-project/message-store-postgres/blob/master/lib/message_store/postgres/session.rb)
+The `Session` class provides:
 
-## Constructing a Session
-
-Handlers can be constructed in one of two ways
-
-- Via the initializer
-- Via the constructor
-
-### Via the Initializer
-
-``` ruby
-Session.new()
-```
-
-**Returns**
-
-Instance of the session.
-
-By constructing a session using the initializer, the session's settings are not set to operational values. A session instance in this state must still be assigned with operational connection initialization data before a database connection can be made.
-
-### Via the Constructor
-
-``` ruby
-build(settings: MessageStore::Postgres::Settings.instance)
-```
-
-The constructor not only instantiates the session, but also sets the session's settings to operational values.
-
-**Returns**
-
-Instance of the session.
-
-**Parameters**
-
-| Name | Description | Type |
-| --- | --- | --- |
-| settings | A settings object containing connection initialization data | Settings |
-
-``` ruby
-session = Session.build()
-```
+- The `execute` method for sending commands to the [message store](/user-guide/message-store/)
+- The `transaction` method for executing commands in an atomic transaction
+- The `open`/`connect` methods for connecting to the message store
+- The `close` method for terminating the connection to the message store
+- The `connected`/`open?` methods for determining if the connection is open
+- The `reset` method for resetting the connection
 
 ## Executing a SQL Command
 
@@ -208,3 +174,44 @@ The `Session` class provides the following settings attributes for controlling t
 - `service`
 
 The connection initialization data reflects the attributes of the `PG` library's `Connection` class. For more details, see: [https://deveiate.org/code/pg/PG/Connection.html#method-c-new](https://deveiate.org/code/pg/PG/Connection.html#method-c-new).
+
+## Constructing a Session
+
+Handlers can be constructed in one of two ways
+
+- Via the initializer
+- Via the constructor
+
+### Via the Initializer
+
+``` ruby
+Session.new()
+```
+
+**Returns**
+
+Instance of the session.
+
+By constructing a session using the initializer, the session's settings are not set to operational values. A session instance in this state must still be assigned with operational connection initialization data before a database connection can be made.
+
+### Via the Constructor
+
+``` ruby
+build(settings: MessageStore::Postgres::Settings.instance)
+```
+
+The constructor not only instantiates the session, but also sets the session's settings to operational values.
+
+**Returns**
+
+Instance of the session.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| settings | A settings object containing connection initialization data | Settings |
+
+``` ruby
+session = Session.build()
+```
