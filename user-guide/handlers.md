@@ -150,7 +150,7 @@ end
 
 A handler can be actuated directly as an object, passing a message as a parameter. Direct actuation is critical for testing and exercising handlers, as it allows handlers to be exercised as plain old objects.
 
-Handlers can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the handler.
+A handler can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the handler.
 
 Handlers are implemented as _callable objects_. Actuating them is simply a matter of invoking their `call` method.
 
