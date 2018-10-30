@@ -198,6 +198,10 @@ By default, the position is written every 100 messages. The value in controlled 
 
 ### Position Stream and the Consumer Identifier
 
+::: danger
+If two consumers read the same stream, they *must* use the consumer identifier. If not, these dependent consumers will write their position records to the same stream, which will cause these consumers to skip messages that have not been processed.
+:::
+
 The consumer writes the position to a stream derived from the name of the stream that a consumer is started with. For example, if a consumer is started with a stream named `account:command`, then the position is recorded in a stream named `account:command+position`.
 
 The name of the position stream can be specialized by specifying a stream name qualifier with the `identifier` macro, or with the `identifier` parameter of the start method.
