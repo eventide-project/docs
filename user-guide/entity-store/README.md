@@ -487,7 +487,7 @@ Instance of the class that includes the `EntityStore` module.
 ### Via the Initializer
 
 ``` ruby
-self.new()
+self.initialize()
 ```
 
 **Returns**

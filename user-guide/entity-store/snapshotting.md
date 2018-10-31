@@ -238,7 +238,7 @@ Instance of the `EntitySnapshot::Postgres` class.
 ### Via the Initializer
 
 ``` ruby
-self.new(subject)
+self.initialize(subject)
 ```
 
 **Returns**

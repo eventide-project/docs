@@ -299,7 +299,7 @@ Instance of the class that includes the `Handle` module.
 ### Via the Initializer
 
 ``` ruby
-self.new()
+self.initialize()
 ```
 
 **Returns**

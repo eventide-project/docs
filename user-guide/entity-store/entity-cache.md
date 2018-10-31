@@ -265,7 +265,7 @@ cache = Write.build(
 ### Via the Initializer
 
 ``` ruby
-self.new(subject)
+self.initialize(subject)
 ```
 
 **Returns**
