@@ -215,3 +215,19 @@ Instance of the session.
 ``` ruby
 session = Session.build()
 ```
+
+## Constructing Settings and a Session from Memory Variables
+
+In cases where reading settings from a file is impractical, a settings object can be constructed directly, assigned values, and a session can be constructed from it.
+
+``` ruby
+database, host, username = get_some_connection_settings()
+
+settings = MessageStore::Postgres::Settings.new
+
+settings.dbname = database
+settings.host = host
+settings.user = username
+
+session = MessageStore::Postgres::Settings.build(settings: settings)
+```
