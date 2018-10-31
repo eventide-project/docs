@@ -329,7 +329,7 @@ Instance of the class that includes the `EntityProjection` module.
 ### Via the Initializer
 
 ``` ruby
-self.new(entity)
+self.initialize(entity)
 ```
 
 **Returns**

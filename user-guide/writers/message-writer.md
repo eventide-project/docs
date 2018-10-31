@@ -216,7 +216,7 @@ Instance of the `Messaging::Postgres::Write` class.
 ### Via the Initializer
 
 ``` ruby
-self.new()
+self.initialize()
 ```
 
 **Returns**
