@@ -223,7 +223,7 @@ In cases where reading settings from a file is impractical, a settings object ca
 ``` ruby
 database, host, username = get_some_connection_settings()
 
-settings = MessageStore::Postgres::Settings.new
+settings = MessageStore::Postgres::Settings.new()
 
 settings.dbname = database
 settings.host = host
