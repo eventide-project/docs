@@ -23,7 +23,6 @@ module.exports = {
       },
       {
         text: 'User Guide', items: [
-          { text: 'Work in Progress', link: '/user-guide/' },
           { text: 'Message Store', link: '/user-guide/message-store/' },
           { text: 'Handlers', link: '/user-guide/handlers.md' },
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
@@ -173,6 +172,15 @@ module.exports = {
           children: [
             '',
             'get-last.md'
+        }
+      ],
+      '/user-guide/logging/': [
+        {
+          title: 'Logging',
+          collapsable: false,
+          children: [
+            '',
+            'log-tags.md'
           ]
         }
       ]
