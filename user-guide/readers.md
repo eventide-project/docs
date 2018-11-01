@@ -59,9 +59,9 @@ The `Read` class provides:
 
 ## Reading a Stream
 
-A reader can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the handler.
+A reader can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the reader.
 
-Handlers are implemented as _callable objects_. Actuating them is simply a matter of invoking their `call` method.
+Readers are implemented as _callable objects_. Actuating them is simply a matter of invoking their `call` method.
 
 ### Class Actuator
 
