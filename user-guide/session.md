@@ -177,7 +177,7 @@ The connection initialization data reflects the attributes of the `PG` library's
 
 ## Constructing a Session
 
-Handlers can be constructed in one of two ways
+Sessions can be constructed in one of two ways
 
 - Via the initializer
 - Via the constructor
