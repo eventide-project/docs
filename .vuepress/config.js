@@ -36,6 +36,7 @@ module.exports = {
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
+          { text: 'Logging', link: '/user-guide/logging/' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
           { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
         ]
