@@ -197,7 +197,7 @@ By constructing a session using the initializer, the session's settings are not 
 ### Via the Constructor
 
 ``` ruby
-build(settings: MessageStore::Postgres::Settings.instance)
+self.build(settings: MessageStore::Postgres::Settings.instance)
 ```
 
 The constructor not only instantiates the session, but also sets the session's settings to operational values.
@@ -223,11 +223,13 @@ In cases where reading settings from a file is impractical, a settings object ca
 ``` ruby
 database, host, username = get_some_connection_settings()
 
-settings = MessageStore::Postgres::Settings.new()
+data = {
+  dbname: database,
+  host: host,
+  user: username
+}
 
-settings.dbname = database
-settings.host = host
-settings.user = username
+settings = MessageStore::Postgres::Settings.new(data)
 
 session = MessageStore::Postgres::Settings.build(settings: settings)
 ```
