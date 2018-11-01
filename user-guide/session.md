@@ -220,7 +220,7 @@ session = Session.build()
 
 In cases where reading settings from a file is impractical, a settings object can be constructed directly, assigned values, and a session can be constructed from it.
 
-``` ruby
+``` ruby{9}
 database, host, username = get_some_connection_settings()
 
 data = {
@@ -230,6 +230,4 @@ data = {
 }
 
 settings = MessageStore::Postgres::Settings.new(data)
-
-session = MessageStore::Postgres::Settings.build(settings: settings)
 ```
