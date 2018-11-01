@@ -401,4 +401,4 @@ The following tags _may_ be applied to log messages logged by a handler:
 
 - `data` (Applied to log lines that record the data content of a typed message or a MessageData instance)
 
-See the [logging](./logging.md#tags) user guide for more on log tags.
+See the [logging](./logging/) user guide for more on log tags.
