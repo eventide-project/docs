@@ -31,7 +31,7 @@ module.exports = {
           { text: 'Entity Store, Caching, Snapshotting', link: '/user-guide/entity-store/' },
           { text: 'Entities', link: '/user-guide/entities.md' },
           { text: 'Writers', link: '/user-guide/writers/' },
-          { text: 'Readers', link: '/user-guide/readers.md' },
+          { text: 'Readers', link: '/user-guide/readers/' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
