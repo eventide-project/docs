@@ -164,6 +164,16 @@ module.exports = {
             'substitute.md'
           ]
         }
+      ],
+      '/user-guide/readers/': [
+        {
+          title: 'Readers',
+          collapsable: false,
+          children: [
+            '',
+            'get-last.md'
+          ]
+        }
       ]
     }
   }

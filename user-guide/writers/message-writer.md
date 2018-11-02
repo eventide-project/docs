@@ -253,7 +253,7 @@ something.write
 | session | An existing [session](./session.md) object to use, rather than allowing the writer to create a new session | MessageStore::Postgres::Session |
 
 ::: tip
-See the [useful objects](../useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
+See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
 :::
 
 - - -
