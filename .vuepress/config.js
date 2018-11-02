@@ -172,6 +172,7 @@ module.exports = {
           children: [
             '',
             'get-last.md'
+          ]
         }
       ],
       '/user-guide/logging/': [
