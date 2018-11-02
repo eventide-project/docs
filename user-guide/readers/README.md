@@ -1,8 +1,3 @@
----
-sidebar: auto
-sidebarDepth: 0
----
-
 # Readers
 
 The reader is the low-level, fundamental data retrieval mechanism. It reads messages in order from a single message stream or category.
@@ -208,5 +203,5 @@ something.write
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
 ::: tip
-See the [useful objects](../useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
+See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
 :::
