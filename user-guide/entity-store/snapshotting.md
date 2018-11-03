@@ -250,3 +250,23 @@ Instance of the `EntitySnapshot::Postgres` class.
 | Name | Description | Type |
 | --- | --- | --- |
 | subject | Entity class that the snapshots are recorded for | Class |
+
+## Log Tags
+
+The following tags are applied to log messages recorded by an entity snapshot:
+
+| Tag | Description |
+| --- | --- |
+| snapshot | Applied to all log messages recorded by an entity snapshot |
+| cache | Applied to all log messages recorded by an entity snapshot |
+
+The following tags _may_ be applied to log messages recorded by an entity snapshot:
+
+| Tag | Description |
+| --- | --- |
+| get | Applied to log messages recorded while getting an entity from the snapshot store |
+| miss | Applied to log messages recorded when getting an entity from the snapshot store and the entity snapshot is not stored |
+| hit | Applied to log messages recorded when getting an entity from the snapshot store and the entity is found |
+| put | Applied to log messages recorded while putting an entity into the snapshot store |
+
+See the [logging](./logging/) user guide for more on log tags.

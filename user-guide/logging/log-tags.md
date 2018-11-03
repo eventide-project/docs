@@ -62,7 +62,57 @@ The following tags _may_ be applied to log messages recorded by an entity store:
 | entity | Applied to log messages that record the data content of an entity |
 | data | Applied to log messages that record the data content of an entity |
 
-See the [entity projection user guide](/user-guide/projection.md) for more information on entity projections.
+See the [entity store user guide](/user-guide/entity-store/) for more information on entity stores.
+
+## Entity Cache
+
+The following tags are applied to log messages recorded by an entity cache:
+
+| Tag | Description |
+| --- | --- |
+| cache | Applied to all log messages recorded by an entity cache |
+
+The following tags _may_ be applied to log messages recorded by an entity cache:
+
+| Tag | Description |
+| --- | --- |
+| get | Applied to log messages recorded while getting an entity from the cache |
+| miss | Applied to log messages recorded when getting an entity from the cache and the entity is not in the cache |
+| hit | Applied to log messages recorded when getting an entity from the cache and the entity is found in the cache |
+| put | Applied to log messages recorded while putting an entity into the cache |
+| restore | Applied to log messages recorded while restoring an entity to the cache |
+
+See the [entity cache user guide](/user-guide/entity-store/entity-cache.md) for more information on entity caches.
+
+## Entity Snapshot
+
+The following tags are applied to log messages recorded by an entity snapshot:
+
+| Tag | Description |
+| --- | --- |
+| snapshot | Applied to all log messages recorded by an entity snapshot |
+| cache | Applied to all log messages recorded by an entity snapshot |
+
+The following tags _may_ be applied to log messages recorded by an entity snapshot:
+
+| Tag | Description |
+| --- | --- |
+| get | Applied to log messages recorded while getting an entity from the snapshot store |
+| miss | Applied to log messages recorded when getting an entity from the snapshot store and the entity snapshot is not stored |
+| hit | Applied to log messages recorded when getting an entity from the snapshot store and the entity is found |
+| put | Applied to log messages recorded while putting an entity into the snapshot store |
+
+See the [entity snapshotting user guide](/user-guide/entity-store/snapshotting.md) for more information on entity snapshotting.
+
+
+
+
+
+
+
+
+
+
 
 ## Message Writer
 

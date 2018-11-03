@@ -283,3 +283,23 @@ By constructing a cache using the initializer, the cache's dependencies are not 
 ::: tip
 See the [useful objects](/user-guide/useful-objects.md#substitutes) user guide for background on inert substitutes.
 :::
+
+## Log Tags
+
+The following tags are applied to log messages recorded by an entity cache:
+
+| Tag | Description |
+| --- | --- |
+| cache | Applied to all log messages recorded by an entity cache |
+
+The following tags _may_ be applied to log messages recorded by an entity cache:
+
+| Tag | Description |
+| --- | --- |
+| get | Applied to log messages recorded while getting an entity from the cache |
+| miss | Applied to log messages recorded when getting an entity from the cache and the entity is not in the cache |
+| hit | Applied to log messages recorded when getting an entity from the cache and the entity is found in the cache |
+| put | Applied to log messages recorded while putting an entity into the cache |
+| restore | Applied to log messages recorded while restoring an entity to the cache |
+
+See the [logging](./logging/) user guide for more on log tags.
