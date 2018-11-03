@@ -185,7 +185,7 @@ Constructs an instance of the reader and assigns it to the receiver's `read` att
 
 ``` ruby
 something = Something.new
-Messaging::Postgres::Read.configure(receiver)
+Messaging::Postgres::Read.configure(something)
 
 something.write
 # => #<Messaging::Postgres::Read:0x...>

@@ -239,7 +239,7 @@ Constructs an instance of the writer and assigns it to the receiver's `write` at
 
 ``` ruby
 something = Something.new
-Messaging::Postgres::Write.configure(receiver)
+Messaging::Postgres::Write.configure(something)
 
 something.write
 # => #<Messaging::Postgres::Write:0x...>

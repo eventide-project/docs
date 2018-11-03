@@ -118,7 +118,7 @@ Constructs an instance of the `Get::Last` and assigns it to the receiver's `get_
 
 ``` ruby
 something = Something.new
-Messaging::Postgres::Get::Last.configure(receiver)
+Messaging::Postgres::Get::Last.configure(something)
 
 something.get_last
 # => #<Messaging::Postgres::Get::Last:0x...>
