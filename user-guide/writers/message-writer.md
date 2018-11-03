@@ -257,6 +257,25 @@ something.write
 See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
 :::
 
+## Log Tags
+
+The following tags are applied to log messages written by a message writer:
+
+| Tag | Description |
+| --- | --- |
+| write | Applied to all log messages written by a message writer |
+| messaging | Applied to all log messages written inside the `Messaging` namespace |
+
+The following tags _may_ be applied to log messages logged by a handler:
+
+| Tag | Description |
+| --- | --- |
+| message | Applied to log messages that address the handling of a typed message |
+| message_data | Applied to log messages that address the handling of a MessageData instance |
+| data | Applied to log lines that record the data content of a typed message or a MessageData instance |
+
+See the [logging](./logging/) user guide for more on log tags.
+
 - - -
 **Related**
 
