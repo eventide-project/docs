@@ -20,3 +20,7 @@ The following tags _may_ be applied to log messages logged by a handler:
 | message | Applied to log messages that address the handling of a typed message |
 | message_data | Applied to log messages that address the handling of a MessageData instance |
 | data | Applied to log lines that record the data content of a typed message or a MessageData instance |
+
+## Message Writer
+
+
