@@ -6,13 +6,15 @@ Some modules within a library may use more specific tags in addition to the libr
 
 ## Handlers
 
-The following tags are applied to log messages logged by a handler:
+The following tags are applied to log messages written by a handler, as well as all implementation in the `Messaging` namespace:
 
 - `handle`
 - `messaging`
 
 The following tags _may_ be applied to log messages logged by a handler:
 
-- `message` (Applied to log messages that address the handling of a typed message)
-- `message_data` (Applied to log messages that address the handling of a MessageData instance)
-- `data` (Applied to log lines that record the data content of a typed message or a MessageData instance)
+| Tag | Description |
+| --- | --- |
+| message | Applied to log messages that address the handling of a typed message |
+| message_data | Applied to log messages that address the handling of a MessageData instance |
+| data | Applied to log lines that record the data content of a typed message or a MessageData instance |
