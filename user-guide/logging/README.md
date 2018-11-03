@@ -242,7 +242,7 @@ The `fatal` level is used only when a service is terminating due to an error. It
 
 It's common for `trace`, `debug`, and `info` level log messages to be accompanied by additional log messages at the same level that have the `data` tag. These messages usually log a method's input data (in the case of `trace`), or its output data (in the case of `info` and `debug`).
 
-### Example
+### Standards Example
 
 ``` ruby
 class Something
