@@ -172,18 +172,24 @@ Resumes a process paused with the TSTP signal.
 
 The following tags are applied to log messages logged by component host:
 
-- `component_host`
+| Tag | Description |
+| --- | --- |
+| component_host | Applied to all log messages written inside the `ComponentHost` namespace, with one exception (see below) |
+
+::: tip
+The component host writes some log messages that have no tags, meaning that if the log level is sufficient, they are always displayed, regardless of the user's configuration of log tags.
+:::
 
 The following tags _may_ be applied to log messages logged by component host:
 
-- `actor` (Applied to messages that pertain to individual [actors](https://github.com/ntl/actor))
-- `component` (Applied to messages that pertain to a component)
-- `crash` (Applied to messages that convey information about a crash)
-- `lifecycle` (Applied to messages that pertain to the lifecycle of a particular actor)
-- `signal` (Applied to messages that indicate the handling of operating system signals)
-- `start` (Applied to messages that pertain to the starting of an actor)
-- `stop` (Applied to messages that pertain to the stopping of an actor)
-
-The component host also writes log messages that have no tags, meaning that if the log level is sufficient, they are always displayed, regardless of the user's configuration of log tags.
+| Tag | Description |
+| --- | --- |
+| `actor` | Applied to messages that pertain to individual [actors](https://github.com/ntl/actor) |
+| `component` | Applied to messages that pertain to a component |
+| `crash` | Applied to messages that convey information about a crash |
+| `lifecycle` | Applied to messages that pertain to the lifecycle of a particular actor |
+| `signal` | Applied to messages that indicate the handling of operating system signals |
+| `start` | Applied to messages that pertain to the starting of an actor |
+| `stop` | Applied to messages that pertain to the stopping of an actor |
 
 See the [logging](./logging.md#tags) user guide for more on log tags.
