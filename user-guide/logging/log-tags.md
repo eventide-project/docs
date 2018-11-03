@@ -8,8 +8,10 @@ Some modules within a library may use more specific tags in addition to the libr
 
 The following tags are applied to log messages written by a handler, as well as all implementation in the `Messaging` namespace:
 
-- `handle`
-- `messaging`
+| Tag | Description |
+| --- | --- |
+| handle | Applied to all log messages written by a handler |
+| messaging | Applied to all log messages written inside the `Messaging` namespace |
 
 The following tags _may_ be applied to log messages logged by a handler:
 
