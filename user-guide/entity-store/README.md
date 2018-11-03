@@ -499,3 +499,21 @@ By constructing a store using the initializer, the store's dependencies are not 
 ::: tip
 See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
 :::
+
+## Log Tags
+
+The following tags are applied to log messages recorded by an entity store:
+
+| Tag | Description |
+| --- | --- |
+| entity_store | Applied to all log messages recorded by an entity store |
+
+The following tags _may_ be applied to log messages recorded by an entity projection:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the projection of a typed message instance |
+| message_data | Applied to log messages that record the projection of a MessageData instance |
+| data | Applied to log messages that record the data content of a typed message or a MessageData instance |
+
+See the [logging](./logging/) user guide for more on log tags.
