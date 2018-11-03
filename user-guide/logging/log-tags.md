@@ -4,6 +4,8 @@ Each library in the toolkit tags its log messages with its own log tags.
 
 Some modules within a library may use more specific tags in addition to the library-level log tags.
 
+For more information on using log tags to control logger output, see the [logging user guide](./#control-by-log-tag).
+
 ## Handlers
 
 The following tags are applied to log messages written by a handler, as well as all implementation in the `Messaging` namespace:
