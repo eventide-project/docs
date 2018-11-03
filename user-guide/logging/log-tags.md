@@ -104,6 +104,17 @@ The following tags _may_ be applied to log messages recorded by an entity snapsh
 
 See the [entity snapshotting user guide](/user-guide/entity-store/snapshotting.md) for more information on entity snapshotting.
 
+## Reader
+
+The following tags are applied to log messages recorded by a reader:
+
+| Tag | Description |
+| --- | --- |
+| read | Applied to all log messages recorded by a reader |
+| message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+See the [reader user guide](/user-guide/readers/) for more information on readers.
+
 
 
 

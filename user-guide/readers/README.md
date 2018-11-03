@@ -205,3 +205,14 @@ something.write
 ::: tip
 See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
 :::
+
+## Log Tags
+
+The following tags are applied to log messages recorded by a reader:
+
+| Tag | Description |
+| --- | --- |
+| read | Applied to all log messages recorded by a reader |
+| message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+See the [logging](./logging/) user guide for more on log tags.
