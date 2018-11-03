@@ -71,6 +71,24 @@ Conversely, the writer can be actuated by directly invoking the `call` method. I
   </p>
 </div>
 
+## Log Tags
+
+The following tags are applied to log messages written by a message data writer:
+
+| Tag | Description |
+| --- | --- |
+| write | Applied to all log messages written by a message data writer |
+| message_store | Applied to all log messages written inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages logged by a message writer:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that address the writing of a MessageData instance |
+| data | Applied to log messages that record the data content of a MessageData instance |
+
+See the [logging](./logging/) user guide for more on log tags.
+
 - - -
 **Related**
 

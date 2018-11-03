@@ -43,3 +43,22 @@ The following tags _may_ be applied to log messages logged by a message writer:
 | reply | Applied to log messages written by the message writer when replying to a message |
 
 See the [message writer user guide](/user-guide/writers/message-writer.md) for more information on message writers.
+
+## Message Data Writer
+
+The following tags are applied to log messages written by a message data writer:
+
+| Tag | Description |
+| --- | --- |
+| write | Applied to all log messages written by a message data writer |
+| message_store | Applied to all log messages written inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages logged by a message writer:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that address the writing of a MessageData instance |
+| data | Applied to log messages that record the data content of a MessageData instance |
+
+See the [message data writer user guide](/user-guide/writers/message-data-writer.md) for more information on message data writers.
+
