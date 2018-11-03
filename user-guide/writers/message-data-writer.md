@@ -73,12 +73,12 @@ Conversely, the writer can be actuated by directly invoking the `call` method. I
 
 ## Log Tags
 
-The following tags are applied to log messages written by a message data writer:
+The following tags are applied to log messages recorded by a message data writer:
 
 | Tag | Description |
 | --- | --- |
-| write | Applied to all log messages written by a message data writer |
-| message_store | Applied to all log messages written inside the `MessageStore` namespace |
+| write | Applied to all log messages recorded by a message data writer |
+| message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
 
 The following tags _may_ be applied to log messages logged by a message data writer:
 

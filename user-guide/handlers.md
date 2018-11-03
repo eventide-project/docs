@@ -390,8 +390,8 @@ The following tags are applied to log messages written by a handler:
 
 | Tag | Description |
 | --- | --- |
-| handle | Applied to all log messages written by a handler |
-| messaging | Applied to all log messages written inside the `Messaging` namespace |
+| handle | Applied to all log messages recorded by a handler |
+| messaging | Applied to all log messages recorded inside the `Messaging` namespace |
 
 The following tags _may_ be applied to log messages logged by a handler:
 

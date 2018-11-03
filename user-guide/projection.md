@@ -406,14 +406,14 @@ The following tags are applied to log messages written by an entity projection:
 
 | Tag | Description |
 | --- | --- |
-| projection | Applied to all log messages written by an entity projection |
-| apply | Applied to log messages written when applying a typed message or MessageData to an entity |
+| projection | Applied to all log messages recorded by an entity projection |
+| apply | Applied to log messages recorded when applying a typed message or MessageData to an entity |
 
 The following tags _may_ be applied to log messages logged by an entity projection:
 
 | Tag | Description |
 | --- | --- |
-| message_data | Applied to log messages that record the projection of a typed message instance |
+| message | Applied to log messages that record the projection of a typed message instance |
 | message_data | Applied to log messages that record the projection of a MessageData instance |
 | data | Applied to log messages that record the data content of a typed message or a MessageData instance |
 
