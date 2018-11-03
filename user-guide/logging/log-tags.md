@@ -133,7 +133,23 @@ The following tags _may_ be applied to log messages recorded by a `Get::Last`:
 
 See the [Get::Last user guide](/user-guide/readers/get-last.md) for more information on the `Get::Last` class.
 
+## Session
 
+The following tags are applied to log messages recorded by a session:
+
+| Tag | Description |
+| --- | --- |
+| session | Applied to all log messages recorded by a session |
+| message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages recorded by a session:
+
+| Tag | Description |
+| --- | --- |
+| sql | Applied to log messages that record the SQL commands sent to the message store through the session |
+| data | Applied to log messages that record the content of data |
+
+See the [session user guide](/user-guide/session.md) for more information on sessions.
 
 
 
