@@ -177,6 +177,7 @@ handle Something do |something|
   write.(some_message, some_stream, expected_version: version)
 end
 ```
+
 ## Constructing a Writer
 
 Writers can be constructed in one of two ways
