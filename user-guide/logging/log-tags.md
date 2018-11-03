@@ -22,3 +22,24 @@ The following tags _may_ be applied to log messages logged by a handler:
 | message_data | Applied to log messages that address the handling of a MessageData instance |
 | message | Applied to log messages that address the handling of a typed message |
 | data | Applied to log messages that record the data content of a typed message or a MessageData instance |
+
+See the [handler user guide](/user-guide/handlers.md) for more information on handlers.
+
+## Message Writer
+
+The following tags are applied to log messages written by a message writer, as well as all implementation in the `Messaging` namespace::
+
+| Tag | Description |
+| --- | --- |
+| write | Applied to all log messages written by a message writer |
+| messaging | Applied to all log messages written inside the `Messaging` namespace |
+
+The following tags _may_ be applied to log messages logged by a message writer:
+
+| Tag | Description |
+| --- | --- |
+| message | Applied to log messages that address the handling of a typed message |
+| data | Applied to log messages that record the data content of a typed message or a MessageData instance |
+| reply | Applied to log messages written by the message writer when replying to a message |
+
+See the [message writer user guide](/user-guide/writers/message-writer.md) for more information on message writers.
