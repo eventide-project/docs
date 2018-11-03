@@ -8,14 +8,14 @@ For more information on using log tags to control logger output, see the [loggin
 
 ## Handlers
 
-The following tags are applied to log messages written by a handler, as well as all implementation in the `Messaging` namespace:
+The following tags are applied to log messages recorded by a handler, as well as all implementation in the `Messaging` namespace:
 
 | Tag | Description |
 | --- | --- |
 | handle | Applied to all log messages recorded by a handler |
 | messaging | Applied to all log messages recorded inside the `Messaging` namespace |
 
-The following tags _may_ be applied to log messages logged by a handler:
+The following tags _may_ be applied to log messages recorded by a handler:
 
 | Tag | Description |
 | --- | --- |
@@ -27,14 +27,14 @@ See the [handler user guide](/user-guide/handlers.md) for more information on ha
 
 ## Entity Projection
 
-The following tags are applied to log messages written by an entity projection:
+The following tags are applied to log messages recorded by an entity projection:
 
 | Tag | Description |
 | --- | --- |
 | projection | Applied to all log messages recorded by an entity projection |
 | apply | Applied to log messages recorded when applying a typed message or MessageData to an entity |
 
-The following tags _may_ be applied to log messages logged by an entity projection:
+The following tags _may_ be applied to log messages recorded by an entity projection:
 
 | Tag | Description |
 | --- | --- |
@@ -52,7 +52,7 @@ The following tags are applied to log messages recorded by an entity store:
 | --- | --- |
 | entity_store | Applied to all log messages recorded by an entity store |
 
-The following tags _may_ be applied to log messages logged by an entity projection:
+The following tags _may_ be applied to log messages recorded by an entity projection:
 
 | Tag | Description |
 | --- | --- |
@@ -71,7 +71,7 @@ The following tags are applied to log messages recorded by a message writer, as 
 | write | Applied to all log messages recorded by a message writer |
 | messaging | Applied to all log messages recorded inside the `Messaging` namespace |
 
-The following tags _may_ be applied to log messages logged by a message writer:
+The following tags _may_ be applied to log messages recorded by a message writer:
 
 | Tag | Description |
 | --- | --- |
@@ -90,7 +90,7 @@ The following tags are applied to log messages recorded by a message data writer
 | write | Applied to all log messages recorded by a message data writer |
 | message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
 
-The following tags _may_ be applied to log messages logged by a message data writer:
+The following tags _may_ be applied to log messages recorded by a message data writer:
 
 | Tag | Description |
 | --- | --- |

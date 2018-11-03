@@ -266,7 +266,7 @@ The following tags are applied to log messages recorded by a message writer:
 | write | Applied to all log messages recorded by a message writer |
 | messaging | Applied to all log messages recorded inside the `Messaging` namespace |
 
-The following tags _may_ be applied to log messages logged by a message writer:
+The following tags _may_ be applied to log messages recorded by a message writer:
 
 | Tag | Description |
 | --- | --- |

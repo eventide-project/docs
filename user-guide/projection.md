@@ -402,14 +402,14 @@ If this is not done, and under the right circumstances, an entity may be retriev
 
 ## Log Tags
 
-The following tags are applied to log messages written by an entity projection:
+The following tags are applied to log messages recorded by an entity projection:
 
 | Tag | Description |
 | --- | --- |
 | projection | Applied to all log messages recorded by an entity projection |
 | apply | Applied to log messages recorded when applying a typed message or MessageData to an entity |
 
-The following tags _may_ be applied to log messages logged by an entity projection:
+The following tags _may_ be applied to log messages recorded by an entity projection:
 
 | Tag | Description |
 | --- | --- |

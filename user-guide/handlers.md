@@ -386,14 +386,14 @@ See the [Messaging::Category](./stream-names/messaging-category.md) topic for mo
 
 ## Log Tags
 
-The following tags are applied to log messages written by a handler:
+The following tags are applied to log messages recorded by a handler:
 
 | Tag | Description |
 | --- | --- |
 | handle | Applied to all log messages recorded by a handler |
 | messaging | Applied to all log messages recorded inside the `Messaging` namespace |
 
-The following tags _may_ be applied to log messages logged by a handler:
+The following tags _may_ be applied to log messages recorded by a handler:
 
 | Tag | Description |
 | --- | --- |

@@ -80,7 +80,7 @@ The following tags are applied to log messages recorded by a message data writer
 | write | Applied to all log messages recorded by a message data writer |
 | message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
 
-The following tags _may_ be applied to log messages logged by a message data writer:
+The following tags _may_ be applied to log messages recorded by a message data writer:
 
 | Tag | Description |
 | --- | --- |
