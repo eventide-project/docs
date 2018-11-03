@@ -180,7 +180,8 @@ module.exports = {
           title: 'Logging',
           collapsable: false,
           children: [
-            ''
+            '',
+            'log-tags.md'
           ]
         }
       ]
