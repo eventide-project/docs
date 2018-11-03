@@ -135,3 +135,21 @@ something.get_last
 ::: tip
 See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
 :::
+
+## Log Tags
+
+The following tags are applied to log messages recorded by a `Get::Last`:
+
+| Tag | Description |
+| --- | --- |
+| get | Applied to all log messages recorded by a `Get::Last` |
+| message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages recorded by a `Get::Last`:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the data content of a MessageData instance |
+| data | Applied to log messages that record the data content of a MessageData instance |
+
+See the [logging](/user-guide/logging/) user guide for more on log tags.

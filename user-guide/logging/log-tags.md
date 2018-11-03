@@ -115,6 +115,25 @@ The following tags are applied to log messages recorded by a reader:
 
 See the [reader user guide](/user-guide/readers/) for more information on readers.
 
+## Get::Last
+
+The following tags are applied to log messages recorded by a `Get::Last`:
+
+| Tag | Description |
+| --- | --- |
+| get | Applied to all log messages recorded by a `Get::Last` |
+| message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages recorded by a `Get::Last`:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the data content of a MessageData instance |
+| data | Applied to log messages that record the data content of a MessageData instance |
+
+See the [Get::Last user guide](/user-guide/readers/get-last.md) for more information on the `Get::Last` class.
+
+
 
 
 
