@@ -302,4 +302,4 @@ The following tags _may_ be applied to log messages recorded by an entity cache:
 | put | Applied to log messages recorded while putting an entity into the cache |
 | restore | Applied to log messages recorded while restoring an entity to the cache |
 
-See the [logging](./logging/) user guide for more on log tags.
+See the [logging](/user-guide/logging/) user guide for more on log tags.

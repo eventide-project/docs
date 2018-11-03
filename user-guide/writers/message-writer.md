@@ -274,7 +274,7 @@ The following tags _may_ be applied to log messages recorded by a message writer
 | message | Applied to log messages that record the writing of a typed message |
 | data | Applied to log messages that record the data content of a typed message |
 
-See the [logging](./logging/) user guide for more on log tags.
+See the [logging](/user-guide/logging/) user guide for more on log tags.
 
 - - -
 **Related**

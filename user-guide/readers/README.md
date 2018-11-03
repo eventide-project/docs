@@ -215,4 +215,4 @@ The following tags are applied to log messages recorded by a reader:
 | read | Applied to all log messages recorded by a reader |
 | message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
 
-See the [logging](./logging/) user guide for more on log tags.
+See the [logging](/user-guide/logging/) user guide for more on log tags.

@@ -269,4 +269,4 @@ The following tags _may_ be applied to log messages recorded by an entity snapsh
 | hit | Applied to log messages recorded when getting an entity from the snapshot store and the entity is found |
 | put | Applied to log messages recorded while putting an entity into the snapshot store |
 
-See the [logging](./logging/) user guide for more on log tags.
+See the [logging](/user-guide/logging/) user guide for more on log tags.
