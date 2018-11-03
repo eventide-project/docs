@@ -508,12 +508,14 @@ The following tags are applied to log messages recorded by an entity store:
 | --- | --- |
 | entity_store | Applied to all log messages recorded by an entity store |
 
-The following tags _may_ be applied to log messages recorded by an entity projection:
+The following tags _may_ be applied to log messages recorded by an entity store:
 
 | Tag | Description |
 | --- | --- |
-| message_data | Applied to log messages that record the projection of a typed message instance |
-| message_data | Applied to log messages that record the projection of a MessageData instance |
-| data | Applied to log messages that record the data content of a typed message or a MessageData instance |
+| fetch | Applied to log messages recorded while fetching an entity |
+| get | Applied to log messages recorded while getting an entity |
+| refresh | Applied to log messages recorded while refreshing an entity |
+| entity | Applied to log messages that record the data content of an entity |
+| data | Applied to log messages that record the data content of an entity |
 
 See the [logging](./logging/) user guide for more on log tags.
