@@ -123,7 +123,7 @@ Log output can be controlled by both log level and log tags.
 
 Both log level and log tag filters are set using environment variables.
 
-### Control By Log Level
+### Control by Log Level
 
 The `LOG_LEVEL` environment variable controls the log output verbosity.
 
@@ -157,7 +157,7 @@ The following log level filters are considered _special_ in that they offer log 
 | _min | Minimum verbosity, equivalent to the `fatal` level | `LOG_LEVEL=_min start_service.sh` |
 | _max | Maximum verbosity, equivalent to the `trace` level | `LOG_LEVEL=_max start_service.sh` |
 
-### Control By Log Tag
+### Control by Log Tag
 
 The `LOG_TAGS` environment variable controls which log messages will be printed based on the log tags applied to the log message.
 
