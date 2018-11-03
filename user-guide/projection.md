@@ -399,3 +399,22 @@ If this is not done, and under the right circumstances, an entity may be retriev
     Note: While the circumstances that cause this anomaly are very rare, that rarity should not be counted upon. Projections should be constructed conservatively so that the realities of out-of-order events are never a problem.
   </p>
 </div>
+
+## Log Tags
+
+The following tags are applied to log messages written by an entity projection:
+
+| Tag | Description |
+| --- | --- |
+| projection | Applied to all log messages written by an entity projection |
+| apply | Applied to log messages written when applying a typed message or MessageData to an entity |
+
+The following tags _may_ be applied to log messages logged by an entity projection:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the projection of a typed message instance |
+| message_data | Applied to log messages that record the projection of a MessageData instance |
+| data | Applied to log messages that record the data content of a typed message or a MessageData instance |
+
+See the [logging](./logging/) user guide for more on log tags.

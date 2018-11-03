@@ -25,6 +25,25 @@ The following tags _may_ be applied to log messages logged by a handler:
 
 See the [handler user guide](/user-guide/handlers.md) for more information on handlers.
 
+## Entity Projection
+
+The following tags are applied to log messages written by an entity projection:
+
+| Tag | Description |
+| --- | --- |
+| projection | Applied to all log messages written by an entity projection |
+| apply | Applied to log messages written when applying a typed message or MessageData to an entity |
+
+The following tags _may_ be applied to log messages logged by an entity projection:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the projection of a typed message instance |
+| message_data | Applied to log messages that record the projection of a MessageData instance |
+| data | Applied to log messages that record the data content of a typed message or a MessageData instance |
+
+See the [entity projection user guide](/user-guide/projection.md) for more information on entity projections.
+
 ## Message Writer
 
 The following tags are applied to log messages written by a message writer, as well as all implementation in the `Messaging` namespace::
@@ -38,9 +57,9 @@ The following tags _may_ be applied to log messages logged by a message writer:
 
 | Tag | Description |
 | --- | --- |
-| message | Applied to log messages that address the handling of a typed message |
-| data | Applied to log messages that record the data content of a typed message or a MessageData instance |
 | reply | Applied to log messages written by the message writer when replying to a message |
+| message | Applied to log messages that record the writing of a typed message |
+| data | Applied to log messages that record the data content of a typed message |
 
 See the [message writer user guide](/user-guide/writers/message-writer.md) for more information on message writers.
 
@@ -53,12 +72,11 @@ The following tags are applied to log messages written by a message data writer:
 | write | Applied to all log messages written by a message data writer |
 | message_store | Applied to all log messages written inside the `MessageStore` namespace |
 
-The following tags _may_ be applied to log messages logged by a message writer:
+The following tags _may_ be applied to log messages logged by a message data writer:
 
 | Tag | Description |
 | --- | --- |
-| message_data | Applied to log messages that address the writing of a MessageData instance |
+| message_data | Applied to log messages that record the writing of a MessageData instance |
 | data | Applied to log messages that record the data content of a MessageData instance |
 
 See the [message data writer user guide](/user-guide/writers/message-data-writer.md) for more information on message data writers.
-

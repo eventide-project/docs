@@ -84,7 +84,7 @@ The following tags _may_ be applied to log messages logged by a message data wri
 
 | Tag | Description |
 | --- | --- |
-| message_data | Applied to log messages that address the writing of a MessageData instance |
+| message_data | Applied to log messages that record the writing of a MessageData instance |
 | data | Applied to log messages that record the data content of a MessageData instance |
 
 See the [logging](./logging/) user guide for more on log tags.
