@@ -117,6 +117,12 @@ logger.info('Some info log message', tags: [:some_tag, :some_other_tag])
 
 For a list of tags throughout the toolkit that can be used to filter log output, see the [log tags user guide](./log-tags.md).
 
+### The Override Log Tag
+
+The special log tag `:*` overrides any log filters in effect.
+
+When the `:*` tag is applied to a log message, it can't be filtered out of the log output.
+
 ## Controlling Log Output
 
 Log output can be controlled by both log level and log tags.
