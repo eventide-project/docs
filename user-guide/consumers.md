@@ -249,3 +249,13 @@ self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | identifier | Qualifier appended to the consumer's position stream name | String |
 | condition | SQL condition fragment that constrains the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
+
+## Log Tags
+
+The following tags are applied to log messages recorded by a consumer:
+
+| Tag | Description |
+| --- | --- |
+| consumer | Applied to all log messages recorded by a consumer |
+
+See the [logging](/user-guide/logging/) user guide for more on log tags.

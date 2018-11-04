@@ -133,6 +133,20 @@ The following tags _may_ be applied to log messages recorded by a `Get::Last`:
 
 See the [Get::Last user guide](/user-guide/readers/get-last.md) for more information on the `Get::Last` class.
 
+## Consumer
+
+The following tags are applied to log messages recorded by a consumer:
+
+| Tag | Description |
+| --- | --- |
+| consumer | Applied to all log messages recorded by a consumer |
+
+See the [consumer user guide](/user-guide/consumers.md) for more information on consumers.
+
+## Component Host
+
+### TODO
+
 ## Session
 
 The following tags are applied to log messages recorded by a session:
