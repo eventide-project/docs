@@ -258,4 +258,12 @@ The following tags are applied to log messages recorded by a consumer:
 | --- | --- |
 | consumer | Applied to all log messages recorded by a consumer |
 
+The following tags _may_ be applied to log messages recorded by a consumer:
+
+| Tag | Description |
+| --- | --- |
+| position_store | Applied to log messages recorded by the consumer's position store |
+| get | Applied to log messages recorded while getting an position record from the position store |
+| put | Applied to log messages recorded while putting a position record to the position store |
+
 See the [logging](/user-guide/logging/) user guide for more on log tags.
