@@ -153,7 +153,25 @@ See the [consumer user guide](/user-guide/consumers.md) for more information on 
 
 ## Component Host
 
-### TODO
+The following tags are applied to log messages recorded by the component host:
+
+| Tag | Description |
+| --- | --- |
+| component_host | Applied to all log messages recorded inside the `ComponentHost` namespace |
+
+The following tags _may_ be applied to log messages recorded by the component host:
+
+| Tag | Description |
+| --- | --- |
+| component | Applied to messages that pertain to a component |
+| actor | Applied to messages recorded by [actors](https://github.com/ntl/actor) |
+| lifecycle | Applied to messages that pertain to the lifecycle of a actors |
+| crash | Applied to messages recorded while the host is terminating due to an error |
+| signal | Applied to messages recorded when handling operating system signals |
+| start | Applied to messages recorded when starting an actor |
+| stop | Applied to messages recorded when stopping an actor |
+
+See the [component host user guide](/user-guide/component-host.md) for more information on the component host.
 
 ## Session
 
