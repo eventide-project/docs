@@ -208,7 +208,7 @@ The following log tag filters are considered _special_ in that they offer log ou
 | Special Level | Description | Example |
 | --- | --- | --- |
 | _all | Print log messages from all tags, except for untagged messages | `LOG_TAGS=_all start_service.sh` |
-| _untagged | Print log messages aren't tagged | `LOG_TAGS=_all start_service.sh` |
+| _untagged | Print log messages aren't tagged | `LOG_TAGS=_untagged start_service.sh` |
 
 ## Standards
 
