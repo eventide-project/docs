@@ -26,7 +26,7 @@ gem install evt-command_line-component_generator
 ## Usage
 
 ``` bash
-evt component some_component
+evt component something_component
 ```
 
 ## Generated Output
