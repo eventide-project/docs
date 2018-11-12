@@ -52,7 +52,9 @@ NOTE: If the expected version does not match the stream version at the time of t
 'Wrong expected version: % (Stream: %, Stream Version: %)'
 ```
 
-Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version-error.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version-error.sh)
+Example (_no expected version error_): [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version.sh)
+
+Example (_with expected version error_): [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version-error.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version-error.sh)
 
 ## Get Messages from a Stream
 
