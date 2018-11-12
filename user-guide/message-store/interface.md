@@ -52,7 +52,7 @@ NOTE: If the expected version does not match the stream version at the time of t
 'Wrong expected version: % (Stream: %, Stream Version: %)'
 ```
 
-Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write_message_expected_version.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write_message_expected_version.sh)
+Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version-error.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/write-message-expected-version-error.sh)
 
 ## Get Messages from a Stream
 
@@ -82,7 +82,7 @@ get_stream_messages(
 SELECT * FROM get_stream_messages('stream_name'::varchar, starting_position::bigint, batch_size::bigint, _condition => 'messages.time >= current_timestamp'::varchar);"
 ```
 
-Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get_stream_messages.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get_stream_messages.sh)
+Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-stream-messages.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-stream-messages.sh)
 
 ## Get Messages from a Stream Category
 
@@ -116,7 +116,7 @@ SELECT * FROM get_category_messages('cateogry_name'::varchar, starting_position:
 Where `someThing-123` is a _stream name_, `someThing` is a _category_. Reading the `someThing` category retrieves messages from all streams whose names start with `someThing-`.
 :::
 
-Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get_cateogry_messages.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get_cateogry_messages.sh)
+Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-category-messages.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-category-messages.sh)
 
 ## Get Last Message from a Stream
 
@@ -140,6 +140,6 @@ get_last_message(
 SELECT * FROM get_last_message('stream_name'::varchar)
 ```
 
-Note: This is only for streams, and does not work for categories.
+Note: This is only for entity streams, and does not work for categories.
 
-Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get_last_message.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get_last_message.sh)
+Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-last-message.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-last-message.sh)
