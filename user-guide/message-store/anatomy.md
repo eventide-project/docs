@@ -31,10 +31,10 @@ The message store is a single table named `messages`. Interaction with the messa
 -- ----------------------------
 --  Table structure for messages
 -- ----------------------------
-CREATE TABLE "public"."messages" (
+CREATE TABLE IF NOT EXISTS "public"."messages" (
   "id" UUID NOT NULL DEFAULT gen_random_uuid(),
-  "stream_name" varchar(255) NOT NULL COLLATE "default",
-  "type" varchar(255) NOT NULL COLLATE "default",
+  "stream_name" text NOT NULL COLLATE "default",
+  "type" text NOT NULL COLLATE "default",
   "position" bigint NOT NULL,
   "global_position" bigserial NOT NULL ,
   "data" jsonb,
@@ -49,15 +49,15 @@ WITH (OIDS=FALSE);
 ALTER TABLE "public"."messages" ADD PRIMARY KEY ("global_position") NOT DEFERRABLE INITIALLY IMMEDIATE;
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages-table.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages-table.sql)
+Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages.sql)
 
 ### Index Definitions
 
 ``` sql
-CREATE INDEX CONCURRENTLY  "messages_id_idx" ON "public"."messages" USING btree(id ASC NULLS LAST);
+CREATE UNIQUE INDEX CONCURRENTLY "messages_id_uniq_idx" ON "public"."messages" USING btree(id ASC NULLS LAST);
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id.sql)
+Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id-uniq.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id-uniq.sql)
 
 ``` sql
 CREATE UNIQUE INDEX CONCURRENTLY "messages_stream_name_position_uniq_idx" ON "public"."messages" USING btree(stream_name COLLATE "default" "pg_catalog"."text_ops" ASC NULLS LAST, "position" "pg_catalog"."int8_ops" ASC NULLS LAST);
