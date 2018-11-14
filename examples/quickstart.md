@@ -91,7 +91,7 @@ bundle exec evt-pg-create-db
 
 For more background on the Postgres message store database, you can explore the SQL scripts at:
 
-https://github.com/eventide-project/message-store-postgres/tree/master/database
+[https://github.com/eventide-project/message-store-postgres/tree/master/database](https://github.com/eventide-project/message-store-postgres/tree/master/database)
 
 ## Test the Database Connection
 
