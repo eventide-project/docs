@@ -82,7 +82,7 @@ A message that represents the results and effects of some command having been pr
 
 ## Event Sourcing
 
-Event sourcing is a style of [entity](/glossary.md#entity) storage that relies on reading entity data from a series of [events](/glossary.md#event) that are recorded in a [stream](/glossary.md#stream) that holds the events for a single entity. An entity's data is stored by writing events to its stream. When the entity is "retrieved" from the [event store](/glossary.md#event-store-pattern), the events are passed through an [entity projection](/glossary.md#entity-projection), which populates the entity's attributes.
+Event sourcing is a style of [entity](/glossary.md#entity) storage that relies on reading entity data from a series of [events](/glossary.md#event) that are recorded in a [stream](/glossary.md#stream) that holds the events for a single entity. An entity's data is stored by writing events to its stream. When the entity is "retrieved" from the [entity store](/glossary.md#entity-store), the events are passed through an [entity projection](/glossary.md#entity-projection), which populates the entity's attributes.
 
 ## Event Stream
 
