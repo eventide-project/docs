@@ -8,7 +8,7 @@ Event sourcing is a messaging pattern that takes advantage of the evented nature
 
 ## Pub/Sub
 
-A system based on pub/sub provides ample opportunity to simplify application data storage by using [event sourcing](./event-sourcing.md). Because there's pub/sub, there is events. And once a system is based on events, event sourcing can be leveraged.
+A system based on pub/sub provides ample opportunity to simplify application data storage by using [event sourcing](./event-sourcing.md). Because there's pub/sub, there are events. And once a system is based on events, event sourcing can be leveraged.
 
 ## Event Streams and Entities
 

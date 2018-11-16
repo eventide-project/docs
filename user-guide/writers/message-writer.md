@@ -99,7 +99,7 @@ write.initial(some_message, some_stream)
 write.(some_message, some_stream, expected_version: -1)
 ```
 
-The version of a stream that has no events written to it - and thus a stream that doesn't exist yet - it `-1`.
+The version of a stream that has no events written to it - and thus a stream that doesn't exist yet - is `-1`.
 
 To assure that a message is written in the first position of a stream - position `0` - write the message with an expected version of `-1`.
 

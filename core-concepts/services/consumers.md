@@ -10,7 +10,7 @@ A consumer continually reads messages from a single stream and dispatches them t
 
 Many consumers can be hosted together in a single service, allowing a component to be fed messages from many streams.
 
-In addition, consumers keep track of its reader's progress through a stream, and controls polling rates, and pre-fetching batches of messages, and the dispatching of messages to handlers.
+In addition, a consumer keeps track of its reader's progress through a stream, and controls polling rates, and pre-fetching batches of messages, and the dispatching of messages to handlers.
 
 ## Example Consumer
 

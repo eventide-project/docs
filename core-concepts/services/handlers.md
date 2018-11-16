@@ -16,7 +16,7 @@ Messages can come from applications as well as other services, including the ser
 
 The example below is a handler does withdrawals from an account.
 
-The handler can handle a message whose class name is `Withdrawn`. The `handle` block receives an instance of the Withdrawn message that carries the information required to withdraw funds from an account, including the account ID and the amount of the withdrawal, as well the time of the withdrawal.
+The handler can handle a message whose class name is `Withdraw`. The `handle` block receives an instance of the Withdraw message that carries the information required to withdraw funds from an account, including the account ID and the amount of the withdrawal, as well the time of the withdrawal.
 
 Depending on whether there are sufficient funds for the withdrawal, the handler publishes either a `Withdrawn` event or a `WithdrawalRejected` event as a result of processing the withdrawal.
 
