@@ -113,6 +113,38 @@ initiator = SomeInstanceInitiator.new
 initiator = proc { SomeConsumer.start('someStream') }
 ```
 
+## Error Handling
+
+### Unhandled Errors
+
+If an error is not handled before it is raised to the level of the component host, it cannot be prevented from causing the process to terminate.
+
+To prevent an error from being raised to the level of the component host, errors must be handled at the consumer level.
+
+See the error handling section of the consumer user guide for details: [http://docs.eventide-project.org/user-guide/consumers.html#error-handling](http://docs.eventide-project.org/user-guide/consumers.html#error-handling).
+
+### Recording Errors
+
+While errors cannot be _handled_ by the component host, they can optionally be reported or recorded.
+
+``` ruby
+ComponentHost.start(component_name) do |host|
+  host.record_error(error) do
+    ErrorReporter.(error)
+  end
+end
+```
+
+``` ruby
+record_error(error)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| error | Unhandled error that is raised to the level of the component host | RuntimeError |
+
 ## Stopping the Component Host
 
 ### Graceful Shutdown
@@ -122,10 +154,6 @@ The process host affords graceful and safe shutdown for all of its subordinate c
 ::: danger
 If the process is terminated using the operating system's KILL signal, consumers and handlers will not shutdown gracefully. It's not safe to kill the process. Use the KILL signal only when it's absolutely unavoidable.
 :::
-
-### Unhandled Errors
-
-Any unhandled errors raised in any of a host's consumers will cause the host to safely shut down all consumers in the process, and then the process will be terminated.
 
 ### Using the Keyboard
 
