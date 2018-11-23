@@ -27,6 +27,12 @@ The Eventide message store Postgres database package installs command line tools
 If you installed the tools via Bundler, prefix the following commands with `bundle exec`, for example: `bundle exec evt-pg-create-db`
 :::
 
+<div class="note custom-block">
+  <p>
+    Note: The <code>message_store_postgres.json</code> settings file does not configure the connection used for any database administrative tasks, including creating the message store schema or printing reports. The administrative connection is controlled by the facilities provided by Postgres itself. For more details, see: <a href="https://www.postgresql.org/docs/current/libpq-envars.html">https://www.postgresql.org/docs/current/libpq-envars.html</a>.
+  </p>
+</div>
+
 ## Database Schema Tools
 
 ### Install the Message Store Database

@@ -83,6 +83,12 @@ The provided settings should work for the majority of development environment se
 
 ## Create the Message Store Postgres Database
 
+<div class="note custom-block">
+  <p>
+    Note: The <code>message_store_postgres.json</code> settings file does not configure the connection used for any database administrative tasks, including creating the message store schema or printing reports. The administrative connection is controlled by the facilities provided by Postgres itself. For more details, see: <a href="https://www.postgresql.org/docs/current/libpq-envars.html">https://www.postgresql.org/docs/current/libpq-envars.html</a>.
+  </p>
+</div>
+
 With Postgres already running, from the command line, run:
 
 ``` bash
