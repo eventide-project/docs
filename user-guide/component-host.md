@@ -107,7 +107,7 @@ end
 initiator = SomeInstanceInitiator.new
 ```
 
-###  Using a Proc
+### Using a Proc
 
 ``` ruby
 initiator = proc { SomeConsumer.start('someStream') }
