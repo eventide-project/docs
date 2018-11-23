@@ -123,7 +123,7 @@ To prevent an error from being raised to the level of the component host, errors
 
 See the error handling section of the consumer user guide for details: [http://docs.eventide-project.org/user-guide/consumers.html#error-handling](http://docs.eventide-project.org/user-guide/consumers.html#error-handling).
 
-### Recording Errors
+### Recording or Reporting Errors
 
 While errors cannot be _handled_ by the component host, they can optionally be reported or recorded.
 
