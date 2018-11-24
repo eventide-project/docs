@@ -250,7 +250,7 @@ The object that is sent to a projection from an entity store is an instance of `
 If a projection implements a method named `apply` _and_ if there's no explicit handler block that specifically matches the `MessageData` object's `type` attribute, then the `MessageData` instance will be passed to the `apply` method.
 
 ``` ruby
-def appy(message_data)
+def apply(message_data)
   case message_data.type
   when 'Withdrawn'
     # Project Withdrawn
