@@ -25,7 +25,7 @@ String
 | category | The stream's category name | String |
 | id | ID of the entity represented by the stream | String |
 | type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | String |
+| types | The stream's list category types, if many types | Array of Strings |
 
 ``` ruby
 MessageStore::StreamName.stream_name('someEntity')
@@ -124,7 +124,7 @@ Array of Strings
 | stream_name | The stream name from which to get the types | String |
 
 ``` ruby
-MessageStore::StreamName.get_type_list('someEntity:someType+someOtherType-123')
+MessageStore::StreamName.get_types('someEntity:someType+someOtherType-123')
 # => ["someType", "someOtherType"]
 ```
 
