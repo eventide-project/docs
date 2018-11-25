@@ -48,7 +48,7 @@ String
 | id | ID of the entity represented by the stream | String |
 | category | The stream's category name | String |
 | type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | String |
+| types | The stream's list category types, if many types | Array of Strings |
 
 **In Conjunction with the Category Class Macro**
 
@@ -102,7 +102,7 @@ String
 | --- | --- | --- |
 | category | The stream's category name | String |
 | type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | String |
+| types | The stream's list category types, if many types | Array of Strings |
 
 **In Conjunction with the Category Class Macro**
 
@@ -155,7 +155,7 @@ String
 | id | ID of the entity for which commands are transported by the command stream | String |
 | category | The stream's category name | String |
 | type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | String |
+| types | The stream's list category types, if many types | Array of Strings |
 
 **In Conjunction with the Category Class Macro**
 
@@ -209,7 +209,7 @@ String
 | --- | --- | --- |
 | category | The stream's category name | String |
 | type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | String |
+| types | The stream's list category types, if many types | Array of Strings |
 
 **In Conjunction with the Category Class Macro**
 
