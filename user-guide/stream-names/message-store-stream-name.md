@@ -124,7 +124,7 @@ Array of Strings
 | stream_name | The stream name from which to get the types | String |
 
 ``` ruby
-MessageStore::StreamName.get_type_list('someEntity:someType+someOtherType-123')
+MessageStore::StreamName.get_types('someEntity:someType+someOtherType-123')
 # => ["someType", "someOtherType"]
 ```
 
