@@ -219,8 +219,8 @@ some_event = SomeEvent.new
 SomeProjection.(some_event)
 
 # Via the object interface
-some_projectioin = SomeProjection.build
-some_projectioin.(some_message)
+some_projection = SomeProjection.build
+some_projection.(some_message)
 ```
 
 ### When a Projection Doesn't Handle a Message
