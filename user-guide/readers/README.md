@@ -103,7 +103,7 @@ end
 
 The reader retrieves messages in batches. The number of messages retrieved in each batch are specified using the reader actuator's `batch_size` parameter.
 
-The `action` passed to the reader's actuator is evaluated once per message read. However, the reader doesn't query messages from the message store every time the black is evaluated.
+The `action` passed to the reader's actuator is evaluated once per message read. However, the reader doesn't query messages from the message store every time the block is evaluated.
 
 A reader will retrieve a _batch_ of messages, and then process each of those messages in-sequence by passing each message to the `action` block.
 
