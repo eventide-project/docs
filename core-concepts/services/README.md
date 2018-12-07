@@ -12,7 +12,7 @@ If a service that communicates with another service fails because the other serv
 
 ## Services communicate by asynchronous messaging
 
-Services receive _[commands](/glossary.md#command)_, process those commands, and communicate the status of that processing by issuing _[events](/glassary.md#event)_. A service that sends a command message to another service does not know the outcome of processing that command until the other service issues the resulting event and the originating service receives the event.
+Services receive _[commands](/glossary.md#command)_, process those commands, and communicate the status of that processing by issuing _[events](/glossary.md#event)_. A service that sends a command message to another service does not know the outcome of processing that command until the other service issues the resulting event and the originating service receives the event.
 
 ## Services are made of one or more autonomous components
 
