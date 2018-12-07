@@ -101,7 +101,7 @@ Since the consumer reads the given stream using a SQL query, that query can be e
 For example, the consumer can read messages from `someCategory` that correlate to `otherCategory`.
 
 ```ruby
-SomeConsumer.start('someCategory', condition: "metadata->>'correlationStreamName' like 'otherCategory%'");
+SomeConsumer.start('someCategory', condition: "metadata->>'correlationStreamName' like 'otherCategory%'")
 ```
 
 See the [correlation](/user-guide/messages-and-message-data/metadata.md#message-correlation) section of the [message metadata documentation](/user-guide/messages-and-message-data/metadata.md) for more on correlation.
