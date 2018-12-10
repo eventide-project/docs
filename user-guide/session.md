@@ -7,6 +7,8 @@ sidebarDepth: 0
 
 A session controls the lifecycle of a connection to a message store database, and the execution of data storage and retrieval commands and atomic database transactions.
 
+By default, a session's connection settings are read from a [file](#settings), but settings can be assigned by any means.
+
 ## Session Facts
 
 - A database connection is not opened when a session is constructed
