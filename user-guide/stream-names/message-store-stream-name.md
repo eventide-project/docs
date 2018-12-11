@@ -1,10 +1,25 @@
-# MessageStore::StreamName Module
+# MessageStore::StreamName
 
-`MessageStore::StreamName` is a module that acts as a function library offering basic utilities for composing and parsing stream names.
+`MessageStore::StreamName` is a function library of basic utilities for composing and parsing stream names.
 
-The methods of the `MessageStore::StreamName` module can only be invoked from the `MessageStore::StreamName` constant. Including the module in another class will not mix in any of the module's methods to the receiver class.
+## MessageStore::StreamName Facts
 
-The higher order utilities in the [`Messaging::StreamName`](./messaging-stream-name.md) module and built upon and delegate to the `MessageStore::StreamName` module.
+- `MessageStore::StreamName` methods cannot be mixed into a class
+- Its methods can only be invoked from the `MessageStore::StreamName` constant
+- Methods in the [`Messaging::StreamName`](./messaging-stream-name.md) module are built upon and delegate to the `MessageStore::StreamName` module.
+
+## MessageStore::StreamName Module
+
+The `StreamName` module is a function library from the [`MessageStore` library](../libraries.md#message-store) and namespace.
+
+The `StreamName` module provides:
+
+- The `stream_name` module for composing a stream name from its constituent parts
+- The `get_id` method for parsing a stream's ID from a stream name
+- The `get_category` method for parsing a stream's category from a stream name
+- The `category?` predicate for determining whether a stream name is a category stream name
+- The `get_types` method for parsing a stream's category types from a stream name
+- The `get_type_list` method for parsing a stream's category type list from a stream name
 
 ## Stream Name
 
