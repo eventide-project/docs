@@ -44,7 +44,7 @@ The `Messaging::Message` affords the receiver with:
 
 - The `attribute` macro for declaring message attributes
 - The `build` constructor that optionally receives a hash or attribute data and a hash of metadata attribute data
-- The `attributes` method (aliased to `to_h`) that returns a hash of attribute name and attribute value pairs
+- The `attributes` method (aliased as `to_h`) that returns a hash of attribute name and attribute value pairs
 - The 'attribute_names' method that returns an array of attribute names
 - The `copy` method that copies a message's data to another message
 - The `follow` constructor that takes a message and constructs another message based on the former message's data and metadata

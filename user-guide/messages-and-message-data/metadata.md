@@ -4,9 +4,19 @@ A message's metadata object contains information about the stream where the mess
 
 Where as a message's data represents information pertinent to the business process that the message is involved with, a message's metadata contains information that is mechanical and infrastructural. Message metadata is data about messaging machinery, like message schema version, source stream, positions, provenance, reply address, and the like.
 
-## Messaging::Message::Metadata
+## Messaging::Message::Metadata Class
 
-The message metadata implementation is provided by the Messaging::Message::Metadata class.
+The `Message::Metadata` class is a concrete class from the [`Messaging` library](../libraries.md#messaging) and namespace.
+
+The `Metadata` class provides:
+
+- Metadata attributes
+- The `follow` method that copies workflow attributes from one message's metadata instance to another message's metadata instance
+- The `follows?` predicate that determines whether metadata instance follows a previous metadata instance
+- The `reply?` predicate for determining whether a message's metadata contains reply stream data
+- The `correlated?` method (aliased as `correlates?`) that determines whether a metadata instance's correlation stream name corresponds to the argument
+- The `identifier` method (aliased as `source_message_identifier`) that returns the  message identifier URI fragment
+- The `causation_message_identifier` method that returns the causation message identifier URI fragment
 
 ## Metadata Attributes
 
