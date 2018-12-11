@@ -1,8 +1,6 @@
 # Messages
 
-Messages are packages of data that are the principle means of transmission of instructions and status between services.
-
-See [Message Facts](/core-concepts/messages-and-messaging/) for more details about messages.
+Messages are packages of data that are the principle means of transmission of instructions and status between services. They carry data between services and processes. Messages typically represent commands or events, and are recorded or _sent_ via the [message store](/user-guide/message-store/) (or other message transport).
 
 ## Example
 
@@ -29,20 +27,32 @@ class Withdrawn
 end
 ```
 
-## Message Features
+## Message Facts
 
-A message class has the following features and capabilities:
-
-- Data attributes with optional data type checking
-- Message metadata
-- Copying data from one message to another
-- Procession of messages in a workflow
-- Determination of equality
-- Transformation to and from raw [MessageStore::MessageData](./message-data.md) representation
+- A message class is a data object that has data attributes with optional data type checking
+- Events and commands are kinds of messages
+- A message contains optional metadata that is separate from the message data
+- Messages are transformed to and from raw [MessageStore::MessageData](./message-data.md) when storing and retrieving from the message store
+- Message data is formatted as JSON when stored
+- Messages are typically flat key/value structures, and by default, transformation of messages does not traverse a graph of attributes
 
 ## Messaging::Message Module
 
-A class becomes a message by including the `Messaging::Message` module.
+A class becomes a message by including the `Message` module from the [`Messaging` library](./libraries.md#messaging) and namespace.
+
+The `Messaging::Message` affords the receiver with:
+
+- The `attribute` macro for declaring message attributes
+- The `build` constructor that optionally receives a hash or attribute data and a hash of metadata attribute data
+- The `attributes` method (aliased to `to_h`) that returns a hash of attribute name and attribute value pairs
+- The 'attribute_names' method that returns an array of attribute names
+- The `copy` method that copies a message's data to another message
+- The `follow` constructor that takes a message and constructs another message based on the former message's data and metadata
+- The `follows?` predicate that determines whether a message was constructed from a former message
+- A `==` operator implementation that determines message equality based on attribute values and message class
+- The `message_type` class method that returns a string representation of the message class name
+- The `message_type?` class predicate that determines when a message's message type matches the argument
+- The `message_name` class method that returns the message's type in underscore case
 
 ## Constructing a Message
 
