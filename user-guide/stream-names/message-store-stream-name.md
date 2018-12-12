@@ -4,7 +4,7 @@
 
 ## MessageStore::StreamName Facts
 
-- `MessageStore::StreamName` methods cannot be mixed into a class
+- `MessageStore::StreamName` module's methods cannot be mixed into a class
 - Its methods can only be invoked from the `MessageStore::StreamName` constant
 - Methods in the [`Messaging::StreamName`](./messaging-stream-name.md) module are built upon and delegate to the `MessageStore::StreamName` module.
 

@@ -1,8 +1,29 @@
-# Messaging::StreamName Module
+# Messaging::StreamName
 
-`Messaging::StreamName` is a module that's often mixed in to handler classes, but can also be used as a function library of methods that can be invoked from the `Messaging::StreamName` module constant.
+`MessageStore::StreamName` is a module that offers utilities for composing and parsing stream names.
 
-## Optional Category Declaration
+It builds on the utilities in the lower-level `MessageStore::StreamName` module, and adds conveniences and affordances that are useful in messaging contexts, like message handlers.
+
+## Messaging::StreamName Facts
+
+- The `Messaging::StreamName` module can be mixed into a class or can be used as a function library, with its methods invoked directly from the `Messaging::StreamName`
+- Methods in the [`Messaging::StreamName`](./messaging-stream-name.md) module leverage the utilities in the `MessageStore::StreamName` module.
+
+## Messaging::StreamName Module
+
+The `StreamName` module is a function library from the [`Messaging` library](../libraries.md#messaging) and namespace.
+
+The `StreamName` module provides:
+
+- The `category` macro for declaring the default category name to be used for uses of stream name composition utilities within the class where the category is declared
+- The `stream_name` method for composing entity stream names from the (optionally) declared category macro and an ID
+- The `category_stream_name` method for composing category stream names
+- The `command_stream_name` method for composing command stream names
+- The `command_category_stream_name` for composing command category stream names
+- The `get_id` class method for parsing a stream's ID from a stream name
+- The `get_category` class method for parsing a stream's category from a stream name
+
+## Category Declaration
 
 The most common usage scenario for the stream name utility method use is in conjunction with the [`category`](#messaging-category) macro.
 
