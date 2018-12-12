@@ -11,7 +11,7 @@ It builds on the utilities in the lower-level `MessageStore::StreamName` module,
 
 ## Messaging::StreamName Module
 
-The `StreamName` module is a function library from the [`Messaging` library](../libraries.md#messaging) and namespace.
+The `StreamName` module is a mixin and function library from the [`Messaging` library](../libraries.md#messaging) and namespace.
 
 The `StreamName` module provides:
 

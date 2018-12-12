@@ -2,7 +2,18 @@
 
 `Messaging::Category` is a module that's often mixed in to handler classes. The module is also included into a receiver class that includes the [`Messaging::StreamName`](./messaging-stream-name.md) module.
 
-The `Messaging::Category` provides the `category` class macro to the class that includes it
+## Messaging::Category Facts
+
+- The `Messaging::Category` module can be mixed into a class or can be used as a function library, with its methods invoked directly from the `Messaging::Category`
+
+## Messaging::Category Module
+
+The `Category` module is a mixin and function library from the [`Messaging` library](../libraries.md#messaging) and namespace.
+
+The `Category` module provides:
+
+- The `category` macro for declaring the default category name to be used for uses of stream name composition utilities within the class where the category is declared
+- The `normalize` class method to coerce a category name string or symbol to camel case
 
 ## Declaring the Category
 
