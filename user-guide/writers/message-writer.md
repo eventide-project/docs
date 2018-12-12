@@ -12,7 +12,7 @@ stream_name = "account-123"
 Messaging::Postgres::Write.(deposited, stream_name)
 ```
 
-## Writer Facts
+## Message Writer Facts
 
 - The message writer can write one message or a batch of messages
 - A write is always made to a single stream
