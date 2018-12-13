@@ -50,7 +50,7 @@ The consumer is the infrastructure that runs a subscription [reader](/glossary.m
 
 ## Endpoint
 
-An endpoint is the source process that a message comes from or the destination process where it is sent is _endpoint_. The term _endpoint_ is often used informally as a substitute for _service_.
+An endpoint is the source process that a message comes from or the destination process where it is sent. The term _endpoint_ is often used informally as a substitute for _service_.
 
 ## Entity
 
