@@ -94,6 +94,44 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | condition | SQL condition fragment that constrains the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
+### Consumers Must Be Started Within an Active Actor Supervisor
+
+The threading model of actors requires that a consumer be started within an active actor supervisor. If a consumer is started without being under supervision, its reader will not start, and the consumer will not dispatch messages to its handler.
+
+In the vast majority of operational cases, a consumer is started by the [component host](./component-host.md). The component host starts an actor supervisor and manages the individual actors used by the consumers operating in the host.
+
+It can be useful under the right conditions to exercise a consumer directly.
+
+``` ruby
+Actor::Supervisor.start do
+  Controls::Consumer::Example.start(
+    category,
+    condition: condition,
+    correlation: correlation_cateogry,
+    position_update_interval: position_update_interval
+  )
+end
+```
+
+Eventide uses the [ntl-actor](https://github.com/ntl/actor) implementation of the actor model.
+
+<div class="note custom-block">
+  <p>
+    Note: As an alternative to starting a consumer within an actor supervisor in order to exercise it directly, a `sleep` can be issued immediately after starting a consumer.
+  </p>
+</div>
+
+
+
+
+ provides the actor supervisor and
+
+
+- link to ntl actor
+- conversely, use a thread.sleep
+
+#### TODO
+
 ## Conditions
 
 Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed. For instance, this allows a consumer to only read messages that correlate to a given category, or only a subset of the streams within a category for parallel processing across multiple consumers.
