@@ -128,7 +128,7 @@ It's common when using pub/sub that a service will use a consumer to subscribe t
 
 If a service is only concerned with _some_ of the events published by an external service, then the consumer can use the `correlation` parameter to filter the messages received from external service's stream.
 
-``` ruby{5}
+``` ruby{6}
 stream_name = <some external service's stream name>
 correlation_cateogry = <this service's category>
 
