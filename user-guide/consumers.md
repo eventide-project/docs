@@ -169,20 +169,28 @@ end
 
 The originating service can now select the events written to this external service's stream based on the correlation data preserved in the events.
 
-## Conditions
+Postgres' ability to select events based on the content of specific attributes of the [message metadata](/user-guide/messages-and-message-data/metadata.md) is the underlying mechanism by which this is implemented.
 
-Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed. For instance, this allows a consumer to only read messages that correlate to a given category, or only a subset of the streams within a category for parallel processing across multiple consumers.
+Specifying a value for the `correlation` parameter when starting a consumer causes the underlying reader to filter the consumed stream by the following query condition:
 
-For example, the consumer can read messages from `someCategory` that correlate to `otherCategory`.
-
-```ruby
-SomeConsumer.start('someCategory', condition: "metadata->>'correlationStreamName' like 'otherCategory%'")
+```
+metadata->>'correlationStreamName' like '<some correlation category>-%'
 ```
 
-See the [correlation](/user-guide/messages-and-message-data/metadata.md#message-correlation) section of the [message metadata documentation](/user-guide/messages-and-message-data/metadata.md) for more on correlation.
+## Conditions
+
+Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed.
+
+For example, the consumer can read messages from `someCategory` whose position is 0.
+
+```ruby
+SomeConsumer.start('someCategory', condition: 'position == 0')
+```
+
+The above example isn't a realistic use of this feature. It's a contrived example merely intended to demonstrate the mechanics of the feature.
 
 ::: danger
-Usage of this feature should be treated with caution. While this feature _can_ be used to create isolated, parallel consumers that process the same input stream (or category), the particular technique chosen to do so can result in messages being processed out of order. Ensure that you fully understand the implications of competing consumers, concurrency, and idempotence before proceeding.
+Usage of this feature should be treated with caution. While this feature _can_ be used to great effect, under certain circumstances, it can also result in messages not being processed, or even processed out of order. Ensure that you fully understand the implications before proceeding.
 :::
 
 ## Polling
