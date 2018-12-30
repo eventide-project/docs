@@ -79,7 +79,7 @@ SomeConsumer.start('someStream')
 </div>
 
 ``` ruby
-self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, condition: nil, settings: nil)
+self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, correlation: nil, condition: nil, settings: nil)
 ```
 
 **Parameters**
@@ -91,6 +91,7 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
 | identifier | Qualifier appended to the consumer's position stream name | String |
+| correlation | A category name used to restrict the messages consumed to those whose correlation stream is in the specified correlation category (this feature is used to effect pub/sub) | String |
 | condition | SQL condition fragment that constrains the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
@@ -121,16 +122,52 @@ Eventide uses the [ntl-actor](https://github.com/ntl/actor) implementation of th
   </p>
 </div>
 
+## Correlation and Pub/Sub
 
+It's common when using pub/sub that a service will use a consumer to subscribe to events from an external service. However, if that external service is leveraged by a number of different services, then only some of the events it publishes will pertain to messaging workflows started by the originating, or _coordinating_, service.
 
+If a service is only concerned with _some_ of the events published by an external service, then the consumer can use the `correlation` parameter to filter the messages received from external service's stream.
 
- provides the actor supervisor and
+``` ruby
+stream_name = <some external service's stream name>
+correlation_cateogry = <this service's category>
 
+SomeConsumer.start(
+  stream_name,
+  correlation: correlation_cateogry
+)
+```
 
-- link to ntl actor
-- conversely, use a thread.sleep
+In order for an event written to an external service's stream to carry the correlation information from the originating service, the outbound message being written to the external service must have its `correlation_stream_name` attribute set to the current service's stream name.
 
-#### TODO
+``` ruby
+stream_name = <some external service's stream name>
+correlation_stream_name = <this service's stream name>
+
+command = SomeCommandToExternalService.new
+
+command.metadata.correlation_stream_name = correlation_stream_name
+
+write.(command, stream_name)
+```
+
+In the external service's [command handler](/user-guide/handlers.md), the resulting event written must preserve the correlation data from message to message.
+
+The [`follow` constructor](/user-guide/messages-and-message-data/messages.md#message-workflows) of messages is the mechanism that preserves message metadata, including the `correlation_stream_name` attribute.
+
+``` ruby
+handle SomeCommandToExternalService do |some_command_to_external_service|
+  some_id = some_command_to_external_service.some_id
+
+  some_event = SomeEvent.follow(some_command_to_external_service)
+
+  stream_name = stream_name(some_id)
+
+  write.(some_event, stream_name)
+end
+```
+
+The originating service can now select the events written to this external service's stream based on the correlation data preserved in the events.
 
 ## Conditions
 
