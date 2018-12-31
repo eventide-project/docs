@@ -140,7 +140,7 @@ SomeConsumer.start(
 
 In order for an event written to an external service's stream to carry the correlation information from the originating service, the outbound message being written to the external service must have its `correlation_stream_name` attribute set to the current service's stream name.
 
-``` ruby
+``` ruby{6}
 stream_name = <some external service's stream name>
 correlation_stream_name = <this service's stream name>
 
@@ -155,10 +155,12 @@ In the external service's [command handler](/user-guide/handlers.md), the result
 
 The [`follow` constructor](/user-guide/messages-and-message-data/messages.md#message-workflows) of messages is the mechanism that preserves message metadata, including the `correlation_stream_name` attribute.
 
-``` ruby
+``` ruby{6}
 handle SomeCommandToExternalService do |some_command_to_external_service|
   some_id = some_command_to_external_service.some_id
 
+  # The follow constructor copies the correlation metadata from
+  # the input command to the output event
   some_event = SomeEvent.follow(some_command_to_external_service)
 
   stream_name = stream_name(some_id)
