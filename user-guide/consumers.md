@@ -173,7 +173,7 @@ The originating service can now select the events written to this external servi
 
 Postgres' ability to select events based on the content of specific attributes of the [message metadata](/user-guide/messages-and-message-data/metadata.md) is the underlying mechanism by which this is implemented.
 
-Specifying a value for the `correlation` parameter when starting a consumer causes the underlying reader to filter the consumed stream by the following query condition:
+Specifying a value for the `correlation` parameter when starting a consumer causes the consumer's stream reader to filter the consumed stream using Postgres' support for JSON document querying.
 
 ```
 metadata->>'correlationStreamName' like '<some correlation category>-%'
