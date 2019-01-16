@@ -170,6 +170,10 @@ message_writes(blk)
 
 Array containing the messages written or messages for which the given block returns `true`.
 
+**Alias**
+
+`writes`
+
 **Parameters**
 
 | Name | Description | Type |
