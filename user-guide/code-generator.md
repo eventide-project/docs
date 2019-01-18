@@ -9,7 +9,7 @@ The command line component generator provides a starting point for Eventide comp
 
 It generates a skeleton project of the basic structure of a component, along with some TODO comments that point out the missing pieces of the component implementation that need to be provided.
 
-It generates placeholders for message handlers, messages, an entity, projection, and store. It generates a settings file for the Postgres database connection, a test directory with supporting files to initialize the component during testing, as well as placeholders for test controls.
+It generates placeholders for message handlers, messages, an entity, projection, and store. It generates consumers, a component initiator, and a component start script. It also generates a settings file for the Postgres database connection, a test directory with supporting files to initialize the component during testing, as well as placeholders for test controls.
 
 ## Installation
 
@@ -32,18 +32,21 @@ evt component something_component
 ## Generated Output
 
 ```
-something-component
 |-lib
 | |-something_component
-| | |-messages
-| | | |-commands
-| | | |-events
 | | |-handlers
 | | | |-commands.rb
 | | | |-events.rb
-| | |-projection.rb
+| | |-messages
+| | | |-commands
+| | | |-events
+| | |-consumers
+| | | |-commands.rb
+| | | |-events.rb
 | | |-something.rb
+| | |-projection.rb
 | | |-store.rb
+| | |-start.rb
 | | |-controls
 | | | |-something.rb
 | | | |-version.rb
@@ -53,6 +56,9 @@ something-component
 | |-something_component.rb
 |-settings
 | |-message_store_postgres.json.example
+|-script
+| |-start
+| |-test-database-connection
 |-test
 | |-test_init.rb
 | |-automated
@@ -62,11 +68,11 @@ something-component
 | |-interactive
 | | |-interactive_init.rb
 |-.gitignore
-|-init.rb
-|-install-gems.sh
-|-Gemfile
-|-load_path.rb
-|-README.md
 |-something_component.gemspec
+|-init.rb
+|-load_path.rb
+|-Gemfile
+|-install-gems.sh
 |-test.sh
+|-README.md
 ```
