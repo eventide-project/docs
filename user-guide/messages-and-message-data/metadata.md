@@ -20,14 +20,14 @@ The `Metadata` class provides:
 
 ## Metadata Attributes
 
-| Name | Description | Type | Alias |
+| Name | Description | Type | Aliases |
 | --- | --- | --- | --- |
 | stream_name | The name of the stream where the message resides | String | source_message_stream_name |
 | position | The sequential position of the message in its stream | Integer | source_message_position |
-| global_position | The sequential position of the message in the entire message store | Integer | source_message_global_position |
+| global_position | The sequential position of the message in the entire message store | Integer | source_message_global_position, sequence |
 | causation_message_stream_name | The stream name of the message the precedes a message in a sequential [message flow](./messages.md#message-workflows) | |
 | causation_message_position | The sequential position of the causation message in its stream | Integer | |
-| causation_message_global_position | The sequential position of the message in the entire message store | Integer | sequence |
+| causation_message_global_position | The sequential position of the message in the entire message store | Integer | causation_sequence |
 | correlation_stream_name | Name of the stream that represents an encompassing business process that coordinates the sub-process that the message is a part of | String | |
 | reply_stream_name | Name of a stream where a reply should be sent as a result of processing the message | String | |
 | time | Timestamp that the message was written to the message store | Time | |
@@ -262,8 +262,12 @@ metadata.identifier
 The unique identifier for a message's causation message is a combination of the causation message's stream name and the causation message's position number within that stream.
 
 ``` ruby
-causation_message_identifier()
+causation_identifier()
 ```
+
+**Alias**
+
+`causation_message_identifier`
 
 **Returns**
 
