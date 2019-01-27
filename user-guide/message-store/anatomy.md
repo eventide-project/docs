@@ -7,8 +7,8 @@ The message store is a single table named `messages`. Interaction with the messa
 | Column | Type | Description | Default | Nullable |
 | --- | --- | --- | --- | --- |
 | id | UUID | Identifier of a message entry and primary key | gen_random_uuid() | No |
-| stream_name | varchar(255) | Name of stream to which the message belongs | | No |
-| type | varchar(255) | The type of the message | | No |
+| stream_name | varchar | Name of stream to which the message belongs | | No |
+| type | varchar | The type of the message | | No |
 | position | bigint | The ordinal position of the message in its stream. Position is gapless. | | No |
 | global_position | bigint | The ordinal position of the message in the entire message store. Global position may have gaps. | | No |
 | data | jsonb | Message payload | NULL | Yes |
