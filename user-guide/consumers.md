@@ -35,7 +35,7 @@ end
 - A consumer reads from a single stream, usually a [category stream](/glossary.md#category-stream)
 - A consumer has one or more handlers
 - Messages are dispatched to a consumer's handlers in the order that they are declared
-- The consumer periodically records it's reader's position to the message store
+- The consumer periodically records its reader's position to the message store
 - Messages are retrieved in batches whose size can be configured
 - When there are no messages retrieved the consumer polls the message store
 - The polling interval is configurable
@@ -48,7 +48,7 @@ A class becomes a consumer by including the `Consumer::Postgres` module from the
 The `Consumer::Postgres` module affords the receiver with:
 
 - The `handler` class macro used for adding handlers to a consumer
-- The `identifier` class macro used to declare an arbitrary string prefix used to compose the the stream name used by the [position store](#position-store)
+- The `identifier` class macro used to declare an arbitrary string prefix used to compose the stream name used by the [position store](#position-store)
 
 ## Registering a Handler
 

@@ -8,9 +8,9 @@
 
 Unlike [message queues and buses](/glossary.md#message-queue-and-message-bus), [messages](/glossary.md#message) don't move from the [streams](/glossary.md#stream) they're written to. They can be read later by any number of services that they were not originally sent to so that those services can catch up on what has already happened, and either choose to process those messages or ignore them.
 
-Once messages are written to a streams, they stay there. Conversely, with message queues or message buses, a message is removed from a queue and then passed to a service's [consumer](/glossary.md#consumer).
+Once messages are written to a stream, they stay there. Conversely, with message queues or message buses, a message is removed from a queue and then passed to a service's [consumer](/glossary.md#consumer).
 
-Under certain conditions, this removal of messages from queues to send them to service endpoints results in a message being lost before it is processed. More commonly, the loss of the acknowledgment that the message was indeed processed leads to the re-processing of the message, which is why idempotent logic is a necessity no matter the "guarantees" offered by the service bus software. These conditions eventuality lead to ever more elaborate message bus features that complicate their use and operation.
+Under certain conditions, this removal of messages from queues to send them to service endpoints results in a message being lost before it is processed. More commonly, the loss of the acknowledgment that the message was indeed processed leads to the re-processing of the message, which is why idempotent logic is a necessity no matter the "guarantees" offered by the service bus software. These conditions eventually lead to ever more elaborate message bus features that complicate their use and operation.
 
 No matter how much of the complexity of message buses is hidden by ever more elaborate features, they cannot be made to guarantee "only-once" message delivery, and they cannot be made to be as simple as message streams.
 

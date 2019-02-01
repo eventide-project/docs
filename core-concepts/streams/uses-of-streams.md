@@ -9,7 +9,7 @@ Streams serve a number purposes in the Eventide toolkit:
 
 ## Applicative Entity State
 
-In an [event-sourced](/glossary.md#event-sourcing) system, an entity's state is stored as a series of [events](/glossary.md#event) in an [event stream](/glossary.md#event-stream). The entity's attributes are populated by _applying_ the event's attributes to the entity. Because messaging systems make use of the [publish-subscribe](/glossary.md#pub-sub) pattern, events will be recorded that represent the effects of processing [commands](/glossary.md#command). These events are also represent changes in the entities' state. Because of this property of event-sourced systems, storing [applicative](/glossary.md#applicative) state in relational database rows is largely necessary.
+In an [event-sourced](/glossary.md#event-sourcing) system, an entity's state is stored as a series of [events](/glossary.md#event) in an [event stream](/glossary.md#event-stream). The entity's attributes are populated by _applying_ the event's attributes to the entity. Because messaging systems make use of the [publish-subscribe](/glossary.md#pub-sub) pattern, events will be recorded that represent the effects of processing [commands](/glossary.md#command). These events also represent changes in the entities' state. Because of this property of event-sourced systems, storing [applicative](/glossary.md#applicative) state in relational database rows is largely necessary.
 
 Example entity state stream name: `account-123`
 
