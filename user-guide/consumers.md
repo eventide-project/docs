@@ -184,7 +184,7 @@ Specifying a value for the `correlation` parameter when starting a consumer caus
 metadata->>'correlationStreamName' like '<some correlation category>-%'
 ```
 
-## Consumer Group
+## Consumer Groups
 
 Consumers can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
 
@@ -214,6 +214,10 @@ The resulting SQL _where clause_ reflects the following condition:
 ``` sql
 WHERE @hash_64(stream_name) % <group_size> = <group_member>
 ```
+
+::: warning
+Consumer groups should always be used in conjunction with the concurrency protection offered by the message writer. Handler logic should always write messages using the writer's `expected_version` feature, irrespective of the use of consumer groups. However, the use of concurrency protection is even more imperative when using consumer groups. For more on concurrent writes, see the [writers user guide](/user-guide/writers/expected-version.md).
+:::
 
 ## Conditions
 
