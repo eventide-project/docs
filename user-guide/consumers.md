@@ -40,6 +40,8 @@ end
 - When there are no messages retrieved the consumer polls the message store
 - The polling interval is configurable
 - A consumer can be configured with a _condition_ that filters the messages retrieved
+- A consumer can be configured with a _correlation_ value filters based on messages' correlation stream name
+- A consumer can be configured with consumer group parameters for distributing messages amongst multiple consumers
 
 ## Consumer::Postgres Module
 
@@ -47,6 +49,7 @@ A class becomes a consumer by including the `Consumer::Postgres` module from the
 
 The `Consumer::Postgres` module affords the receiver with:
 
+- The `start` method for starting a consumer and supplying it with arguments that control its behavior
 - The `handler` class macro used for adding handlers to a consumer
 - The `identifier` class macro used to declare an arbitrary string prefix used to compose the the stream name used by the [position store](#position-store)
 
@@ -92,6 +95,8 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
 | identifier | Qualifier appended to the consumer's position stream name | String |
 | correlation | A category name used to restrict the messages consumed to those whose correlation stream is in the specified correlation category (this feature is used to effect pub/sub) | String |
+| group_size | The size of a group of consumers that are cooperatively processing a single input stream | Integer |
+| group_member | The member number of an individual consumer that is participating in a consumer group | Integer |
 | condition | SQL condition fragment that constrains the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
@@ -177,6 +182,37 @@ Specifying a value for the `correlation` parameter when starting a consumer caus
 
 ```
 metadata->>'correlationStreamName' like '<some correlation category>-%'
+```
+
+## Consumer Group
+
+Consumers can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+
+Consumers operating in consumer groups process a single input stream, with each consumer in the group processing messages that are not processed by any other consumer in the group.
+
+Specify both the `group_size` argument and the `group_member` argument to enlist a consumer in a consumer group. The `group_size` argument specifies the total number of consumers participating in the group. The `group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
+
+``` ruby{6-7}
+group_size = 3
+group_member = 0
+
+SomeConsumer.start(
+  stream_name,
+  group_size: group_size,
+  group_member: group_member
+)
+```
+
+Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
+
+A stream name is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+
+Specifying values for the `group_size` and `group_member` parameters when starting a consumer causes the consumer's stream reader to filter the consumed stream using a query condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
+
+The resulting SQL _where clause_ reflects the following condition:
+
+``` sql
+WHERE @hash_64(stream_name) % <group_size> = <group_member>
 ```
 
 ## Conditions
