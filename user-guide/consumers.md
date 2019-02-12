@@ -89,7 +89,7 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 
 | Name | Description | Type |
 | --- | --- | --- |
-| stream_name | The name of the stream that the consumer will read | String |
+| stream_name | The name of the stream (typically a category) that the consumer will read | String |
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
@@ -134,11 +134,11 @@ It's common when using pub/sub that a service will use a consumer to subscribe t
 If a service is only concerned with _some_ of the events published by an external service, then the consumer can use the `correlation` parameter to filter the messages received from external service's stream.
 
 ``` ruby{6}
-stream_name = <some external service's stream name>
-correlation_cateogry = <this service's category>
+category = <some external service's category stream>
+correlation_cateogry = <this service's category stream>
 
 SomeConsumer.start(
-  stream_name,
+  category,
   correlation: correlation_cateogry
 )
 ```
@@ -197,7 +197,7 @@ group_size = 3
 group_member = 0
 
 SomeConsumer.start(
-  stream_name,
+  category,
   group_size: group_size,
   group_member: group_member
 )
