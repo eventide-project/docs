@@ -129,7 +129,7 @@ While errors cannot be _handled_ by the component host, they can optionally be r
 
 ``` ruby
 ComponentHost.start(component_name) do |host|
-  host.record_error(error) do
+  host.record_error do |error|
     SomeErrorReporter.(error)
   end
 end
