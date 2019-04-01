@@ -33,7 +33,7 @@ deposited = Deposited.new()
 deposited.account_id = '123'
 deposited.amount = 11
 
-MessageStore::Postgres::Write.(deposited, 'account-123')
+Messaging::Postgres::Write.(deposited, 'account-123')
 
 account, version = store.fetch('123', include: :version)
 
@@ -47,13 +47,13 @@ withdrawn = Withdrawn.new()
 withdrawn.account_id = '123'
 withdrawn.amount = 1
 
-MessageStore::Postgres::Write.(withdrawn, 'account-123')
+Messaging::Postgres::Write.(withdrawn, 'account-123')
 
 deposited = Deposited.new()
 deposited.account_id = '123'
 deposited.amount = 111
 
-MessageStore::Postgres::Write.(deposited, 'account-123')
+Messaging::Postgres::Write.(deposited, 'account-123')
 
 account, version = store.fetch('123', include: :version)
 
