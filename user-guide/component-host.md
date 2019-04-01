@@ -128,22 +128,22 @@ See the error handling section of the consumer user guide for details: [http://d
 While errors cannot be _handled_ by the component host, they can optionally be reported or recorded.
 
 ``` ruby
-ComponentHost.start(component_name) do |host|
-  host.record_error do |error|
-    SomeErrorReporter.(error)
-  end
-end
-```
-
-``` ruby
-record_error(error)
+record_error(&blk)
 ```
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| error | Unhandled error that is raised to the level of the component host | RuntimeError |
+| blk | A block that is executed when an unhandled error is raised to the level of the component host | Proc |
+
+``` ruby
+ComponentHost.start(component_name) do |host|
+  host.record_error do |error|
+    SomeErrorReporter.(error)
+  end
+end
+```
 
 ## Stopping the Component Host
 
