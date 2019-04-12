@@ -190,6 +190,12 @@ Consumers can be operated in parallel in a _consumer group_. Consumer groups pro
 
 Consumers operating in consumer groups process a single input stream, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 
+<div class="note custom-block">
+  <p>
+    Note that consumers operated in consumer groups must be used in conjunction with the identifier macro, or else the individual consumers in a consumer group will overwrite each other's position records.
+  </p>
+</div>
+
 Specify both the `group_size` argument and the `group_member` argument to enlist a consumer in a consumer group. The `group_size` argument specifies the total number of consumers participating in the group. The `group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
 
 ``` ruby{6-7}
