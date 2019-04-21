@@ -159,6 +159,10 @@ Return value for async method that is accidentally invoked synchronously<br/>
 Generates class level configure methods<br/>
 [github.com/eventide-project/configure](https://github.com/eventide-project/configure)
 
+### collection
+Type-checked set<br/>
+[github.com/eventide-project/collection](https://github.com/eventide-project/collection)
+
 ## Third Party Libraries
 
 ### pg
