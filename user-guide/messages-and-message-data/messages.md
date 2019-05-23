@@ -583,6 +583,48 @@ some_message = Messaging::Message::Import.(message_data, SomeMessage)
 # => #<SomeMessage:0x... @some_attribute="some value">
 ```
 
+## Transforming Messages with Nested Objects
+
+A message with a flat structure of attributes with strings, numbers, and time values can be converted to-and-from the underlying `MessageData` format without any additional coding.
+
+When a message has an attribute that contains an object rather than a primitive value, the message must implement two methods that transform the nested object to and from hash data: `transform_read` and `transform_write`. Hash data is the de facto intermediate representation of message data when transforming between messages and message data.
+
+``` ruby
+class SomeNestedObject
+  include Schema::DataStructure
+
+  attribute :something, String
+  attribute :something_else, String
+end
+
+class SomeMessage
+  include Schema::DataStructure
+
+  attribute :name, String
+  attribute :nested_objects, Collection::Set[SomeNestedObject],
+            default: -> { Collection::Set[SomeNestedObject].new }
+
+  def transform_read(data)
+    nested_objects = data[:nested_objects] &.map do |nested_object_data|
+      Segment.build(SomeNestedObject)
+    end
+
+    nested_objects_set = Collection::Set[SomeNestedObject].new.add(nested_objects)
+
+    data[:nested_objects] = nested_objects_set
+  end
+
+  def transform_write(data)
+    nested_objects = data[:nested_objects]
+    if nested_objects.empty?
+      data.delete(:nested_objects)
+    else
+      data[:nested_objects] = nested_objects.map(&:to_h)
+    end
+  end
+end
+```
+
 ## Message Type
 
 The _message type_ is the name of the message class without any of the namespace information.
