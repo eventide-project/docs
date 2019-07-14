@@ -606,7 +606,7 @@ class SomeMessage
 
   def transform_read(data)
     nested_objects = data[:nested_objects] &.map do |nested_object_data|
-      Segment.build(SomeNestedObject)
+      SomeNestedObject.build(nested_object_data)
     end
 
     nested_objects_set = Collection::Set[SomeNestedObject].new.add(nested_objects)

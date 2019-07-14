@@ -143,6 +143,10 @@ Clock interface with support for dependency configuration for real and null obje
 Declare attributes that have default implementations that are substitutes or null objects<br/>
 [github.com/eventide-project/subst-attr](https://github.com/eventide-project/subst-attr)
 
+### mimic
+Copy a class's instance interface to an anonymous, new object that acts as a substitutable mimic for the class<br/>
+[github.com/eventide-project/mimic](https://github.com/eventide-project/mimic)
+
 ### virtual
 Virtual method declaration<br/>
 [github.com/eventide-project/virtual](https://github.com/eventide-project/virtual)

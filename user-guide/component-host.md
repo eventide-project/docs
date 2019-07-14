@@ -216,4 +216,4 @@ The following tags _may_ be applied to log messages recorded by the component ho
 | start | Applied to messages recorded when starting an actor |
 | stop | Applied to messages recorded when stopping an actor |
 
-See the [logging](./logging.md#tags) user guide for more on log tags.
+See the [logging](./logging/log-tags.md) user guide for more on log tags.
