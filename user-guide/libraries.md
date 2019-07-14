@@ -177,25 +177,9 @@ Ruby interface to the PostgreSQL RDBMS<br/>
 Implementation of actor pattern for Ruby<br/>
 [github.com/ntl/actor](https://github.com/ntl/actor)
 
-### hashie
-Your friendly neighborhood hash library<br/>
-[github.com/intridea/hashie](https://github.com/intridea/hashie)
-
 ### terminal_colors
 Apply ANSI terminal colors to strings<br/>
 [github.com/ntl/terminal-colors](https://github.com/ntl/terminal-colors)
-
-### thread_safe
-Thread-safe collections and utilities for Ruby<br/>
-[github.com/ruby-concurrency/thread_safe](https://github.com/ruby-concurrency/thread_safe)
-
-### naught
-Naught is a toolkit for building Null Objects<br/>
-[github.com/avdi/naught](https://github.com/avdi/naught)
-
-### tzinfo
-Daylight savings aware timezone library<br/>
-[github.com/tzinfo/tzinfo](https://github.com/tzinfo/tzinfo)
 
 ### test_bench
 A frugal test framework for Ruby<br/>
