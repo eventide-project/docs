@@ -1,0 +1,25 @@
+sbellware [9:38 AM]
+@Joerg If you were using Eventide’s EventStore database implementation, rather than the Postgres implementation, how would you enroll an EventStore insert operation in an ActiveRecord transaction?
+Or, let’s say that the MySQL, Redis, BigTable, or DynamoDB implementations were already complete and you were using one of those. How would you enroll one of their insert operations into an ActiveRecord transaction?
+These questions are meant to emphasize a fundamental misunderstanding of the architecture that is shaping your plans
+It’s a reasonable misunderstanding from someone in your position though, so you’re in good company
+But it _is_ a misunderstanding and it needs to be cleared up before you proceed
+I suspect that you, like many have already passed through the transaction from monolithic web apps to service architectures, have accidentally conflated the presence of a Rails application data store in Postgres and a message store in Postgres. The fact that both of these stores are built on the same technology is absolutely irrelevant to the intended architecture.
+An ActiveRecord database operation and a message store database operation have no association to each other - no matter what the message store is implemented in. The fact that you’re using Postgres for both the application store and the message store is muddying the ability to see this subtle point with clarity.
+In the end, there’s no way to substitute an ActiveRecord database transaction with a message store database transaction, and there’s no way to substitute a message store database transaction with an ActiveRecord database transaction.
+This is true because this kind of thing is such a violation of the architecture that undertaking the effort to either change ActiveRecord’s implementation of the message store’s implementation has never even been considered
+Summing up: the things that happen a Rails app does and the things that a messaging service does are not even the same species of animal, and they’re not intended to belong together.
+And that’s not an Eventide thing. That’s a service architecture thing. Eventide reflects the realities and the resulting principle of autonomous service architecture, and therefore Eventide reflects this expected property of service architecture.
+
+sbellware [9:59 AM]
+The practicable answer for your concrete use case requires that you choose either one architecture or the other, rather than try to have one foot on the pier and one foot in the boat (the outcome of this is typically that both the pier and the boat come out of the experience unchanged, but you end up being dumped in the water)
+You either have to entirely use the immediately-consistent style of monolithic Rails, or you need to use the eventually-consistent style of autonomous services. But you can’t mix these consistency models. You can’t do this because they are separate consistency models, and it’s this property rather than the presence of Postgres in the solution that dictates how you can proceed.
+Practically speaking, you need to write an event in the Rails controller, not do ActiveRecord operations. And then in an autonomous event handler, you’d need to process that event and do the ActiveRecord operation (that was done in the controller) as a result.
+It might be valuable at this point to realize that the word for what Rails refers to as a “controller” is - in general software architecture terminology - a “handler”
+You can only write to a single atomic resource in a single handler (whether that handler is called a “controller” or not)
+So, you need to do these operations in sequence. You can’t do them in the same atomic operation. And you’re not supposed to, or even try to.
+And that of course means that latency will be introduced into your app, and you’ll need to augment the user-interaction parts of the implementation so that they no longer can count on the immediate consistency of atomic ActiveRecord operations.
+And this is ultimately why @Brad is pointing out that the migration strategy that you’re trying to pursue is not only not recommended, it’s not practicable. It’s only something that is a presumed approach when you’re at the very beginning of your understanding of service architectures and their integration with interactive architectures like Rails (or any other user-interactive tooling or framework)
+Rails is immediately consistent because user-interactive implementations are usually immediately consistent. Messaging isn’t user-interactive. It can be made to appear sufficiently-consistent to do user-interactive things, but by its nature it’s _batch_ rather than user-interactive.
+And you need to pick one or the other. They don’t mix.
+(and they’re not supposed to)
