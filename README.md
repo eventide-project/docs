@@ -109,14 +109,8 @@ class Store
 end
 ```
 
-<div class="note custom-block">
-  <p>
-    Note: This example code is abridged for brevity, and some elements necessary for it to be runnable are redacted. For more complete and representative example implementations, as well as the unabridged version of this example, see the examples section.
-  </p>
-</div>
-
 <div class="hero">
   <p class="action">
-    <a href="/examples/" class="nav-link action-button">Go To Examples</a>
+    <a href="/examples/" class="nav-link action-button">Go To Examples →</a>
   </p>
 </div>
