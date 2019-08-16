@@ -147,6 +147,10 @@ Declare attributes that have default implementations that are substitutes or nul
 Copy a class's instance interface to an anonymous, new object that acts as a substitutable mimic for the class<br/>
 [github.com/eventide-project/mimic](https://github.com/eventide-project/mimic)
 
+### invocation
+Extract information about a method's invocation including the method name, parameter names, and parameter values<br />
+[github.com/eventide-project/invocation](https://github.com/eventide-project/invocation)
+
 ### virtual
 Virtual method declaration<br/>
 [github.com/eventide-project/virtual](https://github.com/eventide-project/virtual)
