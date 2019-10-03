@@ -1,10 +1,10 @@
-# Get::Last
+# Get::Stream::Last
 
-The `MessageStore::Postgres::Get::Last` class is a specialized reader that retrieves only the last message in a stream.
+The `MessageStore::Postgres::Get::Stream::Last` class is a specialized reader that retrieves only the last message in a stream.
 
-It's a utility that is useful in circumstances where sequence number-based idempotence is employed without the use of an [entity store](/user-guide/entity-store/) or an [entity projection](/user-guide/projection.md).
+It's a utility that can be useful in circumstances where sequence number-based idempotence is employed without the use of an [entity store](/user-guide/entity-store/) or an [entity projection](/user-guide/projection.md).
 
-## Get::Last Example
+## Get::Stream::Last Example
 
 ``` ruby
 deposit_1 = Deposited.new()
@@ -13,36 +13,36 @@ deposit_1.deposit_id = '456'
 deposit_2 = Deposited.new()
 deposit_2.deposit_id = '789'
 
-stream_name = 'account'
+stream_name = 'account-123'
 
 Messaging::Postgres::Write.(deposit_1, stream_name)
 Messaging::Postgres::Write.(deposit_2, stream_name)
 
-last_message = MessageStore::Postgres::Get::Last.(stream_name)
+last_message = MessageStore::Postgres::Get::Stream::Last.(stream_name)
 
 last_message.deposit_id
 # => "789"
 ```
 
-## Get::Last Facts
+## Get::Stream::Last Facts
 
-- The `Get::Last` class returns a single [message data](/user-guide/messages-and-message-data/message-data.md) instance representing the last message in the specified stream
-- A `Get::Last` can be configured with an existing [session](./session.md), or it can create a new session
+- The `Get::Stream::Last` class returns a single [message data](/user-guide/messages-and-message-data/message-data.md) instance representing the last message in the specified stream
+- A `Get::Stream::Last` can be configured with an existing [session](./session.md), or it can create a new session
 
-## MessageStore::Postgres::Get::Last Class
+## MessageStore::Postgres::Get::Stream::Last Class
 
-The `Get::Last` class is a concrete class from the [`MessageStore::Postgres` library](../libraries.md#message-store-postgres) and namespace.
+The `Get::Stream::Last` class is a concrete class from the [`MessageStore::Postgres` library](../libraries.md#message-store-postgres) and namespace.
 
-The `Get::Last` class provides:
+The `Get::Stream::Last` class provides:
 
 - The principle instance actuator `.()` (or the `call` instance method) for starting a reader
 - The class actuator `.()` (or the class `call` method) that provides a convenient invocation shortcut that does not require instantiating the reader class first
 
 ## Getting the Last Message in a Stream
 
-A `Get::Last` can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the instance.
+A `Get::Stream::Last` can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the instance.
 
-`Get::Last` is implemented as a _callable object_. Actuating it is simply a matter of invoking its `call` method.
+`Get::Stream::Last` is implemented as a _callable object_. Actuating it is simply a matter of invoking its `call` method.
 
 ### Class Actuator
 
@@ -73,16 +73,16 @@ call(stream_name)
 | --- | --- | --- |
 | stream_name | Name of stream that the reader will read | String |
 
-## Constructing a Get::Last
+## Constructing a Get::Stream::Last
 
-The `Get::Last` class can be constructed in one of two ways:
+The `Get::Stream::Last` class can be constructed in one of two ways:
 
 - Via the constructor
 - Via the initializer
 
 ### Via the Constructor
 
-The constructor not only instantiates the `Get::Last`, but also invokes the its `configure` instance method, which constructs its operational dependencies.
+The constructor not only instantiates the `Get::Stream::Last`, but also invokes the its `configure` instance method, which constructs its operational dependencies.
 
 ``` ruby
 self.build(session: nil)
@@ -90,7 +90,7 @@ self.build(session: nil)
 
 **Returns**
 
-Instance of the MessageStore::Postgres::Get::Last class.
+Instance of the MessageStore::Postgres::Get::Stream::Last class.
 
 **Parameters**
 
@@ -106,31 +106,31 @@ self.initialize()
 
 **Returns**
 
-Instance of the MessageStore::Postgres::Get::Last class.
+Instance of the MessageStore::Postgres::Get::Stream::Last class.
 
-## Assigning Get::Last as a Dependency
+## Assigning Get::Stream::Last as a Dependency
 
 ``` ruby
 self.configure(receiver, session: nil, attr_name: :get_last)
 ```
 
-Constructs an instance of the `Get::Last` and assigns it to the receiver's `get_last` attribute. By default, the receiving attribute's name is expected to be `get_last`, but it can be altered with the use of the `attr_name` parameter.
+Constructs an instance of the `Get::Stream::Last` and assigns it to the receiver's `get_last` attribute. By default, the receiving attribute's name is expected to be `get_last`, but it can be altered with the use of the `attr_name` parameter.
 
 ``` ruby
 something = Something.new
-Messaging::Postgres::Get::Last.configure(something)
+Messaging::Postgres::Get::Stream::Last.configure(something)
 
 something.get_last
-# => #<Messaging::Postgres::Get::Last:0x...>
+# => #<Messaging::Postgres::Get::Stream::Last:0x...>
 ```
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| receiver | The object that will receive the constructed `Get::Last` | Object |
+| receiver | The object that will receive the constructed `Get::Stream::Last` | Object |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
-| attr_name | The receiver's attribute that will be assigned the constructed `Get::Last` | Symbol |
+| attr_name | The receiver's attribute that will be assigned the constructed `Get::Stream::Last` | Symbol |
 
 ::: tip
 See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
@@ -138,14 +138,14 @@ See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies)
 
 ## Log Tags
 
-The following tags are applied to log messages recorded by a `Get::Last`:
+The following tags are applied to log messages recorded by a `Get::Stream::Last`:
 
 | Tag | Description |
 | --- | --- |
-| get | Applied to all log messages recorded by a `Get::Last` |
+| get | Applied to all log messages recorded by a `Get::Stream::Last` |
 | message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
 
-The following tags _may_ be applied to log messages recorded by a `Get::Last`:
+The following tags _may_ be applied to log messages recorded by a `Get::Stream::Last`:
 
 | Tag | Description |
 | --- | --- |
