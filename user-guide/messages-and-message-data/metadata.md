@@ -28,7 +28,7 @@ The `Metadata` class provides:
 | causation_message_stream_name | The stream name of the message the precedes a message in a sequential [message flow](./messages.md#message-workflows) | |
 | causation_message_position | The sequential position of the causation message in its stream | Integer | |
 | causation_message_global_position | The sequential position of the message in the entire message store | Integer | causation_sequence |
-| correlation_stream_name | Name of the stream that represents an encompassing business process that coordinates the sub-process that the message is a part of | String | |
+| correlation_stream_name | Name of the stream that represents an encompassing business process that coordinates the sub-process that the message is a part of | String | origin_stream_name, origin |
 | reply_stream_name | Name of a stream where a reply should be sent as a result of processing the message | String | |
 | time | Timestamp that the message was written to the message store | Time | |
 | schema_version | Version identifier of the message schema itself | String | |
