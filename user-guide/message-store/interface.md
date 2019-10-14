@@ -12,12 +12,12 @@ Write a JSON-formatted message to a named stream, optionally specifying JSON-for
 
 ``` sql
 write_message(
-  _id varchar,
-  _stream_name varchar,
-  _type varchar,
-  _data jsonb,
-  _metadata jsonb DEFAULT NULL,
-  _expected_version bigint DEFAULT NULL
+  id varchar,
+  stream_name varchar,
+  type varchar,
+  data jsonb,
+  metadata jsonb DEFAULT NULL,
+  expected_version bigint DEFAULT NULL
 )
 ```
 
@@ -25,12 +25,12 @@ write_message(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| _id | varchar | UUID of the message being written | | a5eb2a97-84d9-4ccf-8a56-7160338b11e2 |
-| _stream_name | varchar | Name of stream to which the message is written | | someStream-123 |
-| _type | varchar | The type of the message | | Withdrawn |
-| _data | jsonb | JSON representation of the message body | | {"messageAttribute": "some value"} |
-| _metadata (optional) | jsonb | JSON representation of the message metadata | NULL | {"metaDataAttribute": "some meta data value"} |
-| _expected_version (optional) | bigint | Version that the stream is expected to be when the message is written | NULL | 11 |
+| id | varchar | UUID of the message being written | | a5eb2a97-84d9-4ccf-8a56-7160338b11e2 |
+| stream_name | varchar | Name of stream to which the message is written | | someStream-123 |
+| type | varchar | The type of the message | | Withdrawn |
+| data | jsonb | JSON representation of the message body | | {"messageAttribute": "some value"} |
+| metadata (optional) | jsonb | JSON representation of the message metadata | NULL | {"metaDataAttribute": "some meta data value"} |
+| expected_version (optional) | bigint | Version that the stream is expected to be when the message is written | NULL | 11 |
 
 ### Usage
 
@@ -62,10 +62,10 @@ Retrieve messages from a single stream, optionally specifying the starting posit
 
 ``` sql
 get_stream_messages(
-  _stream_name varchar,
-  _position bigint DEFAULT 0,
-  _batch_size bigint DEFAULT 1000,
-  _condition varchar DEFAULT NULL
+  stream_name varchar,
+  position bigint DEFAULT 0,
+  batch_size bigint DEFAULT 1000,
+  condition varchar DEFAULT NULL
 )
 ```
 
@@ -73,10 +73,10 @@ get_stream_messages(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| _stream_name | varchar | Name of stream to retrieve messages from | | someStream-123 |
-| _position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
-| _batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| _condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
+| stream_name | varchar | Name of stream to retrieve messages from | | someStream-123 |
+| position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
+| batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
+| condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
 
 ### Usage
 
@@ -92,10 +92,10 @@ Retrieve messages from a category or streams, optionally specifying the starting
 
 ``` sql
 CREATE OR REPLACE FUNCTION get_category_messages(
-  _category_name varchar,
-  _position bigint DEFAULT 0,
-  _batch_size bigint DEFAULT 1000,
-  _condition varchar DEFAULT NULL
+  category_name varchar,
+  position bigint DEFAULT 0,
+  batch_size bigint DEFAULT 1000,
+  condition varchar DEFAULT NULL
 )
 ```
 
@@ -103,10 +103,10 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| _category_name | varchar | Name of the category to retrieve messages from | | someStream |
-| _position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
-| _batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| _condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
+| category_name | varchar | Name of the category to retrieve messages from | | someStream |
+| position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
+| batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
+| condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
 
 ### Usage
 
@@ -126,7 +126,7 @@ Retrieve the last message in a stream.
 
 ``` sql
 get_last_message(
-  _stream_name varchar
+  stream_name varchar
 )
 ```
 
@@ -134,7 +134,7 @@ get_last_message(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| _stream_name | varchar | Name of the stream to retrieve messages from | |  someStream-123 |
+| stream_name | varchar | Name of the stream to retrieve messages from | |  someStream-123 |
 
 ### Usage
 
