@@ -1,4 +1,4 @@
-# Message Store Database Interface
+# Server Functions
 
 The message store provides an interface of Postgres server functions that you can access with any programming language, or the `psql` command line tool.
 

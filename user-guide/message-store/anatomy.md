@@ -1,6 +1,6 @@
 # Anatomy of the Message Store
 
-The message store is a single table named `messages`. Interaction with the message store is effected through Postgres [server functions](./interface.md) that ensure the correct semantics for the writing of messages to streams, and the reading of messages from streams and categories.
+The message store is a single table named `messages`. Interaction with the message store is effected through Postgres [server functions](./server-functions.md) that ensure the correct semantics for the writing of messages to streams, and the reading of messages from streams and categories.
 
 ## Messages Table
 

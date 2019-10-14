@@ -236,7 +236,7 @@ evt-pg-open-database-scripts-dir
 evt-pg-print-message-store-version
 ```
 
-NOTE: The message store includes a server function named [`message_store_version`](./interface.html#get-message-store-database-schema-version) that reports the version of the database schema.
+NOTE: The message store includes a server function named [`message_store_version`](./server-functions.html#get-message-store-database-schema-version) that reports the version of the database schema.
 
 ## Use an Alternate Database Name
 
