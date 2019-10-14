@@ -145,3 +145,19 @@ SELECT * FROM get_last_message('stream_name'::varchar)
 Note: This is only for entity streams, and does not work for categories.
 
 Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-last-message.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-last-message.sh)
+
+## Get Message Store Database Schema Version
+
+Retrieve the four octet version number of the message store database.
+
+``` sql
+message_store_version()
+```
+
+### Usage
+
+``` sql
+SELECT message_store_version();
+```
+
+The version number will change when the database schema changes. A database schema change could be a change to the `messages` table structure, changes to Postgres server functions, types, indexes, users, or permissions. The version number follows the [SemVer](https://semver.org/) scheme for the last three numbers in the version (the first number is the product generation, and implies a major version change).

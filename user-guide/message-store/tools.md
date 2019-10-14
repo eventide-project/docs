@@ -22,6 +22,7 @@ The Eventide message store Postgres database package installs command line tools
 - [evt-pg-print-type-category-summary](#print-summary-statistics-by-message-type-cross-referenced-by-category)
 - [evt-pg-write-test-message](#write-a-test-message)
 - [evt-pg-open-database-scripts-dir](#open-view-the-directory-containing-the-database-definition-script-files)
+- [evt-pg-print-message-store-version](#print-the-message-store-database-schema-version)
 
 ::: tip
 If you installed the tools via Bundler, prefix the following commands with `bundle exec`, for example: `bundle exec evt-pg-create-db`
@@ -228,6 +229,14 @@ STREAM_NAME=someStream-111 INSTANCES=10 evt-pg-write-test-message
 ``` bash
 evt-pg-open-database-scripts-dir
 ```
+
+### Print the Message Store Database Schema Version
+
+``` bash
+evt-pg-print-message-store-version
+```
+
+NOTE: The message store includes a server function named [`message_store_version`](./interface.html#get-message-store-database-schema-version) that reports the version of the database schema.
 
 ## Use an Alternate Database Name
 
