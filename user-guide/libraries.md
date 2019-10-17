@@ -43,10 +43,6 @@ Maintains a long running subscription to an event stream<br/>
 Host components inside a single physical process<br/>
 [github.com/eventide-project/component-host](https://github.com/eventide-project/component-host)
 
-### view_data-commands
-Message schemas for data-oriented command streams used to populate view databases<br/>
-[github.com/eventide-project/view-data-commands](https://github.com/eventide-project/view-data-commands)
-
 ## Postgres Libraries
 
 ### messaging-postgres
@@ -65,13 +61,11 @@ Projected entity snapshotting for Postgres<br/>
 Consumer implementation for Postgres<br/>
 [github.com/eventide-project/consumer-postgres](https://github.com/eventide-project/consumer-postgres)
 
+## Code Generators
+
 ### command_line-component_generator
 Command line project generator for components built using the Postgres implementation<br/>
 [github.com/eventide-project/command-line-component-generator](https://github.com/eventide-project/command-line-component-generator)
-
-### view_data-pg
-Populate Postgres view databases from event streams<br/>
-[github.com/eventide-project/view-data-pg](https://github.com/eventide-project/view-data-pg)
 
 ## Utility Libraries
 
@@ -170,6 +164,16 @@ Generates class level configure methods<br/>
 ### collection
 Type-checked set<br/>
 [github.com/eventide-project/collection](https://github.com/eventide-project/collection)
+
+## View Data Libraries
+
+### view_data-commands
+Message schemas for data-oriented command streams used to populate view databases<br/>
+[github.com/eventide-project/view-data-commands](https://github.com/eventide-project/view-data-commands)
+
+### view_data-pg
+Populate Postgres view databases from event streams<br/>
+[github.com/eventide-project/view-data-pg](https://github.com/eventide-project/view-data-pg)
 
 ## Third Party Libraries
 
