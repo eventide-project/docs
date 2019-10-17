@@ -192,3 +192,10 @@ Apply ANSI terminal colors to strings<br/>
 ### test_bench
 A frugal test framework for Ruby<br/>
 [github.com/ntl/test-bench](https://github.com/ntl/test-bench)
+
+## NPM Packages
+
+### postgres-message-store
+
+Database definition and tools for PostgreSQL message store
+[https://github.com/eventide-project/postgres-message-store-npm-package](https://github.com/eventide-project/postgres-message-store-npm-package)
