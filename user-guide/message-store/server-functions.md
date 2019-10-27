@@ -65,6 +65,7 @@ get_stream_messages(
   stream_name varchar,
   position bigint DEFAULT 0,
   batch_size bigint DEFAULT 1000,
+  correlation varchar DEFAULT NULL,
   condition varchar DEFAULT NULL
 )
 ```
@@ -76,12 +77,13 @@ get_stream_messages(
 | stream_name | varchar | Name of stream to retrieve messages from | | someStream-123 |
 | position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
+| correlation (optional) | varchar | Category or stream name recorded in the metadata's `correlationStreamName` attribute | NULL | someCategory |
 | condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_stream_messages('stream_name'::varchar, starting_position::bigint, batch_size::bigint, _condition => 'messages.time >= current_timestamp'::varchar);"
+SELECT * FROM get_stream_messages('stream_name'::varchar, starting_position::bigint, batch_size::bigint, correlation => 'someCateogry`::varchar, condition => 'messages.time >= current_timestamp'::varchar);"
 ```
 
 Example: [https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-stream-messages.sh](https://github.com/eventide-project/message-store-postgres-database/blob/master/test/get-stream-messages.sh)
@@ -111,7 +113,7 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 ### Usage
 
 ``` sql
-SELECT * FROM get_category_messages('cateogry_name'::varchar, starting_position::bigint, batch_size::bigint, _condition => 'messages.time >= current_timestamp'::varchar);"
+SELECT * FROM get_category_messages('cateogry_name'::varchar, starting_position::bigint, batch_size::bigint, condition => 'messages.time >= current_timestamp'::varchar);"
 ```
 
 ::: tip
@@ -161,3 +163,56 @@ SELECT message_store_version();
 ```
 
 The version number will change when the database schema changes. A database schema change could be a change to the `messages` table structure, changes to Postgres server functions, types, indexes, users, or permissions. The version number follows the [SemVer](https://semver.org/) scheme for the last three numbers in the version (the first number is the product generation, and implies a major version change).
+
+## Debugging Output
+
+The message store's server functions will print parameter values, and any generated SQL code, to the standard I/O of the client process.
+
+Debugging output can be enabled for all server functions, or for the get functions and the write function separately
+
+### `message_store.debug_get`
+
+The `debug_get` setting controls debug output for the retrieval functions, including `get_stream_messages`, `get_category_messages`, and `get_last_message`.
+
+Assign the value `on` to the setting to enable debug output.
+
+`message_store.debug_get=on`
+
+### `message_store.debug_write`
+
+The `debug_write` setting controls debug output for the write function, `write_message`.
+
+Assign the value `on` to the setting to enable debug output.
+
+`message_store.debug_write=on`
+
+### `message_store.debug`
+
+The `debug` setting controls debug output for the get functions and the write function.
+
+Assign the value `on` to the setting to enable debug output.
+
+`message_store.debug=on`
+
+### Enabling Debug Output Using a Postgres Environment Variable
+
+The debugging output configuration settings can be enabled in a terminal session using the `PGOPTIONS` environment variable.
+
+``` bash
+PGOPTIONS="-c message_store.debug=on"
+```
+
+### Enabling Debug Output Using the Postgres Configuration File
+
+The debugging output configuration settings can be set using PostgresSQL's configuration file.
+
+The file system location of the configuration file can be displayed at the command line using the `psql` tool.
+
+``` bash
+psql -c 'show config_file'
+```
+
+### More on Postgres Configuration
+
+See the PostgreSQL documentation for more configuration options:<br />
+[https://www.postgresql.org/docs/current/config-setting.html](https://www.postgresql.org/docs/current/config-setting.html)
