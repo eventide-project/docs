@@ -1,4 +1,9 @@
-# Readers
+---
+sidebar: auto
+sidebarDepth: 0
+---
+
+# Reading Messages
 
 The reader is the low-level, fundamental data retrieval mechanism. It reads messages in order from a single message stream or category.
 
@@ -10,7 +15,7 @@ A reader reads raw [message data](./messages-and-message-data/message-data.md). 
   </p>
 </div>
 
-## Reader Example
+## Example
 
 ``` ruby{13-15}
 account_id = '123'

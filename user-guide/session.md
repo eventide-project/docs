@@ -145,7 +145,7 @@ The connection initialization data are provided through the capabilities of the 
 
 By default, the connection data is stored in a file located at `{component_root}/settings/message_store_postgres.json`
 
-### Example Settings File
+### Example
 
 ``` javascript
 {

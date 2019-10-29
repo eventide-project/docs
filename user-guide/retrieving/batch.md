@@ -1,4 +1,4 @@
-# Get
+# Batch Retrieval
 
 The `MessageStore::Postgres::Get` class is a primitive reader that retrieves a single batch of messages from a stream.
 
@@ -6,7 +6,7 @@ The `Get` class behaves similarly to a [reader](./), except that it doesn't cont
 
 The reader uses the `Get` class to retrieve messages. While it's mostly intended for internal use, it an be useful when building tools or any time that directly retrieving a batch of messages is necessary.
 
-## Get Example
+## Example
 
 ``` ruby
 deposit_1 = Deposited.new()
@@ -32,7 +32,7 @@ messages[0].deposit_id
 # => 786
 ```
 
-## Get::Stream::Last Facts
+## Get::Last Facts
 
 - The `Get` class returns a single batch of [message data](/user-guide/messages-and-message-data/message-data.md)
 - The `Get` class can retrieve either from streams or messages

@@ -1,10 +1,10 @@
-# Get::Stream::Last
+# Last Message Retrieval
 
 The `MessageStore::Postgres::Get::Stream::Last` class is a specialized reader that retrieves only the last message in a stream.
 
 It's a utility that can be useful in circumstances where sequence number-based idempotence is employed without the use of an [entity store](/user-guide/entity-store/) or an [entity projection](/user-guide/projection.md).
 
-## Get::Stream::Last Example
+## Example
 
 ``` ruby
 deposit_1 = Deposited.new()

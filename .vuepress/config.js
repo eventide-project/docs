@@ -30,8 +30,9 @@ module.exports = {
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
           { text: 'Entity Store, Caching, Snapshotting', link: '/user-guide/entity-store/' },
           { text: 'Entities', link: '/user-guide/entities.md' },
-          { text: 'Writers', link: '/user-guide/writers/' },
-          { text: 'Readers', link: '/user-guide/readers/' },
+          { text: 'Writing Messages', link: '/user-guide/writing/' },
+          { text: 'Reading Messages', link: '/user-guide/reading.md' },
+          { text: 'Retrieving Messages', link: '/user-guide/retrieving/' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
@@ -139,9 +140,9 @@ module.exports = {
           ]
         }
       ],
-      '/user-guide/writers/': [
+      '/user-guide/writing/': [
         {
-          title: 'Writers',
+          title: 'Writing Messages',
           collapsable: false,
           children: [
             '',
@@ -154,6 +155,17 @@ module.exports = {
           ]
         }
       ],
+      '/user-guide/retrieving/': [
+        {
+          title: 'Readers',
+          collapsable: false,
+          children: [
+            '',
+            'batch.md',
+            'last.md'
+          ]
+        }
+      ],
       '/user-guide/entity-store/': [
         {
           title: 'Entity Store, Caching, Snapshotting',
@@ -163,17 +175,6 @@ module.exports = {
             'entity-cache.md',
             'snapshotting.md',
             'substitute.md'
-          ]
-        }
-      ],
-      '/user-guide/readers/': [
-        {
-          title: 'Readers',
-          collapsable: false,
-          children: [
-            '',
-            'get.md',
-            'get-last.md'
           ]
         }
       ],
