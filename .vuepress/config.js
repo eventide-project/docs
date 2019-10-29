@@ -172,6 +172,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'get.md',
             'get-last.md'
           ]
         }

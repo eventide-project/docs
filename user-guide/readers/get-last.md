@@ -27,6 +27,7 @@ last_message.deposit_id
 ## Get::Stream::Last Facts
 
 - The `Get::Stream::Last` class returns a single [message data](/user-guide/messages-and-message-data/message-data.md) instance representing the last message in the specified stream
+- The `Get::Stream::Last` retrieves only from streams, and does not work on categories
 - A `Get::Stream::Last` can be configured with an existing [session](./session.md), or it can create a new session
 
 ## MessageStore::Postgres::Get::Stream::Last Class
