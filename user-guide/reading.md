@@ -42,10 +42,9 @@ end
 - Each message data is passed to the reader's block
 - Readers don't return anything
 - Readers retrieve messages in batches
+- A reader reads events in order, and continues to read until the end of the stream
 - A reader's batch size is configurable
 - A reader's starting position is configurable
-- A reader reads events in order, and continues to read until the end of the stream
-- Readers can be configured with a _condition_ that filters the messages retrieved
 - A reader can be configured with an existing [session](./session.md), or it can create a new session
 
 ## MessageStore::Postgres::Read Class
@@ -73,7 +72,7 @@ self.call(stream_name, position: 0, batch_size: 1000, session: nil, &action)
 
 | Name | Description | Type |
 | --- | --- | --- |
-| stream_name | Name of stream that the reader will read | String |
+| stream_name | Name of the stream that the reader will read | String |
 | position | Position of the message to start reading from | Integer |
 | batch_size | Number of messages to retrieve with each query to the message store | Integer |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
@@ -82,14 +81,13 @@ self.call(stream_name, position: 0, batch_size: 1000, session: nil, &action)
 ### Instance Actuator
 
 ``` ruby
-call(stream_name, &action)
+call(&action)
 ```
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| stream_name | Name of stream that the reader will read | String |
 | action | Block to be evaluated for each message read | Callable |
 
 ## Read Loop
@@ -144,7 +142,7 @@ self.build(stream_name, position: 0, batch_size: 1000, session: nil)
 
 **Returns**
 
-Instance of the MessageStore::Postgres::Read class.
+Instance of the `MessageStore::Postgres::Read` class.
 
 **Parameters**
 
@@ -163,7 +161,7 @@ self.initialize(stream_name, position, batch_size)
 
 **Returns**
 
-Instance of the MessageStore::Postgres::Read class.
+Instance of the `MessageStore::Postgres::Read` class.
 
 **Parameters**
 
@@ -219,5 +217,12 @@ The following tags are applied to log messages recorded by a reader:
 | --- | --- |
 | read | Applied to all log messages recorded by a reader |
 | message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages recorded by a reader:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the data content of read message data |
+| data | Applied to log messages that record the data content of read message data |
 
 See the [logging](/user-guide/logging/) user guide for more on log tags.

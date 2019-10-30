@@ -157,7 +157,7 @@ module.exports = {
       ],
       '/user-guide/retrieving/': [
         {
-          title: 'Readers',
+          title: 'Retrieving Messages',
           collapsable: false,
           children: [
             '',

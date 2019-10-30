@@ -1,6 +1,6 @@
 # Batch Retrieval
 
-The `MessageStore::Postgres::Get` class is a primitive reader that retrieves a single batch of messages from a stream.
+The `MessageStore::Postgres::Get` class is a utility that retrieves a single batch of messages from a stream.
 
 The `Get` class behaves similarly to a [reader](./), except that it doesn't continue to reader a stream. It retrieves a single batch and terminates.
 
@@ -32,8 +32,173 @@ messages[0].deposit_id
 # => 786
 ```
 
-## Get::Last Facts
+## MessageStore::Postgres::Get Facts
 
 - The `Get` class returns a single batch of [message data](/user-guide/messages-and-message-data/message-data.md)
-- The `Get` class can retrieve either from streams or messages
+- The `Get` class can retrieve either from streams or categories
 - A `Get` can be configured with an existing [session](./session.md), or it can create a new session
+- A `Get` instance's batch size is configurable
+- A `Get` instance's starting position is configurable
+- `Get` can be configured with a _correlation_ that filters the messages retrieved based on a the value of a message matadata's correlation stream attribute
+- `Get` can be configured with a _condition_ that filters the messages retrieved based on a SQL condition
+- A `Get` instance can be configured with an existing [session](./session.md), or it can create a new session
+
+## MessageStore::Postgres::Get Class
+
+The `Get` class is a concrete class from the [`MessageStore::Postgres` library](../libraries.md#message-store-postgres) and namespace.
+
+The `Get` class provides:
+
+- The principle instance actuator `.()` (or the `call` instance method) for retrieving message data from the message store
+- The class actuator `.()` (or the class `call` method) that provides a convenient invocation shortcut that does not require instantiating the `Get` class first
+
+## Retrieving a Batch
+
+The `Get` class can be actuated either via its class interface, as a matter of convenience, or via its instance interface, which allows for greater control of the configuration of the instance.
+
+The `Get` class is implemented as a _callable object_. Actuating them is simply a matter of invoking their `call` method.
+
+### Class Actuator
+
+``` ruby
+self.call(stream_name, position: 0, batch_size: 1000, correlation: nil, condition: nil, session: nil)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| stream_name | Name of stream to retrieve message data from | String |
+| position | Position of the message to start retrieving from | Integer |
+| batch_size | Number of messages to retrieve from the message store | Integer |
+| correlation | Category or stream name recorded in message metadata's `correlation_stream_name` attribute to filter the batch by | String |
+| condition | SQL condition to filter the batch by | String |
+| session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
+
+### Instance Actuator
+
+``` ruby
+call(position)
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| position | Position of the message to start retrieving from | Integer |
+
+## Retrieving Correlated Messages
+
+### TODO
+
+## Filtering Retrieved Messages Using the Condition
+
+### TODO
+
+
+
+
+
+## Constructing a Get
+
+The `Get` class can be constructed in one of two ways:
+
+- Via the constructor
+- Via the initializer
+
+### Via the Constructor
+
+The constructor not only instantiates the `Get`, but also invokes the `Get` class's `configure` instance method, which constructs the instance's operational dependencies.
+
+``` ruby
+self.build(stream_name, batch_size: 1000, correlation: nil, condition: nil, session: nil)
+```
+
+**Returns**
+
+Instance of the `MessageStore::Postgres::Get` class.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| stream_name | Name of stream to retrieve message data from | String |
+| batch_size | Number of messages to retrieve from the message store | Integer |
+| correlation | Category or stream name recorded in message metadata's `correlation_stream_name` attribute to filter the batch by | String |
+| condition | SQL condition to filter the batch by | String |
+| session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
+
+### Via the Initializer
+
+``` ruby
+self.initialize(stream_name, batch_size, correlation, condition)
+```
+
+**Returns**
+
+Instance of the `MessageStore::Postgres::Get` class.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| stream_name | Name of stream to retrieve message data from | String |
+| batch_size | Number of messages to retrieve from the message store | Integer |
+| correlation | Category or stream name recorded in message metadata's `correlation_stream_name` attribute to filter the batch by | String |
+| condition | SQL condition to filter the batch by | String |
+
+By constructing the `Get` instance using the initializer, the instance's dependencies are not set to operational dependencies. They remain _inert substitutes_.
+
+::: tip
+See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
+:::
+
+## Assigning a `Get` as a Dependency
+
+``` ruby
+self.configure(receiver, stream_name, attr_name: :get, batch_size: 1000, correlation: nil, condition: nil, session: nil)
+```
+
+Constructs an instance of the `Get` class and assigns it to the receiver's `get` attribute. By default, the receiving attribute's name is expected to be `get`, but it can be altered with the use of the `attr_name` parameter.
+
+``` ruby
+something = Something.new
+Messaging::Postgres::Get.configure(something)
+
+something.get
+# => #<Messaging::Postgres::Get:0x...>
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| receiver | The object that will receive the constructed `Get` | Object |
+| stream_name | Name of stream to retrieve message data from | String |
+| attr_name | The receiver's attribute that will be assigned the constructed `Get` | Symbol |
+| batch_size | Number of messages to retrieve from the message store | Integer |
+| correlation | Category or stream name recorded in message metadata's `correlation_stream_name` attribute to filter the batch by | String |
+| condition | SQL condition to filter the batch by | String |
+| session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
+
+::: tip
+See the [useful objects](/user-guide/useful-objects.md#configuring-dependencies) user guide for background on configuring dependencies.
+:::
+
+## Log Tags
+
+The following tags are applied to log messages recorded by a `Get` instance:
+
+| Tag | Description |
+| --- | --- |
+| get | Applied to all log messages recorded by a `Get` instance |
+| message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages recorded by a `Get` instance:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the data content of retrieved message data |
+| data | Applied to log messages that record the data content of retrieved message data |
+
+See the [logging](/user-guide/logging/) user guide for more on log tags.
