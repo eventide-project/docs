@@ -77,13 +77,13 @@ get_stream_messages(
 | stream_name | varchar | Name of stream to retrieve messages from | | someStream-123 |
 | position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| correlation (optional) | varchar | Category or stream name recorded in the metadata's `correlationStreamName` attribute | NULL | someCategory |
-| condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
+| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCategory |
+| condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_stream_messages('stream_name'::varchar, starting_position::bigint, batch_size::bigint, correlation => 'someCateogry'::varchar, condition => 'messages.time >= current_timestamp'::varchar);"
+SELECT * FROM get_stream_messages('stream_name'::varchar, starting_position::bigint, batch_size::bigint, correlation => 'someCateogry'::varchar, condition => 'messages.time >= current_time'::varchar);"
 ```
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh)
@@ -109,13 +109,13 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 | category_name | varchar | Name of the category to retrieve messages from | | someStream |
 | position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| correlation (optional) | varchar | Category or stream name recorded in the metadata's `correlationStreamName` attribute | NULL | someCategory |
-| condition (optional) | varchar | WHERE clause fragment | NULL | messages.time >= current_timestamp |
+| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCategory |
+| condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_category_messages('cateogry_name'::varchar, starting_position::bigint, batch_size::bigint, correlation => 'someCateogry'::varchar, condition => 'messages.time >= current_timestamp'::varchar);"
+SELECT * FROM get_category_messages('cateogry_name'::varchar, starting_position::bigint, batch_size::bigint, correlation => 'someCateogry'::varchar, condition => 'messages.time >= current_time'::varchar);"
 ```
 
 ::: tip

@@ -89,9 +89,49 @@ call(position)
 
 ## Retrieving Correlated Messages
 
-### TODO
+The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlation_stream_name` attribute.
+
+The ultimate purpose of the `correlation_stream_name` attribute is to allow a component to tag a message with its origin. And then later, the originating component can subscribe to other components' events that are tagged with the origin. It's provides a _callback_ mechanism for messaging.
+
+Before the source component sends the message to the receiving component, the source component assigns it's own stream name to the message metadata's `correlation_stream_name` attribute. That attribute is carried from message to message through the process.
+
+``` ruby
+destination_stream_name = 'otherComponent-123'
+
+correlation_stream_name = 'thisComponent-789'
+
+command = SomeCommand.new
+
+command.metadata.correlation_stream_name = correlation_stream_name
+
+write.(command, destination_stream_name)
+```
+
+To retrieve messages that are correlated to the `otherComponent-123` stream name, the `correlation` parameter is used.
+
+``` ruby
+Get.call('otherComponent-123', correlation: 'thisComponent-789')
+```
+
+In practice, this is almost alway done using categories rather than stream names, as is the case in consumers.
+
+``` ruby
+Get.call('otherComponent', correlation: 'thisComponent')
+```
+
+For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
 
 ## Filtering Retrieved Messages Using the Condition
+
+NEED A BETTER EXAMPLE CONDITION
+
+``` ruby
+Get.call(stream_name, condition: 'messages.time >= current_timestamp')
+```
+
+
+
+
 
 ### TODO
 
