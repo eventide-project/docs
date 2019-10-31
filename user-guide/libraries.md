@@ -81,6 +81,10 @@ Primitives for schema and structure<br/>
 Declare dependencies that have null object or substitute default values<br/>
 [github.com/eventide-project/dependency](https://github.com/eventide-project/dependency)
 
+### diagnostics-sample
+Sampling and measurement of execution cycles
+[https://github.com/eventide-project/diagnostics-sample](https://github.com/eventide-project/diagnostics-sample)
+
 ### identifier-uuid
 UUID identifier generator with support for dependency configuration for real and null object implementations<br/>
 [github.com/eventide-project/identifier-uuid](https://github.com/eventide-project/identifier-uuid)
