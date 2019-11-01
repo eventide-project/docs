@@ -4,7 +4,7 @@ Messages like [events](/glossary.md#event) and [commands](/glossary.md#command) 
 
 A [stream](/glossary.md#stream) name not only identifies the stream, but also its purpose.
 
-A stream name is made up of a _[category](/glossary.md#category)_ and an _ID_s.
+A stream name is made up of a _[category](/glossary.md#category)_ and an _ID_.
 
 A category can include types that indicate even further specialized uses of the stream. An ID can be a single value or a compound ID made of multiple values.
 
