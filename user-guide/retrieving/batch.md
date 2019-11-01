@@ -110,13 +110,13 @@ write.(command, destination_stream_name)
 To retrieve messages that are correlated to the `otherComponent-123` stream name, the `correlation` parameter is used.
 
 ``` ruby
-Get.call('otherComponent-123', correlation: 'thisComponent-789')
+Get.('otherComponent-123', correlation: 'thisComponent-789')
 ```
 
 In practice, this is almost alway done using categories rather than stream names, as is the case in consumers.
 
 ``` ruby
-Get.call('otherComponent', correlation: 'thisComponent')
+Get.('otherComponent', correlation: 'thisComponent')
 ```
 
 For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
