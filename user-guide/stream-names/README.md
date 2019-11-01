@@ -32,7 +32,7 @@ A _category_ stream name does not have an ID. For example, the stream name for t
 
 ## Category Types
 
-Stream names can also have an optional list of _types_.
+Stream names can also have an optional list of category _types_.
 
 The `command` type is one of the most common types. It's used to indicate a stream that is used to transport _commands_ rather than _events_.
 
@@ -43,6 +43,8 @@ The stream name is separated from the type list by the `:` character.
 Types can be present in both entity stream names as well as category stream names.
 
 For example, the stream name for all commands for the `account` category would be `account:command`.
+
+### Compound Category Types
 
 A stream name can have more than one type.  The `+` symbol joins types when there are more than one.
 
@@ -72,8 +74,14 @@ The ':' character separates the category from the category type (or types) in a 
 
 For example, `account:command`.
 
-### `+` The Combined Category Type Separator
+### `+` The Compound Category Type Separator
 
 The `+` character separates category types in a stream name that has a combination of more than one category type.
 
 For example, `account:command+position`.
+
+### `+` The Compound ID Separator
+
+The `+` character separates individual IDs in a stream name that has a combination of more than one ID.
+
+For example, `account-123+abc`.
