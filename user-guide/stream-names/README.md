@@ -2,7 +2,47 @@
 
 Messages like [events](/glossary.md#event) and [commands](/glossary.md#command) are written to and read from streams. To write and read from streams, the subject stream is identified by its name.
 
-A [stream](/glossary.md#stream) name not only identifies the stream, but also its purpose. A stream name is a string that optionally includes an ID that is prefixed by a dash (-) character, and may also include category _types_ that indicate even further specialized uses of the stream. The part of the stream preceding the dash is the _[category](/glossary.md#category)_, and the part following the dash is the ID.
+A [stream](/glossary.md#stream) name not only identifies the stream, but also its purpose.
+
+A stream name is made up of a _[category](/glossary.md#category)_ and an _ID_s.
+
+A category can include types that indicate even further specialized uses of the stream. An ID can be a single value or a compound ID made of multiple values.
+
+The most minimal form of a stream name consists only of a category.
+
+## Parts
+
+Stream names typically have up to three parts:
+
+- Category Name
+- Category Types
+- Entity ID
+
+## Examples
+
+### Stream Name with Category and ID
+
+`someStream-123`
+
+### Stream Name with Category and Compound IDs
+
+`someStream-123+abc`
+
+### Category
+
+`someStream`
+
+### Stream Name with a Category Type
+
+`someStream:someType-123`
+
+### Stream Name with Compound Category Types
+
+`someStream:someType+someOtherType-123`
+
+### Stream Name with Compound Category Types and Compound ID
+
+`someStream:someType+someOtherType-123+abc`
 
 ## Utilities
 
@@ -12,21 +52,11 @@ The Eventide toolkit provides a handful of utilities that institute useful and c
 - [Messaging::Category](./messaging-category.md) Module
 - [MessageStore::StreamName](./messaging-store-stream-name.md) Module
 
-## Parts
-
-Stream names typically have up to three parts:
-
-- Category Name
-- Entity ID
-- Category Types
-
-In the case of a _category stream_, the stream name would consist only of the category name, and would not have an ID.
-
-## Entity Stream Name
+## Entity Stream Names
 
 An _entity_ stream name contains all of the events for one specific entity. For example, an `Account` entity with an ID of `123` would have the name, `account-123`.
 
-## Category Stream Name
+## Category Stream Names
 
 A _category_ stream name does not have an ID. For example, the stream name for the category of all accounts is `account`.
 
@@ -46,9 +76,23 @@ For example, the stream name for all commands for the `account` category would b
 
 ### Compound Category Types
 
-A stream name can have more than one type.  The `+` symbol joins types when there are more than one.
+A stream name's category can have more than one type. The `+` symbol joins types when there are more than one.
 
 For example, a stream name that keeps track of a [consumer's](/glossary.md#consumer) last read position of a command category stream would be `account:command+position`.
+
+## Entity IDs
+
+An entity ID is any value in a stream name following the first `-` character.
+
+For a stream named `someStream-123`, the `123` is the entity ID.
+
+The ID itself can have `-` characters in it. Only the first `-` character in a stream name is significant. For a stream named `someStream-123-456`, the `123-456` is the entity ID.
+
+### Compound Entity IDs
+
+A stream name can have more than on ID. The `+` symbol joins individual IDs when there are more than one.
+
+For example, a stream name of the category `someStream` that has the IDs `123` and `abc` would be `someStream-123+abc`.
 
 ## Casing
 
@@ -63,10 +107,6 @@ The casing of a stream name, however, is not enforced. The `some_stream` form ca
 ### `-` The Entity ID Separator
 
 The `-` separator is the most common separator. It's the token in a stream name that separates the category name from the entity ID. For a stream named `account-123`, the value to the left of the dash is the category name `account`, and the value to the right of the dash is the ID `123`.
-
-Only the first dash is considered a separator, this allows IDs to contain dashes within them, as is the case with UUIDs.
-
-For example, an account with an ID of `00000001-0000-4000-8000-000000000000` would have a stream name of `account-00000001-0000-4000-8000-000000000000`.
 
 ### `:` The Category Type Separator
 
