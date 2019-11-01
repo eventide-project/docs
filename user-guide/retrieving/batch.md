@@ -39,8 +39,8 @@ messages[0].deposit_id
 - A `Get` can be configured with an existing [session](./session.md), or it can create a new session
 - A `Get` instance's batch size is configurable
 - A `Get` instance's starting position is configurable
-- `Get` can be configured with a _correlation_ that filters the messages retrieved based on a the value of a message matadata's correlation stream attribute
-- `Get` can be configured with a _condition_ that filters the messages retrieved based on a SQL condition
+- `Get` can be configured with a `correlation` that filters the messages retrieved based on a the value of a message matadata's correlation stream attribute
+- `Get` can be configured with a `condition` that filters the messages retrieved based on a SQL condition
 - A `Get` instance can be configured with an existing [session](./session.md), or it can create a new session
 
 ## MessageStore::Postgres::Get Class
@@ -121,23 +121,17 @@ Get.('otherComponent', correlation: 'thisComponent')
 
 For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
 
-## Filtering Retrieved Messages Using the Condition
+## Filtering Messages with a SQL Condition
 
-NEED A BETTER EXAMPLE CONDITION
+The `Get` can be given a SQL condition which further filters the messages retrieved beyond selecting only the messages of the stream being read.
 
-``` ruby
-Get.call(stream_name, condition: 'messages.time >= current_timestamp')
+For example, the `Get` can retrieve messages from `someStream-123` whose position is 0.
+
+```ruby
+Get.('someStream-123', condition: 'position = 0')
 ```
 
-
-
-
-
-### TODO
-
-
-
-
+The above example isn't a realistic use of this feature. It's a contrived example merely intended to demonstrate the mechanics of use the SQL condition.
 
 ## Constructing a Get
 

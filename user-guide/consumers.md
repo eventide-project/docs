@@ -39,8 +39,8 @@ end
 - Messages are retrieved in batches whose size can be configured
 - When there are no messages retrieved the consumer polls the message store
 - The polling interval is configurable
-- A consumer can be configured with a _condition_ that filters the messages retrieved
-- A consumer can be configured with a _correlation_ value filters based on messages' correlation stream name
+- A consumer can be configured with a `condition` that filters the messages retrieved
+- A consumer can be configured with a `correlation` value filters based on messages' correlation stream name
 - A consumer can be configured with consumer group parameters for distributing messages amongst multiple consumers
 
 ## Consumer::Postgres Module
@@ -97,7 +97,7 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | correlation | A category name used to restrict the messages consumed to those whose correlation stream is in the specified correlation category (this feature is used to effect pub/sub) | String |
 | group_size | The size of a group of consumers that are cooperatively processing a single input stream | Integer |
 | group_member | The member number of an individual consumer that is participating in a consumer group | Integer |
-| condition | SQL condition fragment that constrains the messages of the stream that are read | String |
+| condition | SQL condition that filters the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
 ### Consumers Must Be Started Within an Active Actor Supervisor
@@ -225,17 +225,17 @@ WHERE @hash_64(stream_name) % <group_size> = <group_member>
 Consumer groups should always be used in conjunction with the concurrency protection offered by the message writer. Handler logic should always write messages using the writer's `expected_version` feature, irrespective of the use of consumer groups. However, the use of concurrency protection is even more imperative when using consumer groups. For more on concurrent writes, see the [writers user guide](/user-guide/writers/expected-version.md).
 :::
 
-## Conditions
+## Filtering Messages with a SQL Condition
 
-Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further constrains the messages read by the consumer beyond selecting only the messages of the stream being consumed.
+Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further filters the messages read by the consumer beyond selecting only the messages of the stream being consumed.
 
 For example, the consumer can read messages from `someCategory` whose position is 0.
 
 ```ruby
-SomeConsumer.start('someCategory', condition: 'position == 0')
+SomeConsumer.start('someCategory', condition: 'position = 0')
 ```
 
-The above example isn't a realistic use of this feature. It's a contrived example merely intended to demonstrate the mechanics of the feature.
+The above example isn't a realistic use of this feature. It's a contrived example merely intended to demonstrate the mechanics of use the SQL condition.
 
 ::: danger
 Usage of this feature should be treated with caution. While this feature _can_ be used to great effect, under certain circumstances, it can also result in messages not being processed, or even processed out of order. Ensure that you fully understand the implications before proceeding.
