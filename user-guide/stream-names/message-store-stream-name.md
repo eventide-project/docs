@@ -14,13 +14,14 @@ The `StreamName` module is a function library from the [`MessageStore` library](
 
 The `StreamName` module provides:
 
-- The `stream_name` module for composing a stream name from its constituent parts
+- The `stream_name` method for composing a stream name from its constituent parts
 - The `get_id` method for parsing a stream's ID from a stream name
 - The `get_ids` method for parsing a list of IDs from a stream name with a compound ID
 - The `get_category` method for parsing a stream's category from a stream name
 - The `category?` predicate for determining whether a stream name is a category stream name
 - The `get_type` method for parsing a stream's category type from a stream name
 - The `get_types` method for parsing a list of category types from a stream name with a compound category types
+- The `get_entity_name` method for parsing a stream's entity name from a stream name
 
 ## Stream Name
 
@@ -150,28 +151,7 @@ MessageStore::StreamName.category?('someEntity-123')
 # => false
 ```
 
-## Get Category Types from Stream Name with Compound Category Types
-
-``` ruby
-self.get_types(stream_name)
-```
-
-**Returns**
-
-Array of Strings
-
-**Parameters**
-
-| Name | Description | Type |
-| --- | --- | --- |
-| stream_name | The stream name from which to get the types | String |
-
-``` ruby
-MessageStore::StreamName.get_types('someEntity:someType+someOtherType-123')
-# => ["someType", "someOtherType"]
-```
-
-## Get Category Types from Stream Name
+## Get Category Type from Stream Name
 
 ``` ruby
 self.get_category_type(stream_name)
