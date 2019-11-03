@@ -21,6 +21,7 @@ The `StreamName` module provides:
 - The `command_stream_name` method for composing command stream names
 - The `command_category_stream_name` for composing command category stream names
 - The `get_id` class method for parsing a stream's ID from a stream name
+- The `get_ids` class method for parsing a stream's ID from a stream name
 - The `get_category` class method for parsing a stream's category from a stream name
 
 ## Category Declaration
@@ -50,7 +51,7 @@ When a stream name utility method is used to explicitly control the category nam
   </p>
 </div>
 
-## Entity Event Stream Name
+## Entity Stream Name
 
 Compose a stream name for a stream that is suitable for entity event storage.
 
@@ -66,10 +67,10 @@ String
 
 | Name | Description | Type |
 | --- | --- | --- |
-| id | ID of the entity represented by the stream | String |
+| id | ID or list of IDs of the entity represented by the stream | String or Array of Strings |
 | category | The stream's category name | String |
 | type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | Array of Strings |
+| types | The stream's category types, if many types | Array of Strings |
 
 **In Conjunction with the Category Class Macro**
 
@@ -89,14 +90,21 @@ stream_name('123', 'someEntity')
 # => "someEntity-123"
 ```
 
-**With a Type**
+**With a Compound ID**
+
+``` ruby
+stream_name(['123', 'abc'], 'someEntity')
+# => "someEntity-123+abc"
+```
+
+**With a Category Type**
 
 ``` ruby
 stream_name('123', 'someEntity', type: 'someType')
 # => "someEntity:someType-123"
 ```
 
-**With More than One Type**
+**With a Compound Category Type**
 
 ``` ruby
 stream_name('123', 'someEntity', types: ['someType', 'someOtherType'])
@@ -123,7 +131,7 @@ String
 | --- | --- | --- |
 | category | The stream's category name | String |
 | type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | Array of Strings |
+| types | The stream's category types, if many types | Array of Strings |
 
 **In Conjunction with the Category Class Macro**
 
@@ -143,14 +151,14 @@ category_stream_name('someEntity')
 # => "someEntity"
 ```
 
-**With a Type**
+**With a Category Type**
 
 ``` ruby
 category_stream_name('someEntity', type: 'someType')
 # => "someEntity:someType"
 ```
 
-**With More than One Type**
+**With a Compound Category Type**
 
 ``` ruby
 category_stream_name('someEntity', types: ['someType', 'someOtherType'])
@@ -173,7 +181,7 @@ String
 
 | Name | Description | Type |
 | --- | --- | --- |
-| id | ID of the entity for which commands are transported by the command stream | String |
+| id | ID or list of IDs of the entity represented by the stream | String or Array of Strings |
 | category | The stream's category name | String |
 | type | The stream's category type, if only one type | String |
 | types | The stream's list category types, if many types | Array of Strings |
@@ -196,14 +204,21 @@ command_stream_name('123', 'someEntity')
 # => "someEntity:command-123"
 ```
 
-**With a Type**
+**With a Compound ID**
+
+``` ruby
+command_stream_name(['123', 'abc'], 'someEntity')
+# => "someEntity:command-123+abc"
+```
+
+**With a Category Type**
 
 ``` ruby
 command_stream_name('123', 'someEntity', type: 'someType')
 # => "someEntity:command+someType-123"
 ```
 
-**With More than One Type**
+**With a Compound Category Type**
 
 ``` ruby
 command_stream_name('123', 'someEntity', types: ['someType', 'someOtherType'])
@@ -250,14 +265,14 @@ command_category_stream_name('someEntity')
 # => "someEntity:command"
 ```
 
-**With a Type**
+**With a Category Type**
 
 ``` ruby
 command_category_stream_name('someEntity', type: 'someType')
 # => "someEntity:command+someType"
 ```
 
-**With More than One Type**
+**With a Compound Category Type**
 
 ``` ruby
 command_category_stream_name('someEntity', types: ['someType', 'someOtherType'])
@@ -352,4 +367,5 @@ Messaging::StreamName.stream_name('123')
 - `command_stream_name`
 - `command_category_stream_name`
 - `get_id`
+- `get_ids`
 - `get_category`
