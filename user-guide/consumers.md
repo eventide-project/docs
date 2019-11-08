@@ -181,7 +181,7 @@ Postgres' ability to select events based on the content of specific attributes o
 Specifying a value for the `correlation` parameter when starting a consumer causes the consumer's stream reader to filter the consumed stream using Postgres' support for JSON document querying.
 
 ```
-metadata->>'correlationStreamName' like '<some correlation category>-%'
+category(metadata->>''correlationStreamName'') = <some correlation category>'
 ```
 
 ## Consumer Groups
