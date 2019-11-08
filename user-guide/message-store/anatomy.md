@@ -54,26 +54,29 @@ Source: [https://github.com/eventide-project/message-store-postgres-database/blo
 ### Index Definitions
 
 ``` sql
-CREATE UNIQUE INDEX CONCURRENTLY "messages_id_uniq_idx" ON "public"."messages"
-  USING btree(id ASC NULLS LAST);
+CREATE UNIQUE INDEX messages_id_uniq_idx ON messages (
+  id
+);
 ```
 
 Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id-uniq.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id-uniq.sql)
 
 ``` sql
-CREATE UNIQUE INDEX CONCURRENTLY "messages_stream_name_position_correlation_uniq_idx" ON "public"."messages"
-  USING btree(stream_name COLLATE "default" "pg_catalog"."text_ops" ASC NULLS LAST,
-    "position" "pg_catalog"."int8_ops" ASC NULLS LAST,
-    category(metadata->>'correlationStreamName') ASC);
+CREATE UNIQUE INDEX messages_stream_name_position_correlation_uniq_idx ON messages (
+  stream_name,
+  position,
+  category(metadata->>'correlationStreamName')
+);
 ```
 
 Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream-name-position-correlation-uniq.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream-name-position-correlation-uniq.sql)
 
 ``` sql
-CREATE INDEX CONCURRENTLY "messages_category_global_position_correlation_idx" ON "public"."messages"
-  USING btree(category(stream_name) COLLATE "default" "pg_catalog"."text_ops" ASC NULLS LAST,
-    "global_position" "pg_catalog"."int8_ops" ASC NULLS LAST,
-    category(metadata->>'correlationStreamName') ASC);
+CREATE INDEX messages_category_global_position_correlation_idx ON messages (
+  category(stream_name),
+  global_position,
+  category(metadata->>'correlationStreamName')
+);
 ```
 
 Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category-global-position-correlation.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category-global-position-correlation.sql)
