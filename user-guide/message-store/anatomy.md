@@ -20,8 +20,8 @@ The message store is a single table named `messages`. Interaction with the messa
 | Name | Columns | Unique | Note |
 | --- | --- | --- | --- |
 | messages_id_idx | id | No | Uniqueness is enforced as primary key |
-| messages_stream_name_position_uniq_idx| stream_name, position | Yes | Ensures uniqueness of position number in a stream |
-| messages_category_global_position_idx | category(stream_name), global_position | No | Used when retrieving by category name |
+| messages_stream_name_position_correlation_uniq_idx| stream_name, position, category(metadata->>correlationStreamName) | Yes | Ensures uniqueness of position number in a stream |
+| messages_category_global_position_correlation_idx | category(stream_name), global_position, category(metadata->>correlationStreamName) | No | Used when retrieving by category name |
 
 ## Source Code
 
@@ -54,19 +54,26 @@ Source: [https://github.com/eventide-project/message-store-postgres-database/blo
 ### Index Definitions
 
 ``` sql
-CREATE UNIQUE INDEX CONCURRENTLY "messages_id_uniq_idx" ON "public"."messages" USING btree(id ASC NULLS LAST);
+CREATE UNIQUE INDEX CONCURRENTLY "messages_id_uniq_idx" ON "public"."messages"
+  USING btree(id ASC NULLS LAST);
 ```
 
 Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id-uniq.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id-uniq.sql)
 
 ``` sql
-CREATE UNIQUE INDEX CONCURRENTLY "messages_stream_name_position_uniq_idx" ON "public"."messages" USING btree(stream_name COLLATE "default" "pg_catalog"."text_ops" ASC NULLS LAST, "position" "pg_catalog"."int8_ops" ASC NULLS LAST);
+CREATE UNIQUE INDEX CONCURRENTLY "messages_stream_name_position_correlation_uniq_idx" ON "public"."messages"
+  USING btree(stream_name COLLATE "default" "pg_catalog"."text_ops" ASC NULLS LAST,
+    "position" "pg_catalog"."int8_ops" ASC NULLS LAST,
+    category(metadata->>'correlationStreamName') ASC);
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream-name-position-uniq.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream-name-position-uniq.sql)
+Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream-name-position-correlation-uniq.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream-name-position-correlation-uniq.sql)
 
 ``` sql
-CREATE INDEX CONCURRENTLY "messages_category_global_position_idx" ON "public"."messages" USING btree(category(stream_name) COLLATE "default" "pg_catalog"."text_ops" ASC NULLS LAST, "global_position" "pg_catalog"."int8_ops" ASC NULLS LAST);
+CREATE INDEX CONCURRENTLY "messages_category_global_position_correlation_idx" ON "public"."messages"
+  USING btree(category(stream_name) COLLATE "default" "pg_catalog"."text_ops" ASC NULLS LAST,
+    "global_position" "pg_catalog"."int8_ops" ASC NULLS LAST,
+    category(metadata->>'correlationStreamName') ASC);
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category-global-position.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category-global-position.sql)
+Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category-global-position-correlation.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category-global-position-correlation.sql)
