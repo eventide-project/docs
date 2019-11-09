@@ -177,6 +177,13 @@ The `Session` class provides the following settings attributes for controlling t
 
 The connection initialization data reflects the attributes of the `PG` library's `Connection` class. For more details, see: [https://deveiate.org/code/pg/PG/Connection.html#method-c-new](https://deveiate.org/code/pg/PG/Connection.html#method-c-new).
 
+### Overriding the Setting File Location
+
+By default, the settings file is located at `{component_root}/settings/message_store_postgres.json`
+
+          ENV['MESSAGE_STORE_SETTINGS_PATH']
+
+
 ## Constructing a Session
 
 Sessions can be constructed in one of two ways

@@ -218,7 +218,7 @@ Specifying values for the `group_size` and `group_member` parameters when starti
 The resulting SQL _where clause_ reflects the following condition:
 
 ``` sql
-WHERE @hash_64(stream_name) % <group_size> = <group_member>
+WHERE @hash_64(stream_name) % {group_size} = {group_member}
 ```
 
 ::: warning

@@ -49,7 +49,7 @@ SELECT write_message('uuid'::varchar, 'stream_name'::varchar, 'message_type'::va
 NOTE: If the expected version does not match the stream version at the time of the write, an error is raised of the form:
 
 ```
-'Wrong expected version: % (Stream: %, Stream Version: %)'
+'Wrong expected version: {specified_stream_version} (Stream: {stream_name}, Stream Version: {current_stream_version})'
 ```
 
 Example (_no expected version error_): [https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message-expected-version.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message-expected-version.sh)
