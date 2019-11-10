@@ -1,6 +1,6 @@
 # Server Functions
 
-The message store provides an interface of Postgres server functions that you can access with any programming language, or the `psql` command line tool.
+The message store provides an interface of Postgres server functions that can be used with any programming language or through the `psql` command line tool.
 
 There are working examples of uses of the server functions included with the source code:
 
