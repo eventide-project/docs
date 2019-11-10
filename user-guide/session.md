@@ -179,10 +179,13 @@ The connection initialization data reflects the attributes of the `PG` library's
 
 ### Overriding the Setting File Location
 
-By default, the settings file is located at `{component_root}/settings/message_store_postgres.json`
+By default, the settings file is located at `{component_root}/settings/message_store_postgres.json`.
 
-          ENV['MESSAGE_STORE_SETTINGS_PATH']
+The location of the settings file path can be overridden by setting the `MESSAGE_STORE_SETTINGS_PATH` environment variable.
 
+``` bash
+MESSAGE_STORE_SETTINGS_PATH=some-other-directory/settings.json start_service.sh
+```
 
 ## Constructing a Session
 
