@@ -82,7 +82,7 @@ SomeConsumer.start('someStream')
 </div>
 
 ``` ruby
-self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, correlation: nil, condition: nil, settings: nil)
+self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, correlation: nil, group_member: nil, group_size: nil, condition: nil, settings: nil)
 ```
 
 **Parameters**
@@ -95,8 +95,8 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
 | identifier | Qualifier appended to the consumer's position stream name | String |
 | correlation | A category name used to restrict the messages consumed to those whose correlation stream is in the specified correlation category (this feature is used to effect pub/sub) | String |
-| group_size | The size of a group of consumers that are cooperatively processing a single input stream | Integer |
 | group_member | The member number of an individual consumer that is participating in a consumer group | Integer |
+| group_size | The size of a group of consumers that are cooperatively processing a single input stream | Integer |
 | condition | SQL condition that filters the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
@@ -181,7 +181,7 @@ Postgres' ability to select events based on the content of specific attributes o
 Specifying a value for the `correlation` parameter when starting a consumer causes the consumer's stream reader to filter the consumed stream using Postgres' support for JSON document querying.
 
 ```
-category(metadata->>''correlationStreamName'') = <some correlation category>'
+category(metadata->>''correlationStreamName'') = {some correlation category}'
 ```
 
 ## Consumer Groups
