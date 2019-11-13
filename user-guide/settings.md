@@ -178,3 +178,13 @@ A [session](./session.md) can then be constructed from the settings object.
 ``` ruby
 session = Session.build(settings: settings)
 ```
+
+## Log Tags
+
+The following tags are applied to log messages recorded by an instance of `Settings`:
+
+| Tag | Description |
+| --- | --- |
+| settings | Applied to all log messages recorded by a `Settings` |
+
+See the [logging](/user-guide/logging/) user guide for more on log tags.
