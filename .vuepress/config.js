@@ -36,6 +36,7 @@ module.exports = {
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
+          { text: 'Settings', link: '/user-guide/settings.md' },
           { text: 'Logging', link: '/user-guide/logging/' },
           { text: 'Code Generator', link: '/user-guide/code-generator.md' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
