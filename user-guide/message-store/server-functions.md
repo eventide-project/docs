@@ -35,7 +35,7 @@ write_message(
 ### Usage
 
 ``` sql
-SELECT write_message('someUUID'::varchar, 'someStream-123'::varchar, 'SomeMessageType'::varchar, '{"messageAttribute": "some value"}'::jsonb, '{"metaDataAttribute": "some meta data value"}'::jsonb);"
+SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"messageAttribute": "some value"}', '{"metaDataAttribute": "some meta data value"}');
 ```
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/database/write-test-message.sh](https://github.com/eventide-project/postgres-message-store/blob/master/database/write-test-message.sh)
@@ -43,7 +43,7 @@ Example: [https://github.com/eventide-project/postgres-message-store/blob/master
 ### Specifying the Expected Version of the Stream
 
 ``` sql
-SELECT write_message('uuid'::varchar, 'someStream-123'::varchar, 'SomeMessageType'::varchar, '{"messageAttribute": "some value"}'::jsonb, '{"metaDataAttribute": "some meta data value"}'::jsonb, expected_version::bigint);"
+SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"messageAttribute": "some value"}', '{"metaDataAttribute": "some meta data value"}', 11);
 ```
 
 NOTE: If the expected version does not match the stream version at the time of the write, an error is raised of the form:
@@ -74,7 +74,7 @@ get_stream_messages(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | varchar | Name of stream to retrieve messages from | | someStream-123 |
+| stream_name | varchar | Name of stream to retrieve messages from | (none) | someStream-123 |
 | position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
 | correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCategory |
@@ -83,14 +83,14 @@ get_stream_messages(
 ### Usage
 
 ``` sql
-SELECT * FROM get_stream_messages('someStream-123'::varchar, starting_position::bigint, batch_size::bigint, correlation => 'someCateogry'::varchar, condition => 'messages.time >= current_time'::varchar);"
+SELECT * FROM get_stream_messages('someStream-123', 0, 1000, correlation => 'someCateogry', condition => 'messages.time >= current_time');
 ```
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh)
 
-## Get Messages from a Stream Category
+## Get Messages from a Category
 
-Retrieve messages from a category or streams, optionally specifying the starting position, the number of messages to retrieve, and an additional condition that will be appended to the SQL command's WHERE clause.
+Retrieve messages from a category of streams, optionally specifying the starting position, the number of messages to retrieve, the correlation category for Pub/Sub, consumer group parameters, and an additional condition that will be appended to the SQL command's WHERE clause.
 
 ``` sql
 CREATE OR REPLACE FUNCTION get_category_messages(
@@ -98,6 +98,8 @@ CREATE OR REPLACE FUNCTION get_category_messages(
   position bigint DEFAULT 0,
   batch_size bigint DEFAULT 1000,
   correlation varchar DEFAULT NULL,
+  consumer_group_member varchar DEFAULT NULL,
+  consumer_group_size varchar DEFAULT NULL,
   condition varchar DEFAULT NULL
 )
 ```
@@ -106,16 +108,18 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| category_name | varchar | Name of the category to retrieve messages from | | someStream |
-| position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
+| category_name | varchar | Name of the category to retrieve messages from | (none) | someStream |
+| position (optional) | bigint | Global position to start retrieving messages from | 1 | 11 |
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
 | correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCategory |
+| consumer_group_member (optional) | bigint | The zero-based member number of an individual consumer that is participating in a consumer group | NULL | 1 |
+| consumer_group_size (optional) | bigint | The size of a group of consumers that are cooperatively processing a single input stream | NULL | 2 |
 | condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_category_messages('someStream'::varchar, starting_position::bigint, batch_size::bigint, correlation => 'someCateogry'::varchar, condition => 'messages.time >= current_time'::varchar);"
+SELECT * FROM get_category_messages('someStream', 1, 1000, correlation => 'someCateogry', consumer_group_member => 1, consumer_group_size => 2, condition => 'messages.time >= current_time');
 ```
 
 ::: tip
@@ -138,12 +142,12 @@ get_last_message(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | varchar | Name of the stream to retrieve messages from | |  someStream-123 |
+| stream_name | varchar | Name of the stream to retrieve messages from | (none) |  someStream-123 |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_last_message('someStream'::varchar)
+SELECT * FROM get_last_message('someStream');
 ```
 
 Note: This is only for entity streams, and does not work for categories.
