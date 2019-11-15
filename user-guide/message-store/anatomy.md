@@ -19,7 +19,7 @@ The message store is a single table named `messages`. Interaction with the messa
 
 | Name | Columns | Unique | Note |
 | --- | --- | --- | --- |
-| messages_id_idx | id | No | Uniqueness is enforced as primary key |
+| messages_id_uniq_idx | id | Yes | Enforce uniqueness as secondary key |
 | messages_stream_name_position_correlation_uniq_idx| stream_name, position, category(metadata->>correlationStreamName) | Yes | Ensures uniqueness of position number in a stream |
 | messages_category_global_position_correlation_idx | category(stream_name), global_position, category(metadata->>correlationStreamName) | No | Used when retrieving by category name |
 
