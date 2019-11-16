@@ -129,13 +129,17 @@ Eventide uses the [ntl-actor](https://github.com/ntl/actor) implementation of th
 
 ## Correlation and Pub/Sub
 
-It's common when using pub/sub that a service will use a consumer to subscribe to events from an external service. However, if that external service is leveraged by a number of different services, then only some of the events it publishes will pertain to messaging workflows started by the originating, or _coordinating_, service.
+When using Pub/Sub, a service will use a consumer to subscribe to events from an external service. However, the consumer may not want to process _all_ events published by that external service. It will likely only want to process messages that are returning to the originating service from the external service.
 
-If a service is only concerned with _some_ of the events published by an external service, then the consumer can use the `correlation` parameter to filter the messages received from external service's stream.
+For example, an account component processes all withdrawal and deposit transactions for an entire company. A funds transfer component will send withdrawal and deposit transactions to the account component, and then will want to be notified when these operations have been processed. The funds transfer component will want to process only those accounting transactions that originated from operations sent to the account component from the funds transfer component.
+
+Before the funds transfer component sends messages to the account component, it sets the messages' `correlation_stream_name` metadata attribute to the funds transfer's stream name.
+
+The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
 
 ``` ruby{6}
-category = <some external service's category stream>
-correlation_cateogry = <this service's category stream>
+category = 'account'
+correlation_cateogry = 'fundsTransfer'
 
 SomeConsumer.start(
   category,
@@ -143,14 +147,19 @@ SomeConsumer.start(
 )
 ```
 
+<div class="note custom-block">
+  <p>
+    Note that value of the <code>correlation</code> argument must be a category and not a full stream name. If a the value is set to a stream name, an error will be raised and the consumer will terminate.
+  </p>
+</div>
+
 In order for an event written to an external service's stream to carry the correlation information from the originating service, the outbound message being written to the external service must have its `correlation_stream_name` attribute set to the current service's stream name.
 
-``` ruby{6}
-stream_name = <some external service's stream name>
-correlation_stream_name = <this service's stream name>
+``` ruby{5}
+stream_name = 'account-123'
+correlation_stream_name = 'fundsTransfer-456'
 
-command = SomeCommandToExternalService.new
-
+command = Withdraw.new
 command.metadata.correlation_stream_name = correlation_stream_name
 
 write.(command, stream_name)
@@ -161,16 +170,16 @@ In the external service's [command handler](/user-guide/handlers.md), the result
 The [`follow` constructor](/user-guide/messages-and-message-data/messages.md#message-workflows) of messages is the mechanism that preserves message metadata, including the `correlation_stream_name` attribute.
 
 ``` ruby{6}
-handle SomeCommandToExternalService do |some_command_to_external_service|
-  some_id = some_command_to_external_service.some_id
+handle Withdraw do |withdraw|
+  some_id = withdraw.some_id
 
   # The follow constructor copies the correlation metadata from
   # the input command to the output event
-  some_event = SomeEvent.follow(some_command_to_external_service)
+  withdrawn = Withdrawn.follow(withdraw)
 
   stream_name = stream_name(some_id)
 
-  write.(some_event, stream_name)
+  write.(withdrawn , stream_name)
 end
 ```
 
@@ -181,12 +190,12 @@ Postgres' ability to select events based on the content of specific attributes o
 Specifying a value for the `correlation` parameter when starting a consumer causes the consumer's stream reader to filter the consumed stream using Postgres' support for JSON document querying.
 
 ```
-category(metadata->>''correlationStreamName'') = {some correlation category}'
+category(metadata->>'correlationStreamName') = 'fundsTransfer'
 ```
 
 ## Consumer Groups
 
-Consumers can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+Consumers processing a single input stream can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
 
 Consumers operating in consumer groups process a single input stream, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 

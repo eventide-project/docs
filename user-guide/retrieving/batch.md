@@ -71,7 +71,7 @@ self.call(stream_name, position: 0, batch_size: 1000, correlation: nil, conditio
 | stream_name | Name of stream to retrieve message data from | String |
 | position | Position of the message to start retrieving from | Integer |
 | batch_size | Number of messages to retrieve from the message store | Integer |
-| correlation | Category or stream name recorded in message metadata's `correlation_stream_name` attribute to filter the batch by | String |
+| correlation | Category recorded in message metadata's `correlation_stream_name` attribute to filter the batch by | String |
 | condition | SQL condition to filter the batch by | String |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
@@ -87,13 +87,15 @@ call(position)
 | --- | --- | --- |
 | position | Position of the message to start retrieving from | Integer |
 
-## Retrieving Correlated Messages
+## Pub/Sub and Retrieving Correlated Messages
 
-The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlation_stream_name` attribute.
+The principle use of the `correlation` parameter is to implement Pub/Sub.
 
-The ultimate purpose of the `correlation_stream_name` attribute is to allow a component to tag a message with its origin. And then later, the originating component can subscribe to other components' events that are tagged with the origin. It's provides a _callback_ mechanism for messaging.
+The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlation_stream_name` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
 
-Before the source component sends the message to the receiving component, the source component assigns it's own stream name to the message metadata's `correlation_stream_name` attribute. That attribute is carried from message to message through the process.
+The `correlation_stream_name` attribute allows a component to tag an outbound message with its origin. And then later, the originating component can subscribe to other components' events that carry the origin metadata.
+
+Before the source component sends the message to the receiving component, the source component assigns it's own stream name to the message metadata's `correlation_stream_name` attribute. That attribute is carried from message to message through messaging workflows.
 
 ``` ruby
 destination_stream_name = 'otherComponent-123'
@@ -107,17 +109,17 @@ command.metadata.correlation_stream_name = correlation_stream_name
 write.(command, destination_stream_name)
 ```
 
-To retrieve messages that are correlated to the `otherComponent-123` stream name, the `correlation` parameter is used.
+To retrieve messages that are correlated to the `thisComponent` category, the `correlation` parameter is used.
 
 ``` ruby
-Get.('otherComponent-123', correlation: 'thisComponent-789')
+Get.('otherComponent-123', correlation: 'thisComponent')
 ```
 
-In practice, this is almost alway done using categories rather than stream names, as is the case in consumers.
-
-``` ruby
-Get.('otherComponent', correlation: 'thisComponent')
-```
+<div class="note custom-block">
+  <p>
+    Note that value of the <code>correlation</code> argument must be a category and not a full stream name. If a the value is set to a stream name, an error will be raised and the consumer will terminate.
+  </p>
+</div>
 
 For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
 

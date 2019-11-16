@@ -110,10 +110,10 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'install.md',
-            'anatomy.md',
             'server-functions.md',
-            'tools.md'
+            'anatomy.md',
+            'tools.md',
+            'install.md'
           ]
         }
       ],
