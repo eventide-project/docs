@@ -41,7 +41,7 @@ end
 - The polling interval is configurable
 - A consumer can be configured with a `condition` that filters the messages retrieved
 - A consumer can be configured with a `correlation` value filters based on messages' correlation stream name
-- A consumer can be configured with consumer group parameters for distributing messages amongst multiple consumers
+- A consumer can be configured with consumer group parameters for partitioning message streams for parallel processing by multiple consumers based on a consistent hash of the stream name
 
 ## Consumer::Postgres Module
 
