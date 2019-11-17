@@ -63,6 +63,8 @@ The `Settings` class provides the following settings attributes for controlling 
 - `gsslib`
 - `service`
 
+For more information on Postgres connection options, see Postgres' connection documentation: [https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS)
+
 The settings attributes reflect the attributes of the `PG` library's `Connection` class. For more details, see: [https://deveiate.org/code/pg/PG/Connection.html#method-c-new](https://deveiate.org/code/pg/PG/Connection.html#method-c-new).
 
 ## Settings File
