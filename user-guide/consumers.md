@@ -201,7 +201,7 @@ Consumers operating in consumer groups process a single input stream, with each 
 
 <div class="note custom-block">
   <p>
-    Note that consumers operated in consumer groups must be used in conjunction with the identifier macro, or else the individual consumers in a consumer group will overwrite each other's position records.
+    Note that consumers operated in consumer groups must be used in conjunction with the identifier attribute, or else the individual consumers in a consumer group will overwrite each other's position records.
   </p>
 </div>
 
