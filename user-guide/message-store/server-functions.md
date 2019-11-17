@@ -77,13 +77,13 @@ get_stream_messages(
 | stream_name | varchar | Name of stream to retrieve messages from | (none) | someStream-123 |
 | position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCategory |
+| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCorrelationCategory |
 | condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_stream_messages('someStream-123', 0, 1000, correlation => 'someCateogry', condition => 'messages.time >= current_time');
+SELECT * FROM get_stream_messages('someStream-123', 0, 1000, correlation => 'someCorrelationCateogry', condition => 'messages.time >= current_time');
 ```
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh)
@@ -108,10 +108,10 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 
 | Name | Type | Description | Default | Example |
 | --- | --- | --- | --- | --- |
-| category_name | varchar | Name of the category to retrieve messages from | (none) | someStream |
+| category_name | varchar | Name of the category to retrieve messages from | (none) | someCategory |
 | position (optional) | bigint | Global position to start retrieving messages from | 1 | 11 |
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCategory |
+| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCorrelationCategory |
 | consumer_group_member (optional) | bigint | The zero-based member number of an individual consumer that is participating in a consumer group | NULL | 1 |
 | consumer_group_size (optional) | bigint | The size of a group of consumers that are cooperatively processing a single input stream | NULL | 2 |
 | condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
@@ -119,7 +119,7 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 ### Usage
 
 ``` sql
-SELECT * FROM get_category_messages('someStream', 1, 1000, correlation => 'someCateogry', consumer_group_member => 1, consumer_group_size => 2, condition => 'messages.time >= current_time');
+SELECT * FROM get_category_messages('someCategory', 1, 1000, correlation => 'someCorrelationCateogry', consumer_group_member => 1, consumer_group_size => 2, condition => 'messages.time >= current_time');
 ```
 
 ::: tip
@@ -145,6 +145,28 @@ SELECT * FROM get_category_messages('otherComponent', correlation => 'thisCompon
 ```
 
 For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
+
+## Consumer Groups
+
+Consumers processing a single input stream can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+
+Consumers operating in consumer groups process a single input stream, with each consumer in the group processing messages that are not processed by any other consumer in the group.
+
+Specify both the `consumer_group_member` argument and the `consumer_group_size` argument to enlist a consumer in a consumer group. The `consumer_group_size` argument specifies the total number of consumers participating in the group. The `consumer_group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
+
+``` sql
+SELECT * FROM get_category_messages('otherComponent', consumer_group_member => 0, consumer_group_size => 3);
+```
+
+Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
+
+A stream name is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+
+Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
+
+``` sql
+WHERE @hash_64(stream_name) % {group_size} = {group_member}
+```
 
 ## Filtering Messages with a SQL Condition
 

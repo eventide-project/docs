@@ -222,9 +222,7 @@ Consumer groups ensure that any given stream is processed by a single consumer. 
 
 A stream name is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
 
-Specifying values for the `group_size` and `group_member` parameters when starting a consumer causes the consumer's stream reader to filter the consumed stream using a query condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
-
-The resulting SQL _where clause_ reflects the following condition:
+Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
 
 ``` sql
 WHERE @hash_64(stream_name) % {group_size} = {group_member}
