@@ -40,6 +40,7 @@ messages[0].deposit_id
 - A `Get` instance's batch size is configurable
 - A `Get` instance's starting position is configurable
 - `Get` can be configured with a `correlation` that filters the messages retrieved based on a the value of a message matadata's correlation stream attribute
+- `Get` can be configured with consumer group parameters for partitioning message streams for parallel processing based on a consistent hash of the stream name
 - `Get` can be configured with a `condition` that filters the messages retrieved based on a SQL condition
 - A `Get` instance can be configured with an existing [session](./session.md), or it can create a new session
 
