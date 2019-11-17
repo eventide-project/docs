@@ -156,6 +156,16 @@ SELECT * FROM get_stream_messages('someStream-123', condition => 'extract(month 
 SELECT * FROM get_stream_messages('someStream', condition => 'extract(month from messages.time) = extract(month from now())');
 ```
 
+<div class="note custom-block">
+  <p>
+    Note: The SQL condition feature is deactivated by default. The feature is activated using the <code>message_store.sql_condition</code> Postgres configuration option: <code>message_store.sql_condition=on</code>. Using the feature without activating the configuration option will result in an error.
+  </p>
+</div>
+
+::: danger
+Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.
+:::
+
 ## Get Last Message from a Stream
 
 Retrieve the last message in a stream.

@@ -236,15 +236,21 @@ Consumer groups should always be used in conjunction with the concurrency protec
 
 ## Filtering Messages with a SQL Condition
 
-Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further filters the messages read by the consumer beyond selecting only the messages of the stream being consumed.
-
-For example, the consumer can read messages from `someCategory` whose position is 0.
+Since the consumer reads the given stream using a SQL query, that query can be extended by the `condition` keyword argument. This further filters the messages read by the consumer.
 
 ```ruby
-SomeConsumer.start('someCategory', condition: 'position = 0')
+SomeConsumer.start('someCategory', condition: 'extract(month from messages.time) = extract(month from now())')
 ```
 
-The above example isn't a realistic use of this feature. It's a contrived example merely intended to demonstrate the mechanics of use the SQL condition.
+<div class="note custom-block">
+  <p>
+    Note: The SQL condition feature is deactivated by default. The feature is activated using the <code>message_store.sql_condition</code> Postgres configuration option: <code>message_store.sql_condition=on</code>. Using the feature without activating the configuration option will result in an error.
+  </p>
+</div>
+
+::: danger
+Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.
+:::
 
 ::: danger
 Usage of this feature should be treated with caution. While this feature _can_ be used to great effect, under certain circumstances, it can also result in messages not being processed, or even processed out of order. Ensure that you fully understand the implications before proceeding.

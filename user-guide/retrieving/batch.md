@@ -125,15 +125,21 @@ For more details on pub/sub using the correlation stream, see the [pub/sub topic
 
 ## Filtering Messages with a SQL Condition
 
-The `Get` can be given a SQL condition which further filters the messages retrieved beyond selecting only the messages of the stream being read.
-
-For example, the `Get` can retrieve messages from `someStream-123` whose position is 0.
+The `condition` parameter receives an arbitrary SQL condition which further filters the messages retrieved.
 
 ```ruby
-Get.('someStream-123', condition: 'position = 0')
+Get.('someStream-123', condition: 'extract(month from messages.time) = extract(month from now())')
 ```
 
-The above example isn't a realistic use of this feature. It's a contrived example merely intended to demonstrate the mechanics of use the SQL condition.
+<div class="note custom-block">
+  <p>
+    Note: The SQL condition feature is deactivated by default. The feature is activated using the <code>message_store.sql_condition</code> Postgres configuration option: <code>message_store.sql_condition=on</code>. Using the feature without activating the configuration option will result in an error.
+  </p>
+</div>
+
+::: danger
+Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.
+:::
 
 ## Constructing a Get
 
