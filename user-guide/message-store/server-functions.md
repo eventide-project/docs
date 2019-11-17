@@ -28,14 +28,14 @@ write_message(
 | id | varchar | UUID of the message being written | | a5eb2a97-84d9-4ccf-8a56-7160338b11e2 |
 | stream_name | varchar | Name of stream to which the message is written | | someStream-123 |
 | type | varchar | The type of the message | | Withdrawn |
-| data | jsonb | JSON representation of the message body | | {"messageAttribute": "some value"} |
-| metadata (optional) | jsonb | JSON representation of the message metadata | NULL | {"metaDataAttribute": "some meta data value"} |
+| data | jsonb | JSON representation of the message body | | {"someAttribute": "some value"} |
+| metadata (optional) | jsonb | JSON representation of the message metadata | NULL | {"metadataAttribute": "some meta data value"} |
 | expected_version (optional) | bigint | Version that the stream is expected to be when the message is written | NULL | 11 |
 
 ### Usage
 
 ``` sql
-SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"messageAttribute": "some value"}', '{"metaDataAttribute": "some meta data value"}');
+SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"someAttribute": "some value"}', '{"metadataAttribute": "some meta data value"}');
 ```
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/database/write-test-message.sh](https://github.com/eventide-project/postgres-message-store/blob/master/database/write-test-message.sh)
@@ -43,7 +43,7 @@ Example: [https://github.com/eventide-project/postgres-message-store/blob/master
 ### Specifying the Expected Version of the Stream
 
 ``` sql
-SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"messageAttribute": "some value"}', '{"metaDataAttribute": "some meta data value"}', 11);
+SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"someAttribute": "some value"}', '{"metadataAttribute": "some meta data value"}', 11);
 ```
 
 NOTE: If the expected version does not match the stream version at the time of the write, an error is raised of the form:
@@ -132,13 +132,29 @@ Example: [https://github.com/eventide-project/postgres-message-store/blob/master
 
 The principle use of the `correlation` parameter is to implement Pub/Sub.
 
-The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlation_stream_name` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
+The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlationStreamName` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
 
-The `correlation_stream_name` attribute allows a component to tag an outbound message with its origin. And then later, the originating component can subscribe to other components' events that carry the origin metadata.
+The `correlationStreamName` attribute allows a component to tag an outbound message with its origin. And then later, the originating component can subscribe to other components' events that carry the origin metadata.
 
 Before the source component sends the message to the receiving component, the source component assigns it's own stream name to the message metadata's `correlation_stream_name` attribute. That attribute is carried from message to message through messaging workflows.
 
+``` sql
+SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'otherComponent-123', 'SomeMessageType', '{"someAttribute": "some value"}', '{"correlationStreamName": "thisComponent-789"}');
+
+SELECT * FROM get_category_messages('otherComponent', correlation => 'thisComponent');
+```
+
 For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
+
+## Filtering Messages with a SQL Condition
+
+The `condition` parameter receives an arbitrary SQL condition which further filters the messages retrieved.
+
+``` sql
+SELECT * FROM get_stream_messages('someStream-123', condition => 'extract(month from messages.time) = extract(month from now())');
+
+SELECT * FROM get_stream_messages('someStream', condition => 'extract(month from messages.time) = extract(month from now())');
+```
 
 ## Get Last Message from a Stream
 

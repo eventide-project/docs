@@ -127,7 +127,7 @@ Eventide uses the [ntl-actor](https://github.com/ntl/actor) implementation of th
   </p>
 </div>
 
-## Correlation and Pub/Sub
+## Pub/Sub and Correlation
 
 When using Pub/Sub, a service will use a consumer to subscribe to events from an external service. However, the consumer may not want to process _all_ events published by that external service. It will likely only want to process messages that are returning to the originating service from the external service.
 
