@@ -64,7 +64,7 @@ class SomeEntity
 
     def self.raw_data(instance)
       raw_data = instance.to_h
-      raw_data[:time] = Clock.iso_8601(raw_data[:time])
+      raw_data[:time] = Clock.iso8601(raw_data[:time])
       raw_data
     end
   end
