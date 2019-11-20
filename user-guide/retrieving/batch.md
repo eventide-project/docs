@@ -36,11 +36,12 @@ messages[0].deposit_id
 
 - The `Get` class returns a single batch of [message data](/user-guide/messages-and-message-data/message-data.md)
 - The `Get` class can retrieve either from streams or categories
+- There are two separate implementations of the `Get` class that are specialized for retrieving from either streams or categories: `Get::Stream` and `Get::Category`
 - A `Get` can be configured with an existing [session](./session.md), or it can create a new session
 - A `Get` instance's batch size is configurable
 - A `Get` instance's starting position is configurable
 - `Get` can be configured with a `correlation` that filters the messages retrieved based on a the value of a message matadata's correlation stream attribute
-- `Get` can be configured with consumer group parameters for partitioning message streams for parallel processing based on a consistent hash of the stream name
+- `Get` can be configured with consumer group parameters for partitioning message streams for parallel processing based on a consistent hash of the stream name (category retrieval only)
 - `Get` can be configured with a `condition` that filters the messages retrieved based on a SQL condition
 - A `Get` instance can be configured with an existing [session](./session.md), or it can create a new session
 
@@ -62,7 +63,7 @@ The `Get` class is implemented as a _callable object_. Actuating them is simply 
 ### Class Actuator
 
 ``` ruby
-self.call(stream_name, position: 0, batch_size: 1000, correlation: nil, condition: nil, session: nil)
+self.call(stream_name, position: 0, batch_size: 1000, correlation: nil, consumer_group_member: nil, consumer_group_size: nil, condition: nil, session: nil)
 ```
 
 **Parameters**
@@ -73,6 +74,8 @@ self.call(stream_name, position: 0, batch_size: 1000, correlation: nil, conditio
 | position | Position of the message to start retrieving from | Integer |
 | batch_size | Number of messages to retrieve from the message store | Integer |
 | correlation | Category recorded in message metadata's `correlation_stream_name` attribute to filter the batch by | String |
+| consumer_group_member | The zero-based member number of an individual consumer that is participating in a consumer group | Integer |
+| consumer_group_size | The size of a group of consumers that are cooperatively processing a single category | Integer |
 | condition | SQL condition to filter the batch by | String |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
@@ -123,6 +126,32 @@ Get.('otherComponent-123', correlation: 'thisComponent')
 </div>
 
 For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
+
+## Consumer Groups
+
+Consumers processing a single category can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+
+Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
+
+::: warning
+Consumer groups work only with the retrieval of messages from a category. An error will occur if consumer group parameters are sent with a retrieval of a stream rather than a category.
+:::
+
+Specify both the `consumer_group_member` argument and the `consumer_group_size` argument to retrieve a batch of messages for a specific member of a user group. The `consumer_group_size` argument specifies the total number of consumers participating in the group. The `consumer_group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
+
+``` sql
+SELECT * FROM get_category_messages('otherComponent', consumer_group_member => 0, consumer_group_size => 3);
+```
+
+Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
+
+A stream name is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+
+Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
+
+``` sql
+WHERE @hash_64(stream_name) % {group_size} = {group_member}
+```
 
 ## Filtering Messages with a SQL Condition
 

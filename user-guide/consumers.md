@@ -39,9 +39,9 @@ end
 - Messages are retrieved in batches whose size can be configured
 - When there are no messages retrieved the consumer polls the message store
 - The polling interval is configurable
-- A consumer can be configured with a `condition` that filters the messages retrieved
 - A consumer can be configured with a `correlation` value filters based on messages' correlation stream name
 - A consumer can be configured with consumer group parameters for partitioning message streams for parallel processing by multiple consumers based on a consistent hash of the stream name
+- A consumer can be configured with a `condition` that filters the messages retrieved
 
 ## Consumer::Postgres Module
 
@@ -96,7 +96,7 @@ self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | identifier | Qualifier appended to the consumer's position stream name | String |
 | correlation | A category name used to restrict the messages consumed to those whose correlation stream is in the specified correlation category (this feature is used to effect pub/sub) | String |
 | group_member | The member number of an individual consumer that is participating in a consumer group | Integer |
-| group_size | The size of a group of consumers that are cooperatively processing a single input stream | Integer |
+| group_size | The size of a group of consumers that are cooperatively processing a single category | Integer |
 | condition | SQL condition that filters the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
@@ -195,15 +195,17 @@ category(metadata->>'correlationStreamName') = 'fundsTransfer'
 
 ## Consumer Groups
 
-Consumers processing a single input stream can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+Consumers processing a single category can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
 
-Consumers operating in consumer groups process a single input stream, with each consumer in the group processing messages that are not processed by any other consumer in the group.
+Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 
-<div class="note custom-block">
-  <p>
-    Note that consumers operated in consumer groups must be used in conjunction with the identifier attribute, or else the individual consumers in a consumer group will overwrite each other's position records.
-  </p>
-</div>
+::: warning
+Consumer groups work only with the retrieval of messages from a category. An error will occur if consumer group parameters are sent with a retrieval of a stream rather than a category.
+:::
+
+::: danger
+Consumers operated in consumer groups must be used in conjunction with the `identifier` attribute, or else the individual consumers in a consumer group will overwrite each other's position records.
+:::
 
 Specify both the `group_size` argument and the `group_member` argument to enlist a consumer in a consumer group. The `group_size` argument specifies the total number of consumers participating in the group. The `group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
 

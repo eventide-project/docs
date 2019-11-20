@@ -113,7 +113,7 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 | batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
 | correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCorrelationCategory |
 | consumer_group_member (optional) | bigint | The zero-based member number of an individual consumer that is participating in a consumer group | NULL | 1 |
-| consumer_group_size (optional) | bigint | The size of a group of consumers that are cooperatively processing a single input stream | NULL | 2 |
+| consumer_group_size (optional) | bigint | The size of a group of consumers that are cooperatively processing a single category | NULL | 2 |
 | condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
 
 ### Usage
@@ -148,14 +148,18 @@ For more details on pub/sub using the correlation stream, see the [pub/sub topic
 
 ## Consumer Groups
 
-Consumers processing a single input stream can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+Consumers processing a single category can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
 
-Consumers operating in consumer groups process a single input stream, with each consumer in the group processing messages that are not processed by any other consumer in the group.
+Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 
-Specify both the `consumer_group_member` argument and the `consumer_group_size` argument to enlist a consumer in a consumer group. The `consumer_group_size` argument specifies the total number of consumers participating in the group. The `consumer_group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
+::: warning
+Consumer groups work only with the retrieval of messages from a category. An error will occur if consumer group parameters are sent with a retrieval of a stream rather than a category.
+:::
 
-``` sql
-SELECT * FROM get_category_messages('otherComponent', consumer_group_member => 0, consumer_group_size => 3);
+Specify both the `consumer_group_member` argument and the `consumer_group_size` argument to retrieve a batch of messages for a specific member of a user group. The `consumer_group_size` argument specifies the total number of consumers participating in the group. The `consumer_group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
+
+``` ruby
+Get.('someCategory', consumer_group_member => 0, consumer_group_size => 3);
 ```
 
 Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
