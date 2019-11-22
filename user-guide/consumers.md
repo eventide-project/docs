@@ -5,15 +5,15 @@ sidebarDepth: 0
 
 # Consumers
 
-A consumer continuously reads messages from a single stream and dispatches the messages to the handlers that have been registered to the consumer.
+A consumer continuously reads messages from a single category and dispatches the messages to the handlers that have been registered to the consumer.
 
-Many consumers can be hosted together in a single service, allowing a component to be fed messages from many streams.
+Many consumers can be hosted together in a single service, allowing a component to be fed messages from many categories.
 
-A consumer keeps track of the progress that it has made through the stream that it's reading, allowing a consumer to pick up where it left off after it has been restarted.
+A consumer keeps track of the progress that it has made through the category stream that it's reading, allowing a consumer to pick up where it left off after it has been restarted.
 
 It controls polling rates, pre-fetching batches of messages, the dispatching of messages to handlers, and the storage of message positions of messages that have already been read.
 
-When a consumer has read through its stream's messages, it continues reading, waiting for new messages to arrive.
+When a consumer has read through its category's messages, it continues reading, waiting for new messages to arrive.
 
 In messaging parlance, a consumer acts as a _subscriber_.
 
@@ -32,7 +32,7 @@ end
 
 ## Consumer Facts
 
-- A consumer reads from a single stream, usually a [category stream](/glossary.md#category-stream)
+- A consumer reads from a single [category stream](/glossary.md#category-stream)
 - A consumer has one or more handlers
 - Messages are dispatched to a consumer's handlers in the order that they are declared
 - The consumer periodically records its reader's position to the message store
@@ -40,7 +40,7 @@ end
 - When there are no messages retrieved the consumer polls the message store
 - The polling interval is configurable
 - A consumer can be configured with a `correlation` value filters based on messages' correlation stream name
-- A consumer can be configured with consumer group parameters for partitioning message streams for parallel processing by multiple consumers based on a consistent hash of the stream name
+- A consumer can be configured with consumer group parameters for partitioning category streams for parallel processing by multiple consumers based on a consistent hash of the category name
 - A consumer can be configured with a `condition` that filters the messages retrieved
 
 ## Consumer::Postgres Module
@@ -69,35 +69,33 @@ If a handler is registered more than once, the `Consumer::HandlerRegistry::Error
 
 ## Starting a Consumer
 
-Start a consumer by invoking a consumer class's `start` method, passing the stream name that the consumer will read messages from.
+Start a consumer by invoking a consumer class's `start` method, passing the category name that the consumer will read messages from.
 
 ``` ruby
-SomeConsumer.start('someStream')
+SomeConsumer.start('someCateogry')
 ```
 
-<div class="note custom-block">
-  <p>
-    Note that for typical uses, the stream that a consumer reads is almost always a category stream.
-  </p>
-</div>
+::: warning
+If the consumer is started with a stream name rather than a category, a `Consumer::Postgres::Error` will be raised, and the consumer will terminate.
+:::
 
 ``` ruby
-self.start(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, correlation: nil, group_member: nil, group_size: nil, condition: nil, settings: nil)
+self.start(category, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, correlation: nil, group_member: nil, group_size: nil, condition: nil, settings: nil)
 ```
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| stream_name | The name of the stream (typically a category) that the consumer will read | String |
+| category | The name of the category that the consumer will read | String |
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
-| position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
+| position_update_interval | The frequency with which progress that the consumer has made through the input category is recorded by the [position store](#position-store) | Integer |
 | identifier | Qualifier appended to the consumer's position stream name | String |
 | correlation | A category name used to restrict the messages consumed to those whose correlation stream is in the specified correlation category (this feature is used to effect pub/sub) | String |
 | group_member | The member number of an individual consumer that is participating in a consumer group | Integer |
 | group_size | The size of a group of consumers that are cooperatively processing a single category | Integer |
-| condition | SQL condition that filters the messages of the stream that are read | String |
+| condition | SQL condition that filters the messages of the category that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
 ### Consumers Must Be Started Within an Active Actor Supervisor
@@ -147,11 +145,9 @@ SomeConsumer.start(
 )
 ```
 
-<div class="note custom-block">
-  <p>
-    Note that value of the <code>correlation</code> argument must be a category and not a full stream name. If a the value is set to a stream name, an error will be raised and the consumer will terminate.
-  </p>
-</div>
+::: warning
+  The value of the `correlation` argument must be a category and not a full stream name. If a the value is set to a stream name, a `MessageStore::Correlation::Error` will be raised and the consumer will terminate.
+:::
 
 In order for an event written to an external service's stream to carry the correlation information from the originating service, the outbound message being written to the external service must have its `correlation_stream_name` attribute set to the current service's stream name.
 
@@ -195,13 +191,9 @@ category(metadata->>'correlationStreamName') = 'fundsTransfer'
 
 ## Consumer Groups
 
-Consumers processing a single category can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+Consumers processing a single category can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single category amongst a number of consumers.
 
 Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
-
-::: warning
-Consumer groups work only with the retrieval of messages from a category. An error will occur if consumer group parameters are sent with a retrieval of a stream rather than a category.
-:::
 
 ::: danger
 Consumers operated in consumer groups must be used in conjunction with the `identifier` attribute, or else the individual consumers in a consumer group will overwrite each other's position records.
@@ -222,7 +214,7 @@ SomeConsumer.start(
 
 Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
-A stream name is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+A stream name's ID is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
 
 Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
 
