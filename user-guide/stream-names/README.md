@@ -94,6 +94,10 @@ A stream name can have more than on ID. The `+` symbol joins individual IDs when
 
 For example, a stream name of the category `someStream` that has the IDs `123` and `abc` would be `someStream-123+abc`.
 
+### Cardinal ID
+
+The _cardinal ID_ is the first ID that appears in an entity stream's compound ID. If the stream name has only a single ID, then the cardinal ID is that single ID.
+
 ## Casing
 
 Stream names are camel-cased.
