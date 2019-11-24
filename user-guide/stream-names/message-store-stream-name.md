@@ -17,6 +17,7 @@ The `StreamName` module provides:
 - The `stream_name` method for composing a stream name from its constituent parts
 - The `get_id` method for parsing a stream's ID from a stream name
 - The `get_ids` method for parsing a list of IDs from a stream name with a compound ID
+- The `get_cardinal_id` method for parsing a stream's cardinal ID from a stream name
 - The `get_category` method for parsing a stream's category from a stream name
 - The `category?` predicate for determining whether a stream name is a category stream name
 - The `get_type` method for parsing a stream's category type from a stream name
@@ -28,7 +29,7 @@ The `StreamName` module provides:
 Compose a stream name from its constituent parts.
 
 ``` ruby
-self.stream_name(category_name, id=nil, type: nil, types: nil)
+self.stream_name(category_name, stream_id=nil, cardinal_id: nil, id: nil, ids: nil, type: nil, types: nil)
 ```
 
 **Returns**
@@ -40,7 +41,10 @@ String
 | Name | Description | Type |
 | --- | --- | --- |
 | category | The stream's category name | String |
-| id | ID or list of IDs of the entity represented by the stream | String or Array of Strings |
+| stream_id | ID or list of IDs of the entity represented by the stream | String or Array of Strings |
+| cardinal_id | ID that is to be considered the first or primary ID of a stream with a compound ID | String |
+| id | ID or list of IDs of the entity represented by the stream (Alias for the `stream_id` parameter) | String or Array of Strings |
+| ids | ID or list of IDs of the entity represented by the stream (Alias for the `stream_id` parameter) | String or Array of Strings |
 | type | The stream's category type, if only one type | String |
 | types | The stream's list category types, if many types | Array of Strings |
 
@@ -53,6 +57,12 @@ MessageStore::StreamName.stream_name('someEntity', '123')
 
 MessageStore::StreamName.stream_name('someEntity', ['123', 'abc'])
 # => "someEntity-123+abc"
+
+MessageStore::StreamName.stream_name('someEntity', cardinal_id: '123', id: 'abc')
+# => "someEntity-123+abc"
+
+MessageStore::StreamName.stream_name('someEntity', cardinal_id: '123', ids: ['abc', '789'])
+# => "someEntity-123+abc+789"
 
 MessageStore::StreamName.stream_name('someEntity', '123', type: 'someType')
 # => "someEntity:someType-123"
@@ -101,6 +111,30 @@ Array of Strings
 ``` ruby
 MessageStore::StreamName.get_id('someEntity-123+abc')
 # => ['123', 'abc']
+```
+
+## Get Cardinal ID from Stream Name
+
+``` ruby
+self.get_cardinal_id(stream_name)
+```
+
+**Returns**
+
+String
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| stream_name | The stream name from which to get the cardinal ID | String |
+
+``` ruby
+MessageStore::StreamName.get_cardinal_id('someEntity-123+abc')
+# => '123'
+
+MessageStore::StreamName.get_cardinal_id('someEntity-123')
+# => '123'
 ```
 
 ## Get Category from Stream Name
