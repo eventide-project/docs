@@ -21,6 +21,10 @@ write_message(
 )
 ```
 
+### Returns
+
+Position of the message written.
+
 ### Arguments
 
 | Name | Type | Description | Default | Example |
@@ -38,6 +42,11 @@ write_message(
 SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"someAttribute": "some value"}', '{"metadataAttribute": "some meta data value"}');
 ```
 
+```
+-[ RECORD 1 ]-+--
+write_message | 0
+```
+
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/database/write-test-message.sh](https://github.com/eventide-project/postgres-message-store/blob/master/database/write-test-message.sh)
 
 ### Specifying the Expected Version of the Stream
@@ -52,9 +61,9 @@ NOTE: If the expected version does not match the stream version at the time of t
 'Wrong expected version: {specified_stream_version} (Stream: {stream_name}, Stream Version: {current_stream_version})'
 ```
 
-Example (_no expected version error_): [https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message-expected-version.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message-expected-version.sh)
+Example (_no expected version error_): [https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message/expected-version.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message/expected-version.sh)
 
-Example (_with expected version error_): [https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message-expected-version-error.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message-expected-version-error.sh)
+Example (_with expected version error_): [https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message/expected-version-error.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/write-message/expected-version-error.sh)
 
 ## Get Messages from a Stream
 
@@ -86,7 +95,28 @@ get_stream_messages(
 SELECT * FROM get_stream_messages('someStream-123', 0, 1000, correlation => 'someCorrelationCateogry', condition => 'messages.time >= current_time');
 ```
 
-Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages.sh)
+```
+-[ RECORD 1 ]---+---------------------------------------------------------
+id              | 4b96f09e-104a-4b1f-b198-5b3b46cf1d06
+stream_name     | someStream-123
+type            | SomeType
+position        | 0
+global_position | 1
+data            | {"attribute": "some value"}
+metadata        | {"metaAttribute": "some meta value"}
+time            | 2019-11-24 17:56:09.71594
+-[ RECORD 2 ]---+---------------------------------------------------------
+id              | d94e79e3-cdda-49a3-9aad-ce5d70a5edd7
+stream_name     | someStream-123
+type            | SomeType
+position        | 1
+global_position | 2
+data            | {"attribute": "some value"}
+metadata        | {"metaAttribute": "some meta value"}
+time            | 2019-11-24 17:56:09.75969
+```
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages/get-stream-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-stream-messages/get-stream-messages.sh)
 
 ## Get Messages from a Category
 
@@ -122,11 +152,32 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 SELECT * FROM get_category_messages('someCategory', 1, 1000, correlation => 'someCorrelationCateogry', consumer_group_member => 1, consumer_group_size => 2, condition => 'messages.time >= current_time');
 ```
 
+```
+-[ RECORD 1 ]---+---------------------------------------------------------
+id              | 28d8347f-677e-4738-b6b9-954f1b15463b
+stream_name     | someCategory-123
+type            | SomeType
+position        | 0
+global_position | 111
+data            | {"attribute": "some value"}
+metadata        | {"metaAttribute": "some meta value"}
+time            | 2019-11-24 17:51:49.836341
+-[ RECORD 2 ]---+---------------------------------------------------------
+id              | 57894da7-680b-4483-825c-732dcf873e93
+stream_name     | someCategory-456
+type            | SomeType
+position        | 1
+global_position | 1111
+data            | {"attribute": "some value"}
+metadata        | {"metaAttribute": "some meta value"}
+time            | 2019-11-24 17:51:49.879011
+```
+
 ::: tip
 Where `someStream-123` is a _stream name_, `someStream` is a _category_. Reading the `someStream` category retrieves messages from all streams whose names start with `someStream-`.
 :::
 
-Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages.sh)
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages/get-category-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages/get-category-messages.sh)
 
 ### Pub/Sub and Retrieving Correlated Messages
 
@@ -158,35 +209,35 @@ Consumer groups work only with the retrieval of messages from a category. An err
 
 Specify both the `consumer_group_member` argument and the `consumer_group_size` argument to retrieve a batch of messages for a specific member of a user group. The `consumer_group_size` argument specifies the total number of consumers participating in the group. The `consumer_group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
 
-``` ruby
-Get.('someCategory', consumer_group_member => 0, consumer_group_size => 3);
+``` sql
+SELECT * FROM get_category_messages('otherComponent', consumer_group_member => 0, consumer_group_size => 3);
 ```
 
-Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
+Consumer groups ensure that any given stream is processed by a single consumer, and that the consumer processing the stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
-A stream name's ID is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+A stream name's [cardinal ID](/user-guide/message-store/server-functions.html#get-the-cardinal-id-from-a-stream-name) is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
 
 Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
 
 ``` sql
-WHERE @hash_64(stream_name) % {group_size} = {group_member}
+WHERE @hash_64(cardinal_id(stream_name)) % {group_size} = {group_member}
 ```
 
 ## Filtering Messages with a SQL Condition
 
 The `condition` parameter receives an arbitrary SQL condition which further filters the messages retrieved.
 
+The `condition` parameter is supported for both stream retrieval and category retrieval.
+
 ``` sql
 SELECT * FROM get_stream_messages('someStream-123', condition => 'extract(month from messages.time) = extract(month from now())');
 
-SELECT * FROM get_stream_messages('someStream', condition => 'extract(month from messages.time) = extract(month from now())');
+SELECT * FROM get_category_messages('someStream', condition => 'extract(month from messages.time) = extract(month from now())');
 ```
 
-<div class="note custom-block">
-  <p>
-    Note: The SQL condition feature is deactivated by default. The feature is activated using the <code>message_store.sql_condition</code> Postgres configuration option: <code>message_store.sql_condition=on</code>. Using the feature without activating the configuration option will result in an error.
-  </p>
-</div>
+::: warning
+The SQL condition feature is deactivated by default. The feature is activated using the `message_store.sql_condition` Postgres configuration option: `message_store.sql_condition=on`. Using the feature without activating the configuration option will result in an error. See the PostgreSQL documentation for more on configuration options: [https://www.postgresql.org/docs/current/config-setting.html](https://www.postgresql.org/docs/current/config-setting.html)
+:::
 
 ::: danger
 Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.
@@ -194,13 +245,15 @@ Activating the SQL condition feature may expose the message store to unforeseen 
 
 ## Get Last Message from a Stream
 
-Retrieve the last message in a stream.
-
 ``` sql
 get_last_message(
   stream_name varchar
 )
 ```
+
+### Returns
+
+Row from the [messages](/user-guide/message-store/anatomy.html#messages-table) table that corresponds to the highest version number for the stream.
 
 ### Arguments
 
@@ -211,20 +264,128 @@ get_last_message(
 ### Usage
 
 ``` sql
-SELECT * FROM get_last_message('someStream');
+SELECT * FROM get_last_message('someStream-123');
+```
+
+```
+-[ RECORD 1 ]---+---------------------------------------------------------
+id              | 03e38825-b106-44f9-8b40-a2b8037b98d8
+stream_name     | someStream-123
+type            | SomeType
+position        | 11
+global_position | 111
+data            | {"attribute": "some value"}
+metadata        | {"metaAttribute": "some meta value"}
+time            | 2019-11-24 17:46:43.608025
 ```
 
 Note: This is only for entity streams, and does not work for categories.
 
-Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-last-message.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-last-message.sh)
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-last-message/get-last-message.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-last-message/get-last-message.sh)
+
+## Get the ID from a Stream Name
+
+``` sql
+id(
+  stream_name varchar
+)
+```
+
+### Returns
+
+The ID part of the stream name.
+
+### Arguments
+
+| Name | Type | Description | Default | Example |
+| --- | --- | --- | --- | --- |
+| stream_name | varchar | Name of the stream to parse the ID from | (none) |  someStream-123 |
+
+### Usage
+
+``` sql
+SELECT * FROM id('someStream-123');
+```
+
+```
+-[ RECORD 1 ]
+id | 123
+```
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/id/stream-name.sh]([https://github.com/eventide-project/postgres-message-store/blob/master/test/id/stream-name.sh)
+
+## Get the Cardinal ID from a Stream Name
+
+``` sql
+cardinal_id(
+  stream_name varchar
+)
+```
+
+### Returns
+
+The cardinal ID part of the stream name.
+
+### Arguments
+
+| Name | Type | Description | Default | Example |
+| --- | --- | --- | --- | --- |
+| stream_name | varchar | Name of the stream to parse the cardinal ID from | (none) |  someStream-123 |
+
+### Usage
+
+``` sql
+SELECT * FROM cardinal_id('someStream-123+abc');
+```
+
+```
+-[ RECORD 1 ]----
+cardinal_id | 123
+```
+
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/cardinal-id/stream-name-with-compound-id.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/cardinal-id/stream-name-with-compound-id.sh)
+
+## Get the Category from a Stream Name
+
+``` sql
+category(
+  stream_name varchar
+)
+```
+
+### Returns
+
+The category part of the stream name.
+
+### Arguments
+
+| Name | Type | Description | Default | Example |
+| --- | --- | --- | --- | --- |
+| stream_name | varchar | Name of the stream to parse the category from | (none) |  someStream-123 |
+
+### Usage
+
+``` sql
+SELECT * FROM category('someStream-123');
+```
+
+```
+-[ RECORD 1 ]--------
+category | someStream
+```
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/category/stream-name.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/category/stream-name.sh)
 
 ## Get Message Store Database Schema Version
-
-Retrieve the four octet version number of the message store database.
 
 ``` sql
 message_store_version()
 ```
+
+### Returns
+
+The the four octet version number of the message store database.
 
 ### Usage
 
@@ -232,7 +393,15 @@ message_store_version()
 SELECT message_store_version();
 ```
 
+```
+ message_store_version
+-----------------------
+ 2.0.0.0
+```
+
 The version number will change when the database schema changes. A database schema change could be a change to the `messages` table structure, changes to Postgres server functions, types, indexes, users, or permissions. The version number follows the [SemVer](https://semver.org/) scheme for the last three numbers in the version (the first number is the product generation, and implies a major version change).
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/database/print-message-store-version.sh](https://github.com/eventide-project/postgres-message-store/blob/master/database/print-message-store-version.sh)
 
 ## Debugging Output
 

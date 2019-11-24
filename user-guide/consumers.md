@@ -212,14 +212,14 @@ SomeConsumer.start(
 )
 ```
 
-Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
+Consumer groups ensure that any given stream is processed by a single consumer, and that the consumer processing the stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
-A stream name's ID is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+A stream name's [cardinal ID](./stream-names/#cardinal-id) is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
 
-Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
+Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream's cardinal ID modulo of the group size, and the consumer member number.
 
 ``` sql
-WHERE @hash_64(stream_name) % {group_size} = {group_member}
+WHERE @hash_64(cardinal_id(stream_name)) % {group_size} = {group_member}
 ```
 
 ::: warning
@@ -234,11 +234,9 @@ Since the consumer reads the given stream using a SQL query, that query can be e
 SomeConsumer.start('someCategory', condition: 'extract(month from messages.time) = extract(month from now())')
 ```
 
-<div class="note custom-block">
-  <p>
-    Note: The SQL condition feature is deactivated by default. The feature is activated using the <code>message_store.sql_condition</code> Postgres configuration option: <code>message_store.sql_condition=on</code>. Using the feature without activating the configuration option will result in an error.
-  </p>
-</div>
+::: warning
+The SQL condition feature is deactivated by default. The feature is activated using the `message_store.sql_condition` Postgres configuration option: `message_store.sql_condition=on`. Using the feature without activating the configuration option will result in an error. See the PostgreSQL documentation for more on configuration options: [https://www.postgresql.org/docs/current/config-setting.html](https://www.postgresql.org/docs/current/config-setting.html)
+:::
 
 ::: danger
 Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.

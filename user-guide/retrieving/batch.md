@@ -66,6 +66,10 @@ The `Get` class is implemented as a _callable object_. Actuating them is simply 
 self.call(stream_name, position: 0, batch_size: 1000, correlation: nil, consumer_group_member: nil, consumer_group_size: nil, condition: nil, session: nil)
 ```
 
+**Returns**
+
+Array of [`MessageStore::MessageData::Read`](/user-guide/messages-and-message-data/message-data.html#messagedata-read-class) instances.
+
 **Parameters**
 
 | Name | Description | Type |
@@ -84,6 +88,10 @@ self.call(stream_name, position: 0, batch_size: 1000, correlation: nil, consumer
 ``` ruby
 call(position)
 ```
+
+**Returns**
+
+Array of [`MessageStore::MessageData::Read`](/user-guide/messages-and-message-data/message-data.html#messagedata-read-class) instances.
 
 **Parameters**
 
@@ -129,7 +137,7 @@ For more details on pub/sub using the correlation stream, see the [pub/sub topic
 
 ## Consumer Groups
 
-Consumers processing a single category can be operated in parallel in a _consumer group_. Consumer groups provide a means of scaling horizontally to distribute the processing load of a single stream amongst a number of consumers.
+Consumers processing a single category can be operated in parallel in a [consumer group](/user-guide/consumers.html#consumer-groups). Consumer groups provide a means of scaling horizontally to distribute the processing load of a single category amongst a number of consumers.
 
 Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 
@@ -139,18 +147,18 @@ Consumer groups work only with the retrieval of messages from a category. A `Mes
 
 Specify both the `consumer_group_member` argument and the `consumer_group_size` argument to retrieve a batch of messages for a specific member of a user group. The `consumer_group_size` argument specifies the total number of consumers participating in the group. The `consumer_group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
 
-``` sql
-SELECT * FROM get_category_messages('otherComponent', consumer_group_member => 0, consumer_group_size => 3);
+``` ruby
+Get.('someCategory', consumer_group_member => 0, consumer_group_size => 3);
 ```
 
-Consumer groups ensure that any given stream is processed by a single consumer. The consumer that processes a stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
+Consumer groups ensure that any given stream is processed by a single consumer, and that the consumer processing the stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
-A stream name's ID is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+A stream name's [cardinal ID](./stream-names/#cardinal-id) is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
 
 Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
 
 ``` sql
-WHERE @hash_64(stream_name) % {group_size} = {group_member}
+WHERE @hash_64(cardinal_id(stream_name)) % {group_size} = {group_member}
 ```
 
 ## Filtering Messages with a SQL Condition
@@ -161,11 +169,9 @@ The `condition` parameter receives an arbitrary SQL condition which further filt
 Get.('someStream-123', condition: 'extract(month from messages.time) = extract(month from now())')
 ```
 
-<div class="note custom-block">
-  <p>
-    Note: The SQL condition feature is deactivated by default. The feature is activated using the <code>message_store.sql_condition</code> Postgres configuration option: <code>message_store.sql_condition=on</code>. Using the feature without activating the configuration option will result in an error.
-  </p>
-</div>
+::: warning
+The SQL condition feature is deactivated by default. The feature is activated using the `message_store.sql_condition` Postgres configuration option: `message_store.sql_condition=on`. Using the feature without activating the configuration option will result in an error. See the PostgreSQL documentation for more on configuration options: [https://www.postgresql.org/docs/current/config-setting.html](https://www.postgresql.org/docs/current/config-setting.html)
+:::
 
 ::: danger
 Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.
