@@ -179,11 +179,15 @@ Where `someStream-123` is a _stream name_, `someStream` is a _category_. Reading
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages/get-category-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages/get-category-messages.sh)
 
-### Pub/Sub and Retrieving Correlated Messages
+## Pub/Sub and Retrieving Correlated Messages
 
 The principle use of the `correlation` parameter is to implement Pub/Sub.
 
 The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlationStreamName` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
+
+::: warning
+Pub/Sub and correlation works only with the retrieval of messages from a category. An error will occur if the `correlation` argument is sent to a retrieval of a stream rather than a category.
+:::
 
 The `correlationStreamName` attribute allows a component to tag an outbound message with its origin. And then later, the originating component can subscribe to other components' events that carry the origin metadata.
 
@@ -204,7 +208,7 @@ Consumers processing a single category can be operated in parallel in a _consume
 Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 
 ::: warning
-Consumer groups work only with the retrieval of messages from a category. An error will occur if consumer group parameters are sent with a retrieval of a stream rather than a category.
+Consumer groups work only with the retrieval of messages from a category. An error will occur if consumer group arguments are sent to a retrieval of a stream rather than a category.
 :::
 
 Specify both the `consumer_group_member` argument and the `consumer_group_size` argument to retrieve a batch of messages for a specific member of a user group. The `consumer_group_size` argument specifies the total number of consumers participating in the group. The `consumer_group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
