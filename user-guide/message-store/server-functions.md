@@ -219,7 +219,7 @@ SELECT * FROM get_category_messages('otherComponent', consumer_group_member => 0
 
 Consumer groups ensure that any given stream is processed by a single consumer, and that the consumer processing the stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
-A stream name's [cardinal ID](/user-guide/message-store/server-functions.html#get-the-cardinal-id-from-a-stream-name) is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+A stream name's [cardinal ID](#get-the-cardinal-id-from-a-stream-name) is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
 
 Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
 
