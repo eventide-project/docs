@@ -19,7 +19,7 @@ The `StreamName` module provides:
 - The `get_ids` method for parsing a list of IDs from a stream name with a compound ID
 - The `get_cardinal_id` method for parsing a stream's cardinal ID from a stream name
 - The `get_category` method for parsing a stream's category from a stream name
-- The `category?` predicate for determining whether a stream name is a category stream name
+- The `category?` predicate for determining whether a stream name is a category
 - The `get_type` method for parsing a stream's category type from a stream name
 - The `get_types` method for parsing a list of category types from a stream name with a compound category types
 - The `get_entity_name` method for parsing a stream's entity name from a stream name
@@ -45,8 +45,8 @@ String
 | cardinal_id | ID that is to be considered the first or primary ID of a stream with a compound ID | String |
 | id | ID or list of IDs of the entity represented by the stream (Alias for the `stream_id` parameter) | String or Array of Strings |
 | ids | ID or list of IDs of the entity represented by the stream (Alias for the `stream_id` parameter) | String or Array of Strings |
-| type | The stream's category type, if only one type | String |
-| types | The stream's list category types, if many types | Array of Strings |
+| type | The stream's category type, if only one type | String or Array of Strings |
+| types | The stream's list category types, if many types | String or Array of Strings |
 
 ``` ruby
 MessageStore::StreamName.stream_name('someEntity')

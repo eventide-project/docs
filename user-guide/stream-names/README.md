@@ -108,24 +108,26 @@ The casing of a stream name, however, is not enforced. The `some_stream` form ca
 
 ## Separators
 
-### `-` The Entity ID Separator
+### `-` The ID Separator
 
-The `-` separator is the most common separator. It's the token in a stream name that separates the category name from the entity ID. For a stream named `account-123`, the value to the left of the dash is the category name `account`, and the value to the right of the dash is the ID `123`.
+The `-` character separates a stream's category and its ID.
 
-### `:` The Category Type Separator
-
-The ':' character separates the category from the category type (or types) in a stream name that includes both a category and type.
-
-For example, `account:command`.
-
-### `+` The Compound Category Type Separator
-
-The `+` character separates category types in a stream name that has a combination of more than one category type.
-
-For example, `account:command+position`.
+For example: `account-123`
 
 ### `+` The Compound ID Separator
 
 The `+` character separates individual IDs in a stream name that has a combination of more than one ID.
 
-For example, `account-123+abc`.
+For example: `account-123+abc`
+
+### `:` The Category Type Separator
+
+The ':' character separates the category from the category type (or types) in a stream name that includes both a category and type.
+
+For example: `account:command`
+
+### `+` The Compound Category Type Separator
+
+The `+` character separates category types in a stream name that has a combination of more than one category type.
+
+For example: `account:command+position`
