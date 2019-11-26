@@ -27,14 +27,14 @@ Position of the message written.
 
 ### Arguments
 
-| Name | Type | Description | Default | Example |
+| Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| id | varchar | UUID of the message being written | | a5eb2a97-84d9-4ccf-8a56-7160338b11e2 |
-| stream_name | varchar | Name of stream to which the message is written | | someStream-123 |
-| type | varchar | The type of the message | | Withdrawn |
-| data | jsonb | JSON representation of the message body | | {"someAttribute": "some value"} |
-| metadata (optional) | jsonb | JSON representation of the message metadata | NULL | {"metadataAttribute": "some meta data value"} |
-| expected_version (optional) | bigint | Version that the stream is expected to be when the message is written | NULL | 11 |
+| id | UUID of the message being written | varchar | | a5eb2a97-84d9-4ccf-8a56-7160338b11e2 |
+| stream_name | Name of stream to which the message is written | varchar | | someStream-123 |
+| type | The type of the message | varchar | | Withdrawn |
+| data | JSON representation of the message body | jsonb | | {"someAttribute": "some value"} |
+| metadata (optional) | JSON representation of the message metadata | jsonb | NULL | {"metadataAttribute": "some meta data value"} |
+| expected_version (optional) | Version that the stream is expected to be when the message is written | bigint | NULL | 11 |
 
 ### Usage
 
@@ -81,13 +81,13 @@ get_stream_messages(
 
 ### Arguments
 
-| Name | Type | Description | Default | Example |
+| Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | varchar | Name of stream to retrieve messages from | (none) | someStream-123 |
-| position (optional) | bigint | Starting position of the messages to retrieve | 0 | 11 |
-| batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCorrelationCategory |
-| condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
+| stream_name | Name of stream to retrieve messages from | varchar | | someStream-123 |
+| position (optional) | Starting position of the messages to retrieve | bigint | 0 | 11 |
+| batch_size (optional) | Number of messages to retrieve | bigint | 1000 | 111 |
+| correlation (optional) | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | varchar | NULL | someCorrelationCategory |
+| condition (optional) | SQL condition to filter the batch by | varchar | NULL | messages.time >= current_time |
 
 ### Usage
 
@@ -136,15 +136,15 @@ CREATE OR REPLACE FUNCTION get_category_messages(
 
 ### Arguments
 
-| Name | Type | Description | Default | Example |
+| Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| category_name | varchar | Name of the category to retrieve messages from | (none) | someCategory |
-| position (optional) | bigint | Global position to start retrieving messages from | 1 | 11 |
-| batch_size (optional) | bigint | Number of messages to retrieve | 1000 | 111 |
-| correlation (optional) | varchar | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | NULL | someCorrelationCategory |
-| consumer_group_member (optional) | bigint | The zero-based member number of an individual consumer that is participating in a consumer group | NULL | 1 |
-| consumer_group_size (optional) | bigint | The size of a group of consumers that are cooperatively processing a single category | NULL | 2 |
-| condition (optional) | varchar | SQL condition to filter the batch by | NULL | messages.time >= current_time |
+| category_name | Name of the category to retrieve messages from | varchar | | someCategory |
+| position (optional) | Global position to start retrieving messages from | bigint | 1 | 11 |
+| batch_size (optional) | Number of messages to retrieve | bigint | 1000 | 111 |
+| correlation (optional) | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | varchar | NULL | someCorrelationCategory |
+| consumer_group_member (optional) | The zero-based member number of an individual consumer that is participating in a consumer group | bigint | NULL | 1 |
+| consumer_group_size (optional) | The size of a group of consumers that are cooperatively processing a single category | bigint | NULL | 2 |
+| condition (optional) | SQL condition to filter the batch by | varchar | NULL | messages.time >= current_time |
 
 ### Usage
 
@@ -174,7 +174,7 @@ time            | 2019-11-24 17:51:49.879011
 ```
 
 ::: tip
-Where `someStream-123` is a _stream name_, `someStream` is a _category_. Reading the `someStream` category retrieves messages from all streams whose names start with `someStream-`.
+Where `someStream-123` is a _stream name_, `someStream` is a _category_. Reading the `someStream` category retrieves messages from all streams whose names start with `someStream` and are followed by an ID, or where `someStream` is the whole stream name.
 :::
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages/get-category-messages.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-category-messages/get-category-messages.sh)
@@ -261,9 +261,9 @@ Row from the [messages](/user-guide/message-store/anatomy.html#messages-table) t
 
 ### Arguments
 
-| Name | Type | Description | Default | Example |
+| Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | varchar | Name of the stream to retrieve messages from | (none) |  someStream-123 |
+| stream_name | Name of the stream to retrieve messages from | varchar | |  someStream-123 |
 
 ### Usage
 
@@ -301,9 +301,9 @@ The ID part of the stream name.
 
 ### Arguments
 
-| Name | Type | Description | Default | Example |
+| Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | varchar | Name of the stream to parse the ID from | (none) |  someStream-123 |
+| stream_name | Name of the stream to parse the ID from | varchar | | someStream-123 |
 
 ### Usage
 
@@ -332,9 +332,9 @@ The cardinal ID part of the stream name.
 
 ### Arguments
 
-| Name | Type | Description | Default | Example |
+| Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | varchar | Name of the stream to parse the cardinal ID from | (none) |  someStream-123 |
+| stream_name | Name of the stream to parse the cardinal ID from | varchar | | someStream-123 |
 
 ### Usage
 
@@ -364,9 +364,9 @@ The category part of the stream name.
 
 ### Arguments
 
-| Name | Type | Description | Default | Example |
+| Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | varchar | Name of the stream to parse the category from | (none) |  someStream-123 |
+| stream_name | Name of the stream to parse the category from | varchar | | someStream-123 |
 
 ### Usage
 
