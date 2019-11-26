@@ -5,7 +5,7 @@ sidebarDepth: 0
 
 # Consumers
 
-A consumer continuously reads messages from a single category and dispatches the messages to the handlers that have been registered to the consumer.
+A consumer continuously reads messages from a single category and dispatches the messages to the handlers that have been added to the consumer.
 
 Many consumers can be hosted together in a single service, allowing a component to be fed messages from many categories.
 
