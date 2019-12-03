@@ -76,7 +76,7 @@ SomeConsumer.start('someCateogry')
 ```
 
 ::: warning
-If the consumer is started with a stream name rather than a category, a `Consumer::Postgres::Error` will be raised, and the consumer will terminate.
+An error will be raised and the consumer will terminate if the consumer is started with a stream name rather than a category.
 :::
 
 ``` ruby
@@ -146,7 +146,7 @@ SomeConsumer.start(
 ```
 
 ::: warning
-  The value of the `correlation` argument must be a category and not a full stream name. If a the value is set to a stream name, a `MessageStore::Correlation::Error` will be raised and the consumer will terminate.
+The value of the `correlation` argument must be a category and not a full stream name. An error will be raised and the consumer will terminate if the value is set to a stream name.
 :::
 
 In order for an event written to an external service's stream to carry the correlation information from the originating service, the outbound message being written to the external service must have its `correlation_stream_name` attribute set to the current service's stream name.
