@@ -186,12 +186,6 @@ The SQL condition feature is deactivated by default. The feature is activated us
 Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.
 :::
 
-
-
-
-
-
-
 ## Constructing a Get Implementation Using the Abstract Constructor
 
 The two implementations of the `Get` module, `MessageStore::Postgres::Get::Stream` and `MessageStore::Postgres::Get::Category`, can be constructed using the `build` constructor. Depending on whether the value of the `stream_name` argument is a stream or a category, the appropriate implementation will be constructed.
