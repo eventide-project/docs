@@ -115,7 +115,7 @@ Array of [`MessageStore::MessageData::Read`](/user-guide/messages-and-message-da
 The principle use of the `correlation` parameter is to implement Pub/Sub.
 
 ::: warning
-Correlation works only with the retrieval of messages from a category. An error will be raised if consumer group parameters are sent with a retrieval of a stream rather than a category.
+Correlation works only with the retrieval of messages from a category. A `MessageStore::Postgres::Get::Category::Error` error will be raised if consumer group parameters are sent with a retrieval of a stream rather than a category.
 :::
 
 The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlation_stream_name` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
@@ -143,7 +143,7 @@ Get.('otherComponent-123', correlation: 'thisComponent')
 ```
 
 ::: warning
-Note that value of the `correlation` argument must be a category and not a full stream name. An error will be raised if the value is set to a stream name.
+Note that value of the `correlation` argument must be a category and not a full stream name. An `MessageStore::Postgres::Get::Category::Correlation::Error` error will be raised if the value is set to a stream name.
 :::
 
 For more details on pub/sub using the correlation stream, see the [pub/sub topic in the consumers user guide](../consumers.html#correlation-and-pub-sub).
@@ -153,7 +153,7 @@ For more details on pub/sub using the correlation stream, see the [pub/sub topic
 Consumers processing a single category can be operated in parallel in a [consumer group](/user-guide/consumers.html#consumer-groups). Consumer groups provide a means of scaling horizontally to distribute the processing load of a single category amongst a number of consumers.
 
 ::: warning
-Consumer groups work only with the retrieval of messages from a category. An error will be raised if consumer group parameters are sent with a retrieval of a stream rather than a category.
+Consumer groups work only with the retrieval of messages from a category. A `MessageStore::Postgres::Get::Category::ConsumerGroup::Error` error will be raised if consumer group parameters are sent with a retrieval of a stream rather than a category.
 :::
 
 Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
@@ -183,7 +183,7 @@ Get.('someStream-123', condition: 'extract(month from messages.time) = extract(m
 ```
 
 ::: warning
-The SQL condition feature is deactivated by default. The feature is activated using the `message_store.sql_condition` Postgres configuration option: `message_store.sql_condition=on`. An error will be raise if the feature is used without activating the configuration option. See the PostgreSQL documentation for more on configuration options: [https://www.postgresql.org/docs/current/config-setting.html](https://www.postgresql.org/docs/current/config-setting.html)
+The SQL condition feature is deactivated by default. The feature is activated using the `message_store.sql_condition` Postgres configuration option: `message_store.sql_condition=on`. A `MessageStore::Postgres::Get::Condition::Error` error will be raise if the feature is used without activating the configuration option. See the PostgreSQL documentation for more on configuration options: [https://www.postgresql.org/docs/current/config-setting.html](https://www.postgresql.org/docs/current/config-setting.html)
 :::
 
 ::: danger
