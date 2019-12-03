@@ -90,10 +90,14 @@ The class actuator both constructs and actuates the implementation of `Get` appr
 
 ### Instance Actuator
 
-The instance actuator of both the `MessageStore::Postgres::Get::Stream` and `MessageStore::Postgres::Get::Category` implementations offer the same interface.
+The instance actuator of both the `MessageStore::Postgres::Get::Stream` and `MessageStore::Postgres::Get::Category` implementations accept the position to start fetching messages from. The default value of the position varies based on whether the stream name is a stream or a category.
 
 ``` ruby
-call(position)
+# MessageStore::Postgres::Get::Stream
+call(position=0)
+
+# MessageStore::Postgres::Get::Category
+call(position=1)
 ```
 
 **Returns**
