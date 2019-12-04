@@ -74,7 +74,6 @@ get_stream_messages(
   stream_name varchar,
   position bigint DEFAULT 0,
   batch_size bigint DEFAULT 1000,
-  correlation varchar DEFAULT NULL,
   condition varchar DEFAULT NULL
 )
 ```
@@ -86,13 +85,12 @@ get_stream_messages(
 | stream_name | Name of stream to retrieve messages from | varchar | | someStream-123 |
 | position (optional) | Starting position of the messages to retrieve | bigint | 0 | 11 |
 | batch_size (optional) | Number of messages to retrieve | bigint | 1000 | 111 |
-| correlation (optional) | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | varchar | NULL | someCorrelationCategory |
 | condition (optional) | SQL condition to filter the batch by | varchar | NULL | messages.time >= current_time |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_stream_messages('someStream-123', 0, 1000, correlation => 'someCorrelationCateogry', condition => 'messages.time >= current_time');
+SELECT * FROM get_stream_messages('someStream-123', 0, 1000, condition => 'messages.time >= current_time');
 ```
 
 ```
@@ -160,7 +158,7 @@ type            | SomeType
 position        | 0
 global_position | 111
 data            | {"attribute": "some value"}
-metadata        | {"metaAttribute": "some meta value"}
+metadata        | {"correlationStreamName": "someCorrelationCateogry-123"}
 time            | 2019-11-24 17:51:49.836341
 -[ RECORD 2 ]---+---------------------------------------------------------
 id              | 57894da7-680b-4483-825c-732dcf873e93
@@ -169,7 +167,7 @@ type            | SomeType
 position        | 1
 global_position | 1111
 data            | {"attribute": "some value"}
-metadata        | {"metaAttribute": "some meta value"}
+metadata        | {"correlationStreamName": "someCorrelationCateogry-123"}
 time            | 2019-11-24 17:51:49.879011
 ```
 
