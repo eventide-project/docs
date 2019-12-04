@@ -6,7 +6,7 @@ The message store is a single table named `messages`. Interaction with the messa
 
 By default, the message store database is named `message_store`.
 
-See the [installation guide](./install.md#database-name) for more info on the database name.
+See the [installation guide](./install.md#database-name) for more info on varying the database name.
 
 ## Schema
 
@@ -33,34 +33,27 @@ By default, a role named `message_store` is created. The `message_store` role is
 
 | Name | Columns | Unique | Note |
 | --- | --- | --- | --- |
-| messages_id_uniq_idx | id | Yes | Enforce uniqueness as secondary key |
-| messages_stream_name_position_correlation_uniq_idx| stream_name, position, category(metadata->>correlationStreamName) | Yes | Ensures uniqueness of position number in a stream |
-| messages_category_global_position_correlation_idx | category(stream_name), global_position, category(metadata->>correlationStreamName) | No | Used when retrieving by category name |
+| messages_id | id | Yes | Enforce uniqueness as secondary key |
+| messages_stream | stream_name, position | Yes | Ensures uniqueness of position number in a stream |
+| messages_category | category(stream_name), global_position, category(metadata->>'correlationStreamName') | No | Used when retrieving by category name |
 
 ## Source Code
 
 ### Table Definition
 
 ``` sql
--- ----------------------------
---  Table structure for messages
--- ----------------------------
-CREATE TABLE IF NOT EXISTS "public"."messages" (
-  "id" UUID NOT NULL DEFAULT gen_random_uuid(),
-  "stream_name" text NOT NULL COLLATE "default",
-  "type" text NOT NULL COLLATE "default",
-  "position" bigint NOT NULL,
-  "global_position" bigserial NOT NULL ,
-  "data" jsonb,
-  "metadata" jsonb,
-  "time" TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() AT TIME ZONE 'utc') NOT NULL
-)
-WITH (OIDS=FALSE);
+CREATE TABLE IF NOT EXISTS message_store.messages (
+  id UUID NOT NULL DEFAULT message_store.gen_random_uuid(),
+  stream_name text NOT NULL,
+  type text NOT NULL,
+  position bigint NOT NULL,
+  global_position bigserial NOT NULL,
+  data jsonb,
+  metadata jsonb,
+  time TIMESTAMP WITHOUT TIME ZONE DEFAULT (now() AT TIME ZONE 'utc') NOT NULL
+);
 
--- ----------------------------
---  Primary key structure for table messages
--- ----------------------------
-ALTER TABLE "public"."messages" ADD PRIMARY KEY ("global_position") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE message_store.messages ADD PRIMARY KEY (global_position) NOT DEFERRABLE INITIALLY IMMEDIATE;
 ```
 
 Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages.sql)
