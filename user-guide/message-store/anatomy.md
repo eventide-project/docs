@@ -2,6 +2,20 @@
 
 The message store is a single table named `messages`. Interaction with the message store is effected through Postgres [server functions](./server-functions.md) that ensure the correct semantics for the writing of messages to streams, and the reading of messages from streams and categories.
 
+## Database
+
+By default, the message store database is named `message_store`.
+
+See the [installation guide](./install.md#database-name) for more info on the database name.
+
+## Schema
+
+All message store database objects are contained within a schema named `message_store`.
+
+## User/Role
+
+By default, a role named `message_store` is created. The `message_store` role is the owner of the `message_store` schema. The role is granted all necessary privileges to the database objects.
+
 ## Messages Table
 
 | Column | Type | Description | Default | Nullable |

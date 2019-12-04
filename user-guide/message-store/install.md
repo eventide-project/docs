@@ -26,11 +26,13 @@ bundle exec evt-pg-create-db
 
 See also: [Database Administration Tools](./tools.md)
 
-## Database Name and Database User
+## Database Name
 
-By default, the database creation tool will create a database named `message_store` and a database user named `message_store`
+By default, the database creation tool will create a database named `message_store`.
 
-If you prefer either a different database name or a different database user, see the [database administration tools instructions](./tools.md) for more info.
+If you prefer either a different database name, you can override the name using the `DATABASE_NAME` environment variable.
+
+See the [database administration tools instructions](./tools.md) for more info.
 
 ## Write a Test Message to Message Store (Optional)
 
