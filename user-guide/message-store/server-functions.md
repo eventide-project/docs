@@ -2,9 +2,20 @@
 
 The message store provides an interface of Postgres server functions that can be used with any programming language or through the `psql` command line tool.
 
-There are working examples of uses of the server functions included with the source code:
+View the source code: [https://github.com/eventide-project/postgres-message-store/blob/master/database](https://github.com/eventide-project/postgres-message-store/blob/master/database)
 
-Example: [https://github.com/eventide-project/postgres-message-store/blob/master/database](https://github.com/eventide-project/postgres-message-store/blob/master/database)
+## Interface
+
+- [write_message](#write-a-message)
+- [get_stream_messages](#get-messages-from-a-stream)
+- [get_category_messages](#get-messages-from-a-category)
+- [get_last_message](#get-last-message-from-a-stream)
+- [stream_version](#get-stream-version-from-a-stream)
+- [id](#get-the-id-from-a-stream-name)
+- [cardinal_id](#get-the-cardinal-id-from-a-stream-name)
+- [category](#get-the-category-from-a-stream-name)
+- [is_category](#determine-whether-a-stream-name-is-a-category)
+- [message_store_version](#get-message-store-database-schema-version)
 
 ## Write a Message
 
