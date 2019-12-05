@@ -74,7 +74,6 @@ get_stream_messages(
   stream_name varchar,
   position bigint DEFAULT 0,
   batch_size bigint DEFAULT 1000,
-  correlation varchar DEFAULT NULL,
   condition varchar DEFAULT NULL
 )
 ```
@@ -86,13 +85,12 @@ get_stream_messages(
 | stream_name | Name of stream to retrieve messages from | varchar | | someStream-123 |
 | position (optional) | Starting position of the messages to retrieve | bigint | 0 | 11 |
 | batch_size (optional) | Number of messages to retrieve | bigint | 1000 | 111 |
-| correlation (optional) | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | varchar | NULL | someCorrelationCategory |
 | condition (optional) | SQL condition to filter the batch by | varchar | NULL | messages.time >= current_time |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_stream_messages('someStream-123', 0, 1000, correlation => 'someCorrelationCateogry', condition => 'messages.time >= current_time');
+SELECT * FROM get_stream_messages('someStream-123', 0, 1000, condition => 'messages.time >= current_time');
 ```
 
 ```
@@ -160,7 +158,7 @@ type            | SomeType
 position        | 0
 global_position | 111
 data            | {"attribute": "some value"}
-metadata        | {"metaAttribute": "some meta value"}
+metadata        | {"correlationStreamName": "someCorrelationCateogry-123"}
 time            | 2019-11-24 17:51:49.836341
 -[ RECORD 2 ]---+---------------------------------------------------------
 id              | 57894da7-680b-4483-825c-732dcf873e93
@@ -169,7 +167,7 @@ type            | SomeType
 position        | 1
 global_position | 1111
 data            | {"attribute": "some value"}
-metadata        | {"metaAttribute": "some meta value"}
+metadata        | {"correlationStreamName": "someCorrelationCateogry-123"}
 time            | 2019-11-24 17:51:49.879011
 ```
 
@@ -257,7 +255,7 @@ get_last_message(
 
 ### Returns
 
-Row from the [messages](/user-guide/message-store/anatomy.html#messages-table) table that corresponds to the highest version number for the stream.
+Row from the [messages](/user-guide/message-store/anatomy.html#messages-table) table that corresponds to the highest position number in the stream.
 
 ### Arguments
 
@@ -286,6 +284,39 @@ time            | 2019-11-24 17:46:43.608025
 Note: This is only for entity streams, and does not work for categories.
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/get-last-message/get-last-message.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/get-last-message/get-last-message.sh)
+
+## Get Stream Version from a Stream
+
+``` sql
+stream_version(
+  stream_name varchar
+)
+```
+
+### Returns
+
+Highest position number in the stream.
+
+### Arguments
+
+| Name | Description | Type | Default | Example |
+| --- | --- | --- | --- | --- |
+| stream_name | Name of the stream to retrieve the stream version from | varchar | |  someStream-123 |
+
+### Usage
+
+``` sql
+SELECT * FROM stream_version('someStream-123');
+```
+
+```
+-[ RECORD 1 ]--+---
+stream_version | 11
+```
+
+Note: This is only for entity streams, and does not work for categories.
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/stream-version/stream-version.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/stream-version/stream-version.sh)
 
 ## Get the ID from a Stream Name
 
@@ -381,6 +412,37 @@ category | someStream
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/category/stream-name.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/category/stream-name.sh)
 
+## Determine Whether a Stream Name is a Category
+
+``` sql
+is_category(
+  stream_name varchar
+)
+```
+
+### Returns
+
+Boolean affirmative if the stream name is a category.
+
+### Arguments
+
+| Name | Description | Type | Default | Example |
+| --- | --- | --- | --- | --- |
+| stream_name | Name of the stream to determine whether it's a category | varchar | | someStream-123 |
+
+### Usage
+
+``` sql
+SELECT * FROM is_category('someCategory');
+```
+
+```
+-[ RECORD 1 ]--
+is_category | t
+```
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/is-category/is-category.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/is-category/is-category.sh)
+
 ## Get Message Store Database Schema Version
 
 ``` sql
@@ -389,7 +451,7 @@ message_store_version()
 
 ### Returns
 
-The the four octet version number of the message store database.
+The version number of the message store database.
 
 ### Usage
 
