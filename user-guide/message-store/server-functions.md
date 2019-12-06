@@ -16,6 +16,7 @@ View the source code: [https://github.com/eventide-project/postgres-message-stor
 - [category](#get-the-category-from-a-stream-name)
 - [is_category](#determine-whether-a-stream-name-is-a-category)
 - [acquire_lock](#acquire-a-lock-for-a-stream-name)
+- [hash_64](#calculate-a-64-bit-hash-for-a-stream-name)
 - [message_store_version](#get-message-store-database-schema-version)
 
 ## Write a Message
@@ -474,7 +475,7 @@ Integer representing the lock ID.
 
 | Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
-| stream_name | Name of the stream to generate the lock ID for | varchar | |  someStream-123 |
+| stream_name | Name of the stream to acquire the lock for | varchar | |  someStream-123 |
 
 ### Usage
 
@@ -488,6 +489,39 @@ acquire_lock | 2053039834977696644
 ```
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/acquire-lock.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/acquire-lock.sh)
+
+## Calculate a 64-Bit Hash for a Stream Name
+
+The lock ID generated to acquire an exclusive advisory lock is a hash calculated based on the stream name.
+
+``` sql
+hash_64(
+  value varchar
+)
+```
+
+### Returns
+
+Integer representing the lock ID.
+
+### Arguments
+
+| Name | Description | Type | Default | Example |
+| --- | --- | --- | --- | --- |
+| value | Text value to generate integer hash from | varchar | |  someStream-123 |
+
+### Usage
+
+``` sql
+SELECT hash_64('someStream');
+```
+
+```
+-[ RECORD 1 ]----------------
+hash_64 | 2053039834977696644
+```
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/hash-64.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/hash-64.sh)
 
 ## Get Message Store Database Schema Version
 
