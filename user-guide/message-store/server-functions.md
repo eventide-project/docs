@@ -15,6 +15,7 @@ View the source code: [https://github.com/eventide-project/postgres-message-stor
 - [cardinal_id](#get-the-cardinal-id-from-a-stream-name)
 - [category](#get-the-category-from-a-stream-name)
 - [is_category](#determine-whether-a-stream-name-is-a-category)
+- [acquire_lock](#acquire-a-lock-for-a-stream-name)
 - [message_store_version](#get-message-store-database-schema-version)
 
 ## Write a Message
@@ -389,7 +390,6 @@ SELECT * FROM cardinal_id('someStream-123+abc');
 cardinal_id | 123
 ```
 
-
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/cardinal-id/stream-name-with-compound-id.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/cardinal-id/stream-name-with-compound-id.sh)
 
 ## Get the Category from a Stream Name
@@ -453,6 +453,41 @@ is_category | t
 ```
 
 Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/is-category/is-category.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/is-category/is-category.sh)
+
+## Acquire a Lock for a Stream Name
+
+An [exclusive, transaction-level advisory lock](https://www.postgresql.org/docs/current/functions-admin.html#FUNCTIONS-ADVISORY-LOCKS) is acquired when a message is written to the stream. The advisory lock ensures that writes are processed sequentially.
+
+The lock ID is derived from the category name of the stream being written to. The result of which is that all writes to streams in a given category are queued and processed in sequence. This ensures that write of a message to a stream does not complete after a [consumer](/user-guide/consumers.md) has already proceeded past its position.
+
+``` sql
+acquire_lock(
+  stream_name varchar
+)
+```
+
+### Returns
+
+Integer representing the lock ID.
+
+### Arguments
+
+| Name | Description | Type | Default | Example |
+| --- | --- | --- | --- | --- |
+| stream_name | Name of the stream to generate the lock ID for | varchar | |  someStream-123 |
+
+### Usage
+
+``` sql
+SELECT acquire_lock('someStream-123');
+```
+
+```
+-[ RECORD 1 ]+--------------------
+acquire_lock | 2053039834977696644
+```
+
+Example: [https://github.com/eventide-project/postgres-message-store/blob/master/test/acquire-lock.sh](https://github.com/eventide-project/postgres-message-store/blob/master/test/acquire-lock.sh)
 
 ## Get Message Store Database Schema Version
 
