@@ -32,7 +32,7 @@ bundle install
 
 ## Create the Message Store Database
 
-See the [installation](/user-guide/message-store/install.md) section of the [message store documentation](/user-guide/message-store/) for instructions on running the database creation command line tool.
+See the [installation](/user-guide/message-db/install.md) section of the [message store documentation](/user-guide/message-db/) for instructions on running the database creation command line tool.
 
 The command to install the database is:
 

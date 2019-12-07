@@ -17,7 +17,7 @@ As in-memory structures without external side effects or prerequisites, they are
 
 In practice, an entity receives its data from a [projection](./projection) that is fed the events from an event stream that is read by a [store](./entity-store).
 
-## Example Entity
+## Example
 
 ``` ruby
 class Account

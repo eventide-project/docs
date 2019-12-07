@@ -2,7 +2,7 @@
 
 Logging is pervasive throughout the entirety of the toolkit. There is nothing of significance that is desirable to be observed that isn't instrumented with logging - often copious amounts of logging.
 
-## Logging Example
+## Example
 
 ``` ruby
 Something = Class.new

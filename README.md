@@ -1,16 +1,16 @@
 ---
 home: true
 heroImage: /eventide-icon-132.png
-description: 'Microservices and Event Sourcing in Ruby'
+description: 'Pub/Sub, Event Sourcing, Evented Microservices'
 actionText: Get Started →
 actionLink: /examples/quickstart.md
 features:
+- title: Pub/Sub
+  details: Pub/Sub services based on persistent event streams with support for event sourcing, parallelization, and a hosting runtime
 - title: Microservices
-  details: Message-based services hosted in any number of operating system processes or machines, with actor-based pub-sub consumers, component hosting, message dispatching, and handlers
+  details: Message-based services hosted in any number of operating system processes or machines, with actor-based pub-sub consumers, consumer groups, message dispatching, and handlers
 - title: Event Sourcing
-  details: Business logic entities projected from event streams with both in-memory, first-level caching and second-level on disk caching
-- title: Storage Options
-  details: Support for Postgres and EventStore message stores and transports, depending on your performance and scale needs
+  details: Business logic entities projected from event streams with caching and snapshotting
 footer: MIT Licensed | Copyright © 2015-present The Eventide Project
 ---
 

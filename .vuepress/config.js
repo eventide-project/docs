@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Eventide',
-  description: 'Microservices and Event Sourcing in Ruby',
+  description: 'Pub/Sub, Event Sourcing, Evented Microservices',
   dest: './_build',
   themeConfig: {
     activeHeaderLinks: true,
@@ -23,18 +23,20 @@ module.exports = {
       },
       {
         text: 'User Guide', items: [
-          { text: 'Message Store', link: '/user-guide/message-store/' },
+          { text: 'Message DB', link: '/user-guide/message-db/' },
           { text: 'Handlers', link: '/user-guide/handlers.md' },
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
           { text: 'Entity Store, Caching, Snapshotting', link: '/user-guide/entity-store/' },
           { text: 'Entities', link: '/user-guide/entities.md' },
-          { text: 'Writers', link: '/user-guide/writers/' },
-          { text: 'Readers', link: '/user-guide/readers/' },
+          { text: 'Writing Messages', link: '/user-guide/writing/' },
+          { text: 'Retrieving Messages', link: '/user-guide/retrieving/' },
+          { text: 'Reading Messages', link: '/user-guide/reading.md' },
           { text: 'Consumers', link: '/user-guide/consumers.md' },
           { text: 'Component Host', link: '/user-guide/component-host.md' },
           { text: 'Session', link: '/user-guide/session.md' },
+          { text: 'Settings', link: '/user-guide/settings.md' },
           { text: 'Logging', link: '/user-guide/logging/' },
           { text: 'Code Generator', link: '/user-guide/code-generator.md' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
@@ -102,16 +104,16 @@ module.exports = {
           ]
         }
       ],
-      '/user-guide/message-store/': [
+      '/user-guide/message-db/': [
         {
-          title: 'Message Store',
+          title: 'Message DB',
           collapsable: false,
           children: [
             '',
-            'install.md',
+            'server-functions.md',
             'anatomy.md',
-            'interface.md',
-            'tools.md'
+            'tools.md',
+            'install.md'
           ]
         }
       ],
@@ -139,9 +141,9 @@ module.exports = {
           ]
         }
       ],
-      '/user-guide/writers/': [
+      '/user-guide/writing/': [
         {
-          title: 'Writers',
+          title: 'Writing Messages',
           collapsable: false,
           children: [
             '',
@@ -154,6 +156,17 @@ module.exports = {
           ]
         }
       ],
+      '/user-guide/retrieving/': [
+        {
+          title: 'Retrieving Messages',
+          collapsable: false,
+          children: [
+            '',
+            'batch.md',
+            'last.md'
+          ]
+        }
+      ],
       '/user-guide/entity-store/': [
         {
           title: 'Entity Store, Caching, Snapshotting',
@@ -163,16 +176,6 @@ module.exports = {
             'entity-cache.md',
             'snapshotting.md',
             'substitute.md'
-          ]
-        }
-      ],
-      '/user-guide/readers/': [
-        {
-          title: 'Readers',
-          collapsable: false,
-          children: [
-            '',
-            'get-last.md'
           ]
         }
       ],

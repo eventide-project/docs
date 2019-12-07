@@ -23,6 +23,11 @@ The `StreamName` module provides:
 - The `get_id` class method for parsing a stream's ID from a stream name
 - The `get_ids` class method for parsing a stream's ID from a stream name
 - The `get_category` class method for parsing a stream's category from a stream name
+- The `get_cardinal_id` class method for parsing a stream's cardinal ID from a stream name
+- The `category?` class predicate for determining whether a stream name is a category
+- The `get_type` class method for parsing a stream's category type from a stream name
+- The `get_types` class method for parsing a list of category types from a stream name with a compound category types
+- The `get_entity_name` class method for parsing a stream's entity name from a stream name
 
 ## Category Declaration
 
@@ -51,12 +56,12 @@ When a stream name utility method is used to explicitly control the category nam
   </p>
 </div>
 
-## Entity Stream Name
+## Stream Name
 
-Compose a stream name for a stream that is suitable for entity event storage.
+Compose a stream name from its constituent parts.
 
 ``` ruby
-stream_name(id, category=nil, type: nil, types: nil)
+stream_name(stream_id=nil, stream_category=nil, category: nil, cardinal_id: nil, id: nil, ids: nil, type: nil, types: nil)
 ```
 
 **Returns**
@@ -67,10 +72,14 @@ String
 
 | Name | Description | Type |
 | --- | --- | --- |
-| id | ID or list of IDs of the entity represented by the stream | String or Array of Strings |
-| category | The stream's category name | String |
-| type | The stream's category type, if only one type | String |
-| types | The stream's category types, if many types | Array of Strings |
+| stream_id | ID or list of IDs of the entity represented by the stream | String or Array of Strings |
+| stream_category | The stream's category name | String |
+| category | The stream's category name (Alias for the `stream_category` parameter | String |
+| cardinal_id | ID that is to be considered the first or primary ID of a stream with a compound ID | String |
+| id | ID of the entity represented by the stream (Alias for the `stream_id` parameter) | String |
+| ids | List of IDs of the entity represented by the stream (Alias for the `stream_id` parameter) | String or Array of Strings |
+| type | The stream's category type | String |
+| types | The stream's list category types | Array of Strings |
 
 **In Conjunction with the Category Class Macro**
 
@@ -88,6 +97,9 @@ stream_name('123')
 ``` ruby
 stream_name('123', 'someEntity')
 # => "someEntity-123"
+
+stream_name(id: '123', category: 'someEntity')
+# => "someEntity-123"
 ```
 
 **With a Compound ID**
@@ -95,6 +107,19 @@ stream_name('123', 'someEntity')
 ``` ruby
 stream_name(['123', 'abc'], 'someEntity')
 # => "someEntity-123+abc"
+
+stream_name(ids: ['123', 'abc'], category: 'someEntity')
+# => "someEntity-123+abc"
+```
+
+**With a Compound ID with an Explicit Cardinal ID**
+
+``` ruby
+stream_name(cardinal_id: '123', id: 'abc', category: 'someEntity')
+# => "someEntity-123+abc"
+
+stream_name(cardinal_id: '123', ids: ['abc', '789'], category: 'someEntity')
+# => "someEntity-123+abc+789"
 ```
 
 **With a Category Type**

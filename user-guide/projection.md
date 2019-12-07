@@ -11,7 +11,7 @@ The entity projection is the mechanism that affects an entity with an event's da
 
 The entity projection applies one event to one entity. To apply multiple events to an entity, the projection is invoked once for each event in sequence.
 
-When an entity is "retrieved" from the [message store](./message-store), it's the events that are retrieved, and then fed one-by-one in the order that they were written and applied to the entity via a projection.
+When an entity is "retrieved" from the [message store](./message-db), it's the events that are retrieved, and then fed one-by-one in the order that they were written and applied to the entity via a projection.
 
 <div class="note custom-block">
   <p>

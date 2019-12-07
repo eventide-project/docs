@@ -16,6 +16,10 @@ Applicative is similar to "application", as in "application logic". Because _ser
 
 Autonomy is arguably the most critical quality of service design. It's the thing that can dictate whether you end up with a service architecture, or a web of web services organized as a _distributed monolith_. Autonomy is the quality that allows services to remain online when services that they communicate with become unavailable. Autonomy has the most profound influence on the design of services, the things that are inside of a service, and the things that are outside of a service. Without autonomy, services arguably aren't services at all.
 
+## Cardinal ID
+
+The _cardinal ID_ is the first ID that appears in an [entity stream's](#entity-stream) [compound ID](#compound-id). If the stream name has only a single ID, then the cardinal ID is that single ID.
+
 ## Category
 
 A category is a group of streams all related to the same type of [entity](/glossary.md#entity). An analogy would be a class in an object-oriented system.
@@ -23,6 +27,10 @@ A category is a group of streams all related to the same type of [entity](/gloss
 ## Category Stream
 
 A [stream](/glossary.md#stream) that contains the messages for every individual, identified stream in the category. For example, given the streams `account-123`, and `account-456`, the category stream, `account`, contains messages from both individual streams in the account category.
+
+## Category Type
+
+A [category type](/user-guide/stream-names/#category-types) is a qualifier added to a category name that is used to differentiate between categories used for various specific purposes.
 
 ## Command
 
@@ -40,9 +48,13 @@ A package of code that represents a single business concern and/or business proc
 
 The component host is the outermost surface of an Eventide service. It runs right next to the operating system. It is the physical "service". It loads components into itself. It coordinates the threads that the consumers run on. It provides graceful shutdown for the components hosted in a service.
 
-## Component Module
+## Compound ID
 
+A [compound ID](/user-guide/stream-names/#compound-entity-ids) is the ID part of an [entity stream](#entity-stream) name that is composed of multiple values.
 
+## Compound Category Type
+
+A [compound category type](/user-guide/stream-names/#compound-category-types) is a [category type](#category-type) that is composed of multiple values to indicate the category's multiple purposes.
 
 ## Consumer
 

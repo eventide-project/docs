@@ -8,7 +8,7 @@ The [service at a glance example](./at-a-glance.md) provides a one-page implemen
 
 ## Quickstart
 
-The [quickstart example](./quickstart.md) demonstrates the setup of an Eventide Postgres project, configuring the message store database connection, and basic reading and writing of a message to a stream in the [Postgres message store](/user-guide/message-store/).
+The [quickstart example](./quickstart.md) demonstrates the setup of an Eventide Postgres project, configuring the message store database connection, and basic reading and writing of a message to a stream in the [Postgres message store](/user-guide/message-db/).
 
 ## Example Projects
 

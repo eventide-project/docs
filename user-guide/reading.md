@@ -1,4 +1,9 @@
-# Readers
+---
+sidebar: auto
+sidebarDepth: 0
+---
+
+# Reading Messages
 
 The reader is the low-level, fundamental data retrieval mechanism. It reads messages in order from a single message stream or category.
 
@@ -10,7 +15,7 @@ A reader reads raw [message data](./messages-and-message-data/message-data.md). 
   </p>
 </div>
 
-## Reader Example
+## Example
 
 ``` ruby{13-15}
 account_id = '123'
@@ -37,10 +42,10 @@ end
 - Each message data is passed to the reader's block
 - Readers don't return anything
 - Readers retrieve messages in batches
+- A reader reads events in order, and continues to read until the end of the stream
 - A reader's batch size is configurable
 - A reader's starting position is configurable
-- A reader reads events in order, and continues to read until the end of the stream
-- Readers can be configured with a _condition_ that filters the messages retrieved
+- A reader can be configured with a `condition` that filters the messages retrieved based on a SQL condition
 - A reader can be configured with an existing [session](./session.md), or it can create a new session
 
 ## MessageStore::Postgres::Read Class
@@ -61,30 +66,30 @@ Readers are implemented as _callable objects_. Actuating them is simply a matter
 ### Class Actuator
 
 ``` ruby
-self.call(stream_name, position: 0, batch_size: 1000, session: nil, &action)
+self.call(stream_name, position: 0, batch_size: 1000, condition: nil, session: nil, &action)
 ```
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| stream_name | Name of stream that the reader will read | String |
+| stream_name | Name of the stream that the reader will read | String |
 | position | Position of the message to start reading from | Integer |
 | batch_size | Number of messages to retrieve with each query to the message store | Integer |
+| condition | SQL condition to filter the batch by | String |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 | action | Block to be evaluated for each message read | Callable |
 
 ### Instance Actuator
 
 ``` ruby
-call(stream_name, &action)
+call(&action)
 ```
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| stream_name | Name of stream that the reader will read | String |
 | action | Block to be evaluated for each message read | Callable |
 
 ## Read Loop
@@ -101,7 +106,13 @@ end
 
 ### Reading in Batches
 
-The reader retrieves messages in batches. The number of messages retrieved in each batch are specified using the reader actuator's `batch_size` parameter.
+The reader retrieves messages in batches. The number of messages retrieved in each batch are specified using the reader actuator's `batch_size` parameter. The default batch size is 1000 messages.
+
+``` ruby
+MessageStore::Postgres::Read.(stream_name, batch_size: 10) do |message_data|
+  # ...
+end
+```
 
 The `action` passed to the reader's actuator is evaluated once per message read. However, the reader doesn't query messages from the message store every time the block is evaluated.
 
@@ -122,6 +133,18 @@ MessageStore::Postgres::Read.(stream_name) do |message_data|
 end
 ```
 
+## Filtering Messages with a SQL Condition
+
+The reader can be given a SQL condition which further filters the messages read beyond selecting only the messages of the stream being read.
+
+For example, the reader can read messages from `someStream-123` whose position is 0.
+
+```ruby
+Read.('someStream-123', condition: 'position = 0')
+```
+
+The above example isn't a realistic use of this feature. It's a contrived example merely intended to demonstrate the mechanics of use the SQL condition.
+
 ## Constructing a Reader
 
 Readers can be constructed in one of two ways:
@@ -134,12 +157,12 @@ Readers can be constructed in one of two ways:
 The constructor not only instantiates the reader, but also invokes the reader's `configure` instance method, which constructs the reader's operational dependencies.
 
 ``` ruby
-self.build(stream_name, position: 0, batch_size: 1000, session: nil)
+self.build(stream_name, position: 0, batch_size: 1000, condition: nil, session: nil)
 ```
 
 **Returns**
 
-Instance of the MessageStore::Postgres::Read class.
+Instance of the `MessageStore::Postgres::Read` class.
 
 **Parameters**
 
@@ -148,6 +171,7 @@ Instance of the MessageStore::Postgres::Read class.
 | stream_name | Name of stream that the reader will read | String |
 | position | Position of the message to start reading from | Integer |
 | batch_size | Number of messages to retrieve with each query to the message store | Integer |
+| condition | SQL condition to filter the batch by | String |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
 ### Via the Initializer
@@ -158,7 +182,7 @@ self.initialize(stream_name, position, batch_size)
 
 **Returns**
 
-Instance of the MessageStore::Postgres::Read class.
+Instance of the `MessageStore::Postgres::Read` class.
 
 **Parameters**
 
@@ -178,7 +202,7 @@ See the [useful objects](./useful-objects.md#substitutes) user guide for backgro
 ## Assigning a Reader as a Dependency
 
 ``` ruby
-self.configure(receiver, stream_name, attr_name: :read, position: 0, batch_size: 1000, session: nil)
+self.configure(receiver, stream_name, attr_name: :read, position: 0, batch_size: 1000, condition: nil,session: nil)
 ```
 
 Constructs an instance of the reader and assigns it to the receiver's `read` attribute. By default, the receiving attribute's name is expected to be `read`, but it can be altered with the use of the `attr_name` parameter.
@@ -200,6 +224,7 @@ something.write
 | stream_name | Name of stream that the reader will read | String |
 | position | Position of the message to start reading from | Integer |
 | batch_size | Number of messages to retrieve with each query to the message store | Integer |
+| condition | SQL condition to filter the batch by | String |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
 ::: tip
@@ -214,5 +239,12 @@ The following tags are applied to log messages recorded by a reader:
 | --- | --- |
 | read | Applied to all log messages recorded by a reader |
 | message_store | Applied to all log messages recorded inside the `MessageStore` namespace |
+
+The following tags _may_ be applied to log messages recorded by a reader:
+
+| Tag | Description |
+| --- | --- |
+| message_data | Applied to log messages that record the data content of read message data |
+| data | Applied to log messages that record the data content of read message data |
 
 See the [logging](/user-guide/logging/) user guide for more on log tags.

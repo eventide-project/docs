@@ -7,7 +7,7 @@ sidebarDepth: 0
 
 A session controls the lifecycle of a connection to a message store database, and the execution of data storage and retrieval commands and atomic database transactions.
 
-By default, a session's connection settings are read from a [file](#settings), but settings can be assigned by any means.
+By default, a session's connection [settings](./settings.md) are read from a [file](./settings.md#example), but settings can be assigned by any means.
 
 ## Session Facts
 
@@ -16,6 +16,7 @@ By default, a session's connection settings are read from a [file](#settings), b
 - Once a connection is opened, it remains connected throughout the lifetime of the session, or until the database server resets or closes the connection
 - If a database connection is closed, it will be reconnected when the next database command is executed
 - Atomic transactions must be started and controlled explicitly (if they are used at all)
+- The database connection initialization data are provided to a session by the [Settings](./settings.md) class
 
 ## MessageStore::Postgres::Session Class
 
@@ -23,7 +24,7 @@ The `Session` class is a concrete class from the [`MessageStore::Postgres` libra
 
 The `Session` class provides:
 
-- The `execute` method for sending commands to the [message store](/user-guide/message-store/)
+- The `execute` method for sending commands to the [message store](/user-guide/message-db/)
 - The `transaction` method for executing commands in an atomic transaction
 - The `open`/`connect` methods for connecting to the message store
 - The `close` method for terminating the connection to the message store
@@ -139,44 +140,6 @@ reset()
 
 See see: [https://deveiate.org/code/pg/PG/Connection.html#method-i-reset](https://deveiate.org/code/pg/PG/Connection.html#method-i-reset) for more.
 
-## Settings
-
-The connection initialization data are provided through the capabilities of the `MessageStore::Postgres::Settings` class, which is an implementation of Eventide's [Settings](https://github.com/eventide-project/settings/blob/master/README.md) class.
-
-By default, the connection data is stored in a file located at `{component_root}/settings/message_store_postgres.json`
-
-### Example Settings File
-
-``` javascript
-{
-  "dbname": "message_store",
-  "host": "localhost",
-  "hostaddr": "127.0.0.1",
-  "port": 5432,
-  "user": "message_store"
-  "password": "********"
-}
-```
-
-### Settings Attributes
-
-The `Session` class provides the following settings attributes for controlling the database connection:
-
-- `dbname`
-- `host`
-- `hostaddr`
-- `port`
-- `user`
-- `password`
-- `connect_timeout`
-- `options`
-- `sslmode`
-- `krbsrvname`
-- `gsslib`
-- `service`
-
-The connection initialization data reflects the attributes of the `PG` library's `Connection` class. For more details, see: [https://deveiate.org/code/pg/PG/Connection.html#method-c-new](https://deveiate.org/code/pg/PG/Connection.html#method-c-new).
-
 ## Constructing a Session
 
 Sessions can be constructed in one of two ways
@@ -192,7 +155,7 @@ Session.new()
 
 **Returns**
 
-Instance of the session.
+Instance of the `Session` class.
 
 By constructing a session using the initializer, the session's settings are not set to operational values. A session instance in this state must still be assigned with operational connection initialization data before a database connection can be made.
 
@@ -206,7 +169,7 @@ The constructor not only instantiates the session, but also sets the session's s
 
 **Returns**
 
-Instance of the session.
+Instance of the `Session` class.
 
 **Parameters**
 
@@ -216,22 +179,6 @@ Instance of the session.
 
 ``` ruby
 session = Session.build()
-```
-
-## Constructing Settings and a Session from Memory Variables
-
-In cases where reading settings from a file is impractical, a settings object can be constructed directly, assigned values, and a session can be constructed from it.
-
-``` ruby{9}
-database, host, username = get_some_connection_settings()
-
-data = {
-  dbname: database,
-  host: host,
-  user: username
-}
-
-settings = MessageStore::Postgres::Settings.new(data)
 ```
 
 ## Log Tags

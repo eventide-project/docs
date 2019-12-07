@@ -15,13 +15,17 @@ Event-Oriented Autonomous Services Toolkit for Postgres<br/>
 
 ## Core Libraries
 
+### message-db
+Microservice native event store and message store for Postgres
+[github.com/eventide-project/message-db](https://github.com/eventide-project/message-db)
+
 ### messaging
 Common primitives for platform-specific messaging implementations<br/>
 [github.com/eventide-project/messaging](https://github.com/eventide-project/messaging)
 
 ### message_store
 Common primitives for platform-specific message store implementations<br/>
-[github.com/eventide-project/message-store](https://github.com/eventide-project/message-store)
+[github.com/eventide-project/message-db](https://github.com/eventide-project/message-db)
 
 ### entity_projection
 Projects event data into an entity<br/>
@@ -199,7 +203,7 @@ A frugal test framework for Ruby<br/>
 
 ## NPM Packages
 
-### postgres-message-store
+### message-db
 
-Database definition and tools for PostgreSQL message store
-[https://github.com/eventide-project/postgres-message-store-npm-package](https://github.com/eventide-project/postgres-message-store-npm-package)
+Microservice native event store and message store for Postgres
+[https://github.com/message-db/message-db-npm-package](https://github.com/message-db/message-db-npm-package)
