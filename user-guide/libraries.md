@@ -21,7 +21,7 @@ Common primitives for platform-specific messaging implementations<br/>
 
 ### message_store
 Common primitives for platform-specific message store implementations<br/>
-[github.com/eventide-project/message-store](https://github.com/eventide-project/message-store)
+[github.com/eventide-project/message-db](https://github.com/eventide-project/message-db)
 
 ### entity_projection
 Projects event data into an entity<br/>

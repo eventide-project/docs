@@ -1,6 +1,6 @@
 # Message Writer
 
-The message writer writes instances of [message objects](/user-guide/messages-and-message-data/messages.md) to the [message store](/user-guide/message-store). It converts them to the more raw, low level [message data](/user-guide/messages-and-message-data/message-data.md) form which can then be converted to JSON and stored in the database.
+The message writer writes instances of [message objects](/user-guide/messages-and-message-data/messages.md) to the [message store](/user-guide/message-db). It converts them to the more raw, low level [message data](/user-guide/messages-and-message-data/message-data.md) form which can then be converted to JSON and stored in the database.
 
 ## Example
 

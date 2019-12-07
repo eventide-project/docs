@@ -268,7 +268,7 @@ get_last_message(
 
 ### Returns
 
-Row from the [messages](/user-guide/message-store/anatomy.html#messages-table) table that corresponds to the highest position number in the stream.
+Row from the [messages](/user-guide/message-db/anatomy.html#messages-table) table that corresponds to the highest position number in the stream.
 
 ### Arguments
 

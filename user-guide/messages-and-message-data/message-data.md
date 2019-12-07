@@ -6,7 +6,7 @@ Before a message can be written to the message store, it's transformed into a `M
 
 It's important to note that in typical use of message objects the applicative code may never be directly exposed to `MessageData` instances.
 
-The attributes of `MessageData` objects directly reflect the structure of the [underlying storage schema](../message-store/anatomy.md#messages-table)
+The attributes of `MessageData` objects directly reflect the structure of the [underlying storage schema](../message-db/anatomy.md#messages-table)
 
 ## MessageStore::MessageData Module
 
