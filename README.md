@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /eventide-icon-132.png
-description: 'Pub/Sub, Event Sourcing, Evented Microservices in Ruby'
+description: 'Pub/Sub, Event Sourcing, Evented Microservices'
 actionText: Get Started →
 actionLink: /examples/quickstart.md
 features:
