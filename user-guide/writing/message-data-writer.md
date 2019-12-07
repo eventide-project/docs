@@ -4,7 +4,7 @@ The message data writer is the more primitive writer of the two levels of writer
 
 Using the message data writer is uncommon for typical applications. It can be useful when eliminating the message-to-message-data transformation when utmost performance optimization is required, and it can be useful as well in certain testing scenarios.
 
-The message data writer writes [message data](/user-guide/messages-and-message-data/message-data.md) to the [message store](/user-guide/message-store). In the most common scenario, the message data are converted from rich [message](/user-guide/messages-and-message-data/messages.md) objects.
+The message data writer writes [message data](/user-guide/messages-and-message-data/message-data.md) to the [message store](/user-guide/message-db). In the most common scenario, the message data are converted from rich [message](/user-guide/messages-and-message-data/messages.md) objects.
 
 ## Example
 

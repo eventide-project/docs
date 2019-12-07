@@ -40,7 +40,7 @@ By default, a role named `message_store` is created. The `message_store` role is
 ## Source Code
 
 View complete source code at: <br />
-[https://github.com/eventide-project/postgres-message-store/tree/master/database](https://github.com/eventide-project/postgres-message-store/tree/master/database)
+[https://github.com/message-db/message-db/tree/master/database](https://github.com/message-db/message-db/tree/master/database)
 
 ### Table Definition
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS message_store.messages (
 ALTER TABLE message_store.messages ADD PRIMARY KEY (global_position) NOT DEFERRABLE INITIALLY IMMEDIATE;
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/table/messages.sql)
+Source: [https://github.com/message-db/message-db/blob/master/database/table/messages.sql](https://github.com/message-db/message-db/blob/master/database/table/messages.sql)
 
 ### Index Definitions
 
@@ -69,7 +69,7 @@ CREATE UNIQUE INDEX messages_id ON message_store.messages (
 );
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-id.sql)
+Source: [https://github.com/message-db/message-db/blob/master/database/indexes/messages-id.sql](https://github.com/message-db/message-db/blob/master/database/indexes/messages-id.sql)
 
 ``` sql
 CREATE UNIQUE INDEX messages_stream ON message_store.messages (
@@ -78,7 +78,7 @@ CREATE UNIQUE INDEX messages_stream ON message_store.messages (
 );
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-stream.sql)
+Source: [https://github.com/message-db/message-db/blob/master/database/indexes/messages-stream.sql](https://github.com/message-db/message-db/blob/master/database/indexes/messages-stream.sql)
 
 ``` sql
 CREATE INDEX messages_category ON message_store.messages (
@@ -88,4 +88,4 @@ CREATE INDEX messages_category ON message_store.messages (
 );
 ```
 
-Source: [https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category.sql](https://github.com/eventide-project/message-store-postgres-database/blob/master/database/indexes/messages-category.sql)
+Source: [https://github.com/message-db/message-db/blob/master/database/indexes/messages-category.sql](https://github.com/message-db/message-db/blob/master/database/indexes/messages-category.sql)

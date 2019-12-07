@@ -1,6 +1,6 @@
 # Messages
 
-Messages are packages of data that are the principle means of transmission of instructions and status between services. They carry data between services and processes. Messages typically represent commands or events, and are recorded or _sent_ via the [message store](/user-guide/message-store/) (or other message transport).
+Messages are packages of data that are the principle means of transmission of instructions and status between services. They carry data between services and processes. Messages typically represent commands or events, and are recorded or _sent_ via the [message store](/user-guide/message-db/) (or other message transport).
 
 ## Example
 

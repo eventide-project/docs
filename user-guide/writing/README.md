@@ -1,6 +1,6 @@
 # Overview
 
-[Messages](/user-guide/messages-and-message-data/messages.md) and raw [message data](/user-guide/messages-and-message-data/message-data.md) objects are committed to the [message store](/user-guide/message-store) with writers.
+[Messages](/user-guide/messages-and-message-data/messages.md) and raw [message data](/user-guide/messages-and-message-data/message-data.md) objects are committed to the [message store](/user-guide/message-db) with writers.
 
 There are two layers of writers:
 

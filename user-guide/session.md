@@ -24,7 +24,7 @@ The `Session` class is a concrete class from the [`MessageStore::Postgres` libra
 
 The `Session` class provides:
 
-- The `execute` method for sending commands to the [message store](/user-guide/message-store/)
+- The `execute` method for sending commands to the [message store](/user-guide/message-db/)
 - The `transaction` method for executing commands in an atomic transaction
 - The `open`/`connect` methods for connecting to the message store
 - The `close` method for terminating the connection to the message store

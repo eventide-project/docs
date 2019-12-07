@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Eventide',
-  description: 'Microservices and Event Sourcing in Ruby',
+  description: 'Pub/Sub, Event Sourcing, Evented Microservices in Ruby',
   dest: './_build',
   themeConfig: {
     activeHeaderLinks: true,
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         text: 'User Guide', items: [
-          { text: 'Message Store', link: '/user-guide/message-store/' },
+          { text: 'Message DB', link: '/user-guide/message-db/' },
           { text: 'Handlers', link: '/user-guide/handlers.md' },
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
@@ -104,9 +104,9 @@ module.exports = {
           ]
         }
       ],
-      '/user-guide/message-store/': [
+      '/user-guide/message-db/': [
         {
-          title: 'Message Store',
+          title: 'Message DB',
           collapsable: false,
           children: [
             '',
