@@ -40,7 +40,7 @@ By default, a role named `message_store` is created. The `message_store` role is
 ## Source Code
 
 View complete source code at: <br />
-[https://github.com/eventide-project/postgres-message-store/tree/master/database](https://github.com/eventide-project/postgres-message-store/tree/master/database)
+[https://github.com/message-db/message-db/tree/master/database](https://github.com/message-db/message-db/tree/master/database)
 
 ### Table Definition
 
