@@ -113,7 +113,8 @@ module.exports = {
             'server-functions.md',
             'anatomy.md',
             'tools.md',
-            'install.md'
+            'install.md',
+            'update.md'
           ]
         }
       ],
