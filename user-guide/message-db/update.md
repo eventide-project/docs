@@ -82,7 +82,7 @@ DATABASE_NAME=some_other_name update.sh
 
 ## Changes Made to an Existing Database by the Update
 
-For a complete list of changes to the message store database effected by the update, the the main changes doc in the root Eventide repo:
+For a complete list of changes to the message store database effected by the update, see the the main changes doc in the root Eventide repo:
 
 [https://github.com/eventide-project/eventide/blob/master/CHANGES.md#message-db](https://github.com/eventide-project/eventide/blob/master/CHANGES.md#message-db)
 
