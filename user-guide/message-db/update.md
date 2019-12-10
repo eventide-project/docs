@@ -4,7 +4,7 @@ The Message DB database comes with an update script that can be used to update a
 
 ## Installation
 
-Message DB can be installed either as a Ruby Gem, an NPM package, or can simply be cloned from this repository.
+Message DB can be installed either as a Ruby Gem, an NPM package, or can simply be cloned from the [Message DB Git repository](https://github.com/message-db/message-db).
 
 ### Git Clone
 
@@ -32,10 +32,10 @@ Make sure that your default Postgres user has administrative privileges.
 
 ### From the Git Clone
 
-The `update.sh` script is in the root directory of the cloned repo. Change directory to the `message-db` directory where you cloned the repo, and run the script:
+The update script is in the `database` directory of the cloned repo. Change directory to the `message-db` directory where you cloned the repo, and run the script:
 
 ``` bash
-update.sh
+database/update.sh
 ```
 
 If you originally installed the database with another database name, you can specify the database name as an environment variable:
@@ -48,7 +48,7 @@ DATABASE_NAME=some_other_name update.sh
 
 If you installed Message DB via RubyGems, a database update Ruby executable will be installed with the `message-db` gem.
 
-The update executable will be in the gem executable search path and may also be executed through bundler:
+The executable will be in the gem executable search path and may also be executed through bundler:
 
 ``` bash
 bundle exec mdb-update

@@ -1,30 +1,72 @@
 # Installation
 
-## Install the Database Tools
+Running the database installation script creates the database, schema, table, indexes, functions, views, types, a user role, and limit the user's privileges to the message store's public interface.
+
+## Installation
+
+Message DB can be installed either as a Ruby Gem, an NPM package, or can simply be cloned from the [Message DB Git repository](https://github.com/message-db/message-db).
+
+### As a Ruby Gem
 
 The database creation tool is installed via the `message-db` gem.
 
-This gem can be installed on its own, and it is also included when installing the Eventide Postgres stackgem, `eventide-postgres`.
+This gem can be installed on its own, and it is also included when installing the Eventide Postgres stack gem, `eventide-postgres`.
 
 See the [setup](/setup/postgres.md) instructions for more info on installing the gems.
 
-## Create the Database
-
-Once the `message-db` gem is installed, the `mdb-create-db` command line utility will have been installed and will be in the search path.
-
-To create the message store database, run the command:
-
 ``` bash
-mdb-create-db
+gem install message-db
 ```
 
-Or, if you've installed the tools via Bundler:
+### As an NPM Module
+
+``` bash
+npm install @eventide/message-db
+```
+
+### Git Clone
+
+``` bash
+git clone git@github.com:message-db/message-db.git
+```
+
+## Run the Database Installation Script
+
+### Requirements
+
+Make sure that your default Postgres user has administrative privileges.
+
+### From the Ruby Executable
+
+If you installed Message DB via RubyGems, a database update Ruby executable will be installed with the `message-db` gem.
+
+The executable will be in the gem executable search path and may also be executed through bundler:
 
 ``` bash
 bundle exec mdb-create-db
 ```
 
-See also: [Database Administration Tools](./tools.md)
+For more information about Ruby executables installed with the `message-db` Ruby Gem, see the Eventide docs on the administration tools that are bundled with the gem:
+
+[http://docs.eventide-project.org/user-guide/message-db/tools.html](http://docs.eventide-project.org/user-guide/message-db/tools.html)
+
+### From the Git Clone
+
+The installation script is in the `database` directory of the cloned repo. Change directory to the `message-db` directory where you cloned the repo, and run the script:
+
+``` bash
+database/install.sh
+```
+
+### From the NPM Module
+
+The `message-db` NPM module doesn't ship with any special tooling other than the bundled scripts.
+
+To execute the update script, navigate to the directory where the `message-db` module is installed and run the script:
+
+``` bash
+install.sh
+```
 
 ## Database Name
 
@@ -32,17 +74,28 @@ By default, the database creation tool will create a database named `message_sto
 
 If you prefer either a different database name, you can override the name using the `DATABASE_NAME` environment variable.
 
-See the [database administration tools instructions](./tools.md) for more info.
-
-## Write a Test Message to Message Store (Optional)
-
-Once the database has been created, a test message can be written to it to prove that the installation is correct:
-
 ``` bash
-mdb-write-test-message
+# Ruby
+DATABASE_NAME=some_other_database bundle exec mdb-create-sb
+
+# Shell Script
+DATABASE_NAME=some_other_database install.sh
 ```
 
-The output will look something like:
+## Test the Installation (Optional)
+
+Once the database has been created, a test message can be written to it to prove that the installation is correct.
+
+``` bash
+# Ruby
+bundle exec mdb-write-test-message
+
+# Shell Script
+write-test-message.sh
+```
+
+The output will be:
+
 ```
 Writing 1 Messages to Stream testStream-ae61d996-9f2c-4b25-a2bd-440432007fda
 = = =
