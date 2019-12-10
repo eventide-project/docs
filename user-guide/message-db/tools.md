@@ -4,28 +4,28 @@
 
 The Eventide message store Postgres database package installs command line tools for administering the database.
 
-- [evt-pg-create-db](#install-the-message-store-database)
-- [evt-pg-delete-db](#delete-the-message-store-database)
-- [evt-pg-recreate-db](#recreate-the-message-store-database)
-- [evt-pg-clear-messages](#clear-the-messages-from-the-message-store-database)
-- [evt-pg-update-db](#update-the-database)
-- [evt-pg-install-functions](#install-functions)
-- [evt-pg-install-indexes](#install-indexes)
-- [evt-pg-install-views](#install-views)
-- [evt-pg-install-privileges](#install-privileges)
-- [evt-pg-print-messages](#print-the-messages-stored-the-message-store-database)
-- [evt-pg-print-stream-summary](#print-summary-statistics-by-stream-name)
-- [evt-pg-print-type-summary](#print-summary-statistics-by-message-type)
-- [evt-pg-print-stream-type-summary](#print-summary-statistics-by-stream-name-cross-referenced-by-message-type)
-- [evt-pg-print-category-type-summary](#print-summary-statistics-by-category-cross-referenced-by-message-type)
-- [evt-pg-print-type-stream-summary](#print-summary-statistics-by-message-type-cross-referenced-by-stream-name)
-- [evt-pg-print-type-category-summary](#print-summary-statistics-by-message-type-cross-referenced-by-category)
-- [evt-pg-write-test-message](#write-a-test-message)
-- [evt-pg-open-database-scripts-dir](#open-view-the-directory-containing-the-database-definition-script-files)
-- [evt-pg-print-message-store-version](#print-the-message-store-database-schema-version)
+- [mdb-create-db](#install-the-message-store-database)
+- [mdb-delete-db](#delete-the-message-store-database)
+- [mdb-recreate-db](#recreate-the-message-store-database)
+- [mdb-clear-messages](#clear-the-messages-from-the-message-store-database)
+- [mdb-update-db](#update-the-database)
+- [mdb-install-functions](#install-functions)
+- [mdb-install-indexes](#install-indexes)
+- [mdb-install-views](#install-views)
+- [mdb-install-privileges](#install-privileges)
+- [mdb-print-messages](#print-the-messages-stored-the-message-store-database)
+- [mdb-print-stream-summary](#print-summary-statistics-by-stream-name)
+- [mdb-print-type-summary](#print-summary-statistics-by-message-type)
+- [mdb-print-stream-type-summary](#print-summary-statistics-by-stream-name-cross-referenced-by-message-type)
+- [mdb-print-category-type-summary](#print-summary-statistics-by-category-cross-referenced-by-message-type)
+- [mdb-print-type-stream-summary](#print-summary-statistics-by-message-type-cross-referenced-by-stream-name)
+- [mdb-print-type-category-summary](#print-summary-statistics-by-message-type-cross-referenced-by-category)
+- [mdb-write-test-message](#write-a-test-message)
+- [mdb-open-database-scripts-dir](#open-view-the-directory-containing-the-database-definition-script-files)
+- [mdb-print-message-store-version](#print-the-message-store-database-schema-version)
 
 ::: tip
-If you installed the tools via Bundler, prefix the following commands with `bundle exec`, for example: `bundle exec evt-pg-create-db`
+If you installed the tools via Bundler, prefix the following commands with `bundle exec`, for example: `bundle exec mdb-create-db`
 :::
 
 <div class="note custom-block">
@@ -39,25 +39,25 @@ If you installed the tools via Bundler, prefix the following commands with `bund
 ### Install the Message Store Database
 
 ``` bash
-evt-pg-create-db
+mdb-create-db
 ```
 
 ### Delete the Message Store Database
 
 ``` bash
-evt-pg-delete-db
+mdb-delete-db
 ```
 
 ### Recreate the Message Store Database
 
 ``` bash
-evt-pg-recreate-db
+mdb-recreate-db
 ```
 
 ### Clear the Messages from the Message Store Database
 
 ``` bash
-evt-pg-clear-messages
+mdb-clear-messages
 ```
 
 ## Database Schema Update Tools
@@ -67,7 +67,7 @@ The schema update tools are useful when upgrading to a new release of the messag
 ### Update the Database
 
 ``` bash
-evt-pg-update-db
+mdb-update-db
 ```
 
 This tool installs the functions, indexes, views, and privileges.
@@ -77,25 +77,25 @@ If any function, index, view, or privilege already exists, it will be replaced w
 ### Install Functions
 
 ``` bash
-evt-pg-install-functions
+mdb-install-functions
 ```
 
 ### Install Indexes
 
 ``` bash
-evt-pg-install-indexes
+mdb-install-indexes
 ```
 
 ### Install Views
 
 ``` bash
-evt-pg-install-views
+mdb-install-views
 ```
 
 ### Install Privileges
 
 ``` bash
-evt-pg-install-privileges
+mdb-install-privileges
 ```
 
 ## Reporting
@@ -103,25 +103,25 @@ evt-pg-install-privileges
 ### Print the Messages Stored the Message Store Database
 
 ``` bash
-evt-pg-print-messages
+mdb-print-messages
 ```
 
 **Print Messages from a Specific Stream**
 
 ``` bash
-STREAM_NAME=someStream evt-pg-print-messages
+STREAM_NAME=someStream mdb-print-messages
 ```
 
 ### Print Summary Statistics by Stream Name
 
 ``` bash
-evt-pg-print-stream-summary
+mdb-print-stream-summary
 ```
 
 **Print Stream Summary Statistics for a Stream Name**
 
 ``` bash
-STREAM_NAME=someStream evt-pg-print-stream-summary
+STREAM_NAME=someStream mdb-print-stream-summary
 ```
 
 NOTE: The stream name is matched by substring using a SQL `LIKE` clause
@@ -129,13 +129,13 @@ NOTE: The stream name is matched by substring using a SQL `LIKE` clause
 ### Print Summary Statistics by Message Type
 
 ``` bash
-evt-pg-print-type-summary
+mdb-print-type-summary
 ```
 
 **Print Type Summary Statistics for a Type Name**
 
 ``` bash
-TYPE=SomeType evt-pg-print-type-summary
+TYPE=SomeType mdb-print-type-summary
 ```
 
 NOTE: The type name is matched by substring using a SQL `LIKE` clause
@@ -143,13 +143,13 @@ NOTE: The type name is matched by substring using a SQL `LIKE` clause
 ### Print Summary Statistics by Stream Name, Cross-Referenced by Message Type
 
 ``` bash
-evt-pg-print-stream-type-summary
+mdb-print-stream-type-summary
 ```
 
 **Print Stream and Type Summary Statistics for a Stream Name**
 
 ``` bash
-STREAM_NAME=someStream evt-pg-print-stream-type-summary
+STREAM_NAME=someStream mdb-print-stream-type-summary
 ```
 
 NOTE: The stream name is matched by substring using a SQL `LIKE` clause
@@ -157,13 +157,13 @@ NOTE: The stream name is matched by substring using a SQL `LIKE` clause
 ### Print Summary Statistics by Category, Cross-Referenced by Message Type
 
 ``` bash
-evt-pg-print-category-type-summary
+mdb-print-category-type-summary
 ```
 
 **Print Category and Type Summary Statistics for a Category**
 
 ``` bash
-CATEGORY=someCategory evt-pg-print-category-type-summary
+CATEGORY=someCategory mdb-print-category-type-summary
 ```
 
 NOTE: The category name is matched by substring using a SQL `LIKE` clause
@@ -171,13 +171,13 @@ NOTE: The category name is matched by substring using a SQL `LIKE` clause
 ### Print Summary Statistics by Message Type, Cross-Referenced by Stream Name
 
 ``` bash
-evt-pg-print-type-stream-summary
+mdb-print-type-stream-summary
 ```
 
 **Print Type and Stream Summary Statistics for a Type Name**
 
 ``` bash
-TYPE=SomeType evt-pg-print-type-stream-summary
+TYPE=SomeType mdb-print-type-stream-summary
 ```
 
 NOTE: The type is matched by substring using a SQL `LIKE` clause
@@ -185,13 +185,13 @@ NOTE: The type is matched by substring using a SQL `LIKE` clause
 ### Print Summary Statistics by Message Type, Cross-Referenced by Category
 
 ``` bash
-evt-pg-print-type-category-summary
+mdb-print-type-category-summary
 ```
 
 **Print Type and Category Summary Statistics for a Type Name**
 
 ``` bash
-TYPE=SomeType evt-pg-print-type-category-summary
+TYPE=SomeType mdb-print-type-category-summary
 ```
 
 NOTE: The type is matched by substring using a SQL `LIKE` clause
@@ -201,7 +201,7 @@ NOTE: The type is matched by substring using a SQL `LIKE` clause
 ### Write a Test Message
 
 ``` bash
-evt-pg-write-test-message
+mdb-write-test-message
 ```
 
 The number of messages and the stream name can be specified using environment variables.
@@ -209,31 +209,31 @@ The number of messages and the stream name can be specified using environment va
 **Write a test messages to a stream named `someStream-111`**
 
 ``` bash
-STREAM_NAME=someStream-111 evt-pg-write-test-message
+STREAM_NAME=someStream-111 mdb-write-test-message
 ```
 
 **Write 10 test messages**
 
 ``` bash
-INSTANCES=10 evt-pg-write-test-message
+INSTANCES=10 mdb-write-test-message
 ```
 
 **Write 10 test messages to a stream named `someStream-111`**
 
 ``` bash
-STREAM_NAME=someStream-111 INSTANCES=10 evt-pg-write-test-message
+STREAM_NAME=someStream-111 INSTANCES=10 mdb-write-test-message
 ```
 
 ### Open/View the Directory Containing the Database Definition Script Files
 
 ``` bash
-evt-pg-open-database-scripts-dir
+mdb-open-database-scripts-dir
 ```
 
 ### Print the Message Store Database Schema Version
 
 ``` bash
-evt-pg-print-message-store-version
+mdb-print-message-store-version
 ```
 
 NOTE: The message store includes a server function named [`message_store_version`](./server-functions.html#get-message-store-database-schema-version) that reports the version of the database schema.
@@ -245,5 +245,5 @@ The database administration tools presume a database named `message_store`.
 If you prefer a different database name, you can specify it on the command line using environment variables:
 
 ``` bash
-DATABASE_NAME=some_other_database evt-pg-create-db
+DATABASE_NAME=some_other_database mdb-create-db
 ```
