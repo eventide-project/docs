@@ -2,8 +2,6 @@
 
 Running the database installation script creates the database, schema, table, indexes, functions, views, types, a user role, and limit the user's privileges to the message store's public interface.
 
-## Installation
-
 Message DB can be installed either as a Ruby Gem, an NPM package, or can simply be cloned from the [Message DB Git repository](https://github.com/message-db/message-db).
 
 ### As a Ruby Gem
