@@ -64,11 +64,15 @@ Example: [https://github.com/message-db/message-db/blob/master/database/write-te
 
 ### Specifying the Expected Version of the Stream
 
+The expected_version argument is as an optimistic concurrency protection. It can also be used to assure that a message written to a stream is the first message in the stream.
+
+A more detailed explanation of `expected_version` and optimistic concurrency control can be found in [Eventide's message writer user guide](/user-guide/writing/expected-version.md).
+
 ``` sql
 SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'someStream-123', 'SomeMessageType', '{"someAttribute": "some value"}', '{"metadataAttribute": "some meta data value"}', 11);
 ```
 
-NOTE: If the expected version does not match the stream version at the time of the write, an error is raised of the form:
+If the expected version does not match the stream version at the time of the write, an error is raised:
 
 ```
 'Wrong expected version: {specified_stream_version} (Stream: {stream_name}, Stream Version: {current_stream_version})'
