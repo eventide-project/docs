@@ -10,7 +10,7 @@ The message store is a single table named `messages`. Interaction with the messa
 | stream_name | Name of stream to which the message belongs | varchar | | No |
 | type | The type of the message | varchar | | No |
 | position | The ordinal position of the message in its stream. Position is gapless. | bigint | | No |
-| global_position | Primary key. The ordinal position of the message in the entire message store. Global position may have gaps. | bigint | | No |
+| global_position | Primary key. The ordinal position of the message in the entire message store. Global position may have gaps. | bigint | nextval('messages_global_position_seq') | No |
 | data | Message payload | jsonb | NULL | Yes |
 | metadata | Message metadata | jsonb | NULL | Yes |
 | time | Timestamp when the message was written. The timestamp does not include a time zone. | timestamp | now() AT TIME ZONE 'utc' | No |
