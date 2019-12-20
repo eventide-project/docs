@@ -46,18 +46,26 @@ DATABASE_NAME=some_other_name update.sh
 
 ### From the Ruby Executable
 
-If you installed Message DB via RubyGems, a database update Ruby executable will be installed with the `message-db` gem.
+If you installed Message DB via RubyGems, the database definition code is installed in your gem directory along with the Message DB gem.
+
+A ruby executable is installed with the gem that will print out the directory where the database code resides.
 
 The executable will be in the gem executable search path and may also be executed through bundler:
 
 ``` bash
-bundle exec mdb-update
+bundle exec mdb-print-database-scripts-dir
+```
+
+Change directory to the directory printed by `mdb-print-database-scripts-dir` and run the update script:
+
+``` bash
+database/update.sh
 ```
 
 If you originally installed the database with another database name, you can specify the database name as an environment variable:
 
 ``` bash
-DATABASE_NAME=some_other_name bundle exec mdb-update
+DATABASE_NAME=some_other_name database/update.sh
 ```
 
 For more information about Ruby executables installed with the `message-db` Ruby Gem, see the Eventide docs on the administration tools that are bundled with the gem:
