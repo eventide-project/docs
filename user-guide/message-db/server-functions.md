@@ -198,7 +198,7 @@ Example: [https://github.com/message-db/message-db/blob/master/test/get-category
 
 The principle use of the `correlation` parameter is to implement Pub/Sub.
 
-The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlationStreamName` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
+The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlationStreamName` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component that the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
 
 ::: warning
 Pub/Sub and correlation works only with the retrieval of messages from a category. An error will occur if the `correlation` argument is sent to a retrieval of a stream rather than a category.

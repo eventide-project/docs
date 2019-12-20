@@ -118,7 +118,7 @@ The principle use of the `correlation` parameter is to implement Pub/Sub.
 Correlation works only with the retrieval of messages from a category. A `MessageStore::Postgres::Get::Category::Error` error will be raised if consumer group parameters are sent with a retrieval of a stream rather than a category.
 :::
 
-The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlation_stream_name` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
+The `correlation` parameter filters the retrieved batch based on the content of message metadata's `correlation_stream_name` attribute. The correlation stream name is like a _return address_. It's a way to give the message some information about the component that the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
 
 The `correlation_stream_name` attribute allows a component to tag an outbound message with its origin. And then later, the originating component can subscribe to other components' events that carry the origin metadata.
 

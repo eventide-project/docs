@@ -133,7 +133,7 @@ For example, an account component processes all withdrawal and deposit transacti
 
 Before the funds transfer component sends messages to the account component, it sets the messages' `correlation_stream_name` metadata attribute to the funds transfer's stream name.
 
-The correlation stream name is like a _return address_. It's a way to give the message some information about the component where the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
+The correlation stream name is like a _return address_. It's a way to give the message some information about the component that the message originated from. This information is carried from message to message in a workflow until it ultimately returns to the originating component.
 
 ``` ruby{6}
 category = 'account'
