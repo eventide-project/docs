@@ -88,6 +88,34 @@ logger.info { "Some info log message: #{some_value}" }
 # => [2000-01-01T00:00:00.00000Z] Something INFO: Some info log message: Hello
 ```
 
+### Write Unformatted Output
+
+Log output can be printed without any of the formatting or headings.
+
+``` ruby
+Something = Class.new
+logger = Log.get(Something)
+
+some_value = 'Hello'
+
+logger.puts("Some info log message: #{some_value}")
+# => Some info log message: Hello
+```
+
+The puts method does not support tags or levels.
+
+There is no deferred execution option with the logger's `puts` method. It is a straight pass-through to the logger's device.
+
+``` ruby
+logger.puts "Something"
+```
+
+Is equivalent to:
+
+``` ruby
+logger.device.puts "Something"
+```
+
 ## Log Tags
 
 A log message can be written with an optional list of one or more tags. Tags can be used to filter the logger's output.
