@@ -262,7 +262,7 @@ Log messages at the `debug` level are typically worded to indicate that somethin
 
 ### Error Level
 
-The `error` level is used to log an error message immediately before an error is raised.
+The `error` level is used to log an error message before a process terminates. The error level should only be used to log fatal, terminal error states.
 
 ### Warn Level
 
