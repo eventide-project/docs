@@ -9,7 +9,7 @@ View the source code: [https://github.com/message-db/message-db/blob/master/data
 - [write_message](#write-a-message)
 - [get_stream_messages](#get-messages-from-a-stream)
 - [get_category_messages](#get-messages-from-a-category)
-- [get_last_message](#get-last-message-from-a-stream)
+- [get_last_stream_message](#get-last-message-from-a-stream)
 - [stream_version](#get-stream-version-from-a-stream)
 - [id](#get-the-id-from-a-stream-name)
 - [cardinal_id](#get-the-cardinal-id-from-a-stream-name)
@@ -265,7 +265,7 @@ Activating the SQL condition feature may expose the message store to unforeseen 
 ## Get Last Message from a Stream
 
 ``` sql
-get_last_message(
+get_last_stream_message(
   stream_name varchar
 )
 ```
@@ -283,7 +283,7 @@ Row from the [messages](/user-guide/message-db/anatomy.html#messages-table) tabl
 ### Usage
 
 ``` sql
-SELECT * FROM get_last_message('someStream-123');
+SELECT * FROM get_last_stream_message('someStream-123');
 ```
 
 ```
