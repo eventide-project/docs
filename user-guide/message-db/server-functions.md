@@ -1,4 +1,4 @@
-# Server Functions
+  # Server Functions
 
 The message store provides an interface of Postgres server functions that can be used with any programming language or through the `psql` command line tool.
 
@@ -138,7 +138,7 @@ Example: [https://github.com/message-db/message-db/blob/master/test/get-stream-m
 Retrieve messages from a category of streams, optionally specifying the starting position, the number of messages to retrieve, the correlation category for Pub/Sub, consumer group parameters, and an additional condition that will be appended to the SQL command's WHERE clause.
 
 ``` sql
-CREATE OR REPLACE FUNCTION get_category_messages(
+get_category_messages(
   category_name varchar,
   position bigint DEFAULT 0,
   batch_size bigint DEFAULT 1000,
