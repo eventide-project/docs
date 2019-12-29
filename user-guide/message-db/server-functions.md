@@ -1,4 +1,4 @@
-  # Server Functions
+# Server Functions
 
 The message store provides an interface of Postgres server functions that can be used with any programming language or through the `psql` command line tool.
 
@@ -252,6 +252,14 @@ The `condition` parameter is supported for both stream retrieval and category re
 SELECT * FROM get_stream_messages('someStream-123', condition => 'extract(month from messages.time) = extract(month from now())');
 
 SELECT * FROM get_category_messages('someStream', condition => 'extract(month from messages.time) = extract(month from now())');
+```
+
+Any valid Postgres SQL condition can be used, even JSON functions and operators.
+
+``` sql
+SELECT * FROM get_stream_messages('someStream-123', condition => 'data->>''amount'' > 0');
+
+SELECT * FROM get_category_messages('someStream', condition => 'data->>''amount'' > 0');
 ```
 
 ::: warning
