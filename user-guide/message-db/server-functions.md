@@ -82,6 +82,20 @@ Example (_no expected version error_): [https://github.com/message-db/message-db
 
 Example (_with expected version error_): [https://github.com/message-db/message-db/blob/master/test/write-message/expected-version-error.sh](https://github.com/message-db/message-db/blob/master/test/write-message/expected-version-error.sh)
 
+### Writing Batches of Messages
+
+Writing batches of messages to a stream isn't directly supported by a single call to the `write_message` function. However, because Postgres supports atomic writes using database transactions, batch writes is ultimately supported using Postgres transactions.
+
+To write multiple messages to a stream in a batch, start a Postgres transaction and issue multiple calls to the `write_messages` function.
+
+::: warning
+Transactions should only be used for writes to the same stream. While it is technically possible to write to multiple streams using a Postgres transaction, doing so is ultimately a violation of event sourcing patterns and is strongly discouraged.
+:::
+
+For more on Postgres transactions, see: [https://www.postgresql.org/docs/current/tutorial-transactions.html](https://www.postgresql.org/docs/current/tutorial-transactions.html)
+
+The Message DB server functions do not set or otherwise change the default transaction isolation level configured for the Postgres server. Fore more on Postgres isolation levels, see: [https://www.postgresql.org/docs/current/transaction-iso.html](https://www.postgresql.org/docs/current/transaction-iso.html)
+
 ## Get Messages from a Stream
 
 Retrieve messages from a single stream, optionally specifying the starting position, the number of messages to retrieve, and an additional condition that will be appended to the SQL command's WHERE clause.
@@ -261,6 +275,9 @@ SELECT * FROM get_stream_messages('someStream-123', condition => 'data->>''amoun
 
 SELECT * FROM get_category_messages('someStream', condition => 'data->>''amount'' > 0');
 ```
+
+For more details on using Postgres JSON functions and operators, see:<br />
+[https://www.postgresql.org/docs/current/functions-json.html](https://www.postgresql.org/docs/current/functions-json.html)
 
 ::: warning
 The SQL condition feature is deactivated by default. The feature is activated using the `message_store.sql_condition` Postgres configuration option: `message_store.sql_condition=on`. Using the feature without activating the configuration option will result in an error. See the PostgreSQL documentation for more on configuration options: [https://www.postgresql.org/docs/current/config-setting.html](https://www.postgresql.org/docs/current/config-setting.html)
