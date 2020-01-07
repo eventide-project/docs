@@ -46,7 +46,7 @@ A package of code that represents a single business concern and/or business proc
 
 ## Component Host
 
-The component host is the outermost surface of an Eventide service. It runs right next to the operating system. It is the physical "service". It loads components into itself. It coordinates the threads that the consumers run on. It provides graceful shutdown for the components hosted in a service.
+The component host is the outermost surface of an Eventide service. It runs right next to the operating system. It is the physical "service". It loads components into itself. It coordinates the threads that the [consumers](/glossary.md#consumer) run on. It provides graceful shutdown for the components hosted in a service.
 
 ## Compound ID
 
@@ -110,7 +110,7 @@ A database specifically structured for the storage and retrieval of [events](/gl
 
 ## Handler
 
-Handlers are analogous to _controllers_ in a web MVC app. Handlers process the messages that are sent to services by writing them to [command streams](/glossary.md#command-stream) and [event streams](/glossary.md#event-streams).
+Handlers have the business logic for processing the messages that are inputs to a [component's](/glossary.md#component) [consumers](/glossary.md#consumer). Handlers are loosely analogous to _controllers_ in a web MVC app.
 
 ## Message
 
