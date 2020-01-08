@@ -140,6 +140,10 @@ Writes a message, or a batch of messages, to a single stream.
 
 Provenance is the chronology of the custody or location of a historical object. It's used in the context of messaging workflows to describe metadata of preceding messages in a sequence of messages in a causal chain of messages.
 
+## Pub/Sub
+
+Pub/Sub is a messaging pattern where publishers produce events and subscribers consumer them. In Pub/Sub, events are written without the publisher's knowledge of the subscribers.
+
 ## Service
 
 In its strictest sense, a service is an autonomous unit of system operations that is made up of [components](/glossary.md#component) that the service hosts.
