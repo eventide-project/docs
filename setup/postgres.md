@@ -37,13 +37,13 @@ See the [installation](/user-guide/message-db/install.md) section of the [messag
 The command to install the database is:
 
 ``` bash
-evt-pg-create-db
+mdb-create-db
 ```
 
 Or via Bundler:
 
 ``` bash
-bundle exec evt-pg-create-db
+bundle exec mdb-create-db
 ```
 
 ## Installation Directory

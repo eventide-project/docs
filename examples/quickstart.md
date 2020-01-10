@@ -92,7 +92,7 @@ The provided settings should work for the majority of development environment se
 With Postgres already running, from the command line, run:
 
 ``` bash
-bundle exec evt-pg-create-db
+bundle exec mdb-create-db
 ```
 
 For more background on the Postgres message store database, you can explore the SQL scripts at:
@@ -128,7 +128,7 @@ Now that a message has been added to the message store, you can print the conten
 From the command line, run:
 
 ``` bash
-bundle exec evt-pg-print-messages
+bundle exec mdb-print-messages
 ```
 
 ## Clear the Messages from the Message Store Database
@@ -140,5 +140,5 @@ You can recreate the message store database using a command line tool that is in
 From the command line, run:
 
 ``` bash
-bundle exec evt-pg-recreate-db
+bundle exec mdb-recreate-db
 ```
