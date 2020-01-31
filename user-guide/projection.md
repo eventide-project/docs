@@ -200,7 +200,7 @@ account.balance
 
 <div class="note custom-block">
   <p>
-    Note: See the <a href="/user-guide/stores.html">Entity Store User Guide</a> for more information about entity stores.
+    Note: See the <a href="/user-guide/entity-store/">Entity Store User Guide</a> for more information about entity stores.
   </p>
 </div>
 
