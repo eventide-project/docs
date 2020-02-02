@@ -93,9 +93,9 @@ The location of the settings file path can be overridden by setting the `MESSAGE
 MESSAGE_STORE_SETTINGS_PATH=some-other-directory/settings.json start_service.sh
 ```
 
-## Constructing a Session
+## Constructing a Settings
 
-Sessions can be constructed in one of two ways
+Settings can be constructed in one of two ways
 
 - Via the initializer
 - Via the constructor
@@ -127,31 +127,33 @@ settings = Settings.new({
 ### Via the Constructor
 
 ``` ruby
-self.build((source=Settings::DataSource::File.build(default_settings_pathname)))
+self.build(source='./settings/message_store_postgres.json')
 ```
 
-The constructor not only instantiates the `Settings`, but also constructs either a file data source or a hash data source depending on the source argument's type. When no argument is sent, a file data source using the default settings file is used.
+The constructor not only instantiates the `Settings`, but also constructs either a file data source or a hash data source depending on the source argument's type. When no argument is sent, a file data source using the default settings file path is used.
+
+The default settings file path is `./settings/message_store_postgres.json`.
 
 **Returns**
 
-Instance of the session.
+Instance of the `Settings` class.
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| settings | A settings object containing connection initialization data | Settings |
+| source | A file system path or a hash of key/value pairs that correspond to the settings attributes | String or Hash |
 
 ``` ruby
-# Default settings file
-session = Session.build()
-
 # Raw settings data
 settings = Settings.build({
   :dbname => "message_store",
   :host => "localhost",
   :user => "message_store"
 })
+
+# Default settings file
+settings = Settings.build() # Uses ./settings/message_store_postgres.json
 
 # Specific settings file
 settings = Settings.build('some_settings_file.json')
@@ -172,13 +174,7 @@ data = {
   user: username
 }
 
-settings = MessageStore::Postgres::Settings.new(data)
-```
-
-A [session](./session.md) can then be constructed from the settings object.
-
-``` ruby
-session = Session.build(settings: settings)
+settings = Settings.new(data)
 ```
 
 ## Log Tags
