@@ -69,6 +69,10 @@ The settings attributes reflect the attributes of the `PG` library's `Connection
 
 ## Settings File
 
+::: warning
+The settings file has no role in the Message DB [installation tools](/user-guide/message-db/install.md) or [administrative tools](/user-guide/message-db/tools.md). It is for the runtime configuration of an applicative connection to the message store. Message DB installation and administrative tools leverage standard Postgres tools, which are completely independent of Eventide.
+:::
+
 By default, the connection data is stored in a file located at `{component_root}/settings/message_store_postgres.json`
 
 
