@@ -70,7 +70,7 @@ The settings attributes reflect the attributes of the `PG` library's `Connection
 ## Settings File
 
 ::: warning
-The settings file has no role in the Message DB [installation tools](/user-guide/message-db/install.md) or [administrative tools](/user-guide/message-db/tools.md). It is for the runtime configuration of an applicative connection to the message store. Message DB installation and administrative tools leverage standard Postgres tools, which are completely independent of Eventide.
+The settings file has no role in the Message DB [installation tools](/user-guide/message-db/install.md) or [administrative tools](/user-guide/message-db/tools.md). It is for the runtime configuration of an applicative connection to the message store. Message DB installation and administrative tools leverage [standard Postgres tools](https://www.postgresql.org/docs/current/app-psql.html) and their own connection configuration [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) and [optional password files](https://www.postgresql.org/docs/current/libpq-pgpass.html). These are completely independent of Eventide, and have no bearing on Eventide's own runtime database connection settings.
 :::
 
 By default, the connection data is stored in a file located at `{component_root}/settings/message_store_postgres.json`
