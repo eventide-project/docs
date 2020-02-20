@@ -331,7 +331,7 @@ raise_expected_version_error!()
 
 Causes `MessageStore::ExpectedVersion::Error` to be raised upon the next invocation of the writer.
 
-## Determine If a Message Was Replied To
+## Determine If a Message Is a Reply
 
 ``` ruby
 replied?(message=nil, blk)
