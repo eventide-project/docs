@@ -317,10 +317,10 @@ The `Messaging::Write::Telemetry::Data` struct has the following attributes:
 The recorded data can be accessed directly:
 
 ``` ruby
-writer.sink.written_records[i].message
-writer.sink.written_records[i].stream_name
-writer.sink.written_records[i].expected_version
-writer.sink.written_records[i].reply_stream name
+writer.sink.written_records[i].data.message
+writer.sink.written_records[i].data.stream_name
+writer.sink.written_records[i].data.expected_version
+writer.sink.written_records[i].data.reply_stream_name
 ```
 
 ## Causing the Expected Version Error to be Raised
