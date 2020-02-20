@@ -312,7 +312,7 @@ The `Messaging::Write::Telemetry::Data` struct has the following attributes:
 - `message`
 - `stream_name`
 - `expected_version`
-- `reply_stream name`
+- `reply_stream_name`
 
 The recorded data can be accessed directly:
 
