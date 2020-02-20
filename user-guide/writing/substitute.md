@@ -326,7 +326,7 @@ writer.sink.written_records[i].reply_stream name
 ## Causing the Expected Version Error to be Raised
 
 ``` ruby
-raise_expected_version_error()
+raise_expected_version_error!()
 ```
 
 Causes `MessageStore::ExpectedVersion::Error` to be raised upon the next invocation of the writer.
