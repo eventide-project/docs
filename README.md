@@ -109,6 +109,8 @@ class Store
 end
 ```
 
+This code is not a complete implementation and not production-ready. It's intended only to provide a very high-level introductory overview.
+
 <div class="hero">
   <p class="action">
     <a href="/examples/" class="nav-link action-button">Go To Examples →</a>
