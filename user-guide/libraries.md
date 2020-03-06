@@ -95,7 +95,7 @@ UUID identifier generator with support for dependency configuration for real and
 
 ### initializer
 Generates initializers and attributes<br/>
-[github.com/eventide-project/initializer](https://github.com/eventide-project/identifier-uuid)
+[github.com/eventide-project/initializer](https://github.com/eventide-project/initializer)
 
 ### settings
 Settings data access and assignment<br/>
