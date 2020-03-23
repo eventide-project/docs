@@ -5,6 +5,8 @@ sidebarDepth: 1
 
 # The Doctrine of Useful Objects
 
+*An object must be _useful_ immediately upon instantiation of the object. No dependencies of an object should ever be allowed to be uninitialized. If any use of any of an object's dependencies results in a nil reference exception, then the object is not useful.*
+
 This guide describes the standards and practices for implementation design that are used to build the Eventide toolkit and the examples provided for it by the Eventide team.
 
 Having a basic understanding of the _useful objects_ doctrine will facilitate understanding the design patterns and principles that are commonly employed throughout the various libraries and examples.
@@ -45,6 +47,8 @@ There is no notion of _primary_ or _secondary_ substitutes. All values that can 
 There is no _real_ instance of a dependency versus a _fake_ instance. These perspectives are purely circumstantial, and should be drummed out of the designer's mind as quickly as they threaten to alight.
 
 Substitutability guarantees that all implementations of an interface that respect the interface's contract and intended semantics are no more valuable than any other implementation of the interface, and no less _real_ than any other. All substitutes are _real_ substitutes by the very nature of substitutability.
+
+Leveraging _substitutability_, ensure that an object's dependencies are initialized to an implementation of the dependency's interface immediately upon instantiation of the object.
 
 ## Null Object Dependencies and Useful Objects
 
@@ -100,7 +104,7 @@ Any destructuring of more complex objects is provided by a factory method, or _c
 
 By the time the initializer is invoked, the exact data needed by the object in order to do its work is supplied to the initializer. The initializer is not required to do any other work other than capturing the data as the object's instance variables.
 
-The class constructor provides a _convenience interface_. It's the interface used to make invoking the initializer easier for the developer by not requiring that all of the initializer's individual arguments.
+The class constructor provides a _convenience interface_. It's the interface used to make invoking the initializer easier for the developer by not requiring all of the initializer's individual arguments.
 
 ## Secondary, Optional Dependencies
 
@@ -108,7 +112,7 @@ The `some_dependency` dependency is not an appropriate initializer argument. It'
 
 An instance of the `Something` class needs the `some_dependency` in order to fulfill its obligations at runtime, but it is not necessary to provide the _operational_ implementation of the dependency in all cases (any substitute implementation - due to substitutability - is also a permissible value).
 
-The `some_dependency` can be _optionally_ set to an _operational_ instance of `SomeDependency`, or to a substitute
+The `some_dependency` can be _optionally_ set to an _operational_ instance of `SomeDependency`, or to a substitute.
 
 ## Optional Dependencies and Default Null Object Substitutes
 
@@ -516,7 +520,7 @@ If you reduce duplication of code patterns indiscriminately, you'll end up creat
 
 In effect, the abstractions created by the pre-mature boilerplate reduction can cause the use of the programming language to diverge so far from the language's own foundations that learning the framework becomes an exercise in effectively learning a new language. This in itself is an example of the kind of _special variation_ that must be rigorously controlled rather than automatically indulged.
 
-While having to code boilerplate code can seen tedious and annoying, that's all it is. The avoidance of tedium is not a sufficient risk to the design's structural qualities to warrant its indulgence reflexively.
+While having to write boilerplate code can seem tedious and annoying, that's all it is. The avoidance of tedium is not a sufficient risk to the design's structural qualities to warrant its indulgence reflexively.
 
 Necessary, irreducible boilerplate is just one of those things that we need to face as programmers with increased patience and a shift in focus from short term gains to long-term sustainability and continuity.
 
