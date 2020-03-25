@@ -42,9 +42,9 @@ The useful objects repository on GitHub includes an example implementation:<br/>
 
 A dependency has an interface. An object that conforms to that interface (and its semantics) is substitutable for the dependency. That object is a _substitute_.
 
-There is no notion of _primary_ or _secondary_ substitutes. All values that can be assigned to a dependency attribute are substitutable for each other. No single substitute has precedence over the other.
+There is no notion of _primary_ or _secondary_ substitutes. All values that can be assigned to a dependency attribute are substitutable for each other. No single substitute is considered more real than any other.
 
-There is no _real_ instance of a dependency versus a _fake_ instance. These perspectives are purely circumstantial, and should be drummed out of the designer's mind as quickly as they threaten to alight.
+There is no _real_ instance of a dependency versus a _fake_ instance. These perspectives are purely circumstantial, and should be drummed out of the designer's mind as quickly as possible.
 
 Substitutability guarantees that all implementations of an interface that respect the interface's contract and intended semantics are no more valuable than any other implementation of the interface, and no less _real_ than any other. All substitutes are _real_ substitutes by the very nature of substitutability.
 
@@ -516,7 +516,7 @@ Rather than reduce mere boilerplate code, look for variations on patterns and se
 
 Any programmer at any level can reduce perceived duplication. It's not difficult, and it's not an unassailable goal of design - except when it does not create countervailing problems. And that assessment is a matter of a judgment call that has to take into effect the unique conditions of the particular system being worked.
 
-If you reduce duplication of code patterns indiscriminately, you'll end up creating a _framework_ from which critical business logic cannot be extricated when the framework becomes too cumbersome to continue justifying its use. While not _all_ frameworks end up facing this fate, it's far more common than not, as framework developers struggle to maintain adoption and relevance as time goes passes by adding more features and specializations through abstraction rather than by extension (ie: plain old _vendor lock-in_).
+If you reduce duplication of code patterns indiscriminately, you'll end up creating a _framework_ from which critical business logic cannot be extricated when the framework becomes too cumbersome to continue justifying its use. While not _all_ frameworks end up facing this fate, it's far more common than not, as framework developers struggle to maintain adoption and relevance as time passes by adding more features and specializations through abstraction rather than by extension (ie: plain old _vendor lock-in_).
 
 In effect, the abstractions created by the pre-mature boilerplate reduction can cause the use of the programming language to diverge so far from the language's own foundations that learning the framework becomes an exercise in effectively learning a new language. This in itself is an example of the kind of _special variation_ that must be rigorously controlled rather than automatically indulged.
 
