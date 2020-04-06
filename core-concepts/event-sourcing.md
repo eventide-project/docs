@@ -4,7 +4,7 @@ sidebar: auto
 
 # Event Sourcing
 
-Event sourcing is a messaging pattern that takes advantage of the evented nature of a [pub/sub](./pub-sub.md) architecture to simplify application data storage.
+Event sourcing is a storage model that takes advantage of the evented nature of a [pub/sub](./pub-sub.md) architecture to simplify application data storage.
 
 ## Pub/Sub
 
