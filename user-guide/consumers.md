@@ -51,7 +51,7 @@ The `Consumer::Postgres` module affords the receiver with:
 
 - The `start` method for starting a consumer and supplying it with arguments that control its behavior
 - The `handler` class macro used for adding handlers to a consumer
-- The `identifier` class macro used to declare an arbitrary string prefix used to compose the stream name used by the [position store](#position-store)
+- The `identifier` class macro used to declare an arbitrary string suffix used to compose a distinct position stream name used by the [position store](#position-store) to store consumer position records
 
 ## Registering a Handler
 
@@ -211,6 +211,10 @@ SomeConsumer.start(
   group_member: group_member
 )
 ```
+
+::: warning
+A consumer that is a member of a group must also have a unique identifier so that each consumer in a group will write the consumer's position to and read from distinct position streams. See the [Position Store](#position-store) topic for more details.
+:::
 
 Consumer groups ensure that any given stream is processed by a single consumer, and that the consumer processing the stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
