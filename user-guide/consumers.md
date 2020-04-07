@@ -23,7 +23,7 @@ In messaging parlance, a consumer acts as a _subscriber_.
 class Consumer
   include Consumer::Postgres
 
-  identifier 'someConsumer' # Note: This is optional
+  identifier 'someUniqueIdentifier' # Note: This is optional
 
   handler SomeHandler
   handler SomeOtherHandler
@@ -51,7 +51,7 @@ The `Consumer::Postgres` module affords the receiver with:
 
 - The `start` method for starting a consumer and supplying it with arguments that control its behavior
 - The `handler` class macro used for adding handlers to a consumer
-- The `identifier` class macro used to declare an arbitrary string prefix used to compose the stream name used by the [position store](#position-store)
+- The `identifier` class macro used to declare an arbitrary string suffix used to compose a distinct position stream name used by the [position store](#position-store) to store consumer position records
 
 ## Registering a Handler
 
@@ -196,7 +196,7 @@ Consumers processing a single category can be operated in parallel in a _consume
 Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 
 ::: danger
-Consumers operated in consumer groups must be used in conjunction with the `identifier` attribute, or else the individual consumers in a consumer group will overwrite each other's position records.
+Consumers operated in consumer groups must be used in conjunction with the `identifier` attribute, or else the individual consumers in a consumer group will overwrite each other's [position records](#position-store).
 :::
 
 Specify both the `group_size` argument and the `group_member` argument to enlist a consumer in a consumer group. The `group_size` argument specifies the total number of consumers participating in the group. The `group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
@@ -211,6 +211,10 @@ SomeConsumer.start(
   group_member: group_member
 )
 ```
+
+::: warning
+A consumer that is a member of a group must also have a unique identifier so that each consumer in a group will write the consumer's position to and read from distinct position streams. See the [Position Store](#position-store) topic for more details.
+:::
 
 Consumer groups ensure that any given stream is processed by a single consumer, and that the consumer processing the stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
@@ -346,7 +350,7 @@ The name of the position stream can be specialized by specifying a stream name q
 class Consumer
   include Consumer::Postgres
 
-  identifier 'someConsumer'
+  identifier 'someUniqueIdentifier'
 
   handler SomeHandler
 end
@@ -354,14 +358,14 @@ end
 Consumer.start('account:command')
 ```
 
-In the above example, the consumer's position stream would be `account:command+position-someConsumer`.
+In the above example, the consumer's position stream would be `account:command+position-someUniqueIdentifier`.
 
 Consumers can also be assigned an identifier when they are started. If an identifier macro is also declared on the consumer class, the one given when starting the consumer has precedence over the one declared on the consumer class.
 
-In the following example, the consumer's position stream would be `account:command+position-otherIdentifier`.
+In the following example, the consumer's position stream would be `account:command+position-someOtherIdentifier`.
 
 ``` ruby
-Consumer.start('account:command', identifier: 'otherIdentifier')
+Consumer.start('account:command', identifier: 'someOtherIdentifier')
 ```
 
 ## Constructing Consumers
