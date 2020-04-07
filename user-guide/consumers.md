@@ -23,7 +23,7 @@ In messaging parlance, a consumer acts as a _subscriber_.
 class Consumer
   include Consumer::Postgres
 
-  identifier 'someConsumer' # Note: This is optional
+  identifier 'someUniqueIdentifier' # Note: This is optional
 
   handler SomeHandler
   handler SomeOtherHandler
@@ -196,7 +196,7 @@ Consumers processing a single category can be operated in parallel in a _consume
 Consumers operating in consumer groups process a single category, with each consumer in the group processing messages that are not processed by any other consumer in the group.
 
 ::: danger
-Consumers operated in consumer groups must be used in conjunction with the `identifier` attribute, or else the individual consumers in a consumer group will overwrite each other's position records.
+Consumers operated in consumer groups must be used in conjunction with the `identifier` attribute, or else the individual consumers in a consumer group will overwrite each other's [position records](#position-store).
 :::
 
 Specify both the `group_size` argument and the `group_member` argument to enlist a consumer in a consumer group. The `group_size` argument specifies the total number of consumers participating in the group. The `group_member` argument specifies the unique ordinal ID of a consumer. A consumer group with three members will have a `group_size` of 3, and will have members with `group_member` numbers `0`, `1`, and `2`.
@@ -346,7 +346,7 @@ The name of the position stream can be specialized by specifying a stream name q
 class Consumer
   include Consumer::Postgres
 
-  identifier 'someConsumer'
+  identifier 'someUniqueIdentifier'
 
   handler SomeHandler
 end
@@ -354,14 +354,14 @@ end
 Consumer.start('account:command')
 ```
 
-In the above example, the consumer's position stream would be `account:command+position-someConsumer`.
+In the above example, the consumer's position stream would be `account:command+position-someUniqueIdentifier`.
 
 Consumers can also be assigned an identifier when they are started. If an identifier macro is also declared on the consumer class, the one given when starting the consumer has precedence over the one declared on the consumer class.
 
-In the following example, the consumer's position stream would be `account:command+position-otherIdentifier`.
+In the following example, the consumer's position stream would be `account:command+position-someOtherIdentifier`.
 
 ``` ruby
-Consumer.start('account:command', identifier: 'otherIdentifier')
+Consumer.start('account:command', identifier: 'someOtherIdentifier')
 ```
 
 ## Constructing Consumers
