@@ -223,9 +223,9 @@ Host: account-component
       Identifier: (none)
       Position Stream: account:command+position
 
-    Handlers:
-      Handler: AccountComponent::Handlers::Commands
-        Messages: Open, Close, Deposit, Withdraw
+      Handlers:
+        Handler: AccountComponent::Handlers::Commands
+          Messages: Open, Close, Deposit, Withdraw
 
     Consumer: AccountComponent::Consumers::Commands::Transactions
       Category: accountTransaction
@@ -233,12 +233,12 @@ Host: account-component
       Identifier: (none)
       Position Stream: accountTransaction:position
 
-    Handlers:
-      Handler: AccountComponent::Handlers::Commands::Transactions
-        Messages: Deposit, Withdraw
+      Handlers:
+        Handler: AccountComponent::Handlers::Commands::Transactions
+          Messages: Deposit, Withdraw
 
 Host running: account-component
-Process ID: 97763
+Process ID: 97826
 ```
 
 ### Controlling the Environment Variable Information Output
