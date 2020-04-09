@@ -8,7 +8,7 @@ Each time an entity is retrieved, the resulting entity is recorded in a cache. A
 
 The entity cache is composed of two parts: the in-memory cache that stores any entity retrieved by a its store, and the on-disk persistent cache of entity snapshots that are used to create an entity's cache record if one is not already present in the cache at the time of the retrieval.
 
-To avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache record in the in-memory cache for it, the latest snapshot will be retrieved and inserted into the in-memory cached before the latest events are read and projected.
+To avoid the cost of projecting all of an entity's events when the entity is not in the cache (as when a service has just been started), an entity is periodically persisted to disk in a snapshot stream. If an entity is retrieved and there's no cache record in the in-memory cache for it, the latest snapshot will be retrieved and inserted into the in-memory cache before the latest events are read and projected.
 
 <div class="note custom-block">
   <p>
@@ -172,9 +172,9 @@ The thread scope will store an entity store's cache in thread-local storage. Thi
 
 The global scope means that the cache is scoped to the lifecycle of a particular entity store class.
 
-Ruby classes remain in scope for the entire lifecycle of a Ruby process. Therefore, a store's cache will remain in-memory until the process is terminated.
+Ruby classes remain in scope for the entire lifecycle of a Ruby process. Therefore, a store's cache will remain in memory until the process is terminated.
 
-The global scope is rarely used in-practice except for certain circumstances where a store might be used in a utility script.
+The global scope is rarely used in practice except for certain circumstances where a store might be used in a utility script.
 
 ### Exclusive
 
@@ -216,7 +216,7 @@ The entity cache is never cleared in an operational system. Once an entity is in
 
 Because services are restarted for upgrades or other maintenance and operational reasons, entity caches are typically cleared on a sufficiently-regular basis such that memory utilization does not become an issue.
 
-However, long-lived services that are very stable and have no maintenance or operational reasons to be restarted will accumulate cache records in-memory indefinitely. In practice, this is usually not an issue and can be counteracted easily with system-level process monitoring tools that simply restarts a service when it reaches a given memory consumption threshold.
+However, long-lived services that are very stable and have no maintenance or operational reasons to be restarted will accumulate cache records in memory indefinitely. In practice, this is usually not an issue and can be counteracted easily with system-level process monitoring tools that simply restarts a service when it reaches a given memory consumption threshold.
 
 This is a perfectly safe operation because services are designed to be both autonomous and idempotent as a matter of course, and the [component host](/user-guide/component-host.md) infrastructure does service shutdown in a safe and graceful way.
 
