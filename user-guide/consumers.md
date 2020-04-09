@@ -402,6 +402,10 @@ The following tags _may_ be applied to log messages recorded by a consumer:
 
 | Tag | Description |
 | --- | --- |
+| start | Applied to log messages recorded when a consumer is starting |
+| dispatch | Applied to log messages recorded when a message is being dispatched |
+| message | Applied to log messages recorded when a message is being dispatched |
+| position | Applied to log messages recorded when a position is being recorded |
 | position_store | Applied to log messages recorded by the consumer's position store |
 | get | Applied to log messages recorded while getting an position record from the position store |
 | put | Applied to log messages recorded while putting a position record to the position store |
