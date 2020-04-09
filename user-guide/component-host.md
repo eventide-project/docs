@@ -208,12 +208,12 @@ The following tags _may_ be applied to log messages recorded by the component ho
 
 | Tag | Description |
 | --- | --- |
-| component | Applied to messages that pertain to a component |
+| component_host | Applied to messages that pertain to the component host|
 | actor | Applied to messages recorded by [actors](https://github.com/ntl/actor) |
 | lifecycle | Applied to messages that pertain to the lifecycle of a actors |
 | crash | Applied to messages recorded while the host is terminating due to an error |
 | signal | Applied to messages recorded when handling operating system signals |
-| start | Applied to messages recorded when starting an actor |
+| start | Applied to messages recorded when starting the component host or an actor |
 | stop | Applied to messages recorded when stopping an actor |
 
 See the [logging](./logging/log-tags.md) user guide for more on log tags.
