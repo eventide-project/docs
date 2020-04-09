@@ -200,9 +200,45 @@ Resumes a process paused with the TSTP signal.
 
 When the component host starts, it will print information about the environment variables that control various parts of the toolkit, as well as information about the components, consumers, streams, and handlers that are being hosted.
 
-### TODO
 ```
-(example output)
+Environment Variables:
+  ENTITY_CACHE_SCOPE: exclusive
+  MESSAGE_STORE_SETTINGS_PATH: (not set)
+  HANDLE_STRICT: (not set)
+  LOG_LEVEL: (not set)
+  LOG_TAGS: (not set)
+  LOG_HEADER: (not set)
+  LOG_FORMATTERS: (not set)
+  CONSOLE_DEVICE: (not set)
+  STARTUP_INFO: (not set)
+  ENV_VAR_INFO: (not set)
+
+Host: account-component
+
+  Component: AccountComponent::Start (Name: (none))
+
+    Consumer: AccountComponent::Consumers::Commands
+      Category: account:command
+      Position: 0
+      Identifier: (none)
+      Position Stream: account:command+position
+
+    Handlers:
+      Handler: AccountComponent::Handlers::Commands
+        Messages: Open, Close, Deposit, Withdraw
+
+    Consumer: AccountComponent::Consumers::Commands::Transactions
+      Category: accountTransaction
+      Position: 0
+      Identifier: (none)
+      Position Stream: accountTransaction:position
+
+    Handlers:
+      Handler: AccountComponent::Handlers::Commands::Transactions
+        Messages: Deposit, Withdraw
+
+Host running: account-component
+Process ID: 97763
 ```
 
 ### Controlling the Environment Variable Information Output
