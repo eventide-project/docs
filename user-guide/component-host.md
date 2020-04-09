@@ -196,6 +196,39 @@ Pauses the process.
 
 Resumes a process paused with the TSTP signal.
 
+## Startup Output
+
+When the component host starts, it will print information about the environment variables that control various parts of the toolkit, as well as information about the components, consumers, streams, and handlers that are being hosted.
+
+### TODO
+```
+(example output)
+```
+
+### Controlling the Environment Variable Information Output
+
+The environment variable information output is controlled by the `ENV_VAR_INFO` environment variable.
+
+The variable's default value is "on".
+
+To deactivate the printing of the environment variables list, set the `ENV_VAR_INFO` to "off".
+
+``` bash
+ENV_VAR_INFO=off script/start
+```
+
+### Controlling the Component Startup Information Output
+
+The component startup information output is controlled by the `STARTUP_INFO` environment variable.
+
+The variable's default value is "on".
+
+To deactivate the printing of the component startup information, set the `STARTUP_INFO` to "off".
+
+``` bash
+STARTUP_INFO=off script/start
+```
+
 ## Log Tags
 
 The following tags are applied to log messages recorded by the component host:
