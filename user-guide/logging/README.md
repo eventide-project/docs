@@ -174,7 +174,7 @@ If the log level is set to a value that isn't a legitimate log level, an error i
 ``` bash
 LOG_LEVEL=something start_service.sh
 
-Level :something must be one of: fatal, error, warn, info, debug, trace (Log::Error)
+Level "something" must be one of: "fatal", "error", "warn", "info", "debug", "trace" (Log::Error)
 ```
 
 #### Default Log Level
