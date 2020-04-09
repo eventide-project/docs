@@ -219,8 +219,9 @@ Host: account-component
 
     Consumer: AccountComponent::Consumers::Commands
       Category: account:command
-      Position: 0
+      Position: 5
       Identifier: (none)
+      Correlation: (none)
       Position Stream: account:command+position
 
       Handlers:
@@ -231,6 +232,7 @@ Host: account-component
       Category: accountTransaction
       Position: 0
       Identifier: (none)
+      Correlation: (none)
       Position Stream: accountTransaction:position
 
       Handlers:
@@ -238,8 +240,10 @@ Host: account-component
           Messages: Deposit, Withdraw
 
 Host running: account-component
-Process ID: 97826
+Process ID: 11111
 ```
+
+Note: The above example output is taken from the account component example project: [https://github.com/eventide-examples/account-component](https://github.com/eventide-examples/account-component)
 
 ### Controlling the Environment Variable Information Output
 
