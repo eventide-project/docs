@@ -193,6 +193,8 @@ It can be set to one of the following values:
 - `on`
 - `off`
 
+The value defaults to `off`.
+
 ``` bash
 HANDLE_STRICT=on start_service.sh
 ```
