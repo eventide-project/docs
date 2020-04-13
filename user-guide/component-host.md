@@ -198,7 +198,7 @@ Resumes a process paused with the TSTP signal.
 
 ## Startup Output
 
-When the component host starts, it will print information about the environment variables that control various parts of the toolkit, as well as information about the components, consumers, streams, and handlers that are being hosted.
+When the component host starts, it will print information about the Ruby build that's running the component, environment variables that control various parts of the toolkit, as well as information about the components, consumers, streams, and handlers that are being hosted.
 
 ```
 ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-darwin19]
@@ -246,7 +246,7 @@ Note: The above example output is taken from the account component example proje
 
 ### The Included Startup Info
 
-The startup info includes details about components, consumers, streams, handlers, and messages, as well as environment variables used to override Eventide's runtime options.
+The startup info includes details about components, consumers, streams, handlers, and messages, as well as environment variables used to override Eventide's runtime options, and the Ruby runtime.
 
 #### Component Information
 
