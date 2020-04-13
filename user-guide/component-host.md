@@ -283,18 +283,6 @@ The environment variable information includes:
 - STARTUP_INFO
 - ENV_VAR_INFO
 
-### Controlling the Environment Variable Information Output
-
-The environment variable information output is controlled by the `ENV_VAR_INFO` environment variable.
-
-The variable's default value is "on".
-
-To deactivate the printing of the environment variables list, set the `ENV_VAR_INFO` to "off".
-
-``` bash
-ENV_VAR_INFO=off start_service.rb
-```
-
 ### Controlling the Component Startup Information Output
 
 The component startup information output is controlled by the `STARTUP_INFO` environment variable.
@@ -305,6 +293,18 @@ To deactivate the printing of the component startup information, set the `STARTU
 
 ``` bash
 STARTUP_INFO=off start_service.rb
+```
+
+### Controlling the Environment Variable Information Output
+
+The environment variable information output is controlled by the `ENV_VAR_INFO` environment variable.
+
+The variable's default value is "on".
+
+To deactivate the printing of the environment variables list, set the `ENV_VAR_INFO` to "off".
+
+``` bash
+ENV_VAR_INFO=off start_service.rb
 ```
 
 ## Log Tags
