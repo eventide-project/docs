@@ -184,6 +184,19 @@ SomeHandler.(some_unhandled_message, strict: true)
 
 This argument is available for both the class actuator and the instance actuator.
 
+#### HANDLE_STRICT Environment Variable
+
+The HANDLE_STRICT environment variable can be used to set handlers' strictness.
+
+It can be set to one of the following values:
+
+- `on`
+- `off`
+
+``` bash
+HANDLE_STRICT=on start_service.sh
+```
+
 ## Matching Messages to Handlers
 
 When a message is sent to a handler, the handler determines whether there is a handler method that can receive the message.
