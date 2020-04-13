@@ -250,24 +250,24 @@ The startup info includes details about components, consumers, streams, handlers
 
 The component information includes:
 
-- [Component host name](http://docs.eventide-project.org/user-guide/component-host.html#starting-the-component-host)
+- [Component host name](/user-guide/component-host.html#starting-the-component-host)
 - Components run by the host
-- [Consumers](http://docs.eventide-project.org/user-guide/consumers.html) within the component
-- The [category stream](http://docs.eventide-project.org/glossary.html#category-stream) processed by a consumer
-- [Handlers](http://docs.eventide-project.org/user-guide/handlers.html) within a consumer that receives messages dispatched from the consumer dispatches
-- [Messages](http://docs.eventide-project.org/user-guide/messages-and-message-data/) that a handler receives from the consumer
+- [Consumers](/user-guide/consumers.html) within the component
+- The [category stream](/glossary.html#category-stream) processed by a consumer
+- [Handlers](/user-guide/handlers.html) within a consumer that receives messages dispatched from the consumer dispatches
+- [Messages](/user-guide/messages-and-message-data/) that a handler receives from the consumer
 
 The consumer's info also includes:
 
 - The global position of the message that the consumer is starting from
-- The consumer's [identifier](http://docs.eventide-project.org/user-guide/consumers.html#position-stream-and-the-consumer-identifier)
-- The consumer's Pub/Sub [correlation](http://docs.eventide-project.org/user-guide/consumers.html#pub-sub-and-correlation)
-- The consumer's [position stream](http://docs.eventide-project.org/user-guide/consumers.html#position-stream-and-the-consumer-identifier)
+- The consumer's [identifier](/user-guide/consumers.html#position-stream-and-the-consumer-identifier)
+- The consumer's Pub/Sub [correlation](/user-guide/consumers.html#pub-sub-and-correlation)
+- The consumer's [position stream](/user-guide/consumers.html#position-stream-and-the-consumer-identifier)
 
 The consumer's info also may optionally include:
 
-- Consumer optional [group member and consumer group size](http://docs.eventide-project.org/user-guide/consumers.html#consumer-groups)
-- Consumer's optional [SQL query condition](http://docs.eventide-project.org/user-guide/consumers.html#filtering-messages-with-a-sql-condition) for filtering consumed messages.
+- Consumer optional [group member and consumer group size](/user-guide/consumers.html#consumer-groups)
+- Consumer's optional [SQL query condition](/user-guide/consumers.html#filtering-messages-with-a-sql-condition) for filtering consumed messages.
 
 #### Environment Variable Information
 
@@ -275,11 +275,11 @@ The information printed when a service is starting also includes the environment
 
 The environment variable information includes:
 
-- [ENTITY_CACHE_SCOPE](http://docs.eventide-project.org/user-guide/entity-store/entity-cache.html#entity-cache-scope-environment-variable)
-- [MESSAGE_STORE_SETTINGS_PATH](http://docs.eventide-project.org/user-guide/settings.html#overriding-the-settings-file-location)
-- [HANDLE_STRICT](http://docs.eventide-project.org/user-guide/handlers.html#optional-strict-handling)
-- [LOG_LEVEL](http://docs.eventide-project.org/user-guide/logging/#control-by-log-level)
-- [LOG_TAGS](http://docs.eventide-project.org/user-guide/logging/#controlling-log-output)
+- [ENTITY_CACHE_SCOPE](/user-guide/entity-store/entity-cache.html#entity-cache-scope-environment-variable)
+- [MESSAGE_STORE_SETTINGS_PATH](/user-guide/settings.html#overriding-the-settings-file-location)
+- [HANDLE_STRICT](/user-guide/handlers.html#optional-strict-handling)
+- [LOG_LEVEL](/user-guide/logging/#control-by-log-level)
+- [LOG_TAGS](/user-guide/logging/#controlling-log-output)
 - STARTUP_INFO
 - ENV_VAR_INFO
 
