@@ -273,7 +273,7 @@ The consumer's info also may optionally include:
 
 #### Environment Variable Information
 
-The information printed when a service is starting also includes the environment variables that override some of Eventide's behaviors.
+The information printed when a service is starting also includes the environment variables that override some of Eventide's default behaviors.
 
 The environment variable information includes:
 
