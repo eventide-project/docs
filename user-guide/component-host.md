@@ -201,6 +201,8 @@ Resumes a process paused with the TSTP signal.
 When the component host starts, it will print information about the environment variables that control various parts of the toolkit, as well as information about the components, consumers, streams, and handlers that are being hosted.
 
 ```
+ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-darwin19]
+
 Environment Variables:
   ENTITY_CACHE_SCOPE: exclusive
   MESSAGE_STORE_SETTINGS_PATH: (not set)
