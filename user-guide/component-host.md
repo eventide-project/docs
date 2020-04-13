@@ -257,7 +257,7 @@ The component information includes:
 - [Consumers](/user-guide/consumers.html) within the component
 - The [category stream](/glossary.html#category-stream) processed by a consumer
 - [Handlers](/user-guide/handlers.html) within a consumer that receives messages dispatched from the consumer dispatches
-- [Messages](/user-guide/messages-and-message-data/) that a handler receives from the consumer
+- [Messages](/user-guide/messages-and-message-data/messages.html) that a handler receives from the consumer
 
 The consumer's info also includes:
 
