@@ -207,9 +207,6 @@ Environment Variables:
   HANDLE_STRICT: (not set)
   LOG_LEVEL: (not set)
   LOG_TAGS: (not set)
-  LOG_HEADER: (not set)
-  LOG_FORMATTERS: (not set)
-  CONSOLE_DEVICE: (not set)
   STARTUP_INFO: (not set)
   ENV_VAR_INFO: (not set)
 
@@ -245,6 +242,47 @@ Process ID: 11111
 
 Note: The above example output is taken from the account component example project: [https://github.com/eventide-examples/account-component](https://github.com/eventide-examples/account-component)
 
+### The Included Startup Info
+
+The startup info includes details about components, consumers, streams, handlers, and messages, as well as environment variables used to override Eventide's runtime options.
+
+#### Component Information
+
+The component information includes:
+
+- [Component host name](http://docs.eventide-project.org/user-guide/component-host.html#starting-the-component-host)
+- Components run by the host
+- [Consumers](http://docs.eventide-project.org/user-guide/consumers.html) within the component
+- The [category stream](http://docs.eventide-project.org/glossary.html#category-stream) processed by a consumer
+- [Handlers](http://docs.eventide-project.org/user-guide/handlers.html) within a consumer that receives messages dispatched from the consumer dispatches
+- [Messages](http://docs.eventide-project.org/user-guide/messages-and-message-data/) that a handler receives from the consumer
+
+The consumer's info also includes:
+
+- The global position of the message that the consumer is starting from
+- The consumer's [identifier](http://docs.eventide-project.org/user-guide/consumers.html#position-stream-and-the-consumer-identifier)
+- The consumer's Pub/Sub [correlation](http://docs.eventide-project.org/user-guide/consumers.html#pub-sub-and-correlation)
+- The consumer's [position stream](http://docs.eventide-project.org/user-guide/consumers.html#position-stream-and-the-consumer-identifier)
+
+The consumer's info also may optionally include:
+
+- Consumer optional [group member and consumer group size](http://docs.eventide-project.org/user-guide/consumers.html#consumer-groups)
+- Consumer's optional [SQL query condition](http://docs.eventide-project.org/user-guide/consumers.html#filtering-messages-with-a-sql-condition) for filtering consumed messages.
+
+#### Environment Variable Information
+
+The information printed when a service is starting also includes the environment variables that override some of Eventide's behaviors.
+
+The environment variable information includes:
+
+- [ENTITY_CACHE_SCOPE](http://docs.eventide-project.org/user-guide/entity-store/entity-cache.html#entity-cache-scope-environment-variable)
+- [MESSAGE_STORE_SETTINGS_PATH](http://docs.eventide-project.org/user-guide/settings.html#overriding-the-settings-file-location)
+- [HANDLE_STRICT](http://docs.eventide-project.org/user-guide/handlers.html#optional-strict-handling)
+- [LOG_LEVEL](http://docs.eventide-project.org/user-guide/logging/#control-by-log-level)
+- [LOG_TAGS](http://docs.eventide-project.org/user-guide/logging/#controlling-log-output)
+- STARTUP_INFO
+- ENV_VAR_INFO
+
 ### Controlling the Environment Variable Information Output
 
 The environment variable information output is controlled by the `ENV_VAR_INFO` environment variable.
@@ -254,7 +292,7 @@ The variable's default value is "on".
 To deactivate the printing of the environment variables list, set the `ENV_VAR_INFO` to "off".
 
 ``` bash
-ENV_VAR_INFO=off script/start
+ENV_VAR_INFO=off start_service.rb
 ```
 
 ### Controlling the Component Startup Information Output
@@ -266,7 +304,7 @@ The variable's default value is "on".
 To deactivate the printing of the component startup information, set the `STARTUP_INFO` to "off".
 
 ``` bash
-STARTUP_INFO=off script/start
+STARTUP_INFO=off start_service.rb
 ```
 
 ## Log Tags
