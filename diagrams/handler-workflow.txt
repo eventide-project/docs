@@ -21,7 +21,7 @@ note right of MDB #fcfcfc: get_stream_messages(stream_name, position)
 S ->> P : Provide events to the\nprojection
 note left of P #fcfcfc: project.(entity, events)
 
-P --> E : Apply event data to\nthe entity
+P ->> E : Apply event data to\nthe entity
 
 H <<-- S : Return entity to\nthe handler
 
