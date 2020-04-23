@@ -86,6 +86,10 @@ end
   </p>
 </div>
 
+### Handler Workflow Sequence Diagram
+
+![Handler Workflow Sequence Diagram](../images/handler-workflow.png)
+
 ## Messaging::Handle Module
 
 A class becomes a handler by including the `Handle` module from the [`Messaging` library](./libraries.md#messaging) and namespace.
