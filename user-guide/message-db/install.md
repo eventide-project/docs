@@ -80,6 +80,20 @@ DATABASE_NAME=some_other_database bundle exec mdb-create-sb
 DATABASE_NAME=some_other_database install.sh
 ```
 
+## Disable the Database Creation
+
+By default, the installation script will create the database.
+
+If you prefer to create the database by some other means, you can deactivate the database creation using the `CREATE_DATABASE` environment variable.
+
+``` bash
+# Ruby
+CREATE_DATABASE=off bundle exec mdb-create-sb
+
+# Shell Script
+CREATE_DATABASE=off install.sh
+```
+
 ## Test the Installation (Optional)
 
 Once the database has been created, a test message can be written to it to prove that the installation is correct.
