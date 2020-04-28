@@ -80,7 +80,7 @@ DATABASE_NAME=some_other_database bundle exec mdb-create-sb
 DATABASE_NAME=some_other_database install.sh
 ```
 
-## Disable the Database Creation
+## Disable Database Creation
 
 By default, the installation script will create the database.
 
