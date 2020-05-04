@@ -287,6 +287,24 @@ The SQL condition feature is deactivated by default. The feature is activated us
 Activating the SQL condition feature may expose the message store to unforeseen security risks. Before activating this condition, be certain that access to the message store is appropriately protected.
 :::
 
+## Retrieving All Messages in a Single Batch
+
+Typically, the number of messages to retrieve is specified using the `batch_size` parameter. If omitted, the default value of the batch size is 1000.
+
+There is a special value that deactivates the limit on the number of messages returned, and results in all messages in a stream or category being returned.
+
+To retrieve all messages in a stream or category, use the special value of `-1` as the batch size.
+
+This works for both the `get_stream_messages` function and the `get_category_messages` function.
+
+``` sql
+SELECT * FROM get_stream_messages('someStream-123', batch_size => -1);
+```
+
+``` sql
+SELECT * FROM get_category_messages('someCategory', batch_size => -1);
+```
+
 ## Get Last Message from a Stream
 
 ``` sql
