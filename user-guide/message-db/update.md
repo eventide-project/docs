@@ -49,16 +49,16 @@ If you installed Message DB using NPM, the script is in the root directory of th
 
 The update scripts are in the `database/update` directory of the cloned repo. Change directory to the `message-db` directory where you cloned the repo and run the script that corresponds to the needed update.
 
-For example, to update to v1.0.0, run:
+For example, to update to vX.Y.Z, run:
 
 ``` bash
-database/update/1.0.0.sh
+database/update/X.Y.Z.sh
 ```
 
 If you originally installed the database with another database name, you can specify the database name as an environment variable:
 
 ``` bash
-DATABASE_NAME=some_other_name database/update/1.0.0.sh
+DATABASE_NAME=some_other_name database/update/X.Y.Z.sh
 ```
 
 ### From the Ruby Executable
@@ -75,16 +75,16 @@ bundle exec mdb-print-database-scripts-dir
 
 Change directory to the directory printed by `mdb-print-database-scripts-dir` and run the script that corresponds to the needed update.
 
-For example, to update to v1.0.0, run:
+For example, to update to vX.Y.Z, run:
 
 ``` bash
-database/update/1.0.0.sh
+database/update/X.Y.Z.sh
 ```
 
 If you originally installed the database with another database name, you can specify the database name as an environment variable:
 
 ``` bash
-DATABASE_NAME=some_other_name database/update/1.0.0.sh
+DATABASE_NAME=some_other_name database/update/X.Y.Z.sh
 ```
 
 For more information about Ruby executables installed with the `message-db` Ruby Gem, see the Eventide docs on the administration tools that are bundled with the gem:
@@ -97,41 +97,20 @@ The `message-db` NPM module doesn't ship with any special tooling other than the
 
 To execute the update script, navigate to the directory where the `message-db` module is installed and run the script that corresponds to the needed update.
 
-For example, to update to v1.0.0, run:
+For example, to update to vX.Y.Z, run:
 
 ``` bash
-update/1.0.0.sh
+update/X.Y.Z.sh
 ```
 
 If you originally installed the database with another database name, you can specify the database name as an environment variable:
 
 ``` bash
-DATABASE_NAME=some_other_name update/1.0.0.sh
+DATABASE_NAME=some_other_name update/X.Y.Z.sh
 ```
 
-## Changes Made to an Existing Database by the Update to v1.0.0
+## Change Log
 
-Users updating their message store from a pre-v1 version of the message store will ahve the following changes made to their database:
+Details on changes made to Message DB with each version are listed in the change log:
 
-**Note: There are no changes to the `messages` table, and no data migration is necessary.**
-
-- Remove views
-- Remove indexes
-- Remove functions
-- Remove the pgcrypto extension
-- Create the `message_store` schema
-- Install the pgcrypto extension under the `message_store` schema
-- Add the existing `messages` table to the `message_store` schema
-- Add the default value for the ID column under the authority of the `message_store` schema
-- Install functions under the `message_store` schema
-- Install indexes under the `message_store` schema
-- Install views and types under the `message_store` schema
-- Install privileges to the objects now in the `message_store` schema
-
-The update script's source code can be read at:
-
-[https://github.com/message-db/message-db/blob/master/database/update/1.0.0.sh](https://github.com/message-db/message-db/blob/master/database/update/1.0.0.sh)
-
-For a complete list of changes to the message store database effected by the update, see:
-
-[https://github.com/message-db/message-db/blob/master/database/update/1.0.0.md](https://github.com/message-db/message-db/blob/master/database/update/1.0.0.md)
+[https://github.com/message-db/message-db/blob/master/CHANGES.md](https://github.com/message-db/message-db/blob/master/CHANGES.md)
