@@ -75,7 +75,6 @@ The settings file has no role in the Message DB [installation tools](/user-guide
 
 By default, the connection data is stored in a file located at `{component_root}/settings/message_store_postgres.json`
 
-
 ``` javascript
 {
   "dbname": "message_store",
