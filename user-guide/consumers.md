@@ -390,6 +390,14 @@ self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, posit
 | condition | SQL condition fragment that constrains the messages of the stream that are read | String |
 | settings | Settings that can configure a [session](./session.md) object for the consumer to use, rather than the default settings read from `settings/message_store_postgres.json` | Settings |
 
+## Overriding the Poll Interval
+
+A consumer's `poll_interval_milliseconds` can be overridden using the `POLL_INTERVAL_MILLISECONDS` environment variable.
+
+``` bash
+POLL_INTERVAL_MILLISECONDS=10 start_service.sh
+```
+
 ## Log Tags
 
 The following tags are applied to log messages recorded by a consumer:

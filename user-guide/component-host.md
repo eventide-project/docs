@@ -206,6 +206,7 @@ ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-darwin19]
 Environment Variables:
   ENTITY_CACHE_SCOPE: exclusive
   MESSAGE_STORE_SETTINGS_PATH: (not set)
+  POLL_INTERVAL_MILLISECONDS: (not set)
   HANDLE_STRICT: (not set)
   LOG_LEVEL: (not set)
   LOG_TAGS: (not set)
@@ -279,6 +280,7 @@ The environment variable information includes:
 
 - [ENTITY_CACHE_SCOPE](/user-guide/entity-store/entity-cache.html#entity-cache-scope-environment-variable)
 - [MESSAGE_STORE_SETTINGS_PATH](/user-guide/settings.html#overriding-the-settings-file-location)
+- [POLL_INTERVAL_MILLISECONDS](/user-guide/consumers.html#overriding-the-poll-interval)
 - [HANDLE_STRICT](/user-guide/handlers.html#optional-strict-handling)
 - [LOG_LEVEL](/user-guide/logging/#control-by-log-level)
 - [LOG_TAGS](/user-guide/logging/#controlling-log-output)
