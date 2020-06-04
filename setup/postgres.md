@@ -14,6 +14,7 @@ sidebarDepth: 0
 ## Install the Eventide Postgres Gem
 
 ### Using RubyGems Directly
+
 ``` bash
 gem install eventide-postgres
 ```
