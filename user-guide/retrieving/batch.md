@@ -2,7 +2,7 @@
 
 The `MessageStore::Postgres::Get` class is a utility that retrieves a single batch of messages from a stream.
 
-The `Get` class behaves similarly to a [reader](./), except that it doesn't continue to reader a stream. It retrieves a single batch and terminates.
+The `Get` class behaves similarly to a [reader](./), except that it doesn't continually retrieve subsequent batches of messages. It retrieves a single batch and terminates.
 
 The reader uses the `Get` class to retrieve messages. While it's mostly intended for internal use, it an be useful when building tools or any time that directly retrieving a batch of messages is necessary.
 
