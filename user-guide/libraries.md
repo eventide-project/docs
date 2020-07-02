@@ -17,7 +17,7 @@ Event-Oriented Autonomous Services Toolkit for Postgres<br/>
 
 ### message-db
 Microservice native event store and message store for Postgres
-[github.com/eventide-project/message-db](https://github.com/eventide-project/message-db)
+[github.com/message-db/message-db](https://github.com/message-db/message-db)
 
 ### messaging
 Common primitives for platform-specific messaging implementations<br/>
@@ -25,7 +25,7 @@ Common primitives for platform-specific messaging implementations<br/>
 
 ### message_store
 Common primitives for platform-specific message store implementations<br/>
-[github.com/eventide-project/message-db](https://github.com/eventide-project/message-db)
+[github.com/eventide-project/message-store](https://github.com/eventide-project/message-store)
 
 ### entity_projection
 Projects event data into an entity<br/>
@@ -99,7 +99,7 @@ Generates initializers and attributes<br/>
 
 ### settings
 Settings data access and assignment<br/>
-[github.com/eventide-project/settings](https://github.com/eventide-project/identifier-uuid)
+[github.com/eventide-project/settings](https://github.com/eventide-project/settings)
 
 ### log
 Logging to STD IO with levels, tagging, and coloring<br/>
@@ -199,11 +199,11 @@ Apply ANSI terminal colors to strings<br/>
 
 ### test_bench
 A frugal test framework for Ruby<br/>
-[github.com/ntl/test-bench](https://github.com/ntl/test-bench)
+[github.com/test-bench/test-bench](https://github.com/test-bench/test-bench)
 
 ## NPM Packages
 
 ### message-db
 
 Microservice native event store and message store for Postgres
-[https://github.com/message-db/message-db-npm-package](https://github.com/message-db/message-db-npm-package)
+[https://github.com/message-db/npm-module](https://github.com/message-db/npm-module)
