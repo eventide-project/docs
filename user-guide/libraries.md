@@ -121,9 +121,9 @@ Attempt an execution, and determine its success<br/>
 Retry an execution that terminates with an error, with optional backoff cycles<br/>
 [github.com/eventide-project/retry](https://github.com/eventide-project/retry)
 
-### cycle
-Generalized retry<br/>
-[github.com/eventide-project/cycle](https://github.com/eventide-project/cycle)
+### poll
+Generalized implementation of polling with support for timeout and polling interval.<br/>
+[github.com/eventide-project/poll](https://github.com/eventide-project/poll)
 
 ### casing
 Convert the case of strings, symbols, and hash keys, including camelCase, PascalCase, and underscore_case<br/>
