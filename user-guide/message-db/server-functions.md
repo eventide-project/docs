@@ -343,7 +343,7 @@ time            | 2019-11-24 17:46:43.608025
 
 Note: This is only for entity streams, and does not work for categories.
 
-Example: [https://github.com/message-db/message-db/blob/master/test/get-last-message/get-last-message.sh](https://github.com/message-db/message-db/blob/master/test/get-last-message/get-last-message.sh)
+Example: [https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/stream-name.sh](https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/stream-name.sh)
 
 ## Get Stream Version from a Stream
 
@@ -407,7 +407,7 @@ SELECT * FROM id('someStream-123');
 id | 123
 ```
 
-Example: [https://github.com/message-db/message-db/blob/master/test/id/stream-name.sh]([https://github.com/message-db/message-db/blob/master/test/id/stream-name.sh)
+Example: [https://github.com/message-db/message-db/blob/master/test/id/stream-name.sh](https://github.com/message-db/message-db/blob/master/test/id/stream-name.sh)
 
 ## Get the Cardinal ID from a Stream Name
 
@@ -500,7 +500,7 @@ SELECT * FROM is_category('someCategory');
 is_category | t
 ```
 
-Example: [https://github.com/message-db/message-db/blob/master/test/is-category/is-category.sh](https://github.com/message-db/message-db/blob/master/test/is-category/is-category.sh)
+Example: [https://github.com/message-db/message-db/blob/master/test/is_category/stream-name.sh](https://github.com/message-db/message-db/blob/master/test/is_category/stream-name.sh)
 
 ## Acquire a Lock for a Stream Name
 

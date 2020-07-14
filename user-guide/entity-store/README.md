@@ -76,7 +76,7 @@ version
 
 ## EntityStore Module
 
-A class becomes a store by including the `EntityStore` module from the [`EntityStore` library](./libraries.md#entity-store) and namespace.
+A class becomes a store by including the `EntityStore` module from the [`EntityStore` library](../libraries.md#entity-store) and namespace.
 
 The `EntityStore` module affords the receiver with:
 
@@ -482,7 +482,7 @@ Instance of the class that includes the `EntityStore` module.
 | Name | Description | Type |
 | --- | --- | --- |
 | snapshot_interval | Optional interval in number of messages after which a snapshot is persisted if a snapshot writer is configured | Integer |
-| session | Optionally, an existing [session](./session.md) object to use, rather than allowing the store to create a new session | MessageStore::Postgres::Session |
+| session | Optionally, an existing [session](../session.md) object to use, rather than allowing the store to create a new session | MessageStore::Postgres::Session |
 
 ### Via the Initializer
 
@@ -497,7 +497,7 @@ Instance of the class that includes the `EntityProjection` module.
 By constructing a store using the initializer, the store's dependencies are not set to operational dependencies. They remain _inert substitutes_.
 
 ::: tip
-See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
+See the [useful objects](../useful-objects.md#substitutes) user guide for background on inert substitutes.
 :::
 
 ## Log Tags

@@ -10,7 +10,7 @@ One entity's data is contained in a single, individual event stream. An entity c
 
 An entity has a corresponding [projection](./projections.md), which is used to copy data from the events to the entity object, either by setting the entity's attributes or by invoking its methods.
 
-The data that an entity has collected is also used in [handler](./.handlers.md) code to determine whether a [command](/glossary.md#command) should be processed.
+The data that an entity has collected is also used in [handler](./handlers.md) code to determine whether a [command](/glossary.md#command) should be processed.
 
 ## Entities Have No Dependencies
 

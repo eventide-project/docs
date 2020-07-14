@@ -20,7 +20,7 @@ By default, a session's connection [settings](./settings.md) are read from a [fi
 
 ## MessageStore::Postgres::Session Class
 
-The `Session` class is a concrete class from the [`MessageStore::Postgres` library](../libraries.md#message-store-postgres) and namespace.
+The `Session` class is a concrete class from the [`MessageStore::Postgres` library](./libraries.md#message-store-postgres) and namespace.
 
 The `Session` class provides:
 

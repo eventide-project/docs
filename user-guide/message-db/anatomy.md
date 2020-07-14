@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS message_store.messages (
 ALTER TABLE message_store.messages ADD PRIMARY KEY (global_position) NOT DEFERRABLE INITIALLY IMMEDIATE;
 ```
 
-Source: [https://github.com/message-db/message-db/blob/master/database/table/messages.sql](https://github.com/message-db/message-db/blob/master/database/table/messages.sql)
+Source: [https://github.com/message-db/message-db/blob/master/database/tables/messages.sql](https://github.com/message-db/message-db/blob/master/database/tables/messages.sql)
 
 ### Index Definitions
 
