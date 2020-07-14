@@ -38,7 +38,7 @@ end
 
 ## Messaging::Message Module
 
-A class becomes a message by including the `Message` module from the [`Messaging` library](./libraries.md#messaging) and namespace.
+A class becomes a message by including the `Message` module from the [`Messaging` library](../libraries.md#messaging) and namespace.
 
 The `Messaging::Message` affords the receiver with:
 

@@ -138,7 +138,7 @@ stream_name('123', 'someEntity', types: ['someType', 'someOtherType'])
 
 ## Category Stream Name
 
-Compose a stream name for a [category](./glossary.md#category) of streams.
+Compose a stream name for a [category](/glossary.md#category) of streams.
 
 A stream that contains the messages for every individual, identified stream in the category. For example, given the streams `account-123`, and `account-456`, the category stream, `account`, contains messages from both individual streams in the account category.
 

@@ -77,7 +77,7 @@ add(id, entity, version=nil)
 
 **Returns**
 
-The [cache record](./entity-cache#cache-record) that was created or updated.
+The [cache record](./entity-cache.md#cache-record) that was created or updated.
 
 **Parameters**
 

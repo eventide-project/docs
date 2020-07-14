@@ -39,13 +39,13 @@ messages[0].deposit_id
 - The `Get` class returns a single batch of [message data](/user-guide/messages-and-message-data/message-data.md)
 - The `Get` class can retrieve either from streams or categories
 - There are two separate implementations of the `Get` class that are specialized for retrieving from either streams or categories: `Get::Stream` and `Get::Category`
-- A `Get` can be configured with an existing [session](./session.md), or it can create a new session
+- A `Get` can be configured with an existing [session](../session.md), or it can create a new session
 - A `Get` instance's batch size is configurable
 - A `Get` instance's starting position is configurable
 - `Get` can be configured with a `correlation` that filters the messages retrieved based on a the value of a message matadata's correlation stream attribute
 - `Get` can be configured with consumer group parameters for partitioning message streams for parallel processing based on a consistent hash of the stream name (category retrieval only)
 - `Get` can be configured with a `condition` that filters the messages retrieved based on a SQL condition
-- A `Get` instance can be configured with an existing [session](./session.md), or it can create a new session
+- A `Get` instance can be configured with an existing [session](../session.md), or it can create a new session
 - Two concrete classes implement the specific retrieval of batches of messages from streams and categories: `MessageStore::Postgres::Get::Stream` and `MessageStore::Postgres::Get::Category`
 
 ## MessageStore::Postgres::Get Module
@@ -84,7 +84,7 @@ Array of [`MessageStore::MessageData::Read`](/user-guide/messages-and-message-da
 | consumer_group_member | The zero-based member number of an individual consumer that is participating in a consumer group | Integer |
 | consumer_group_size | The size of a group of consumers that are cooperatively processing a single category | Integer |
 | condition | SQL condition to filter the batch by | String |
-| session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
+| session | An existing [session](../session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
 The class actuator both constructs and actuates the implementation of `Get` appropriate to the stream being queried.
 
@@ -166,7 +166,7 @@ Get.('someCategory', consumer_group_member => 0, consumer_group_size => 3);
 
 Consumer groups ensure that any given stream is processed by a single consumer, and that the consumer processing the stream is always the same consumer. This is achieved by the _consistent hashing_ of a message's stream name.
 
-A stream name's [cardinal ID](./stream-names/#cardinal-id) is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
+A stream name's [cardinal ID](../stream-names/#cardinal-id) is hashed to a 64-bit integer, and the modulo of that number by the consumer group size yields a consumer group member number that will consistently process that stream name.
 
 Specifying values for the `consumer_group_size` and `consumer_group_member` consumer causes the query for messages to include a condition that is based on the hash of the stream name, the modulo of the group size, and the consumer member number.
 
@@ -263,7 +263,7 @@ Instance of the `MessageStore::Postgres::Get::Stream` class.
 By constructing the `MessageStore::Postgres::Get::Stream` instance using the initializer, the instance's dependencies are not set to operational dependencies. They remain _inert substitutes_.
 
 ::: tip
-See the [useful objects](./useful-objects.md#substitutes) user guide for background on inert substitutes.
+See the [useful objects](../useful-objects.md#substitutes) user guide for background on inert substitutes.
 :::
 
 ## Constructing a MessageStore::Postgres::Get::Category

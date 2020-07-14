@@ -50,7 +50,7 @@ The Eventide toolkit provides a handful of utilities that institute useful and c
 
 - [Messaging::StreamName](./messaging-stream-name.md) Module
 - [Messaging::Category](./messaging-category.md) Module
-- [MessageStore::StreamName](./messaging-store-stream-name.md) Module
+- [MessageStore::StreamName](./message-store-stream-name.md) Module
 
 ## Entity Stream Names
 

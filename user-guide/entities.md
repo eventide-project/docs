@@ -15,7 +15,7 @@ Entities operate entirely in memory. They don't save themselves, they don't retr
 
 As in-memory structures without external side effects or prerequisites, they are easy to test.
 
-In practice, an entity receives its data from a [projection](./projection) that is fed the events from an event stream that is read by a [store](./entity-store).
+In practice, an entity receives its data from a [projection](./projection.md) that is fed the events from an event stream that is read by a [store](./entity-store).
 
 ## Example
 
