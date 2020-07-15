@@ -97,7 +97,7 @@ bundle exec mdb-create-db
 
 For more background on the Postgres message store database, you can explore the SQL scripts at:
 
-[https://github.com/message-db/ruby-gem/tree/master/scripts](https://github.com/message-db/ruby-gem/tree/master/scripts)
+[https://github.com/message-db/message-db/tree/master/database](https://github.com/message-db/message-db/tree/master/database)
 
 ## Test the Database Connection
 
