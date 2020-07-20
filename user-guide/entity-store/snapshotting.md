@@ -87,6 +87,17 @@ The method receives am instance of the entity and returns an hash. The hash key 
 
 Any conversion to formats that are specific to serialized JSON is done at this stage of the transformation. For example, natural Ruby time values to the ISO 8601 format this is used for JSON message encoding.
 
+## Transforming Entities to and from JSON Using the Schema Library
+
+Entities are not required to be instances of Eventide [Schema library](https://github.com/eventide-project/schema) objects.
+
+However, if you use implementations of `Schema::DataStructure` as entities, there are some more straight forward hook methods that you can implement rather than implementing the Transform protocol.
+
+See the documentation for the Schema library for more details on using the `transform_read` and `transform_write` methods with `Schema::DataStructure` objects:
+
+[https://github.com/eventide-project/schema#intercepting-and-modifying-input-and-output-data](https://github.com/eventide-project/schema#intercepting-and-modifying-input-and-output-data)
+
+
 ## Storing a Snapshot
 
 ``` ruby
