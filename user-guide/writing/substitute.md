@@ -420,5 +420,5 @@ handler.write.class
 ```
 
 ::: tip
-See the [useful objects](./useful-objects.md) user guide for background on using dependencies and their substitutes.
+See the [useful objects](/user-guide/useful-objects.md) user guide for background on using dependencies and their substitutes.
 :::
