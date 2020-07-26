@@ -99,9 +99,7 @@ If the `message` argument is passed and the `blk` argument is omitted, then `tru
 
 If the `message` argument is omitted, the block is evaluated for each telemetry data recorded, and `true` is returned if the block evaluates to `true` for any recorded telemetry data.
 
-If both the `message` argument _and_ the `blk` argument are passed, then both have to evaluate to `true` for `true` to be returned. H
-
-In this final case, the message is not passed to the block. Only the `stream_name`, `expected_version`, and `reply_stream_name` are passed to the block, and the message equality is tested using the `==` equality operator.
+If both the `message` argument _and_ the `blk` argument are passed, then both have to evaluate to `true` for `true` to be returned. In this case, the message is not passed to the block. Only the `stream_name`, `expected_version`, and `reply_stream_name` are passed to the block, and the message equality is tested using the `==` equality operator.
 
 **Examples**
 
