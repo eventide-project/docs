@@ -150,7 +150,7 @@ end
 
 # Note: First block argument is stream_name when message
 # argument is passed
-write.written?(message) do |stream_name|
+write.written?(message) do |stream_name, expected_version, reply_stream_name|
   stream_name == 'someStream-123' &&
     expected_version == -1 &&
     reply_stream_name == 'someReplyStream'
