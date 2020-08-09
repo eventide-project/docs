@@ -459,6 +459,7 @@ preceding_message = SomeMessage.new()
 preceding_message.metadata.stream_name = 'someStream'
 preceding_message.metadata.position = 11
 preceding_message.metadata.global_position = 111
+preceding_message.metadata.correlation_stream_name = 'someReplyStream'
 preceding_message.metadata.reply_stream_name = 'someReplyStream'
 
 message = SomeMessage.follow(preceding_message)
@@ -478,8 +479,17 @@ Message precedence is determined as:
 message.metadata.causation_message_stream_name == preceding_message.metadata.stream_name &&
 message.metadata.causation_message_position == preceding_message.metadata.position &&
 message.metadata.causation_message_global_position == preceding_message.metadata.global_position &&
+message.metadata.correlation_stream_name == preceding_message.metadata.correlation_stream_name &&
 message.metadata.reply_stream_name == preceding_message.metadata.reply_stream_name
 ```
+
+However, the `correlation_stream_name` attribute and the `reply_stream_name` attribute is only a factor in determining precedence if their values are assigned on the preceding message metadata. If the preceding message metadata's `correlation_stream_name` attribute or `reply_stream_name` attribute is `nil`, then it is not taken into consideration for message precedence. Therefore, the preceding message metadata's `correlation_stream_name` attribute or `reply_stream_name` attribute can be `nil` while the following message's `correlation_stream_name` attribute or `reply_stream_name` attribute are set to a value, and the messages are considered precedent.
+
+In addition, if both the preceding message metadata's `stream_name` attribute and the following message metadata's `causation_stream_name` attribute are both `nil` the messages are not considered precedent. The same is true for the `position` and `causation_message_position` pair and the `global_position` and `causation_message_global_position` pair.
+
+The implementation of the metadata's `follows?` predicate method is the best resource for understanding the specifics of message precedence. The source code can be read at:
+
+[https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/metadata.rb](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/metadata.rb)
 
 ## Equality
 
