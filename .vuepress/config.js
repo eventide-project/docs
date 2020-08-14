@@ -38,6 +38,7 @@ module.exports = {
           { text: 'Session', link: '/user-guide/session.md' },
           { text: 'Settings', link: '/user-guide/settings.md' },
           { text: 'Logging', link: '/user-guide/logging/' },
+          { text: 'Test Fixtures', link: '/user-guide/test-fixtures/' },
           { text: 'Code Generator', link: '/user-guide/code-generator.md' },
           { text: 'Libraries', link: '/user-guide/libraries.md' },
           { text: 'Doctrine of Useful Objects', link: '/user-guide/useful-objects.md' }
@@ -187,6 +188,18 @@ module.exports = {
           children: [
             '',
             'log-tags.md'
+          ]
+        }
+      ],
+      '/user-guide/test-fixtures/': [
+        {
+          title: 'Test Fixtures',
+          collapsable: false,
+          children: [
+            '',
+            'messaging-fixtures.md',
+            'projection-fixtures.md',
+            'schema-fixtures.md'
           ]
         }
       ]
