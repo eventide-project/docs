@@ -122,3 +122,27 @@ _Note: This example is abridged for brevity. An unabridged version is included w
 - The principle concerns of a handler test are whether an input message was processed, and what the resulting message is, along with the content of the resulting message's attributes and its metadata attributes
 - The entity returned by a handler's entity store can be set to any arbitrary entity constructed in the test setup
 - The entity version that is returned along with the entity from the entity store, and given to the message writer using the [`expected_version`](/user-guide/writing/expected-version.html) argument, can be set to an arbitrary version in the test setup
+- The input message sent to the handler can have its contents and metadata verified as a means to test input input message preconditions
+- The arguments used to actuate the handler's writer can be verified, including the output message written, the stream name that the output message is written to, and the expected version specified at the time of writing
+- The output message written by the handler can be inspected in detail, including its attribute values and its metadata attribute values
+- The handler fixture can also assert than any other unexpected messages were not written by the handler
+- The handler fixture can set the handler's clock to any arbitrary time
+- The handler fixture can set the handler's UUID generator to any arbitrary UUID
+
+## Unsupported
+
+The handler fixture doesn't support verifying the writing of a batch of messages of the same message type. These kinds of scenarios still have to be tested explicitly. However, the handler fixture can still be used to actuate the handler, and other fixtures in the [full set of test fixtures provided](./#fixtures) can be used to implements more elaborate test scenarios.
+
+## Messaging::Fixtures::Handler Class
+
+The `Handler` class is a concrete class from the [`Messaging::Fixtures` library](../libraries.md#messaging-fixtures) and namespace.
+
+The `Messaging::Fixtures::Handler` class provides:
+
+
+
+- The `handle` class macro used for defining handler blocks
+- The principle instance actuator `.()` (or the `call` instance method) for handling a single message
+- The class actuator `.()` (or the class `call` method) that provides a convenient invocation shortcut that does not require instantiating the handler class first
+- The `handle` instance method used for [handling raw message data](#handling-raw-message-data)
+- Infrastructure for registering messages that are handled, and the dispatching logic used to handle messages and message data
