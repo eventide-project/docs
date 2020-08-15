@@ -4,7 +4,23 @@ Fixtures are pre-defined, reusable test abstractions. The fixtures provided by t
 
 ## Included Fixtures
 
-The Eventide toolkit provides a comprehensive set of fixtures to facilitate and expedite the implementation of automated tests. The fixtures are grouped into three namespaces and libraries.
+The Eventide toolkit provides a comprehensive set of fixtures to facilitate and expedite the implementation of automated tests.
+
+### Fixtures
+
+The following test fixtures are included in the Eventide toolkit:
+
+- Handler Fixture
+- Writer Fixture
+- Message Fixture
+- Message Metadata Fixture
+- Projection Fixture
+- Schema Equality Fixture
+- Schema Assignment Fixture
+
+### Libraries
+
+The fixtures are grouped into three namespaces and libraries.
 
 - [`Messaging::Fixtures`](./messaging-fixtures.md)
 - [`EntityProjection::Fixtures`](./projection-fixtures.md)
