@@ -334,3 +334,47 @@ The following methods are available from the `handler_fixture` block parameter, 
 - `assert_write`
 - `assert_written_message`
 - `refute_write`
+
+## Test Input Message Prerequisites
+
+``` ruby
+assert_input_message(&test_block)
+```
+
+The `assert_input_message` method uses an instance of the [Messaging::Fixtures::Message](/user-guide/test-fixtures/message-fixture.md) fixture to perform the input message tests.
+
+The message's metadata can also be tested. The metadata tests are executed by an instance of [Messaging::Fixtures::Metadata](/user-guide/test-fixtures/message-metadata-fixture.md) fixture.
+
+**Example**
+
+``` ruby
+handler_fixture.assert_input_message do |message_fixture|
+  message_fixture.assert_attributes_assigned
+
+  message_fixture.assert_metadata do |metadata_fixture|
+    metadata_fixture.assert_source_attributes_assigned
+  end
+end
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| test_block | Block used for invoking other assertions that are part of the message fixture's API | Proc |
+
+**Block Parameter**
+
+The `message_fixture` argument is passed to the `test_block` if the block is given.
+
+| Name | Description | Type |
+| --- | --- | --- |
+| message_fixture | Instance of the the messaging fixture that is used to verify the input message | Messaging::Fixtures::Message |
+
+**Block Parameter Methods**
+
+- `assert_attribute_value`
+- `assert_attributes_assigned`
+- `assert_metadata`
+
+See the [Messaging::Fixtures::Message](/user-guide/test-fixtures/message-fixture.md) class and the [Messaging::Fixtures::Metadata](/user-guide/test-fixtures/message-metadata-fixture.md) class for details on the methods available for testing the input message and its metadata.
