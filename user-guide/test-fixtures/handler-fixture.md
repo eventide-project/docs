@@ -157,7 +157,7 @@ ruby test/handler.rb
 
 The test script and the fixture work together as if they are part of the same test context, preserving output nesting between the test script file and the test fixture.
 
-### Handler Fixture Test Output
+## Handler Fixture Output
 
 ``` text
 Handle SomeMessage
@@ -196,7 +196,7 @@ Handle SomeMessage
 
 The output below the "Handle SomeMessage" line is from the handler fixture. The "Handle SomeMessage" line is from the `test/handler.rb` test script file that is actuating the handler fixture.
 
-### Detailed Output
+## Detailed Output
 
 In the event of any error or failed assertion, the test output will include additional detailed output that can be useful in understanding the context of the failure and the state of the fixture itself and the objects that it's testing.
 
@@ -295,3 +295,42 @@ Handle SomeMessage
           Metadata Value: someReplyStream
           Compare Value: someReplyStream
 ```
+
+## Actuating the Fixture
+
+The fixture is executed using TestBench's `fixture` method.
+
+``` ruby
+fixture(Messaging::Fixtures::Handler, handler, input_message, entity=nil, entity_version=nil, clock_time: nil, identifier_uuid: nil, &test_block)
+```
+
+The first argument sent to the `fixture` method is always the `Messaging::Fixtures::Handler` class. Subsequent arguments are the specific construction parameters of the handler fixture.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| handler | Handler instance that will receive the input message and process it | Messaging::Handler |
+| input_message | Input message that will be sent to the handler in order to be processed | Messaging::Message |
+| entity | Optional entity object that the handler will retrieve from its entity store | (any) |
+| entity_version | Optional entity version that can be retrieved along with the entity from the handler's entity store | Integer |
+| clock_time | Optional time object used to fix the handler's clock to a specific time | Time |
+| identifier_uuid | Optional UUID string object used to fix the handler's identifier generator to a specific UUID | String |
+| test_block | Block used for invoking other assertions that are part of the handler fixture's API | Proc |
+
+**Block Parameter**
+
+The `handler_fixture` argument is passed to the `test_block` if the block is given.
+
+| Name | Description | Type |
+| --- | --- | --- |
+| handler_fixture | Instance of the handler fixture that is being actuated | Messaging::Fixtures::Handler |
+
+**Block Parameter Methods**
+
+The following methods are available from the `handler_fixture` block parameter, and on an instance of `Messaging::Fixtures::Handler`:
+
+- `assert_input_message`
+- `assert_write`
+- `assert_written_message`
+- `refute_write`
