@@ -2,29 +2,25 @@
 
 Fixtures are pre-defined, reusable test abstractions. The fixtures provided by the Eventide toolkit bring a high level of ease, consistency, and guidance to testing the full extent of the parts of a solution, including handlers, projections, writers, entities, and messages.
 
-## Included Fixtures
+## Fixtures
 
 The Eventide toolkit provides a comprehensive set of fixtures to facilitate and expedite the implementation of automated tests.
 
-### Fixtures
+- [Handler Fixture](./handler-fixture.md)
+- [Message Fixture](./message-fixture.md)
+- [Message Metadata Fixture](message-metadata-fixture.md)
+- [Writer Fixture](writer-fixture.md)
+- [Projection Fixture](projection-fixture.md)
+- [Schema Equality Fixture](schema-equality-fixture.md)
+- [Schema Assignment Fixture](schema-assignment-fixture.md)
 
-The following test fixtures are included in the Eventide toolkit:
-
-- Handler Fixture
-- Writer Fixture
-- Message Fixture
-- Message Metadata Fixture
-- Projection Fixture
-- Schema Equality Fixture
-- Schema Assignment Fixture
-
-### Libraries
+## Libraries
 
 The fixtures are grouped into three namespaces and libraries.
 
-- [`Messaging::Fixtures`](./messaging-fixtures.md)
-- [`EntityProjection::Fixtures`](./projection-fixtures.md)
-- [`Schema::Fixtures`](schema-fixtures.md)
+- [`Messaging::Fixtures`](https://github.com/eventide-project/messaging-fixtures)
+- [`EntityProjection::Fixtures`](https://github.com/eventide-project/entity-projection-fixtures)
+- [`Schema::Fixtures`](https://github.com/eventide-project/schema-fixtures)
 
 ## TestBench
 

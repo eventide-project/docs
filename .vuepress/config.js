@@ -197,9 +197,13 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'messaging-fixtures.md',
-            'projection-fixtures.md',
-            'schema-fixtures.md'
+            'handler-fixture.md',
+            'message-fixture.md',
+            'message-metadata-fixture.md',
+            'writer-fixture.md',
+            'projection-fixture.md',
+            'schema-equality-fixture.md',
+            'schema-assignment-fixture.md'
           ]
         }
       ]
