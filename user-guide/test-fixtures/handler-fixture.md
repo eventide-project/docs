@@ -118,3 +118,7 @@ end
 _Note: This example is abridged for brevity. An unabridged version is included with the messaging fixtures: [https://github.com/eventide-project/messaging-fixtures/blob/master/demo.rb](https://github.com/eventide-project/messaging-fixtures/blob/master/demo.rb)_
 
 ## Handler Fixture Facts
+
+- The principle concerns of a handler test are whether an input message was processed, and what the resulting message is, along with the content of the resulting message's attributes and its metadata attributes
+- The entity returned by a handler's entity store can be set to any arbitrary entity constructed in the test setup
+- The entity version that is returned along with the entity from the entity store, and given to the message writer using the [`expected_version`](/user-guide/writing/expected-version.html) argument, can be set to an arbitrary version in the test setup
