@@ -173,6 +173,23 @@ Generates class level configure methods<br/>
 Type-checked set<br/>
 [github.com/eventide-project/collection](https://github.com/eventide-project/collection)
 
+## Test Fixture Libraries
+
+### messaging-fixtures
+
+TestBench fixtures for the Messaging library<br/>
+[https://github.com/eventide-project/messaging-fixtures](https://github.com/eventide-project/messaging-fixtures)
+
+### entity-projection-fixtures
+
+TestBench fixtures for EntityProjection implementations<br/>
+[https://github.com/eventide-project/entity-projection-fixtures](https://github.com/eventide-project/entity-projection-fixtures)
+
+### schema-fixtures
+
+TestBench fixtures for the Schema library<br/>
+[https://github.com/eventide-project/schema-fixtures](https://github.com/eventide-project/schema-fixtures)
+
 ## View Data Libraries
 
 ### view_data-commands
