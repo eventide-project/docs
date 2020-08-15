@@ -145,3 +145,153 @@ The `Messaging::Fixtures::Handler` class provides:
 - The `assert_written_message` to test the message that was written by the writer, as well as it's attributes and metadata attributes
 - The `refute_write` for verifying that any alternate messages were not unintentionally written by the writer
 
+## Running the Fixture
+
+Running the test is no different than [running any TestBench test](http://test-bench.software/user-guide/running-tests.html).
+
+For example, given a test file named `handler.rb` that uses the handler fixture, in a directory named `test`, the test is executed by passing the file name to the `ruby` executable.
+
+``` bash
+ruby test/handler.rb
+```
+
+The test script and the fixture work together as if they are part of the same test context, preserving output nesting between the test script file and the test fixture.
+
+### Handler Fixture Test Output
+
+``` text
+Handle SomeMessage
+  Handler: SomeHandler
+    Input Message: SomeMessage
+      Attributes Assigned
+        something_id
+        amount
+        time
+      Metadata
+        Source Attributes Assigned
+          stream_name
+          position
+          global_position
+    Write: SomeEvent
+      Written
+      Stream name
+      Expected version
+    Written Message: SomeEvent
+      Follows
+      Attributes Copied: SomeMessage => SomeEvent
+        something_id
+        amount => quantity
+        time
+      Attribute Value
+        processed_time
+      Attributes Assigned
+        something_id
+        quantity
+        time
+        processed_time
+      Metadata
+        correlation_stream_name
+        reply_stream_name
+```
+
+The output below the "Handle SomeMessage" line is from the handler fixture. The "Handle SomeMessage" line is from the `test/handler.rb` test script file that is actuating the handler fixture.
+
+### Detailed Output
+
+In the event of any error or failed assertion, the test output will include additional detailed output that can be useful in understanding the context of the failure and the state of the fixture itself and the objects that it's testing.
+
+The detailed output can also be printed by setting the `TEST_BENCH_DETAIL` environment variable to `on`.
+
+``` bash
+TEST_BENCH_DETAIL=on ruby test/handler.rb
+```
+
+``` text
+Handle SomeMessage
+  Handler: SomeHandler
+    Handler Class: SomeHandler
+    Entity Class: Something
+    Entity Data: {:id=>"e84533f2-53a5-492a-a8cc-ead48d3d780b", :total=>98}
+    Clock Time: 2020-08-12 23:04:11.668825 UTC
+    Input Message: SomeMessage
+      Message Class: SomeMessage
+      Attributes Assigned
+        something_id
+          Default Value: nil
+          Assigned Value: "e84533f2-53a5-492a-a8cc-ead48d3d780b"
+        amount
+          Default Value: nil
+          Assigned Value: 1
+        time
+          Default Value: nil
+          Assigned Value: "2020-08-12T23:04:10.668Z"
+      Metadata
+        Source Attributes Assigned
+          stream_name
+            Default Value: nil
+            Assigned Value: "something:command-e84533f2-53a5-492a-a8cc-ead48d3d780b"
+          position
+            Default Value: nil
+            Assigned Value: 11
+          global_position
+            Default Value: nil
+            Assigned Value: 111
+    Write: SomeEvent
+      Message Class: SomeEvent
+      Written
+        Remaining message tests are skipped
+      Stream name
+        Stream Name: something-e84533f2-53a5-492a-a8cc-ead48d3d780b
+        Written Stream Name: something-e84533f2-53a5-492a-a8cc-ead48d3d780b
+      Expected version
+        Expected Version: 1111
+        Written Expected Version: 1111
+    Written Message: SomeEvent
+      Message Class: SomeEvent
+      Source Message Class: SomeMessage
+      Follows
+        Stream Name: "something:command-e84533f2-53a5-492a-a8cc-ead48d3d780b"
+        Causation Stream Name: "something:command-e84533f2-53a5-492a-a8cc-ead48d3d780b"
+        Position: 11
+        Causation Position: 11
+        Global Position: 111
+        Causation Global Position: 111
+        Source Correlation Stream Name: nil
+        Correlation Stream Name: "someCorrelationStream"
+        Source Reply Stream Name: nil
+        Reply Stream Name: "someReplyStream"
+      Attributes Copied: SomeMessage => SomeEvent
+        something_id
+          SomeMessage Value: "e84533f2-53a5-492a-a8cc-ead48d3d780b"
+          SomeEvent Value: "e84533f2-53a5-492a-a8cc-ead48d3d780b"
+        amount => quantity
+          SomeMessage Value: 1
+          SomeEvent Value: 1
+        time
+          SomeMessage Value: "2020-08-12T23:04:10.668Z"
+          SomeEvent Value: "2020-08-12T23:04:10.668Z"
+      Attribute Value
+        processed_time
+          Attribute Value: "2020-08-12T23:04:11.668Z"
+          Compare Value: "2020-08-12T23:04:11.668Z"
+      Attributes Assigned
+        something_id
+          Default Value: nil
+          Assigned Value: "e84533f2-53a5-492a-a8cc-ead48d3d780b"
+        quantity
+          Default Value: nil
+          Assigned Value: 1
+        time
+          Default Value: nil
+          Assigned Value: "2020-08-12T23:04:10.668Z"
+        processed_time
+          Default Value: nil
+          Assigned Value: "2020-08-12T23:04:11.668Z"
+      Metadata
+        correlation_stream_name
+          Metadata Value: someCorrelationStream
+          Compare Value: someCorrelationStream
+        reply_stream_name
+          Metadata Value: someReplyStream
+          Compare Value: someReplyStream
+```
