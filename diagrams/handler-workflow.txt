@@ -25,7 +25,13 @@ P ->> E : Apply event data to\nthe entity
 
 H <<-- S : Return entity to\nthe handler
 
-H ->> H : Determine whether to\naccept or reject\nthe message
+H ->> H : Determine whether message\nhas already been processed\n(idempotence)
+
+alt message is ignored
+  hnote over H #eeeeee: exit
+end
+
+H ->> H : Determine whether to\naccept or reject the message\nper business rules
 
 alt message is rejected
   hnote over H #eeeeee: exit
