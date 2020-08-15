@@ -139,10 +139,5 @@ The `Handler` class is a concrete class from the [`Messaging::Fixtures` library]
 
 The `Messaging::Fixtures::Handler` class provides:
 
-
-
-- The `handle` class macro used for defining handler blocks
-- The principle instance actuator `.()` (or the `call` instance method) for handling a single message
-- The class actuator `.()` (or the class `call` method) that provides a convenient invocation shortcut that does not require instantiating the handler class first
-- The `handle` instance method used for [handling raw message data](#handling-raw-message-data)
-- Infrastructure for registering messages that are handled, and the dispatching logic used to handle messages and message data
+- The instance actuator `.()` (or class `call` method) that begins execution of the fixture and the actuation of its handler with the specified input message
+-
