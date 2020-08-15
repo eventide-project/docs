@@ -139,5 +139,9 @@ The `Handler` class is a concrete class from the [`Messaging::Fixtures` library]
 
 The `Messaging::Fixtures::Handler` class provides:
 
-- The instance actuator `.()` (or class `call` method) that begins execution of the fixture and the actuation of its handler with the specified input message
--
+- The instance actuator `.()` (or `call` method) that begins execution of the fixture and the actuation of its handler with the specified input message
+- The `assert_input_message` method for verifying the prerequisites of the input message's attributes and metadata attributes
+- The `assert_write` method for testing the handler's actuation of the writer to write the output message, and to access the message that was written by the writer for further testing
+- The `assert_written_message` to test the message that was written by the writer, as well as it's attributes and metadata attributes
+- The `refute_write` for verifying that any alternate messages were not unintentionally written by the writer
+
