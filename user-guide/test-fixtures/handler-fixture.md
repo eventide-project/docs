@@ -379,7 +379,7 @@ The `message_fixture` argument is passed to the `test_block` if the block is giv
 
 See the [Messaging::Fixtures::Message](/user-guide/test-fixtures/message-fixture.md) class and the [Messaging::Fixtures::Metadata](/user-guide/test-fixtures/message-metadata-fixture.md) class for details on the methods available for testing the input message and its metadata.
 
-### Test the Handler's Writing of an Output Message
+## Test the Handler's Writing of an Output Message
 
 ``` ruby
 assert_write(message_class, &test_block)
@@ -427,3 +427,61 @@ The following methods are available from the `writer_fixture` block parameter, a
 - `assert_expected_version`
 
 See the [Messaging::Fixtures::Writer](http://docs.eventide-project.org/user-guide/test-fixtures/writer-fixture.html) class for details on the methods available for testing the actuation of the writer.
+
+## Test the Output Message Sent to the Handler's Writer
+
+``` ruby
+assert_written_message(written_message, &test_block)
+```
+
+The `assert_written_message` method uses an instance of the [Messaging::Fixtures::Message](/user-guide/test-fixtures/message-fixture.md) fixture to perform the written message tests.
+
+The message's metadata can also be tested. The metadata tests are executed by an instance of [Messaging::Fixtures::Metadata](/user-guide/test-fixtures/message-metadata-fixture.md) fixture.
+
+**Example**
+
+``` ruby
+handler_fixture.assert_written_message(output_message) do |written_message_fixture|
+  written_message_fixture.assert_follows
+
+  written_message_fixture.assert_attributes_copied([
+    :something_id,
+    { :amount => :quantity },
+    :time,
+  ])
+
+  written_message_fixture.assert_attribute_value(:processed_time, Clock.iso8601(processed_time))
+
+  written_message_fixture.assert_attributes_assigned
+
+  written_message_fixture.assert_metadata do |metadata_fixture|
+    metadata_fixture.assert_correlation_stream_name('someCorrelationStream')
+    metadata_fixture.assert_reply_stream_name('someReplyStream')
+  end
+end
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| written_message | Message instance that was sent to the handler's writer | `Messaging::Message` |
+| test_block | Block used for invoking other assertions that are part of the message fixture's API | Proc |
+
+**Block Parameter**
+
+The `message_fixture` argument is passed to the `test_block` if the block is given.
+
+| Name | Description | Type |
+| --- | --- | --- |
+| message_fixture | Instance of the the messaging fixture that is used to verify the input message | Messaging::Fixtures::Message |
+
+**Block Parameter Methods**
+
+- `assert_attributes_copied`
+- `assert_attribute_value`
+- `assert_follows`
+- `assert_attributes_assigned`
+- `assert_metadata`
+
+See the [Messaging::Fixtures::Message](/user-guide/test-fixtures/message-fixture.html) class and the [Messaging::Fixtures::Metadata](/user-guide/test-fixtures/message-metadata-fixture.html) class  for details on the methods available for testing the written message and its metadata.
