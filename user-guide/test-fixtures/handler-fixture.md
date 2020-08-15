@@ -485,3 +485,25 @@ The `message_fixture` argument is passed to the `test_block` if the block is giv
 - `assert_metadata`
 
 See the [Messaging::Fixtures::Message](/user-guide/test-fixtures/message-fixture.html) class and the [Messaging::Fixtures::Metadata](/user-guide/test-fixtures/message-metadata-fixture.html) class  for details on the methods available for testing the written message and its metadata.
+
+## Test That the Handler Has Not Written a Message
+
+``` ruby
+refute_write(message_class=nil)
+```
+
+**Example**
+
+``` ruby
+handler.refute_write(SomeOtherEvent)
+# or
+handler.refute_write
+```
+
+If no `message_class` argument is provided to the `refute_write` method, it ensures that no message was written at all.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| message_class | Optional class of a message that is not expected to have been written by the handler | Messaging::Message |
