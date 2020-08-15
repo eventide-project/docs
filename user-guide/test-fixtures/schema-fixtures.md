@@ -1,3 +1,3 @@
 # Schema Fixtures
 
-Coming soon
+Documentation coming soon

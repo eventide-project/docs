@@ -1,3 +1,19 @@
 # Overview
 
-Test fixtures documentation will be published soon.
+Fixtures are pre-defined, reusable test abstractions. The fixtures provided by the Eventide toolkit bring a high level of ease, consistency, and guidance to testing the full extent of parts of a solution, including handlers, projections, writers, entities, and messages.
+
+## Included Fixtures
+
+The Eventide toolkit provides a comprehensive set of fixtures to facilitate and expedite the implementation of automated tests. The fixtures are grouped into three namespaces.
+
+- [`Messaging::Fixtures`](./messaging-fixtures.md)
+- [`EntityProjection::Fixtures`](./projection-fixtures.md)
+- [`Schema::Fixtures`](schema-fixtures.md)
+
+## TestBench
+
+Fixtures in Eventide are implemented using the TestBench test framework.
+
+Visit the TechBench website for more: [http://test-bench.software/](http://test-bench.software/)
+
+A fixture is just a plain old Ruby object that includes the TestBench API. By including the `TestBench::Fixture` module into a Ruby object, the object becomes an automated test, no different from a test script that a developer would write in a Ruby file. A fixture acquires all of the methods available to any TestBench test, including `context`, `test`, `assert`, `refute`, `assert_raises`, and `refute_raises`.
