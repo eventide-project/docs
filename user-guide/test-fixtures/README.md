@@ -1,6 +1,6 @@
 # Overview
 
-Fixtures are pre-defined, reusable test abstractions. The fixtures provided by the Eventide toolkit bring a high level of ease, consistency, and guidance to testing the full extent of parts of a solution, including handlers, projections, writers, entities, and messages.
+Fixtures are pre-defined, reusable test abstractions. The fixtures provided by the Eventide toolkit bring a high level of ease, consistency, and guidance to testing the full extent of the parts of a solution, including handlers, projections, writers, entities, and messages.
 
 ## Included Fixtures
 
