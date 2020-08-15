@@ -378,3 +378,52 @@ The `message_fixture` argument is passed to the `test_block` if the block is giv
 - `assert_metadata`
 
 See the [Messaging::Fixtures::Message](/user-guide/test-fixtures/message-fixture.md) class and the [Messaging::Fixtures::Metadata](/user-guide/test-fixtures/message-metadata-fixture.md) class for details on the methods available for testing the input message and its metadata.
+
+### Test the Handler's Writing of an Output Message
+
+``` ruby
+assert_write(message_class, &test_block)
+```
+
+The `assert_write` method uses an instance of the [Messaging::Fixtures::Writer](/user-guide/test-fixtures/writer-fixture.md) fixture to perform the write tests.
+
+The `asert_write` method returns an instance of the message that was written so that the written message can be further tested using the handler fixture's `assert_output_message` method.
+
+If no written message matches the class specified by the `message_class` parameter, then the `test_block` block is not executed and the `assert_write` test fails.
+
+**Example**
+
+``` ruby
+output_message = handler_fixture.assert_write(output_message_class) do |write_fixture|
+  write_fixture.assert_stream_name(output_stream_name)
+  write_fixture.assert_expected_version(entity_version)
+end
+```
+
+**Returns**
+
+The message that was written and whose class matches the `assert_write` method's `message_class` argument.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| message_class | Class of the output message that is expected to have been written | Messaging::Message |
+| test_block | Block used for invoking other assertions that are part of the writer fixture's API | Proc |
+
+**Block Parameter**
+
+The `writer_fixture` argument is passed to the `test_block` if the block is given.
+
+| Name | Description | Type |
+| --- | --- | --- |
+| writer_fixture | Instance of the the writer fixture that is used to verify the actuation of the handler's writer | Messaging::Fixtures::Write |
+
+**Methods**
+
+The following methods are available from the `writer_fixture` block parameter, and on an instance of `Messaging::Fixtures::Writer`:
+
+- `assert_stream_name`
+- `assert_expected_version`
+
+See the [Messaging::Fixtures::Writer](http://docs.eventide-project.org/user-guide/test-fixtures/writer-fixture.html) class for details on the methods available for testing the actuation of the writer.
