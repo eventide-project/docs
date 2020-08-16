@@ -7,24 +7,39 @@ By default, all attributes from the control schema object are compared to the co
 ## Example
 
 ``` ruby
-module Something
-  class Example
-    include Schema
+class Something
+  include Schema
 
-    attribute :some_attribute
-    attribute :some_other_attribute
-  end
+  attribute :some_attribute
+  attribute :some_other_attribute
 end
 
 context 'Equal' do
-  example_1 = Something::Example.new
-  example_1.some_attribute = 'some value'
-  example_1.some_other_attribute = 'some other value'
+  something_1 = Something.new
+  something_1.some_attribute = 'some value'
+  something_1.some_other_attribute = 'some other value'
 
-  example_2 = Something::Example.new
-  example_2.some_attribute = 'some value'
-  example_2.some_other_attribute = 'some other value'
+  something_2 = Something.new
+  something_2.some_attribute = 'some value'
+  something_2.some_other_attribute = 'some other value'
 
-  fixture(Equality, example_1, example_2)
+  fixture(Equality, something_1, something_2)
 end
 ```
+
+## Schema Equality Fixture Facts
+
+- The principle concern of a schema equality fixture test is the comparison of the attribute values of two different schema objects
+- An optional list of attribute names can given to limit the comparison to a a subset of attributes
+- The list of attribute names can contain maps of attribute names to allow comparison of attributes of different names
+- The attributes of objects of different classes can be compared by disabling the fixture's class comparison
+
+## Schema::Fixtures::Equality
+
+The `Equality` class is a concrete class from the [`Schema::Fixtures` library](/user-guide/libraries.md#schema-fixtures) and namespace.
+
+The `Schema::Fixtures::Equality` class provides:
+
+- The instance actuator `.()` (or `call` method) that begins execution of the fixture and the comparison of the two schema objects
+
+
