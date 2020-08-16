@@ -140,3 +140,38 @@ SomeProjection
         SomeEvent Value (String): "2000-01-01T00:00:00.011Z"
         SomeEntity Value (Time): 2000-01-01 00:00:00.011 UTC
 ```
+
+## Actuating the Fixture
+
+The fixture is executed using TestBench's `fixture` method.
+
+``` ruby
+fixture(EntityProjection::Fixtures::Projection, projection, event, &test_block)
+```
+
+The first argument sent to the `fixture` method is always the `EntityProjection::Fixtures::Projection` class. Subsequent arguments are the specific construction parameters of the projection fixture.
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| projection | Projection instance used to apply the event to the entity | EntityProjection |
+| entity | Object to project state into | (any) |
+| event | Event to project state from | Messaging::Message |
+| test_block | Block used for invoking other assertions that are part of the projection fixture's API | Proc |
+
+**Block Parameter**
+
+The `projection_fixture` argument is passed to the `test_block` if the block is given.
+
+| Name | Description | Type |
+| --- | --- | --- |
+| projection_fixture | Instance of the projection fixture that is being actuated | EntityProjection::Fixtures::Projection |
+
+**Block Parameter Methods**
+
+The following methods are available from the `projection_fixture` block parameter, and on an instance of `EntityProjection::Fixtures::Projection`:
+
+- `assert_attributes_copied`
+- `assert_transformed_and_copied`
+
