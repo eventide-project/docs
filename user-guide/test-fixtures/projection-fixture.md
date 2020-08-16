@@ -80,3 +80,63 @@ The `EntityProjection::Fixtures::Projection` class provides:
 - The `assert_attributes_copied` method to test that attributes are copied from the source event to the entity, including mapping between attributes that have different names on the event versus the entity
 - The `assert_transformed_and_copied` method to test the copying of attributes form the event and the entity where the attribute values are transformed as well as copied
 
+## Running the Fixture
+
+Running the test is no different than [running any TestBench test](http://test-bench.software/user-guide/running-tests.html).
+
+For example, given a test file named `projection.rb` that uses the projection fixture, in a directory named `test`, the test is executed by passing the file name to the `ruby` executable.
+
+``` bash
+ruby test/projection.rb
+```
+
+The test script and the fixture work together as if they are part of the same test context, preserving output nesting between the test script file and the test fixture.
+
+## Projection Fixture Output
+
+``` text
+SomeProjection
+  Apply SomeEvent to SomeEntity
+    Copied
+      example_id => id
+      amount
+    Transformed and copied
+      time
+    Transformed and copied
+      some_time => other_time
+```
+
+The output below the "SomeProjection" line is from the projection fixture. The "SomeProjection" line is from the `test/projection.rb` test script file that is actuating the projection fixture.
+
+## Detailed Output
+
+In the event of any error or failed assertion, the test output will include additional detailed output that can be useful in understanding the context of the failure and the state of the fixture itself and the objects that it's testing.
+
+The detailed output can also be printed by setting the `TEST_BENCH_DETAIL` environment variable to `on`.
+
+``` bash
+TEST_BENCH_DETAIL=on ruby test/projection.rb
+```
+
+``` text
+SomeProjection
+  Projection Class: SomeProjection
+  Apply SomeEvent to SomeEntity
+    Event Class: SomeEvent
+    Entity Class: SomeEntity
+    Attributes
+      example_id => id
+        SomeEvent Value: "00000001-0000-4000-8000-000000000000"
+        SomeEntity Value: "00000001-0000-4000-8000-000000000000"
+      amount
+        SomeEvent Value: 11
+        SomeEntity Value: 11
+    Transformed and copied
+      time
+        SomeEvent Value (String): "2000-01-01T00:00:00.000Z"
+        SomeEntity Value (Time): 2000-01-01 00:00:00 UTC
+    Transformed and copied
+      some_time => other_time
+        SomeEvent Value (String): "2000-01-01T00:00:00.011Z"
+        SomeEntity Value (Time): 2000-01-01 00:00:00.011 UTC
+```
