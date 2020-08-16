@@ -175,3 +175,30 @@ The following methods are available from the `projection_fixture` block paramete
 - `assert_attributes_copied`
 - `assert_transformed_and_copied`
 
+## Testing Attribute Values Copied to the Entity
+
+``` ruby
+assert_attributes_copied(attribute_names=[])
+```
+
+The `assert_attributes_copied` method tests that attribute values are copied from the event being applied to the entity receiving the attribute data. By default, all attributes from the event are compared to entity attributes of the same name.
+
+An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be compared. The list of attribute names can also contain maps of attribute names for comparing values when the entity attribute name is not the same as the event attribute name.
+
+The `assert_attributes_copied` method uses an instance of the [Schema::Fixtures::Equality](/user-guide/test-fixtures/schema-equality-fixture.html) fixture to attribute comparison tests.
+
+**Example**
+
+``` ruby
+projection.assert_attributes_copied([
+  { :example_id => :id },
+  :amount
+])
+```
+
+**Parameters**
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| attribute_names | Optional list of attribute names, or maps of event attribute name to entity attribute name, to assert equality of | Array of Symbol or Hash | Attribute names of left-hand side object |
+
