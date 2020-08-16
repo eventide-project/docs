@@ -77,3 +77,6 @@ The `Projection` class is a concrete class from the [`EntityProjection::Fixtures
 The `EntityProjection::Fixtures::Projection` class provides:
 
 - The instance actuator `.()` (or `call` method) that begins execution of the fixture and the actuation of its projection with the specified input event and entity
+- The `assert_attributes_copied` method to test that attributes are copied from the source event to the entity, including mapping between attributes that have different names on the event versus the entity
+- The `assert_transformed_and_copied` method to test the copying of attributes form the event and the entity where the attribute values are transformed as well as copied
+
