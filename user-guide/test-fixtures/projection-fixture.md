@@ -202,3 +202,23 @@ projection.assert_attributes_copied([
 | --- | --- | --- | --- |
 | attribute_names | Optional list of attribute names, or maps of event attribute name to entity attribute name, to assert equality of | Array of Symbol or Hash | Attribute names of left-hand side object |
 
+## Testing Individual Attribute Transformations Copied to the Entity
+
+``` ruby
+assert_transformed_and_copied(attribute_name, &transform)
+```
+
+A projection may transform or convert the event data that it's assigning to an entity. The `assert_transformed_and_copied` method allows an event attribute to be transformed before being compared to an entity attribute. The assertion can also accept a map to test the transformation between attributes that have a different name on the source event than on the entity.
+
+**Example**
+
+``` ruby
+projection.assert_transformed_and_copied(:time) { |v| Time.parse(v) }
+projection.assert_transformed_and_copied(:some_time => :other_time) { |v| Time.parse(v) }
+```
+
+**Parameters**
+
+| Name | Description | Type |
+| --- | --- | --- |
+| attribute_name | Name of the event attribute, or map of event attribute name to entity attribute name, to be compared | Symbol or Hash |
