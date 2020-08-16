@@ -1,6 +1,6 @@
 # Projection Fixture
 
-The projection fixture tests the projection of events onto an entity. It tests that the attributes of an event are copied to the entity. The attributes tested can be limited to a subset of attributes by specifying a list of attribute names. A map can be provided to compare attributes that have a different name on the source event than on the entity. The projection fixture also allows the testing of values copied from an event that are transformed before being assigned to an entity's attributes. The copy-and-transform assertion can also accept a map to test the transformation between attributes that have a different name on the source event than on the entity.
+The projection fixture tests the projection of [event messages](/user-guide/messages-and-message-data/messages.md) onto an [entity](/user-guide/entities.md). It tests that the attributes of an event are copied to the entity. The attributes tested can be limited to a subset of attributes by specifying a list of attribute names. A map can be provided to compare attributes that have a different name on the source event than on the entity. The projection fixture also allows the testing of values copied from an event that are transformed before being assigned to an entity's attributes. The copy-and-transform assertion can also accept a map to test the transformation between attributes that have a different name on the source event than on the entity.
 
 ## Example
 
@@ -72,7 +72,7 @@ end
 
 ## EntityProjection::Fixtures::Projection Class
 
-The `Projection` class is a concrete class from the [`EntityProjection::Fixtures` library](../libraries.md#projection-fixtures) and namespace.
+The `Projection` class is a concrete class from the [`EntityProjection::Fixtures` library](/user-guide/libraries.md#projection-fixtures) and namespace.
 
 The `EntityProjection::Fixtures::Projection` class provides:
 

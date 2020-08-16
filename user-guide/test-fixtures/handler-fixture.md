@@ -135,7 +135,7 @@ The handler fixture doesn't support verifying the writing of a batch of messages
 
 ## Messaging::Fixtures::Handler Class
 
-The `Handler` class is a concrete class from the [`Messaging::Fixtures` library](../libraries.md#messaging-fixtures) and namespace.
+The `Handler` class is a concrete class from the [`Messaging::Fixtures` library](/user-guide/libraries.md#messaging-fixtures) and namespace.
 
 The `Messaging::Fixtures::Handler` class provides:
 
