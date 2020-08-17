@@ -34,7 +34,7 @@ end
 - The list of attribute names can contain maps of attribute names to allow comparison of attributes of different names
 - The attributes of objects of different classes can be compared by disabling the fixture's class comparison
 
-## Schema::Fixtures::Equality
+## Schema::Fixtures::Equality Class
 
 The `Equality` class is a concrete class from the [`Schema::Fixtures` library](/user-guide/libraries.md#schema-fixtures) and namespace.
 
