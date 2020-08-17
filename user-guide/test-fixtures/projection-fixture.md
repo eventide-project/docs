@@ -198,9 +198,9 @@ projection.assert_attributes_copied([
 
 **Parameters**
 
-| Name | Description | Type | Default |
-| --- | --- | --- | --- |
-| attribute_names | Optional list of attribute names, or maps of event attribute name to entity attribute name, to assert equality of | Array of Symbol or Hash | Attribute names of left-hand side object |
+| Name | Description | Type |
+| --- | --- | --- |
+| attribute_names | Optional list of attribute names to compare, or maps of event attribute name to entity attribute name | Array of Symbol or Hash |
 
 ## Testing Individual Attribute Transformations Copied to the Entity
 
@@ -221,4 +221,4 @@ projection.assert_transformed_and_copied(:some_time => :other_time) { |v| Time.p
 
 | Name | Description | Type |
 | --- | --- | --- |
-| attribute_name | Name of the event attribute, or map of event attribute name to entity attribute name, to be compared | Symbol or Hash |
+| attribute_name | Name of the event attribute to be compared, or map of event attribute name to entity attribute name | Symbol or Hash |
