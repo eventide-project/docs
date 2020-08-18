@@ -79,7 +79,7 @@ context "Handle SomeMessage" do
   ) do |handler|
 
     handler.assert_input_message do |message|
-      message.assert_attributes_assigned
+      message.assert_all_attributes_assigned
 
       message.assert_metadata do |metadata|
         metadata.assert_source_attributes_assigned
@@ -102,7 +102,7 @@ context "Handle SomeMessage" do
 
       written_message.assert_attribute_value(:processed_time, Clock.iso8601(processed_time))
 
-      written_message.assert_attributes_assigned
+      written_message.assert_all_attributes_assigned
 
       written_message.assert_metadata do |metadata|
         metadata.assert_correlation_stream_name('someCorrelationStream')
@@ -349,7 +349,7 @@ The message's metadata can also be tested. The metadata tests are executed by an
 
 ``` ruby
 handler_fixture.assert_input_message do |message_fixture|
-  message_fixture.assert_attributes_assigned
+  message_fixture.assert_all_attributes_assigned
 
   message_fixture.assert_metadata do |metadata_fixture|
     metadata_fixture.assert_source_attributes_assigned
@@ -448,7 +448,7 @@ handler_fixture.assert_written_message(output_message) do |written_message_fixtu
 
   written_message_fixture.assert_attribute_value(:processed_time, Clock.iso8601(processed_time))
 
-  written_message_fixture.assert_attributes_assigned
+  written_message_fixture.assert_all_attributes_assigned
 
   written_message_fixture.assert_metadata do |metadata_fixture|
     metadata_fixture.assert_correlation_stream_name('someCorrelationStream')
