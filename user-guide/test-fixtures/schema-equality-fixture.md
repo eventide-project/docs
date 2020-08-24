@@ -30,7 +30,7 @@ end
 ## Schema Equality Fixture Facts
 
 - The principle concern of a schema equality fixture test is the comparison of the attribute values of two different schema objects
-- An optional list of attribute names can given to limit the comparison to a a subset of attributes
+- An optional list of attribute names can given to limit the testing to a subset of attributes
 - The list of attribute names can contain maps of attribute names to allow comparison of attributes of different names
 - The attributes of objects of different classes can be compared by disabling the fixture's class comparison
 
