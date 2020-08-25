@@ -44,7 +44,11 @@ context "Message Fixture" do
 
   message = SomeSubsequentMessage.follow(source_message, copy: attribute_names)
 
-  message.processed_time = Clock.iso8601(processed_time)
+  processed_time_iso8601 = Clock.iso8601(processed_time)
+  sequence = 11
+
+  message.processed_time = processed_time_iso8601
+  message.sequence = sequence
 
   fixture(
     Message,
@@ -53,8 +57,13 @@ context "Message Fixture" do
   ) do |message|
 
     message.assert_attributes_copied(attribute_names)
-    message.assert_attributes_assigned
+
+    message.assert_attribute_value(:processed_time, processed_time)
+    message.assert_attribute_value(:sequence, sequence)
+
     message.assert_follows
+
+    message.assert_attributes_assigned
 
     message.assert_metadata do |metadata|
       metadata.assert_correlation_stream_name('someCorrelationStream')
@@ -82,3 +91,111 @@ The `Messaging::Fixtures::Message` class provides:
 - The `assert_attributes_copied` method for testing the copying of a message's attributes from another message
 - The `assert_follows` method for testing that a message follows from another message in a messaging workflow
 - The `assert_metadata` method for testing a message's metadata
+
+## Running the Fixture
+
+Running the test is no different than [running any TestBench test](http://test-bench.software/user-guide/running-tests.html).
+
+For example, given a test file named `message.rb` that uses the message fixture, in a directory named `test`, the test is executed by passing the file name to the `ruby` executable.
+
+``` bash
+ruby test/message.rb
+```
+
+The test script and the fixture work together as if they are part of the same test context, preserving output nesting between the test script file and the test fixture.
+
+## Message Fixture Output
+
+``` text
+Message Fixture
+  Message: SomeSubsequentMessage
+    Attributes Copied: SomeMessage => SomeSubsequentMessage
+      example_id
+      quantity => amount
+      time
+    Attribute Value
+      processed_time
+    Attribute Value
+      sequence
+    Follows
+    Attributes Assigned
+      example_id
+      amount
+      time
+      processed_time
+      sequence
+    Metadata
+      correlation_stream_name
+      reply_stream_name
+```
+
+The output below the "Message: SomeSubsequentMessage" line is from the equality fixture. The "Message Fixture" line is from the `test/message.rb` test script file that is actuating the message fixture.
+
+## Detailed Output
+
+In the event of any error or failed assertion, the test output will include additional detailed output that can be useful in understanding the context of the failure and the state of the fixture itself and the objects that it's testing.
+
+The detailed output can also be printed by setting the `TEST_BENCH_DETAIL` environment variable to `on`.
+
+``` bash
+TEST_BENCH_DETAIL=on ruby test/message.rb
+```
+
+``` text
+Message Fixture
+  Message: SomeSubsequentMessage
+    Message Class: SomeSubsequentMessage
+    Source Message SomeMessage
+    Attributes Copied: SomeMessage => SomeSubsequentMessage
+      example_id
+        Input Value: "00000001-0000-4000-8000-000000000000"
+        Output Value: "00000001-0000-4000-8000-000000000000"
+      quantity => amount
+        Input Value: 1
+        Output Value: 1
+      time
+        Input Value: "2000-01-01T00:00:00.001Z"
+        Output Value: "2000-01-01T00:00:00.001Z"
+    Attribute Value
+      processed_time
+        Attribute Value: "2000-01-01T00:00:00.011Z"
+        Compare Value: "2000-01-01T00:00:00.011Z"
+    Attribute Value
+      sequence
+        Attribute Value: 112
+        Compare Value: 112
+    Follows
+      Stream Name: "example:command-00000001-0000-4000-8000-000000000000"
+      Causation Stream Name: "example:command-00000001-0000-4000-8000-000000000000"
+      Position: 1
+      Causation Position: 1
+      Global Position: 111
+      Causation Global Position: 111
+      Source Correlation Stream Name: "someCorrelationStream"
+      Correlation Stream Name: "someCorrelationStream"
+      Source Reply Stream Name: "someReplyStream"
+      Reply Stream Name: "someReplyStream"
+    Attributes Assigned
+      example_id
+        Default Value: nil
+        Assigned Value: "00000001-0000-4000-8000-000000000000"
+      amount
+        Default Value: nil
+        Assigned Value: 1
+      time
+        Default Value: nil
+        Assigned Value: "2000-01-01T00:00:00.001Z"
+      processed_time
+        Default Value: nil
+        Assigned Value: "2000-01-01T00:00:00.011Z"
+      sequence
+        Default Value: nil
+        Assigned Value: 112
+    Metadata
+      correlation_stream_name
+        Metadata Value: someCorrelationStream
+        Compare Value: someCorrelationStream
+      reply_stream_name
+        Metadata Value: someReplyStream
+        Compare Value: someReplyStream
+```
