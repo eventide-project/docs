@@ -25,18 +25,18 @@ context 'Assigned' do
 end
 ```
 
-## Schema Equality Fixture Facts
+## Schema Assignment Fixture Facts
 
-- The principle concern of a schema assignment fixture test is the assurance that a schema object's attributes have been muted during some procedure
+- The principle concern of a schema assignment fixture test is the assurance that a schema object's attributes have been mutated
 - An optional list of attribute names can given to limit the attribute assignment tests to a subset of attributes
 
-## Schema::Fixtures::Equality Class
+## Schema::Fixtures::Assignment Class
 
-The `Equality` class is a concrete class from the [`Schema::Fixtures` library](/user-guide/libraries.md#schema-fixtures) and namespace.
+The `Assignment` class is a concrete class from the [`Schema::Fixtures` library](/user-guide/libraries.md#schema-fixtures) and namespace.
 
-The `Schema::Fixtures::Equality` class provides:
+The `Schema::Fixtures::Assignment` class provides:
 
-- The instance actuator `.()` (or `call` method) that begins execution of the fixture and the testing of scheme attribute assignment
+- The instance actuator `.()` (or `call` method) that begins execution of the fixture and the testing of schema attribute assignment
 
 ## Running the Fixture
 
