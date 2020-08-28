@@ -102,7 +102,7 @@ fixture(Schema::Fixtures::Equality, control, compare, attribute_names=nil, ignor
 
 The first argument sent to the `fixture` method is always the `Schema::Fixtures::Equality` class. Subsequent arguments are the specific construction parameters of the schema equality fixture.
 
-An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be compared. The list of attribute names can also contain maps of attribute names for comparing values when the entity attribute name is not the same as the event attribute name.
+An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be compared. The list of attribute names can also contain maps of attribute names for comparing values when the control attribute name is not the same as the compare attribute name.
 
 When the list of attribute names is not provided, it defaults to the attribute names of the control schema object.
 
@@ -112,7 +112,7 @@ When the list of attribute names is not provided, it defaults to the attribute n
 | --- | --- | --- |
 | control | Control schema object that is the baseline for the comparison | Schema |
 | compare | Schema object that is compared to the control object | Schema |
-| attribute_names | Optional list of attribute names to compare, or maps of event attribute name to entity attribute name | Array of Symbol or Hash |
+| attribute_names | Optional list of attribute names to compare, or maps of compare attribute name to control attribute name | Array of Symbol or Hash |
 
 ## Limiting the Test to a Subset of Attributes
 
