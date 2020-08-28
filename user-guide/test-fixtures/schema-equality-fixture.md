@@ -97,7 +97,7 @@ Equal
 The fixture is executed using TestBench's `fixture` method.
 
 ``` ruby
-fixture(Schema::Fixtures::Equality, control, compare, attribute_names=[], ignore_class: false)
+fixture(Schema::Fixtures::Equality, control, compare, attribute_names=nil, ignore_class: false)
 ```
 
 The first argument sent to the `fixture` method is always the `Schema::Fixtures::Equality` class. Subsequent arguments are the specific construction parameters of the schema equality fixture.

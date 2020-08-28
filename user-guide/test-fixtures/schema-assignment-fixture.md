@@ -88,7 +88,7 @@ Assigned
 The fixture is executed using TestBench's `fixture` method.
 
 ``` ruby
-fixture(Schema::Fixtures::Assignment, schema, attribute_names=[])
+fixture(Schema::Fixtures::Assignment, schema, attribute_names=nil)
 ```
 
 The first argument sent to the `fixture` method is always the `Schema::Fixtures::Assignment` class. Subsequent arguments are the specific construction parameters of the assignment fixture.
