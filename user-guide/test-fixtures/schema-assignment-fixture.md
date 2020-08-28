@@ -93,7 +93,7 @@ fixture(Schema::Fixtures::Assignment, schema, attribute_names=nil)
 
 The first argument sent to the `fixture` method is always the `Schema::Fixtures::Assignment` class. Subsequent arguments are the specific construction parameters of the assignment fixture.
 
-When the list of attribute names is not provided, it defaults to all of the attribute names of the schema object.
+When the list of attribute names is not provided, it defaults to the list of all of the names of the schema object's attributes.
 
 **Parameters**
 

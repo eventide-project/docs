@@ -104,7 +104,7 @@ The first argument sent to the `fixture` method is always the `Schema::Fixtures:
 
 An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be compared. The list of attribute names can also contain maps of attribute names for comparing values when the control attribute name is not the same as the compare attribute name.
 
-When the list of attribute names is not provided, it defaults to the attribute names of the control schema object.
+When the list of attribute names is not provided, it defaults to the list of all of the names of the control schema object's attributes.
 
 **Parameters**
 
