@@ -1,6 +1,6 @@
 # Message Fixture
 
-The message fixture tests the attributes of a message and its metadata. It can verify that a message's attributes have had values assigned to them, and it can verify that a message's attributes have been copied from another message. The attributes tested can be limited to a subset of attributes by specifying a list of attribute names. A map can be provided to compare attributes that have a different name on the source message. The message fixture also allows testing whether a message from follows another message in a sequence of messages in a workflow.
+The message fixture tests the attributes of a [message](/user-guide/messages-and-message-data/messages.md) and its [metadata](/user-guide/messages-and-message-data/metadata.md). It can verify that a message's attributes have had values assigned to them, and it can verify that a message's attributes have been copied from another message. The attributes tested can be limited to a subset of attributes by specifying a list of attribute names. A map can be provided to compare attributes that have a different name on the source message. The message fixture also allows testing whether a message follows from another message in a sequence of messages in a workflow.
 
 ## Example
 
