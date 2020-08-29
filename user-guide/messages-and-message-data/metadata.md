@@ -1,6 +1,6 @@
 # Metadata
 
-A message's metadata object contains information about the stream where the message resides, the previous message in a series of messages that make up a messaging workflow, the originating process to which the message belongs, as well as other data that are pertinent to understanding the provenance and disposition of the message.
+A message's metadata object contains information about the stream where the message resides, the previous message in a series of messages that make up a messaging workflow, the originating process to which the message belongs, as well as other data that are pertinent to understanding the provenance and disposition of the
 
 Where as a message's data represents information pertinent to the business process that the message is involved with, a message's metadata contains information that is mechanical and infrastructural. Message metadata is data about messaging machinery, like message schema version, source stream, positions, provenance, reply address, and the like.
 
@@ -49,7 +49,7 @@ follow(preceding_metadata)
 | --- | --- | --- |
 | preceding_metadata | Metadata instance from which to copy the message flow and provenance data from | Metadata |
 
-There are three metadata attributes that comprise the identifying information of a message's preceding message. They are collectively referred to as _causation_ data.
+There are three metadata attributes that comprise the identifying information of a message's preceding  They are collectively referred to as _causation_ data.
 
 - `causation_message_stream_name`
 - `causation_message_position`
@@ -104,6 +104,7 @@ preceding_metadata = Metadata.new()
 preceding_metadata.stream_name = 'someStream'
 preceding_metadata.position = 11
 preceding_metadata.global_position = 111
+preceding_message.metadata.correlation_stream_name = 'someReplyStream'
 preceding_metadata.reply_stream_name = 'someReplyStream'
 
 metadata = Metadata.new()
@@ -125,8 +126,17 @@ Metadata precedence is determined as:
 metadata.causation_message_stream_name == preceding_metadata.stream_name &&
 metadata.causation_message_position == preceding_metadata.position &&
 metadata.causation_message_global_position == preceding_metadata.global_position &&
+metadata.correlation_stream_name == preceding_metadata.correlation_stream_name &&
 metadata.reply_stream_name == preceding_metadata.reply_stream_name
 ```
+
+However, the `correlation_stream_name` attribute and the `reply_stream_name` attribute is only a factor in determining precedence if their values are assigned on the preceding message metadata. If the preceding message metadata's `correlation_stream_name` attribute or `reply_stream_name` attribute is `nil`, then it is not taken into consideration for message precedence. Therefore, the preceding message metadata's `correlation_stream_name` attribute or `reply_stream_name` attribute can be `nil` while the following message's `correlation_stream_name` attribute or `reply_stream_name` attribute are set to a value, and the messages are considered precedent.
+
+In addition, if both the preceding message metadata's `stream_name` attribute and the following message metadata's `causation_stream_name` attribute are both `nil` the messages are not considered precedent. The same is true for the `position` and `causation_message_position` pair and the `global_position` and `causation_message_global_position` pair.
+
+The implementation of the metadata's `follows?` predicate method is the best resource for understanding the specifics of message precedence. The source code can be read at:
+
+[https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/metadata.rb](https://github.com/eventide-project/messaging/blob/master/lib/messaging/message/metadata.rb)
 
 ## Determining Whether a Reply is Required
 
@@ -182,9 +192,9 @@ The metadata's `correlation_stream_name` is the mechanism by which a subscriber 
 When a message is sent to the _afferent_ service from the coordinating service, the metadata's `correlation_stream_name` is set to a value that indicates its origin.
 
 ``` ruby
-some_message = SomeMessage.new()
+some_message = Somenew()
 
-some_message.metadata.correlation_stream_name = 'someStream-123'
+some_metadata.correlation_stream_name = 'someStream-123'
 ```
 
 Because the `follow` method keeps the `correlation_stream_name` with the metadata of all subsequent messages - even those from other services - the `correlation_stream_name` will be present in the event metadata that the originating, coordinating service subscribes to.
@@ -212,21 +222,21 @@ Boolean.
 | stream_name | The stream name to compare to the message metadata's `correlation_stream_name` | String |
 
 ``` ruby
-some_message = SomeMessage.new()
+some_message = Somenew()
 
-some_message.metadata.correlation_stream_name = 'someStream-123'
+some_metadata.correlation_stream_name = 'someStream-123'
 
-message.metadata.correlated?('someStream-123')
+metadata.correlated?('someStream-123')
 # => true
 
-message.metadata.correlated?('someStream-456')
+metadata.correlated?('someStream-456')
 # => false
 ```
 
 If the value of the `stream_name` argument is a category stream name and the correlation stream name is an entity stream name, only the categories will be compared.
 
 ``` ruby
-message.metadata.correlated?('someStream')
+metadata.correlated?('someStream')
 # => true
 ```
 
