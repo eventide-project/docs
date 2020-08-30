@@ -253,29 +253,6 @@ message_fixture.assert_attribute_value(:processed_time, processed_time)
 | name | Name of the message attribute to test | Symbol |
 | value | Value to compare against the message attribute's value | Symbol |
 
-## Test That the Message's Attributes Have Been Mutated
-
-``` ruby
-assert_attributes_assigned(attribute_names=nil)
-```
-
-An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be tested. When the list of attribute names is not provided, it defaults to the list of all of the names of the message's attributes.
-
-The `assert_attributes_assigned` method uses an instance of the [Schema::Fixtures::Assignment](/user-guide/test-fixtures/schema-assignment-fixture.md) fixture to perform the assignment test.
-
-``` ruby
-attribute_names = [
-  :amount,
-  :time,
-]
-
-message_fixture.assert_attributes_assigned(attribute_names)
-```
-
-**Parameters**
-
-| attribute_names | Optional list of attribute names to check for assignment | Array of Symbol |
-
 ## Test That the Message's Attributes Are Copied from a Source Message
 
 ``` ruby
@@ -315,6 +292,29 @@ assert_follows()
 This assertion requires that the optional `source_message` argument was passed to the message fixture's actuator.
 
 The `assert_follows` method uses the `Message` class's [follows?](/user-guide/messages-and-message-data/messages.md#determining-message-precedence) predicate to determine if the message follows the source message.
+
+## Test That the Message's Attributes Have Been Mutated
+
+``` ruby
+assert_attributes_assigned(attribute_names=nil)
+```
+
+An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be tested. When the list of attribute names is not provided, it defaults to the list of all of the names of the message's attributes.
+
+The `assert_attributes_assigned` method uses an instance of the [Schema::Fixtures::Assignment](/user-guide/test-fixtures/schema-assignment-fixture.md) fixture to perform the assignment test.
+
+``` ruby
+attribute_names = [
+  :amount,
+  :time,
+]
+
+message_fixture.assert_attributes_assigned(attribute_names)
+```
+
+**Parameters**
+
+| attribute_names | Optional list of attribute names to check for assignment | Array of Symbol |
 
 ## Test the Message Metadata
 
