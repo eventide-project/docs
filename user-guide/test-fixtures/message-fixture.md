@@ -208,11 +208,12 @@ The fixture is executed using TestBench's `fixture` method.
 fixture(Messaging::Fixtures::Message, message, source_message=nil, &test_block)
 ```
 
-The first argument sent to the `fixture` method is always the `Messaging::Fixtures::Handler` class. Subsequent arguments are the specific construction parameters of the handler fixture.
+The first argument sent to the `fixture` method is always the `Messaging::Fixtures::Message` class. Subsequent arguments are the specific construction parameters of the message fixture.
 
 **Parameters**
 
 | Name | Description | Type |
+| --- | --- | --- |
 | message | Message that is the principal subject of the fixture's tests | Messaging::Message |
 | source_message | Optional message that the principal message follows | Messaging::Message |
 | test_block | Block used for invoking other assertions that are part of the message fixture's API | Proc |
