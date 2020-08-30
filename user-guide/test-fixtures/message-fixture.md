@@ -86,7 +86,7 @@ The `Message` class is a concrete class from the [`Messaging::Fixtures` library]
 
 The `Messaging::Fixtures::Message` class provides:
 
-- The instance actuator `.()` (or `call` method) that begins execution of the fixture and the testing of a message object, as well as the optional comparison with a source object
+- The instance actuator `.()` (or `call` method) that begins execution of the fixture and the testing of a message object, as well as the optional comparison with a source message object
 - The `assert_attributes_assigned` method for testing that a message's attributes have been mutated
 - The `assert_attributes_copied` method for testing the copying of a message's attributes from another message
 - The `assert_follows` method for testing that a message follows from another message in a messaging workflow
