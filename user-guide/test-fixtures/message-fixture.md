@@ -129,7 +129,7 @@ Message Fixture
       reply_stream_name
 ```
 
-The output below the "Message: SomeSubsequentMessage" line is from the equality fixture. The "Message Fixture" line is from the `test/message.rb` test script file that is actuating the message fixture.
+The output below the "Message: SomeSubsequentMessage" line is from the message fixture. The "Message Fixture" line is from the `test/message.rb` test script file that is actuating the message fixture.
 
 ## Detailed Output
 
