@@ -77,7 +77,7 @@ end
 
 - The principle concerns of a message test are whether a message's attributes have been mutated (ie: _assigned_), whether a message's attributes where copied from another message, and whether a message follows from another message in a sequence of messages representing a workflow
 - A message fixture also allows the testing of a message's [metadata](./metadata-fixture.md)
-- An optional list of attribute names can given to limit the testing of attributes to a subset of attributes
+- An optional list of attribute names can be given to limit the testing of attributes to a subset of attributes
 - The list of attribute names can contain maps of attribute names to allow comparison of attributes of different names
 
 ## Messaging::Fixtures::Message Class
