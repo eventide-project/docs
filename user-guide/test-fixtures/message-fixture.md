@@ -165,15 +165,15 @@ Message Fixture
         Attribute Value: 112
         Compare Value: 112
     Follows
-      Stream Name: "example:command-00000001-0000-4000-8000-000000000000"
+      Source Message Stream Name: "example:command-00000001-0000-4000-8000-000000000000"
       Causation Stream Name: "example:command-00000001-0000-4000-8000-000000000000"
-      Position: 11
+      Source Message Position: 1
       Causation Position: 1
-      Global Position: 1111
+      Source Message Global Position: 111
       Causation Global Position: 111
-      Source Correlation Stream Name: "someCorrelationStream"
+      Source Message Correlation Stream Name: "someCorrelationStream"
       Correlation Stream Name: "someCorrelationStream"
-      Source Reply Stream Name: "someReplyStream"
+      Source Message Reply Stream Name: "someReplyStream"
       Reply Stream Name: "someReplyStream"
     Attributes Assigned
       example_id

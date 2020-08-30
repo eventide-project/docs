@@ -250,15 +250,15 @@ Handle SomeMessage
       Message Class: SomeEvent
       Source Message Class: SomeMessage
       Follows
-        Stream Name: "something:command-e84533f2-53a5-492a-a8cc-ead48d3d780b"
+        Source Message Stream Name: "something:command-e84533f2-53a5-492a-a8cc-ead48d3d780b"
         Causation Stream Name: "something:command-e84533f2-53a5-492a-a8cc-ead48d3d780b"
-        Position: 11
-        Causation Position: 11
-        Global Position: 111
+        Source Message Position: 1
+        Causation Position: 1
+        Source Message Global Position: 111
         Causation Global Position: 111
-        Source Correlation Stream Name: nil
+        Source Message Correlation Stream Name: nil
         Correlation Stream Name: "someCorrelationStream"
-        Source Reply Stream Name: nil
+        Source Message Reply Stream Name: nil
         Reply Stream Name: "someReplyStream"
       Attributes Copied: SomeMessage => SomeEvent
         something_id
