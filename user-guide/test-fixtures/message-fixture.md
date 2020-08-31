@@ -251,7 +251,7 @@ message_fixture.assert_attribute_value(:processed_time, processed_time)
 **Parameters**
 
 | name | Name of the message attribute to test | Symbol |
-| value | Value to compare against the message attribute's value | Symbol |
+| value | Expected value to compare against the message attribute's value | String |
 
 ## Test That the Message's Attributes Are Copied from a Source Message
 
