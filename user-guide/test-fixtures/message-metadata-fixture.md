@@ -305,7 +305,7 @@ Workflow metadata is the causation metadata plus the optional correlation metada
 
 For more information on message metadata attributes, see the [metadata user guide](/user-guide/messages-and-message-data/metadata.md#metadata-attributes).
 
-## Test That the Metadata's Attributes Have Been Mutated
+## Test That the Metadata Attributes Have Been Mutated
 
 ``` ruby
 assert_attributes_assigned(attribute_names=nil)
@@ -314,6 +314,8 @@ assert_attributes_assigned(attribute_names=nil)
 An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be tested. When the list of attribute names is not provided, it defaults to the list of all of the metadata attributes names.
 
 The `assert_attributes_assigned` method uses an instance of the [Schema::Fixtures::Assignment](/user-guide/test-fixtures/schema-assignment-fixture.md) fixture to perform the assignment test.
+
+**Example**
 
 ``` ruby
 attribute_names = [

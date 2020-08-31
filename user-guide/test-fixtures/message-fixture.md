@@ -267,7 +267,7 @@ When the list of attribute names is not provided, it defaults to the list of all
 
 The `assert_attributes_copied` method uses an instance of the [Schema::Fixtures::Equality](/user-guide/test-fixtures/schema-equality-fixture.md) fixture to perform the attributes copied test.
 
-**example**
+**Example**
 
 ``` ruby
 attribute_names = [
@@ -302,6 +302,8 @@ assert_attributes_assigned(attribute_names=nil)
 An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be tested. When the list of attribute names is not provided, it defaults to the list of all of the names of the message's attributes.
 
 The `assert_attributes_assigned` method uses an instance of the [Schema::Fixtures::Assignment](/user-guide/test-fixtures/schema-assignment-fixture.md) fixture to perform the assignment test.
+
+**Example**
 
 ``` ruby
 attribute_names = [
