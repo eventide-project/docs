@@ -8,11 +8,11 @@ The Eventide toolkit provides a comprehensive set of fixtures to facilitate and 
 
 - [Handler Fixture](./handler-fixture.md)
 - [Message Fixture](./message-fixture.md)
-- [Message Metadata Fixture](message-metadata-fixture.md)
-- [Writer Fixture](writer-fixture.md)
-- [Projection Fixture](projection-fixture.md)
-- [Schema Equality Fixture](schema-equality-fixture.md)
-- [Schema Assignment Fixture](schema-assignment-fixture.md)
+- [Message Metadata Fixture](./message-metadata-fixture.md)
+- [Writer Fixture](./writer-fixture.md)
+- [Projection Fixture](./projection-fixture.md)
+- [Schema Equality Fixture](./schema-equality-fixture.md)
+- [Schema Assignment Fixture](./schema-assignment-fixture.md)
 
 ## Libraries
 
