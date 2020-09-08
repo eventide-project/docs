@@ -18,9 +18,53 @@ The Eventide toolkit provides a comprehensive set of fixtures to facilitate and 
 
 The fixtures are grouped into three namespaces and libraries.
 
-- [`Messaging::Fixtures`](https://github.com/eventide-project/messaging-fixtures)
-- [`EntityProjection::Fixtures`](https://github.com/eventide-project/entity-projection-fixtures)
-- [`Schema::Fixtures`](https://github.com/eventide-project/schema-fixtures)
+### Messaging::Fixtures
+
+**Gem Name**
+
+``` text
+evt-messaging-fixtures
+```
+
+**Loading the Library**
+
+``` ruby
+require 'messaging/fixtures'
+```
+
+GitHub: [https://github.com/eventide-project/messaging-fixtures](https://github.com/eventide-project/messaging-fixtures)
+
+## EntityProjection::Fixtures
+
+**Gem Name**
+
+``` text
+evt-entity_projection-fixtures
+```
+
+**Loading the Library**
+
+``` ruby
+require 'entity_projection/fixtures'
+```
+
+GitHub: [https://github.com/eventide-project/entity-projection-fixtures](https://github.com/eventide-project/entity-projection-fixtures)
+
+## Schema::Fixtures
+
+**Gem Name**
+
+``` text
+evt-schema-fixtures
+```
+
+**Loading the Library**
+
+``` ruby
+require 'schema/fixtures'
+```
+
+GitHub: [https://github.com/eventide-project/schema-fixtures](https://github.com/eventide-project/schema-fixtures)
 
 ## TestBench
 
