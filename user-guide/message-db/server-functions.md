@@ -116,12 +116,12 @@ get_stream_messages(
 | stream_name | Name of stream to retrieve messages from | varchar | | someStream-123 |
 | position (optional) | Starting position of the messages to retrieve | bigint | 0 | 11 |
 | batch_size (optional) | Number of messages to retrieve | bigint | 1000 | 111 |
-| condition (optional) | SQL condition to filter the batch by | varchar | NULL | messages.time >= current_time |
+| condition (optional) | SQL condition to filter the batch by | varchar | NULL | 'messages.time::time >= current_time' |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_stream_messages('someStream-123', 0, 1000, condition => 'messages.time >= current_time');
+SELECT * FROM get_stream_messages('someStream-123', 0, 1000, condition => 'messages.time::time >= current_time');
 ```
 
 ```
@@ -173,7 +173,7 @@ get_category_messages(
 | correlation (optional) | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | varchar | NULL | someCorrelationCategory |
 | consumer_group_member (optional) | The zero-based member number of an individual consumer that is participating in a consumer group | bigint | NULL | 1 |
 | consumer_group_size (optional) | The size of a group of consumers that are cooperatively processing a single category | bigint | NULL | 2 |
-| condition (optional) | SQL condition to filter the batch by | varchar | NULL | messages.time >= current_time |
+| condition (optional) | SQL condition to filter the batch by | varchar | NULL | 'messages.time::time >= current_time' |
 
 ### Usage
 
