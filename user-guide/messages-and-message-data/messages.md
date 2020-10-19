@@ -170,7 +170,7 @@ Instance of the receiver message class initialized with the source message's dat
 | --- | --- | --- |
 | source | Message to build the subsequent message from | Message |
 | copy | Whitelist of attribute names to copy | Array of Symbols |
-| include | Alias for the `copy` parameter. Obsolete. Used for backward compatibility | Array of Symbols |
+| include | Alias for the `copy` parameter | Array of Symbols |
 | exclude | Blacklist of attribute names to exclude from copying | Array of Symbols |
 | strict | Raise an error if receiver doesn't define a setter for a whitelisted attribute when the value is `true` | Boolean |
 | metadata | Copies the message metadata as well when the value is `true` | Boolean |
@@ -264,7 +264,7 @@ Instance of the receiver message class initialized with the source message's dat
 | source | Message to build the subsequent message from | Message |
 | receiver| The message that will receive the source message's data | Message class or message instance |
 | copy | Whitelist of attribute names to copy | Array of Symbols |
-| include | Alias for the `copy` parameter. Obsolete. Used for backward compatibility | Array of Symbols |
+| include | Alias for the `copy` parameter | Array of Symbols |
 | exclude | Blacklist of attribute names to exclude from copying | Array of Symbols |
 | strict | Raise an error if receiver doesn't define a setter for a whitelisted attribute when the value is `true` | Boolean |
 | metadata | Copies the message metadata as well when the value is `true` | Boolean |
@@ -310,7 +310,7 @@ Instance of the subsequent message class initialized with the preceding message'
 | --- | --- | --- |
 | preceding_message | Message to build the subsequent message from | Message |
 | copy | Whitelist of attribute names to copy | Array of Symbols |
-| include | Alias for the `copy` parameter. Obsolete. Used for backward compatibility | Array of Symbols |
+| include | Alias for the `copy` parameter | Array of Symbols |
 | exclude | Blacklist of attribute names to exclude from copying | Array of Symbols |
 | strict | Raise an error if receiver doesn't define a whitelisted attribute | Boolean |
 
@@ -409,7 +409,7 @@ Instance of the subsequent message class initialized with the preceding message'
 | preceding_message | Message to build the subsequent message from | Message |
 | subsequent_message | The message that will receive the preceding message's data | Message class or message instance |
 | copy | Whitelist of attribute names to copy | Array of Symbols |
-| include | Alias for the `copy` parameter. Obsolete. Used for backward compatibility | Array of Symbols |
+| include | Alias for the `copy` parameter | Array of Symbols |
 | exclude | Blacklist of attribute names to exclude from copying | Array of Symbols |
 | strict | Raise an error if receiver doesn't define a whitelisted attribute | Boolean |
 
