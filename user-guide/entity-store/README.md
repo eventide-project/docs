@@ -106,6 +106,10 @@ It's more common in handler business logic to use the `fetch` method so that the
 fetch(id, include: nil)
 ```
 
+**Alias**
+
+`project`
+
 **Returns**
 
 Instance of the store's entity class with the identified stream's data projected onto it.
