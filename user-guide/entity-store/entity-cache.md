@@ -162,9 +162,9 @@ A cache's scope can be one of:
 - `:global`
 - `:exclusive`
 
-### Thread
+### Thread (Default Scope)
 
-The thread scope is the default scope.
+The thread scope is the **default scope**.
 
 The thread scope will store an entity store's cache in thread-local storage. This keeps stores of the same class that are operating independently in separate threads isolated from each other and free of concurrency collisions or contention.
 
