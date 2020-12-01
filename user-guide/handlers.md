@@ -410,6 +410,7 @@ The following tags are applied to log messages recorded by a handler:
 | Tag | Description |
 | --- | --- |
 | handle | Applied to all log messages recorded by a handler |
+| dispatch | Applied to log messages recorded while determining if a message will be handled |
 | messaging | Applied to all log messages recorded inside the `Messaging` namespace |
 
 The following tags _may_ be applied to log messages recorded by a handler:
