@@ -202,7 +202,7 @@ See the [useful objects](./useful-objects.md#substitutes) user guide for backgro
 ## Assigning a Reader as a Dependency
 
 ``` ruby
-self.configure(receiver, stream_name, attr_name: :read, position: 0, batch_size: 1000, condition: nil,session: nil)
+self.configure(receiver, stream_name, attr_name: :read, position: 0, batch_size: 1000, condition: nil, session: nil)
 ```
 
 Constructs an instance of the reader and assigns it to the receiver's `read` attribute. By default, the receiving attribute's name is expected to be `read`, but it can be altered with the use of the `attr_name` parameter.
