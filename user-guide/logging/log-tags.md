@@ -12,13 +12,14 @@ The following tags are applied to log messages recorded by a handler, as well as
 
 | Tag | Description |
 | --- | --- |
-| handle | Applied to all log messages recorded by a handler |
+| dispatch | Applied to all log messages recorded by a handler when a message is dispatched to a handler, before the handler determines whether it will in fact handle the message |
 | messaging | Applied to all log messages recorded inside the `Messaging` namespace |
 
 The following tags _may_ be applied to log messages recorded by a handler:
 
 | Tag | Description |
 | --- | --- |
+| handle | Applied to log entries recorded when a message dispatched to a handler is handled by the handler |
 | message_data | Applied to log messages that address the handling of a MessageData instance |
 | message | Applied to log messages that address the handling of a typed message |
 | data | Applied to log messages that record the data content of a typed message or a MessageData instance |
