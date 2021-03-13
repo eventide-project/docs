@@ -91,12 +91,13 @@ Any conversion to formats that are specific to serialized JSON is done at this s
 
 Entities are not required to be instances of Eventide [Schema library](https://github.com/eventide-project/schema) objects.
 
-However, if you use implementations of `Schema::DataStructure` as entities, there are some hook methods, `transform_read` and `transform_write`, that you can implement _in addition to_ implementing the Transform protocol. The use of the these methods is entirely optional, and doesn't obviate the requirement for implementing the Transform protocol.
+However, if you use implementations of `Schema::DataStructure` as entities, there are some interception methods, `transform_read` and `transform_write`, that you can implement _in addition to_ implementing the Transform protocol.
+
+The use of the these methods is entirely optional, and isn't intended as a replacement of the Transform protocol. Using the interception methods modifies the semantics of the construction of a data structure. It should not be used as a way to merely circumvent the implementation of the Transform protocol.
 
 See the documentation for the Schema library for more details on using the `transform_read` and `transform_write` methods with `Schema::DataStructure` objects:
 
 [https://github.com/eventide-project/schema#intercepting-and-modifying-input-and-output-data](https://github.com/eventide-project/schema#intercepting-and-modifying-input-and-output-data)
-
 
 ## Storing a Snapshot
 
