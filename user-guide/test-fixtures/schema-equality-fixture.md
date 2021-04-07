@@ -112,7 +112,7 @@ When the list of attribute names is not provided, it defaults to the list of all
 | --- | --- | --- |
 | control | Control schema object that is the baseline for the comparison | Schema |
 | compare | Schema object that is compared to the control object | Schema |
-| attribute_names | Optional list of attribute names to compare, or maps of compare attribute name to control attribute name | Array of Symbol or Hash |
+| attribute_names | Optional list of attribute names to compare, or maps of control attribute name to compare attribute name | Array of Symbol or Hash |
 
 ## Limiting the Test to a Subset of Attributes
 
