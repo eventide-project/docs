@@ -169,7 +169,7 @@ context 'Equal' do
 
   map = [
     :some_attribute,
-    :some_other_attribute => :yet_another_attribute
+    { :some_other_attribute => :yet_another_attribute }
   ]
 
   fixture(Equality, example, other_example, map, ignore_class: true)
