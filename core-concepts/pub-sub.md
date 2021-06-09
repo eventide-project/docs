@@ -20,7 +20,7 @@ Without pub/sub, there is no possibility of autonomy. And without autonomy, the 
 
 ## Message Contracts
 
-As is the case with all messaging patterns, as long as the structure and content of the messages flowing between parts of a system do not change, individual parts are free to change without regard for other parts of the system. This is why is critical to pay significant attention to getting the message _schemas_ right so that they do not need to change later due to a need to correct oversights.
+As is the case with all messaging patterns, as long as the structure and content of the messages flowing between parts of a system do not change, individual parts are free to change without regard for other parts of the system. This is why it is critical to pay significant attention to getting the message _schemas_ right so that they do not need to change later due to a need to correct oversights.
 
 The schemas of the messages that are exchanged between parts of a system are the _contracts_ that each subsystem or service agree to respect. Any unplanned changes made to the messages schemas breaks the contract and obviates any expectation that the parts of the system will continue to function correctly.
 
