@@ -1,6 +1,6 @@
 # Metadata
 
-A message's metadata object contains information about the stream where the message resides, the previous message in a series of messages that make up a messaging workflow, the originating process to which the message belongs, as well as other data that are pertinent to understanding the provenance and disposition of the
+A message's metadata object contains information about the stream where the message resides, the previous message in a series of messages that make up a messaging workflow, the originating process to which the message belongs, as well as other data that are pertinent to understanding the provenance and disposition of the message.
 
 Where as a message's data represents information pertinent to the business process that the message is involved with, a message's metadata contains information that is mechanical and infrastructural. Message metadata is data about messaging machinery, like message schema version, source stream, positions, provenance, reply address, and the like.
 
@@ -25,7 +25,7 @@ The `Metadata` class provides:
 | stream_name | The name of the stream where the message resides | String | source_message_stream_name |
 | position | The sequential position of the message in its stream | Integer | source_message_position |
 | global_position | The sequential position of the message in the entire message store | Integer | source_message_global_position, sequence |
-| causation_message_stream_name | The stream name of the message the precedes a message in a sequential [message flow](./messages.md#message-workflows) | |
+| causation_message_stream_name | The stream name of the message that precedes the message in a sequential [message flow](./messages.md#message-workflows) | |
 | causation_message_position | The sequential position of the causation message in its stream | Integer | |
 | causation_message_global_position | The sequential position of the message in the entire message store | Integer | causation_sequence |
 | correlation_stream_name | Name of the stream that represents an encompassing business process that coordinates the sub-process that the message is a part of | String | origin_stream_name, origin |
@@ -49,13 +49,13 @@ follow(preceding_metadata)
 | --- | --- | --- |
 | preceding_metadata | Metadata instance from which to copy the message flow and provenance data from | Metadata |
 
-There are three metadata attributes that comprise the identifying information of a message's preceding  They are collectively referred to as _causation_ data.
+There are three metadata attributes that comprise the identifying information of a message's preceding message.  They are collectively referred to as _causation_ data.
 
 - `causation_message_stream_name`
 - `causation_message_position`
 - `causation_message_global_position`
 
-Each message's metadata in a workflow may also carry identifying information about the overall or coordinating workflow that the messages participate in. That identifying information is referred to as _correlation_ data.
+Each message's metadata in a workflow may also carry identifying information about the overall or coordinating workflow that the messages participates in. That identifying information is referred to as _correlation_ data.
 
 - `correlation_stream_name`
 
@@ -192,9 +192,9 @@ The metadata's `correlation_stream_name` is the mechanism by which a subscriber 
 When a message is sent to the _afferent_ service from the coordinating service, the metadata's `correlation_stream_name` is set to a value that indicates its origin.
 
 ``` ruby
-some_message = Somenew()
+metadata = Metadata.new()
 
-some_metadata.correlation_stream_name = 'someStream-123'
+metadata.correlation_stream_name = 'someStream-123'
 ```
 
 Because the `follow` method keeps the `correlation_stream_name` with the metadata of all subsequent messages - even those from other services - the `correlation_stream_name` will be present in the event metadata that the originating, coordinating service subscribes to.
@@ -222,9 +222,9 @@ Boolean.
 | stream_name | The stream name to compare to the message metadata's `correlation_stream_name` | String |
 
 ``` ruby
-some_message = Somenew()
+metadata = Metadata.new()
 
-some_metadata.correlation_stream_name = 'someStream-123'
+metadata.correlation_stream_name = 'someStream-123'
 
 metadata.correlated?('someStream-123')
 # => true
