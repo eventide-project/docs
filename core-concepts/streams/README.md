@@ -8,7 +8,7 @@ Streams are created by writing a message to the stream. Messages are appended to
 
 ## Category streams are updated when a message is written to a stream
 
-It depends on which data storage implementation is being used. For the Postgres implementation, categories are just database queries and an index on the category section of the stream name. In the EventStore implementation, a category is a separate stream where a link to a message is written when the message is written to the steam. In both cases, category streams are basically cross-reference indexes that are written when messages are written to a stream.
+It depends on which data storage implementation is being used. For the Postgres implementation, categories are just database queries and an index on the category section of the stream name. In the EventStore implementation, a category is a separate stream where a link to a message is written when the message is written to the stream. In both cases, category streams are basically cross-reference indexes that are written when messages are written to a stream.
 
 ## Stream names must be unique
 
