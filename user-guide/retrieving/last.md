@@ -31,6 +31,7 @@ last_message.metadata.position
 
 - The `Get::Stream::Last` class returns a single [message data](/user-guide/messages-and-message-data/message-data.md) instance representing the last message in the specified stream
 - The `Get::Stream::Last` retrieves only from streams, and does not work on categories
+- The `Get::Stream::Last` can filter by a message type if the optional `type` parameter is supplied
 - A `Get::Stream::Last` can be configured with an existing [session](./session.md), or it can create a new session
 
 ## MessageStore::Postgres::Get::Stream::Last Class
@@ -51,7 +52,7 @@ A `Get::Stream::Last` can be actuated either via its class interface, as a matte
 ### Class Actuator
 
 ``` ruby
-self.call(stream_name, session: nil)
+self.call(stream_name, type: nil, session: nil)
 ```
 
 **Returns**
@@ -63,12 +64,13 @@ Instance of `MessageStore::MessageData::Read` representing the last message in t
 | Name | Description | Type |
 | --- | --- | --- |
 | stream_name | Name of stream to retrieve the last message from | String |
+| type (optional) | Message type to filter by | String |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
 ### Instance Actuator
 
 ``` ruby
-call(stream_name)
+call(stream_name, type: nil)
 ```
 
 **Parameters**
@@ -76,6 +78,7 @@ call(stream_name)
 | Name | Description | Type |
 | --- | --- | --- |
 | stream_name | Name of stream that the reader will read | String |
+| type (optional) | Message type to filter by | String |
 
 ## Constructing a Get::Stream::Last
 
