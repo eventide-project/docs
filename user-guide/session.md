@@ -103,7 +103,7 @@ If the session object already has a connection object when `connect` is invoked,
 close()
 ```
 
-## Determine if a Sessions Connection is Open
+## Determine if a Session's Connection is Open
 
 ``` ruby
 connected?
@@ -139,6 +139,42 @@ reset()
 ```
 
 See see: [https://deveiate.org/code/pg/PG/Connection.html#method-i-reset](https://deveiate.org/code/pg/PG/Connection.html#method-i-reset) for more.
+
+## Determining the Time of the Last SQL Statement Execution
+
+The session records the time of the last SQL statement sent to the database via the session.
+
+``` ruby
+executed_time()
+```
+
+**Returns**
+
+Time
+
+<div class="note custom-block">
+  <p>
+    Note that the executed time will not be set until a statement is executed. Until then, the executed time is <code>nil</code>.
+  </p>
+</div>
+
+## Determining the Elapsed Milliseconds since the Last SQL Statement Execution
+
+The session can report the elapsed time in milliseconds since the last execution of a SQL statement. The elapsed time is calculated based on the current clock time and the time of the last execution.
+
+``` ruby
+executed_time_elapsed_milliseconds()
+```
+
+**Returns**
+
+Integer
+
+<div class="note custom-block">
+  <p>
+    Note that the executed time will not be set until a statement is executed. Until then, the elapsed milliseconds is <code>nil</code>.
+  </p>
+</div>
 
 ## Constructing a Session
 
