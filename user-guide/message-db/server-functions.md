@@ -309,7 +309,8 @@ SELECT * FROM get_category_messages('someCategory', batch_size => -1);
 
 ``` sql
 get_last_stream_message(
-  stream_name varchar
+  stream_name varchar,
+  type varchar DEFAULT NULL
 )
 ```
 
@@ -322,11 +323,12 @@ Row from the [messages](/user-guide/message-db/anatomy.html#messages-table) tabl
 | Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
 | stream_name | Name of the stream to retrieve messages from | varchar | |  someStream-123 |
+| type (optional) | Message type to filter by | varchar | NULL |  SomeType |
 
 ### Usage
 
 ``` sql
-SELECT * FROM get_last_stream_message('someStream-123');
+SELECT * FROM get_last_stream_message('someStream-123', type => 'SomeType');
 ```
 
 ```
