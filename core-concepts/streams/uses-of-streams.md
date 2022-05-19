@@ -17,7 +17,7 @@ In an [event-sourced](/glossary.md#event-sourcing) system, an entity's state is 
 
 ## Entity Snapshot Storage
 
-As a performance optimization option, the current state of an entity at a point in time can be saved. This is a useful feature for optimizing performance immediately after a component is restarted and its [entity cache](/glossary.md#entity-cache) is empty. If an entity is [projected](/glossary.md#projection) from the very start of its stream, and that stream has thousands or millions of events, it could take an inordinate amount of time to retrieve the entity. The solution to this problem is the periodic persistence of the entity's state. When an entity is retrieved, the entity's cache record is initialized from the last stored snapshot of the entity, and only the most recent events are retrieved from the entity's stream and projected onto the entity.
+As a performance optimization option, the current state of an entity at a point in time can be saved. This is a useful feature for optimizing performance immediately after a component is restarted and its [entity cache](/glossary.md#entity-cache) is empty. If an entity is [projected](/glossary.md#entity-projection) from the very start of its stream, and that stream has thousands or millions of events, it could take an inordinate amount of time to retrieve the entity. The solution to this problem is the periodic persistence of the entity's state. When an entity is retrieved, the entity's cache record is initialized from the last stored snapshot of the entity, and only the most recent events are retrieved from the entity's stream and projected onto the entity.
 
 ## Consumer Position Storage
 
