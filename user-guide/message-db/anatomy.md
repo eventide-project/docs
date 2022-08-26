@@ -37,6 +37,9 @@ All message store database objects are contained within a schema named `message_
 
 A role named `message_store` is created. The `message_store` role is given the `LOGIN` attribute, but no password is assigned. A password [can be assigned to the role](https://www.postgresql.org/docs/current/sql-alterrole.html), or the `message_store` role can be [granted to another Postgres user](https://www.postgresql.org/docs/current/role-membership.html).
 
+> **Note**
+> Message DB is designed to allow for extensibility via function overriding. When granting the `message_store` role to another user you will therefore need to alter that user's `search_path` to include the `message_store` schema.
+
 ## Source Code
 
 View complete source code at: <br />
