@@ -178,7 +178,7 @@ get_category_messages(
 ### Usage
 
 ``` sql
-SELECT * FROM get_category_messages('someCategory', 1, 1000, correlation => 'someCorrelationCateogry', consumer_group_member => 1, consumer_group_size => 2, condition => 'messages.time >= current_time');
+SELECT * FROM get_category_messages('someCategory', 1, 1000, correlation => 'someCorrelationCategory', consumer_group_member => 1, consumer_group_size => 2, condition => 'messages.time >= current_time');
 ```
 
 ```
@@ -189,7 +189,7 @@ type            | SomeType
 position        | 0
 global_position | 111
 data            | {"attribute": "some value"}
-metadata        | {"correlationStreamName": "someCorrelationCateogry-123"}
+metadata        | {"correlationStreamName": "someCorrelationCategory-123"}
 time            | 2019-11-24 17:51:49.836341
 -[ RECORD 2 ]---+---------------------------------------------------------
 id              | 57894da7-680b-4483-825c-732dcf873e93
@@ -198,7 +198,7 @@ type            | SomeType
 position        | 1
 global_position | 1111
 data            | {"attribute": "some value"}
-metadata        | {"correlationStreamName": "someCorrelationCateogry-123"}
+metadata        | {"correlationStreamName": "someCorrelationCategory-123"}
 time            | 2019-11-24 17:51:49.879011
 ```
 

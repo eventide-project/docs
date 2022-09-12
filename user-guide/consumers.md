@@ -72,7 +72,7 @@ If a handler is registered more than once, the `Consumer::HandlerRegistry::Error
 Start a consumer by invoking a consumer class's `start` method, passing the category name that the consumer will read messages from.
 
 ``` ruby
-SomeConsumer.start('someCateogry')
+SomeConsumer.start('someCategory')
 ```
 
 ::: warning
@@ -111,7 +111,7 @@ Actor::Supervisor.start do
   Controls::Consumer::Example.start(
     category,
     condition: condition,
-    correlation: correlation_cateogry,
+    correlation: correlation_category,
     position_update_interval: position_update_interval
   )
 end
@@ -137,11 +137,11 @@ The correlation stream name is like a _return address_. It's a way to give the m
 
 ``` ruby{6}
 category = 'account'
-correlation_cateogry = 'fundsTransfer'
+correlation_category = 'fundsTransfer'
 
 SomeConsumer.start(
   category,
-  correlation: correlation_cateogry
+  correlation: correlation_category
 )
 ```
 
