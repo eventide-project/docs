@@ -1,51 +1,27 @@
 # Update
 
-The Message DB database comes with an update script that can be used to update a Postgres Message Store database to a Message DB database.
-
-## Installation
-
-Message DB can be installed either as a Ruby Gem, an NPM package, or can simply be cloned from the [Message DB Git repository](https://github.com/message-db/message-db).
-
-### Git Clone
-
-``` bash
-git clone git@github.com:message-db/message-db.git
-```
-
-### As a Ruby Gem
-
-``` bash
-gem install message-db
-```
-
-### As an NPM Module
-
-``` bash
-npm install @eventide/message-db
-```
-
-## Run the Update Script
-
-### Requirements
+## Preparation
 
 - Make sure that your default Postgres user has administrative privileges
 - Determine what your current installed version of the database is by running the `print-message-store-version.sh` script from the `database` directory of your Message DB installation. If you installed Message DB using NPM, the script is in the root directory of the Message DB installation, rather than the `database` directory.
 
-### Cumulative Update Scripts
+## Cumulative Update Scripts
+
+The Message DB database comes with an update scripts that can be used to update a Postgres Message Store database to a Message DB database.
 
 Message DB has a different script for each version that requires an update. Each script should be run in series until your database is up-to-date.
 
 For example, if your database is at v1 and the latest version is v3 (note: _not_ real versions), you need to run the v2 update script and then run the v3 update script.
 
-This is done to keep critical control of the database update process in your hands. There's no magic in updating a database, and it's serious enough business that the updates require human operator engagement with the process.
+This is done to keep critical control of the database update process in your hands. There's no magic in updating a database, and it's serious enough business that the updates should have human operator engagement with the process.
 
-### Update Script Directory
+## Update Script Directory
 
-Update scripts are located in the `database/update` directory of your Message DB installation.
+Update scripts are located in the `update` directory of your Message DB installation.
 
-If you installed Message DB using NPM, the script is in the root directory of the Message DB installation, rather than the `database` directory.
+The `update` directory will be in different file system locations depending on how it was installed, ie: via Git, via RubyGems, or via NPM.
 
-### From the Git Clone
+## From the Git Clone
 
 The update scripts are in the `database/update` directory of the cloned repo. Change directory to the `message-db` directory where you cloned the repo and run the script that corresponds to the needed update.
 
