@@ -349,7 +349,11 @@ metadata        | {"metaAttribute": "some meta value"}
 time            | 2019-11-24 17:46:43.608025
 ```
 
-Note: This function works only with entity streams, and does not work with category streams.
+<div class="note custom-block">
+  <p>
+    Note: This function works only with entity streams, and does not work with category streams.
+  </p>
+</div>
 
 Examples: [https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/](https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/)
 
@@ -382,7 +386,11 @@ SELECT * FROM stream_version('someStream-123');
 stream_version | 11
 ```
 
-Note: This is only for entity streams, and does not work for categories.
+<div class="note custom-block">
+  <p>
+    Note: This function works only with entity streams, and does not work with category streams.
+  </p>
+</div>
 
 Example: [https://github.com/message-db/message-db/blob/master/test/stream-version/stream-version.sh](https://github.com/message-db/message-db/blob/master/test/stream-version/stream-version.sh)
 
