@@ -349,9 +349,9 @@ metadata        | {"metaAttribute": "some meta value"}
 time            | 2019-11-24 17:46:43.608025
 ```
 
-Note: This is only for entity streams, and does not work for categories.
+Note: This function works only with entity streams, and does not work with category streams.
 
-Example: [https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/stream-name.sh](https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/stream-name.sh)
+Examples: [https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/](https://github.com/message-db/message-db/blob/master/test/get-last-stream-message/)
 
 ## Get Stream Version from a Stream
 
