@@ -316,7 +316,7 @@ get_last_stream_message(
 
 ### Returns
 
-Row from the [messages](/user-guide/message-db/anatomy.html#messages-table) table that corresponds to the highest position number in the stream.
+Row from the [messages](/user-guide/message-db/anatomy.html#messages-table) table that corresponds to the highest position number in the stream, and (optionally) corresponds to the message type specified by the `type` parameter.
 
 ### Arguments
 
@@ -324,6 +324,12 @@ Row from the [messages](/user-guide/message-db/anatomy.html#messages-table) tabl
 | --- | --- | --- | --- | --- |
 | stream_name | Name of the stream to retrieve messages from | varchar | |  someStream-123 |
 | type (optional) | Message type to filter by | varchar | NULL |  SomeType |
+
+<div class="note custom-block">
+  <p>
+    Note: The <code>type</code> argument is supported in Message DB from v1.3.0.
+  </p>
+</div>
 
 ### Usage
 
