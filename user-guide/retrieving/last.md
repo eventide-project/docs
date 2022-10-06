@@ -30,8 +30,8 @@ last_message.metadata.position
 ## Get::Stream::Last Facts
 
 - The `Get::Stream::Last` class returns a single [message data](/user-guide/messages-and-message-data/message-data.md) instance representing the last message in the specified stream
-- The `Get::Stream::Last` retrieves only from streams, and does not work on categories
-- The `Get::Stream::Last` can filter by a message type if the optional `type` parameter is supplied
+- The `Get::Stream::Last` retrieves only from entity streams, and does not work on category streams
+- The `Get::Stream::Last` can filter by a message type if the optional `type` parameter is specified
 - A `Get::Stream::Last` can be configured with an existing [session](./session.md), or it can create a new session
 
 ## MessageStore::Postgres::Get::Stream::Last Class
@@ -67,6 +67,12 @@ Instance of `MessageStore::MessageData::Read` representing the last message in t
 | type (optional) | Message type to filter by | String |
 | session | An existing [session](./session.md) object to use, rather than allowing the reader to create a new session | MessageStore::Postgres::Session |
 
+<div class="note custom-block">
+  <p>
+    Note: The <code>type</code> argument is supported in Message DB from v1.3.0.
+  </p>
+</div>
+
 ### Instance Actuator
 
 ``` ruby
@@ -79,6 +85,12 @@ call(stream_name, type: nil)
 | --- | --- | --- |
 | stream_name | Name of stream that the reader will read | String |
 | type (optional) | Message type to filter by | String |
+
+<div class="note custom-block">
+  <p>
+    Note: The <code>type</code> argument is supported in Message DB from v1.3.0.
+  </p>
+</div>
 
 ## Constructing a Get::Stream::Last
 
