@@ -52,7 +52,7 @@ A `Get::Stream::Last` can be actuated either via its class interface, as a matte
 ### Class Actuator
 
 ``` ruby
-self.call(stream_name, type: nil, session: nil)
+self.call(stream_name, type=nil, session: nil)
 ```
 
 **Returns**
@@ -76,7 +76,7 @@ Instance of `MessageStore::MessageData::Read` representing the last message in t
 ### Instance Actuator
 
 ``` ruby
-call(stream_name, type: nil)
+call(stream_name, type=nil)
 ```
 
 **Parameters**
