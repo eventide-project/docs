@@ -134,9 +134,9 @@ The following tags _may_ be applied to log messages recorded by a `Get`:
 
 See the [Get user guide](/user-guide/retrieving/batch.md) for more information on the `Get` class.
 
-## Get::Last
+## Get::Stream::Last
 
-The following tags are applied to log messages recorded by a `Get::Last`:
+The following tags are applied to log messages recorded by a `Get::Stream::Last`:
 
 | Tag | Description |
 | --- | --- |
@@ -150,7 +150,7 @@ The following tags _may_ be applied to log messages recorded by a `Get::Last`:
 | message_data | Applied to log messages that record the data content of a MessageData instance |
 | data | Applied to log messages that record the data content of a MessageData instance |
 
-See the [Get::Last user guide](/user-guide/readers/get-last.md) for more information on the `Get::Last` class.
+See the [Get::Stream::Last user guide](/user-guide/retrieving/last.md) for more information on the `Get::Stream::Last` class.
 
 ## Consumer
 
