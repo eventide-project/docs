@@ -74,7 +74,7 @@ If you prefer either a different database name, you can override the name using 
 
 ``` bash
 # Ruby
-DATABASE_NAME=some_other_database bundle exec mdb-create-sb
+DATABASE_NAME=some_other_database bundle exec mdb-create-db
 
 # Shell Script
 DATABASE_NAME=some_other_database install.sh
