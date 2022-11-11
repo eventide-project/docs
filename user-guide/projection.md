@@ -45,7 +45,7 @@ class Projection
 end
 
 class Account
-  include DataStructure::Schema
+  include Schema::DataStructure
 
   attribute :id, String
   attribute :balance, Numeric, default: 0
