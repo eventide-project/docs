@@ -83,7 +83,7 @@ Any conversion from formats that are specific to serialized JSON is done at this
 
 The `raw_data` method is invoked when an instance is being converted from an instance of the entity to a hash that can be ultimately converted into JSON text for storage in the message store.
 
-The method receives am instance of the entity and returns an hash. The hash key names will be converted to JSON camelCase before being written to the message store.
+The method receives an instance of the entity and returns an hash. The hash key names will be converted to JSON camelCase before being written to the message store.
 
 Any conversion to formats that are specific to serialized JSON is done at this stage of the transformation. For example, natural Ruby time values to the ISO 8601 format this is used for JSON message encoding.
 
