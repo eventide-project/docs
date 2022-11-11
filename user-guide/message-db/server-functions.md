@@ -157,8 +157,8 @@ get_category_messages(
   position bigint DEFAULT 0,
   batch_size bigint DEFAULT 1000,
   correlation varchar DEFAULT NULL,
-  consumer_group_member varchar DEFAULT NULL,
-  consumer_group_size varchar DEFAULT NULL,
+  consumer_group_member bigint DEFAULT NULL,
+  consumer_group_size bigint DEFAULT NULL,
   condition varchar DEFAULT NULL
 )
 ```
@@ -168,7 +168,7 @@ get_category_messages(
 | Name | Description | Type | Default | Example |
 | --- | --- | --- | --- | --- |
 | category_name | Name of the category to retrieve messages from | varchar | | someCategory |
-| position (optional) | Global position to start retrieving messages from | bigint | 1 | 11 |
+| position (optional) | Global position to start retrieving messages from | bigint | 0 | 11 |
 | batch_size (optional) | Number of messages to retrieve | bigint | 1000 | 111 |
 | correlation (optional) | Category or stream name recorded in message metadata's `correlationStreamName` attribute to filter the batch by | varchar | NULL | someCorrelationCategory |
 | consumer_group_member (optional) | The zero-based member number of an individual consumer that is participating in a consumer group | bigint | NULL | 1 |
@@ -220,7 +220,7 @@ Pub/Sub and correlation works only with the retrieval of messages from a categor
 
 The `correlationStreamName` attribute allows a component to tag an outbound message with its origin. And then later, the originating component can subscribe to other components' events that carry the origin metadata.
 
-Before the source component sends the message to the receiving component, the source component assigns it's own stream name to the message metadata's `correlation_stream_name` attribute. That attribute is carried from message to message through messaging workflows.
+Before the source component sends the message to the receiving component, the source component assigns it's own stream name to the message metadata's `correlationStreamName` attribute. That attribute is carried from message to message through messaging workflows.
 
 ``` sql
 SELECT write_message('a11e9022-e741-4450-bf9c-c4cc5ddb6ea3', 'otherComponent-123', 'SomeMessageType', '{"someAttribute": "some value"}', '{"correlationStreamName": "thisComponent-789"}');
