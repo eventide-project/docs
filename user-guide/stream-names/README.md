@@ -90,7 +90,7 @@ The ID itself can have `-` characters in it. Only the first `-` character in a s
 
 ### Compound Entity IDs
 
-A stream name can have more than on ID. The `+` symbol joins individual IDs when there are more than one.
+A stream name can have more than one ID. The `+` symbol joins individual IDs when there are more than one.
 
 For example, a stream name of the category `someStream` that has the IDs `123` and `abc` would be `someStream-123+abc`.
 
