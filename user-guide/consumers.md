@@ -375,14 +375,14 @@ In general, it's not necessary to construct a consumer. The general use case of 
 A consumer can be constructed with its `build` method.
 
 ``` ruby
-self.build(stream_name, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, condition: nil, settings: nil)
+self.build(category, poll_interval_milliseconds: 100, batch_size: 1000, position_update_interval: 100, identifier: nil, condition: nil, settings: nil)
 ```
 
 **Parameters**
 
 | Name | Description | Type |
 | --- | --- | --- |
-| stream_name | The name of the stream that the consumer will read | String |
+| category | The name of the category that the consumer will read | String |
 | poll_interval_milliseconds | The frequency, in milliseconds, with which the consumer polls the message store for new messages | Integer |
 | batch_size | The number of messages to retrieve in each batch fetched from the message store | Integer |
 | position_update_interval | The frequency with which progress that the consumer has made through the input stream is recorded by the [position store](#position-store) | Integer |
