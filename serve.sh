@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-vuepress dev
+node_modules/.bin/vuepress dev

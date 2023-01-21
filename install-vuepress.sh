@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-npm install -g vuepress
+npm install vuepress@2.0.0-beta.60 @vuepress/plugin-search@next
