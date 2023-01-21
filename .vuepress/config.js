@@ -8,6 +8,8 @@ export default {
   plugins: [searchPlugin()],
   theme: defaultTheme({
     activeHeaderLinks: true,
+    colorMode: 'light',
+    colorModeSwitch: false,
     navbar: [
       { text: 'Home', link: '/' },
       {
