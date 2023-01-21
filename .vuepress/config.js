@@ -1,19 +1,21 @@
-module.exports = {
+import { defaultTheme } from '@vuepress/theme-default';
+
+export default {
   title: 'Eventide',
   description: 'Pub/Sub, Event Sourcing, Evented Microservices',
   dest: './_build',
-  themeConfig: {
+  theme: defaultTheme({
     activeHeaderLinks: true,
-    nav: [
+    navbar: [
       { text: 'Home', link: '/' },
       {
-        text: 'Setup', items: [
+        text: 'Setup', children: [
           { text: 'Postgres', link: '/setup/postgres.md' },
           { text: 'EventStore', link: '/setup/eventstore.md' }
         ]
       },
       {
-        text: 'Core Concepts', items: [
+        text: 'Core Concepts', children: [
           { text: 'Streams', link: '/core-concepts/streams/' },
           { text: 'Services', link: '/core-concepts/services/' },
           { text: 'Messages and Messaging', link: '/core-concepts/messages-and-messaging/' },
@@ -22,7 +24,7 @@ module.exports = {
         ]
       },
       {
-        text: 'User Guide', items: [
+        text: 'User Guide', children: [
           { text: 'Message DB', link: '/user-guide/message-db/' },
           { text: 'Handlers', link: '/user-guide/handlers.md' },
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
@@ -45,7 +47,7 @@ module.exports = {
         ]
       },
       {
-        text: 'Examples', items: [
+        text: 'Examples', children: [
           { text: 'Overview', link: '/examples/' },
           { text: 'Service at a Glance', link: '/examples/at-a-glance.md' },
           { text: 'Quickstart', link: '/examples/quickstart.md' },
@@ -208,5 +210,5 @@ module.exports = {
         }
       ]
     }
-  }
+  })
 }

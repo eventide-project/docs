@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-vuepress build
+node_modules/.bin/vuepress build
