@@ -1,9 +1,11 @@
 import { defaultTheme } from '@vuepress/theme-default';
+import { searchPlugin } from '@vuepress/plugin-search';
 
 export default {
   title: 'Eventide',
   description: 'Pub/Sub, Event Sourcing, Evented Microservices',
   dest: './_build',
+  plugins: [searchPlugin()],
   theme: defaultTheme({
     activeHeaderLinks: true,
     navbar: [
