@@ -1,6 +1,7 @@
 ---
 home: true
 heroImage: /eventide-icon-132.png
+heroHeight: 131
 description: 'Pub/Sub, Event Sourcing, Evented Microservices'
 actionText: Get Started →
 actionLink: /examples/quickstart.md
