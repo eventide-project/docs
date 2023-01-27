@@ -1,6 +1,6 @@
 ---
 sidebar: auto
-sidebarDepth: 0
+sidebarDepth: 1
 ---
 
 # Handlers

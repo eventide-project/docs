@@ -1,6 +1,6 @@
 ---
 sidebar: auto
-sidebarDepth: 1
+sidebarDepth: 2
 ---
 
 # The Doctrine of Useful Objects
