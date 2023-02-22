@@ -77,7 +77,7 @@ export default {
           title: 'Streams',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'reading-and-writing.md',
             'uses-of-streams.md',
             'stream-names.md',
@@ -90,7 +90,7 @@ export default {
           title: 'Services',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'handlers.md',
             'entities.md',
             'projections.md',
@@ -105,7 +105,7 @@ export default {
           title: 'Messages and Messaging',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'messaging.md',
             'commands-and-events.md'
           ]
@@ -116,7 +116,7 @@ export default {
           title: 'Message DB',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'server-functions.md',
             'anatomy.md',
             'tools.md',
@@ -130,7 +130,7 @@ export default {
           title: 'Stream Names',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'messaging-stream-name.md',
             'messaging-category.md',
             'message-store-stream-name.md'
@@ -142,7 +142,7 @@ export default {
           title: 'Messages and Message Data',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'messages.md',
             'metadata.md',
             'message-data.md'
@@ -154,7 +154,7 @@ export default {
           title: 'Writing Messages',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'message-writer.md',
             'message-data-writer.md',
             'atomic-batches.md',
@@ -169,7 +169,7 @@ export default {
           title: 'Retrieving Messages',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'batch.md',
             'last.md'
           ]
@@ -180,7 +180,7 @@ export default {
           title: 'Entity Store, Caching, Snapshotting',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'entity-cache.md',
             'snapshotting.md',
             'substitute.md'
@@ -192,7 +192,7 @@ export default {
           title: 'Logging',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'log-tags.md'
           ]
         }
@@ -202,7 +202,7 @@ export default {
           title: 'Test Fixtures',
           collapsable: false,
           children: [
-            '',
+            'README.md',
             'handler-fixture.md',
             'message-fixture.md',
             'message-metadata-fixture.md',
