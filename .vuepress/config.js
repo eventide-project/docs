@@ -24,7 +24,7 @@ module.exports = {
       {
         text: 'User Guide', items: [
           { text: 'Message DB', link: '/user-guide/message-db/' },
-          { text: 'Handlers', link: '/user-guide/handlers.md' },
+          { text: 'Message Handlers', link: '/user-guide/message-handlers.md' },
           { text: 'Messages and Message Data', link: '/user-guide/messages-and-message-data/' },
           { text: 'Stream Names', link: '/user-guide/stream-names/' },
           { text: 'Entity Projection', link: '/user-guide/projection.md' },
@@ -85,7 +85,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'handlers.md',
+            'message-handlers.md',
             'entities.md',
             'projections.md',
             'stores.md',

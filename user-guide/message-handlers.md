@@ -3,9 +3,9 @@ sidebar: auto
 sidebarDepth: 0
 ---
 
-# Handlers
+# Message Handlers
 
-A handler is the entry point of a message into the business logic of a service. It receives instructions from other services, apps, and clients in the form of [commands](/glossary.md#command) and [events](/glossary.md#event).
+A message handler (or just "handler") is the entry point of a message into the business logic of a service. It receives instructions from other services, apps, and clients in the form of [commands](/glossary.md#command) and [events](/glossary.md#event).
 
 ## Example
 

@@ -2,9 +2,9 @@
 sidebarDepth: 0
 ---
 
-# Handlers
+# Message Handlers
 
-[Messages](/glossary.md#message) that are sent to a service are processed by the service's _handlers_. They are the business logic, combined with the service's [entity](./entities.md) logic.
+[Messages](/glossary.md#message) that are sent to a service are processed by the service's _message handlers_ (or just "handlers"). They are the business logic, combined with the service's [entity](./entities.md) logic.
 
 A handler is the entry point to a service. It receives instructions from other services, apps, and clients in the form of [commands](/glossary.md#command) and [events](/glossary.md#event). You might think of them as controllers in MVC terms, but that's a very loose comparison.
 
