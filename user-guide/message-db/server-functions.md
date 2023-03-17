@@ -605,7 +605,7 @@ SELECT message_store_version();
 ```
  message_store_version
 -----------------------
- 2.0.0.0
+ 1.2.3
 ```
 
 The version number will change when the database schema changes. A database schema change could be a change to the `messages` table structure, changes to Postgres server functions, types, indexes, users, or permissions. The version number follows the [SemVer](https://semver.org/) scheme for the last three numbers in the version (the first number is the product generation, and implies a major version change).
