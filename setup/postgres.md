@@ -11,8 +11,6 @@ sidebarDepth: 0
 - Postgres (minimum version: 9.5)
 - GCC (required for installing the PG gem)
 
-Note: Some specialized Linux distributions may not include the `uuidgen` utility. In rare cases, you may need to install `uuidgen` using your package installation manager.
-
 ## Install the Eventide Postgres Gem
 
 ### Using RubyGems Directly
