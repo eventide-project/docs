@@ -19,14 +19,7 @@ settings = MessageStore::Postgres::Settings.build
    "host"=>"localhost",
    "hostaddr"=>"127.0.0.1",
    "port"=>5432,
-   "user"=>"message_store",
-   "password"=>nil,
-   "connect_timeout"=>nil,
-   "options"=>nil,
-   "sslmode"=>nil,
-   "krbsrvname"=>nil,
-   "gsslib"=>nil,
-   "service"=>nil}>
+   "user"=>"message_store"}>
 ```
 
 ## Settings Facts
@@ -50,18 +43,44 @@ The `Settings` class provides:
 
 The `Settings` class provides the following settings attributes for controlling the database connection:
 
-- `dbname`
 - `host`
 - `hostaddr`
 - `port`
+- `dbname`
 - `user`
 - `password`
+- `passfile`
+- `channel_binding`
 - `connect_timeout`
+- `client_encoding`
 - `options`
+- `application_name`
+- `fallback_application_name`
+- `keepalives`
+- `keepalives_idle`
+- `keepalives_interval`
+- `keepalives_count`
+- `tcp_user_timeout`
+- `replication`
+- `database`
+- `gssencmode`
 - `sslmode`
+- `requiressl`
+- `sslcompression`
+- `sslcert`
+- `sslkey`
+- `sslpassword`
+- `sslrootcert`
+- `sslcrl`
+- `sslcrldir`
+- `sslsni`
+- `requirepeer`
+- `ssl_min_protocol_version`
+- `ssl_max_protocol_version`
 - `krbsrvname`
 - `gsslib`
 - `service`
+- `target_session_attrs`
 
 For more information on Postgres connection options, see Postgres' connection documentation: [https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-PARAMKEYWORDS)
 
@@ -70,7 +89,7 @@ The settings attributes reflect the attributes of the `PG` library's `Connection
 ## Settings File
 
 ::: warning
-The settings file has no role in the Message DB [installation tools](/user-guide/message-db/install.md) or [administrative tools](/user-guide/message-db/tools.md). It is for the runtime configuration of an applicative connection to the message store. Message DB installation and administrative tools leverage [standard Postgres tools](https://www.postgresql.org/docs/current/app-psql.html) and their own connection configuration [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) and [optional password files](https://www.postgresql.org/docs/current/libpq-pgpass.html). These are completely independent of Eventide, and have no bearing on Eventide's own runtime database connection settings.
+The settings file has no effect on the Message DB [installation tools](/user-guide/message-db/install.md) or [administrative tools](/user-guide/message-db/tools.md). It is for the runtime configuration of an applicative connection to the message store. Message DB installation and administrative tools leverage [standard Postgres tools](https://www.postgresql.org/docs/current/app-psql.html) and their own connection configuration [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) and [optional password files](https://www.postgresql.org/docs/current/libpq-pgpass.html). These are completely independent of Eventide, and have no bearing on Eventide's own runtime database connection settings.
 :::
 
 By default, the connection data is stored in a file located at `{component_root}/settings/message_store_postgres.json`
