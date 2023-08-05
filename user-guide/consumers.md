@@ -252,17 +252,13 @@ Usage of this feature should be treated with caution. While this feature _can_ b
 
 ## Polling
 
-A consumer starts polling the message store for new messages if a fetch of a batch returns no messages.
+A consumer starts polling the message store for new messages if a fetch of a batch returns no messages. As long as each query for messages retrieves messages, the consumer won't insert a delay between message retrieval queries.
 
-A consumer's `poll_interval_milliseconds` controls the delay between each fetch issued by the consumer. The default value of the interval is 100 milliseconds.
+In the event that the consumer's query for messages doesn't retrieve messages, the consumer will delay before the next query. The amount of time that the consumer delays is specified by the `poll_interval_milliseconds` parameter. The default value of the interval is 100 milliseconds.
 
-The fetch is executed once per polling interval rather than executing immediately at the conclusion of the previous cycle.
+By inserting a delay into the retrieval cycle when a query returns no messages, the consumer is prevented from flooding the message store database with requests for messages. The polling interval is used to relieve pressure on the message store when a category is not continually saturated with messages waiting to be processed.
 
-If the polling interval is `nil`, there is no delay between fetches. The lower the value of the polling interval, the greater the number of attempts to fetch batches from the message store. This value should be carefully tuned to balance the need for low-latency and the need to not flood the message store server with requests.
-
-The polling interval can be used to relieve pressure on the message store server when a stream is not continually saturated with messages waiting to be processed, and the consumer begins polling.
-
-If the fetch execution time is greater than the polling interval time, the fetch is re-executed immediately at the conclusion of the previous fetch.
+If the polling interval is `nil`, there is no delay between fetches. The lower the value of the polling interval, the greater the number of attempts to fetch batches from the message store. This value should be carefully tuned to balance the need for low-latency and the need to not flood the message store with requests.
 
 For more details on polling, see the [`Poll` library](https://github.com/eventide-project/poll)
 
