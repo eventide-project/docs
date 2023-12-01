@@ -131,7 +131,7 @@ _Note: This example is abridged for brevity. An unabridged version is included w
 
 ## Unsupported
 
-The handler fixture doesn't support verifying the writing of a batch of messages of the same message type. These kinds of scenarios still have to be tested explicitly. However, the handler fixture can still be used to actuate the handler, and other fixtures in the [full set of test fixtures provided](./#fixtures) can be used to implements more elaborate test scenarios.
+The handler fixture doesn't support verifying the writing of a batch of messages of the same message type. These kinds of scenarios still have to be tested explicitly. However, the handler fixture can still be used to actuate the handler, and other fixtures in the [full set of test fixtures provided](./#fixtures) can be used to implement more elaborate test scenarios.
 
 ## Messaging::Fixtures::Handler Class
 
