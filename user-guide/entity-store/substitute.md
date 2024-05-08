@@ -84,7 +84,7 @@ The [cache record](./entity-cache.md#cache-record) that was created or updated.
 | Name | Description | Type |
 | --- | --- | --- |
 | id | The ID of the entity being added | String |
-| entity | The ID of the entity being added | Object |
+| entity | The entity object being added | Object |
 | version | The stream version of the entity added | Integer |
 
 ## Retrieving an Entity
