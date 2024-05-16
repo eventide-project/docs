@@ -58,8 +58,10 @@ context "Message Fixture" do
 
     message.assert_attributes_copied(attribute_names)
 
-    message.assert_attribute_value(:processed_time, processed_time)
-    message.assert_attribute_value(:sequence, sequence)
+    message.assert_attribute_values(
+      processed_time: processed_time,
+      sequence: sequence
+    )
 
     message.assert_follows
 
@@ -231,6 +233,7 @@ The `message_fixture` argument is passed to the `test_block` if the block is giv
 The following methods are available from the `message_fixture` block parameter, and on an instance of `Messaging::Fixtures::Message`:
 
 - assert_attribute_value
+- assert_attribute_values
 - assert_attributes_assigned
 - assert_attributes_copied
 - assert_follows
@@ -252,6 +255,25 @@ message_fixture.assert_attribute_value(:processed_time, processed_time)
 
 | name | Name of the message attribute to test | Symbol |
 | value | Expected value to compare against the message attribute's value | String |
+
+## Test Multiple Attributes' Values
+
+``` ruby
+assert_attribute_values(attributes)
+```
+
+**Example**
+
+``` ruby
+message_fixture.assert_attribute_values(
+  processed_time: processed_time,
+  sequence: sequence
+)
+```
+
+**Parameters**
+
+| attributes | Attribute names and values | Hash |
 
 ## Test That the Message's Attributes Are Copied from a Source Message
 
