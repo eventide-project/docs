@@ -253,6 +253,8 @@ message_fixture.assert_attribute_value(:processed_time, processed_time)
 
 **Parameters**
 
+| Name | Description | Type |
+| --- | --- | --- |
 | name | Name of the message attribute to test | Symbol |
 | value | Expected value to compare against the message attribute's value | String |
 
@@ -273,6 +275,8 @@ message_fixture.assert_attribute_values(
 
 **Parameters**
 
+| Name | Description | Type |
+| --- | --- | --- |
 | attributes | Attribute names and values | Hash |
 
 ## Test That the Message's Attributes Are Copied from a Source Message
@@ -301,8 +305,10 @@ attribute_names = [
 message_fixture.assert_attributes_copied(attribute_names)
 ```
 
-**Parameters***
+**Parameters**
 
+| Name | Description | Type |
+| --- | --- | --- |
 | attribute_names | Optional list of attribute names to compare, or maps of event attribute name to entity attribute name | Array of Symbol or Hash |
 
 ## Test That a Message Follows a Source Message
