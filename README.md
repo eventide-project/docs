@@ -1,14 +1,14 @@
 ---
 home: true
 heroImage: /eventide-icon-132.png
-description: 'Pub/Sub, Event Sourcing, Evented Microservices'
+description: 'Evented Autonomous Components'
 actionText: Get Started →
 actionLink: /examples/quickstart.md
 features:
 - title: Pub/Sub
   details: Pub/Sub services based on persistent event streams with support for event sourcing, parallelization, and a hosting runtime
-- title: Microservices
-  details: Message-based services hosted in any number of operating system processes or machines, with actor-based pub-sub consumers, consumer groups, message dispatching, and handlers
+- title: Autonomous Components
+  details: Message-based components hosted in any number of operating system processes or servers, with actor-based pub-sub consumers, consumer groups, message dispatching, and message handlers
 - title: Event Sourcing
   details: Business logic entities projected from event streams with caching and snapshotting
 footer: MIT Licensed | Copyright © 2015-present The Eventide Project
