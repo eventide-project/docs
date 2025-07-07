@@ -2,4 +2,3 @@ node_modules
 *lock*
 _build
 diagrams/handler-workflow.png
-package.json

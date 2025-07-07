@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "vuepress": "1.9.10",
+    "@vuepress/plugin-search": "1.9.10",
+    "vue": "2.7.16"
+  }
+}
