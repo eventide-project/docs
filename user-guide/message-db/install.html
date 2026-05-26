@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Installation | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/46.da08c7ea.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link router-link-active">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link router-link-active">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Message DB</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/message-db/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/user-guide/message-db/server-functions.html" class="sidebar-link">Server Functions</a></li><li><a href="/user-guide/message-db/anatomy.html" class="sidebar-link">Anatomy of the Message Store</a></li><li><a href="/user-guide/message-db/tools.html" class="sidebar-link">Database Administration Tools</a></li><li><a href="/user-guide/message-db/install.html" aria-current="page" class="active sidebar-link">Installation</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/message-db/install.html#run-the-database-installation-script" class="sidebar-link">Run the Database Installation Script</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/install.html#database-name" class="sidebar-link">Database Name</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/install.html#disable-database-creation" class="sidebar-link">Disable Database Creation</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/install.html#test-the-installation-optional" class="sidebar-link">Test the Installation (Optional)</a></li></ul></li><li><a href="/user-guide/message-db/update.html" class="sidebar-link">Update</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="installation"><a href="#installation" class="header-anchor">#</a> Installation</h1> <p>Running the database installation script creates the database, schema, table, indexes, functions, views, types, a user role, and limit the user's privileges to the message store's public interface.</p> <p>Message DB can be installed either as a Ruby Gem, an NPM package, or can simply be cloned from the <a href="https://github.com/message-db/message-db" target="_blank" rel="noopener noreferrer">Message DB Git repository<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <h3 id="as-a-ruby-gem"><a href="#as-a-ruby-gem" class="header-anchor">#</a> As a Ruby Gem</h3> <p>The database creation tool is installed via the <code>message-db</code> gem.</p> <p>This gem can be installed on its own, and it is also included when installing the Eventide Postgres stack gem, <code>eventide-postgres</code>.</p> <p>See the <a href="/setup/postgres.html">setup</a> instructions for more info on installing the gems.</p> <div class="language-bash extra-class"><pre class="language-bash"><code>gem <span class="token function">install</span> message-db
+</code></pre></div><h3 id="as-an-npm-module"><a href="#as-an-npm-module" class="header-anchor">#</a> As an NPM Module</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> @eventide/message-db
+</code></pre></div><h3 id="git-clone"><a href="#git-clone" class="header-anchor">#</a> Git Clone</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">git</span> clone git@github.com:message-db/message-db.git
+</code></pre></div><h2 id="run-the-database-installation-script"><a href="#run-the-database-installation-script" class="header-anchor">#</a> Run the Database Installation Script</h2> <h3 id="requirements"><a href="#requirements" class="header-anchor">#</a> Requirements</h3> <p>Make sure that your default Postgres user has administrative privileges.</p> <h3 id="from-the-ruby-executable"><a href="#from-the-ruby-executable" class="header-anchor">#</a> From the Ruby Executable</h3> <p>If you installed Message DB via RubyGems, a database update Ruby executable will be installed with the <code>message-db</code> gem.</p> <p>The executable will be in the gem executable search path and may also be executed through bundler:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>bundle <span class="token builtin class-name">exec</span> mdb-create-db
+</code></pre></div><p>For more information about Ruby executables installed with the <code>message-db</code> Ruby Gem, see the Eventide docs on the administration tools that are bundled with the gem:</p> <p><a href="http://docs.eventide-project.org/user-guide/message-db/tools.html" target="_blank" rel="noopener noreferrer">http://docs.eventide-project.org/user-guide/message-db/tools.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="from-the-git-clone"><a href="#from-the-git-clone" class="header-anchor">#</a> From the Git Clone</h3> <p>The installation script is in the <code>database</code> directory of the cloned repo. Change directory to the <code>message-db</code> directory where you cloned the repo, and run the script:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>database/install.sh
+</code></pre></div><h3 id="from-the-npm-module"><a href="#from-the-npm-module" class="header-anchor">#</a> From the NPM Module</h3> <p>The <code>message-db</code> NPM module doesn't ship with any special tooling other than the bundled scripts.</p> <p>To execute the update script, navigate to the directory where the <code>message-db</code> module is installed and run the script:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>install.sh
+</code></pre></div><h2 id="database-name"><a href="#database-name" class="header-anchor">#</a> Database Name</h2> <p>By default, the database creation tool will create a database named <code>message_store</code>.</p> <p>If you prefer either a different database name, you can override the name using the <code>DATABASE_NAME</code> environment variable.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Ruby</span>
+<span class="token assign-left variable">DATABASE_NAME</span><span class="token operator">=</span>some_other_database bundle <span class="token builtin class-name">exec</span> mdb-create-db
+
+<span class="token comment"># Shell Script</span>
+<span class="token assign-left variable">DATABASE_NAME</span><span class="token operator">=</span>some_other_database install.sh
+</code></pre></div><h2 id="disable-database-creation"><a href="#disable-database-creation" class="header-anchor">#</a> Disable Database Creation</h2> <p>By default, the installation script will create the database.</p> <p>If you prefer to create the database by some other means, you can deactivate the database creation using the <code>CREATE_DATABASE</code> environment variable.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Ruby</span>
+<span class="token assign-left variable">CREATE_DATABASE</span><span class="token operator">=</span>off bundle <span class="token builtin class-name">exec</span> mdb-create-sb
+
+<span class="token comment"># Shell Script</span>
+<span class="token assign-left variable">CREATE_DATABASE</span><span class="token operator">=</span>off install.sh
+</code></pre></div><h2 id="test-the-installation-optional"><a href="#test-the-installation-optional" class="header-anchor">#</a> Test the Installation (Optional)</h2> <p>Once the database has been created, a test message can be written to it to prove that the installation is correct.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># Ruby</span>
+bundle <span class="token builtin class-name">exec</span> mdb-write-test-message
+
+<span class="token comment"># Shell Script</span>
+write-test-message.sh
+</code></pre></div><p>The output will be:</p> <div class="language- extra-class"><pre class="language-text"><code>Writing 1 Messages to Stream testStream-ae61d996-9f2c-4b25-a2bd-440432007fda
+= = =
+
+(DATABASE_USER is not set)
+Database user is: message_store
+(DATABASE_NAME is not set)
+Database name is: message_store
+
+Instance: 1, Message ID: f59c7068-bb19-4182-b84b-9c29ff07ad33
+
+-[ RECORD 1 ]---+------------------------------------------------
+id              | f59c7068-bb19-4182-b84b-9c29ff07ad33
+stream_name     | testStream-ae61d996-9f2c-4b25-a2bd-440432007fda
+type            | SomeType
+position        | 0
+global_position | 64
+data            | {&quot;attribute&quot;: &quot;some value&quot;}
+metadata        | {&quot;metaAttribute&quot;: &quot;some meta value&quot;}
+time            | 2018-06-21 20:17:46.323037
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/user-guide/message-db/tools.html" class="prev">
+        Database Administration Tools
+      </a></span> <span class="next"><a href="/user-guide/message-db/update.html">
+        Update
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/46.da08c7ea.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Schema Assignment Fixture | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/70.97bc1a7e.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link router-link-active">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link router-link-active">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Test Fixtures</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/test-fixtures/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/user-guide/test-fixtures/handler-fixture.html" class="sidebar-link">Handler Fixture</a></li><li><a href="/user-guide/test-fixtures/message-fixture.html" class="sidebar-link">Message Fixture</a></li><li><a href="/user-guide/test-fixtures/message-metadata-fixture.html" class="sidebar-link">Message Metadata Fixture</a></li><li><a href="/user-guide/test-fixtures/writer-fixture.html" class="sidebar-link">Writer Fixture</a></li><li><a href="/user-guide/test-fixtures/projection-fixture.html" class="sidebar-link">Projection Fixture</a></li><li><a href="/user-guide/test-fixtures/schema-equality-fixture.html" class="sidebar-link">Schema Equality Fixture</a></li><li><a href="/user-guide/test-fixtures/schema-assignment-fixture.html" aria-current="page" class="active sidebar-link">Schema Assignment Fixture</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#example" class="sidebar-link">Example</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#schema-assignment-fixture-facts" class="sidebar-link">Schema Assignment Fixture Facts</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#schema-fixtures-assignment-class" class="sidebar-link">Schema::Fixtures::Assignment Class</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#running-the-fixture" class="sidebar-link">Running the Fixture</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#schema-assignment-fixture-output" class="sidebar-link">Schema Assignment Fixture Output</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#detailed-output" class="sidebar-link">Detailed Output</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#actuating-the-assignment-fixture" class="sidebar-link">Actuating the Assignment Fixture</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#limiting-the-test-to-a-subset-of-attributes" class="sidebar-link">Limiting the Test to a Subset of Attributes</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/schema-assignment-fixture.html#determination-of-assignment-and-default-values" class="sidebar-link">Determination of Assignment and Default Values</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="schema-assignment-fixture"><a href="#schema-assignment-fixture" class="header-anchor">#</a> Schema Assignment Fixture</h1> <p>The schema assignment fixture tests that a schema instance's attributes have been assigned a value. The fixture is used to make sure that a schema object's attributes have been mutated in the course of some procedure.</p> <p>If an attribute is declared with a default value, then the attribute must have been assigned another value for it to be considered mutated.</p> <p>By default, all of schema object's attributes are asserted to have been mutated. An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be compared.</p> <h2 id="example"><a href="#example" class="header-anchor">#</a> Example</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">Something</span>
+  <span class="token keyword">include</span> Schema
+
+  attribute <span class="token symbol">:some_attribute</span>
+  attribute <span class="token symbol">:some_other_attribute</span>
+<span class="token keyword">end</span>
+
+context <span class="token string-literal"><span class="token string">'Assigned'</span></span> <span class="token keyword">do</span>
+  example <span class="token operator">=</span> <span class="token class-name">Something</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+  example<span class="token punctuation">.</span>some_attribute <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'some value'</span></span>
+  example<span class="token punctuation">.</span>some_other_attribute <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'some other value'</span></span>
+
+  fixture<span class="token punctuation">(</span>Assignment<span class="token punctuation">,</span> example<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre></div><h2 id="schema-assignment-fixture-facts"><a href="#schema-assignment-fixture-facts" class="header-anchor">#</a> Schema Assignment Fixture Facts</h2> <ul><li>The principle concern of a schema assignment fixture test is the assurance that a schema object's attributes have been mutated</li> <li>An optional list of attribute names can given to limit the attribute assignment tests to a subset of attributes</li></ul> <h2 id="schema-fixtures-assignment-class"><a href="#schema-fixtures-assignment-class" class="header-anchor">#</a> Schema::Fixtures::Assignment Class</h2> <p>The <code>Assignment</code> class is a concrete class from the <a href="/user-guide/libraries.html#schema-fixtures"><code>Schema::Fixtures</code> library</a> and namespace.</p> <p>The <code>Schema::Fixtures::Assignment</code> class provides:</p> <ul><li>The instance actuator <code>.()</code> (or <code>call</code> method) that begins execution of the fixture and the testing of schema attribute assignment</li></ul> <h2 id="running-the-fixture"><a href="#running-the-fixture" class="header-anchor">#</a> Running the Fixture</h2> <p>Running the test is no different than <a href="http://test-bench.software/user-guide/running-tests.html" target="_blank" rel="noopener noreferrer">running any TestBench test<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <p>For example, given a test file named <code>schema_assignment.rb</code> that uses the schema assignment fixture, in a directory named <code>test</code>, the test is executed by passing the file name to the <code>ruby</code> executable.</p> <div class="language-bash extra-class"><pre class="language-bash"><code>ruby test/schema_assignment.rb
+</code></pre></div><p>The test script and the fixture work together as if they are part of the same test context, preserving output nesting between the test script file and the test fixture.</p> <h2 id="schema-assignment-fixture-output"><a href="#schema-assignment-fixture-output" class="header-anchor">#</a> Schema Assignment Fixture Output</h2> <div class="language-text extra-class"><pre class="language-text"><code>Assigned
+  Schema Assignment: Example
+    Attributes
+      some_attribute
+      some_other_attribute
+</code></pre></div><h2 id="detailed-output"><a href="#detailed-output" class="header-anchor">#</a> Detailed Output</h2> <p>In the event of any error or failed assertion, the test output will include additional detailed output that can be useful in understanding the context of the failure and the state of the fixture itself and the objects that it's testing.</p> <p>The detailed output can also be printed by setting the <code>TEST_BENCH_DETAIL</code> environment variable to <code>on</code>.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">TEST_BENCH_DETAIL</span><span class="token operator">=</span>on ruby test/schema_assignment.rb
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>Assigned
+  Schema Assignment: Example
+    Class: Something::Example
+    Attributes
+      some_attribute
+        Default Value: nil
+        Assigned Value: &quot;some value&quot;
+      some_other_attribute
+        Default Value: nil
+        Assigned Value: &quot;some other value&quot;
+</code></pre></div><h2 id="actuating-the-assignment-fixture"><a href="#actuating-the-assignment-fixture" class="header-anchor">#</a> Actuating the Assignment Fixture</h2> <p>The fixture is executed using TestBench's <code>fixture</code> method.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>fixture<span class="token punctuation">(</span>Schema<span class="token double-colon punctuation">::</span>Fixtures<span class="token double-colon punctuation">::</span>Assignment<span class="token punctuation">,</span> schema<span class="token punctuation">,</span> attribute_names<span class="token operator">=</span><span class="token keyword">nil</span><span class="token punctuation">)</span>
+</code></pre></div><p>The first argument sent to the <code>fixture</code> method is always the <code>Schema::Fixtures::Assignment</code> class. Subsequent arguments are the specific construction parameters of the assignment fixture.</p> <p>When the list of attribute names is not provided, it defaults to the list of all of the names of the schema object's attributes.</p> <p><strong>Parameters</strong></p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>schema</td> <td>The schema object whose attributes will be tested for assignment</td> <td>Schema</td></tr> <tr><td>attribute_names</td> <td>Optional list of attribute names to check for assignment</td> <td>Array of Symbol</td></tr></tbody></table> <h2 id="limiting-the-test-to-a-subset-of-attributes"><a href="#limiting-the-test-to-a-subset-of-attributes" class="header-anchor">#</a> Limiting the Test to a Subset of Attributes</h2> <p>The Assignment fixture can limit the attribute tests to a subset of attributes by specifying a list of attribute names.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>context <span class="token string-literal"><span class="token string">'Equal'</span></span> <span class="token keyword">do</span>
+  example <span class="token operator">=</span> Something<span class="token double-colon punctuation">::</span><span class="token class-name">Example</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+  example<span class="token punctuation">.</span>some_attribute <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'some value'</span></span>
+
+  attribute_names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token symbol">:some_attribute</span><span class="token punctuation">]</span>
+
+  fixture<span class="token punctuation">(</span>Assignment<span class="token punctuation">,</span> example<span class="token punctuation">,</span> attribute_names<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>Assigned
+  Schema Assignment: Example
+    Attributes
+      some_attribute
+</code></pre></div><h2 id="determination-of-assignment-and-default-values"><a href="#determination-of-assignment-and-default-values" class="header-anchor">#</a> Determination of Assignment and Default Values</h2> <p>An attribute is determined to have been assigned a value if the attribute's value is no longer equal to its default value.</p> <p>An attribute's default value may be defined as something other than <code>nil</code>.</p> <p>If an attribute has been explicitly assigned a value that is equal to its default value, it's considered to have not been assigned at all, which is considered a failed assignment test.</p> <p>In order for assignment tests to pass, the value of attributes have to be other than their default values.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">module</span> <span class="token class-name">DefaultValue</span>
+  <span class="token keyword">class</span> <span class="token class-name">Example</span>
+    <span class="token keyword">include</span> <span class="token double-colon punctuation">::</span>Schema
+
+    attribute <span class="token symbol">:some_attribute</span><span class="token punctuation">,</span> <span class="token symbol">default</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span> <span class="token string-literal"><span class="token string">'some default value'</span></span> <span class="token punctuation">}</span>
+    attribute <span class="token symbol">:some_other_attribute</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+context <span class="token string-literal"><span class="token string">'Assigned'</span></span> <span class="token keyword">do</span>
+  example <span class="token operator">=</span> DefaultValue<span class="token double-colon punctuation">::</span><span class="token class-name">Example</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+  example<span class="token punctuation">.</span>some_attribute <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'some default value'</span></span>
+  example<span class="token punctuation">.</span>some_other_attribute <span class="token operator">=</span> <span class="token keyword">nil</span>
+
+  fixture<span class="token punctuation">(</span>Assignment<span class="token punctuation">,</span> example<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>Assigned
+  Schema Assignment: Example
+    Class: DefaultValue::Example
+    Attributes
+      some_attribute
+        Default Value: 'some default value'
+        Assigned Value: 'some default value'
+        /schema-fixtures/lib/schema/fixtures/assignment.rb:30:in `block (4 levels) in call': Assertion failed (TestBench::Fixture::AssertionFailure)
+      some_other_attribute
+        Default Value: nil
+        Assigned Value: nil
+        /schema-fixtures/lib/schema/fixtures/assignment.rb:30:in `block (4 levels) in call': Assertion failed (TestBench::Fixture::AssertionFailure)
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/user-guide/test-fixtures/schema-equality-fixture.html" class="prev">
+        Schema Equality Fixture
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/70.97bc1a7e.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Database Administration Tools | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/48.263c855d.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link router-link-active">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link router-link-active">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Message DB</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/message-db/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/user-guide/message-db/server-functions.html" class="sidebar-link">Server Functions</a></li><li><a href="/user-guide/message-db/anatomy.html" class="sidebar-link">Anatomy of the Message Store</a></li><li><a href="/user-guide/message-db/tools.html" aria-current="page" class="active sidebar-link">Database Administration Tools</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/message-db/tools.html#command-line-tools" class="sidebar-link">Command Line Tools</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/tools.html#database-schema-tools" class="sidebar-link">Database Schema Tools</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/tools.html#database-schema-update-tools" class="sidebar-link">Database Schema Update Tools</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/tools.html#reporting" class="sidebar-link">Reporting</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/tools.html#other-tools" class="sidebar-link">Other Tools</a></li><li class="sidebar-sub-header"><a href="/user-guide/message-db/tools.html#use-an-alternate-database-name" class="sidebar-link">Use an Alternate Database Name</a></li></ul></li><li><a href="/user-guide/message-db/install.html" class="sidebar-link">Installation</a></li><li><a href="/user-guide/message-db/update.html" class="sidebar-link">Update</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="database-administration-tools"><a href="#database-administration-tools" class="header-anchor">#</a> Database Administration Tools</h1> <h2 id="command-line-tools"><a href="#command-line-tools" class="header-anchor">#</a> Command Line Tools</h2> <p>The Eventide message store Postgres database package installs command line tools for administering the database.</p> <ul><li><a href="#install-the-message-store-database">mdb-create-db</a></li> <li><a href="#delete-the-message-store-database">mdb-delete-db</a></li> <li><a href="#recreate-the-message-store-database">mdb-recreate-db</a></li> <li><a href="#clear-the-messages-from-the-message-store-database">mdb-clear-messages</a></li> <li><a href="#update-the-database">mdb-update-db</a></li> <li><a href="#install-functions">mdb-install-functions</a></li> <li><a href="#install-indexes">mdb-install-indexes</a></li> <li><a href="#install-views">mdb-install-views</a></li> <li><a href="#install-privileges">mdb-install-privileges</a></li> <li><a href="#print-the-messages-stored-the-message-store-database">mdb-print-messages</a></li> <li><a href="#print-summary-statistics-by-stream-name">mdb-print-stream-summary</a></li> <li><a href="#print-summary-statistics-by-message-type">mdb-print-type-summary</a></li> <li><a href="#print-summary-statistics-by-stream-name-cross-referenced-by-message-type">mdb-print-stream-type-summary</a></li> <li><a href="#print-summary-statistics-by-category-cross-referenced-by-message-type">mdb-print-category-type-summary</a></li> <li><a href="#print-summary-statistics-by-message-type-cross-referenced-by-stream-name">mdb-print-type-stream-summary</a></li> <li><a href="#print-summary-statistics-by-message-type-cross-referenced-by-category">mdb-print-type-category-summary</a></li> <li><a href="#write-a-test-message">mdb-write-test-message</a></li> <li><a href="#open-view-the-directory-containing-the-database-definition-script-files">mdb-open-database-scripts-dir</a></li> <li><a href="#print-the-message-store-database-schema-version">mdb-print-message-store-version</a></li></ul> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>If you installed the tools via Bundler, prefix the following commands with <code>bundle exec</code>, for example: <code>bundle exec mdb-create-db</code></p></div> <div class="note custom-block"><p>
+    Note: The <code>message_store_postgres.json</code> settings file does not configure the connection used for any database administrative tasks, including creating the message store schema or printing reports. The administrative connection is controlled by the facilities provided by Postgres itself. For more details, see: <a href="https://www.postgresql.org/docs/current/libpq-envars.html">https://www.postgresql.org/docs/current/libpq-envars.html</a>.
+  </p></div> <h2 id="database-schema-tools"><a href="#database-schema-tools" class="header-anchor">#</a> Database Schema Tools</h2> <h3 id="install-the-message-store-database"><a href="#install-the-message-store-database" class="header-anchor">#</a> Install the Message Store Database</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-create-db
+</code></pre></div><h3 id="delete-the-message-store-database"><a href="#delete-the-message-store-database" class="header-anchor">#</a> Delete the Message Store Database</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-delete-db
+</code></pre></div><h3 id="recreate-the-message-store-database"><a href="#recreate-the-message-store-database" class="header-anchor">#</a> Recreate the Message Store Database</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-recreate-db
+</code></pre></div><h3 id="clear-the-messages-from-the-message-store-database"><a href="#clear-the-messages-from-the-message-store-database" class="header-anchor">#</a> Clear the Messages from the Message Store Database</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-clear-messages
+</code></pre></div><h2 id="database-schema-update-tools"><a href="#database-schema-update-tools" class="header-anchor">#</a> Database Schema Update Tools</h2> <p>The schema update tools are useful when upgrading to a new release of the message store database.</p> <h3 id="update-the-database"><a href="#update-the-database" class="header-anchor">#</a> Update the Database</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-update-db
+</code></pre></div><p>This tool installs the functions, indexes, views, and privileges.</p> <p>If any function, index, view, or privilege already exists, it will be replaced with the most recent definition. If any of these does not exist, they will be created.</p> <h3 id="install-functions"><a href="#install-functions" class="header-anchor">#</a> Install Functions</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-install-functions
+</code></pre></div><h3 id="install-indexes"><a href="#install-indexes" class="header-anchor">#</a> Install Indexes</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-install-indexes
+</code></pre></div><h3 id="install-views"><a href="#install-views" class="header-anchor">#</a> Install Views</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-install-views
+</code></pre></div><h3 id="install-privileges"><a href="#install-privileges" class="header-anchor">#</a> Install Privileges</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-install-privileges
+</code></pre></div><h2 id="reporting"><a href="#reporting" class="header-anchor">#</a> Reporting</h2> <h3 id="print-the-messages-stored-the-message-store-database"><a href="#print-the-messages-stored-the-message-store-database" class="header-anchor">#</a> Print the Messages Stored the Message Store Database</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-messages
+</code></pre></div><p><strong>Print Messages from a Specific Stream</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">STREAM_NAME</span><span class="token operator">=</span>someStream mdb-print-messages
+</code></pre></div><h3 id="print-summary-statistics-by-stream-name"><a href="#print-summary-statistics-by-stream-name" class="header-anchor">#</a> Print Summary Statistics by Stream Name</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-stream-summary
+</code></pre></div><p><strong>Print Stream Summary Statistics for a Stream Name</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">STREAM_NAME</span><span class="token operator">=</span>someStream mdb-print-stream-summary
+</code></pre></div><p>NOTE: The stream name is matched by substring using a SQL <code>LIKE</code> clause</p> <h3 id="print-summary-statistics-by-message-type"><a href="#print-summary-statistics-by-message-type" class="header-anchor">#</a> Print Summary Statistics by Message Type</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-type-summary
+</code></pre></div><p><strong>Print Type Summary Statistics for a Type Name</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">TYPE</span><span class="token operator">=</span>SomeType mdb-print-type-summary
+</code></pre></div><p>NOTE: The type name is matched by substring using a SQL <code>LIKE</code> clause</p> <h3 id="print-summary-statistics-by-stream-name-cross-referenced-by-message-type"><a href="#print-summary-statistics-by-stream-name-cross-referenced-by-message-type" class="header-anchor">#</a> Print Summary Statistics by Stream Name, Cross-Referenced by Message Type</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-stream-type-summary
+</code></pre></div><p><strong>Print Stream and Type Summary Statistics for a Stream Name</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">STREAM_NAME</span><span class="token operator">=</span>someStream mdb-print-stream-type-summary
+</code></pre></div><p>NOTE: The stream name is matched by substring using a SQL <code>LIKE</code> clause</p> <h3 id="print-summary-statistics-by-category-cross-referenced-by-message-type"><a href="#print-summary-statistics-by-category-cross-referenced-by-message-type" class="header-anchor">#</a> Print Summary Statistics by Category, Cross-Referenced by Message Type</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-category-type-summary
+</code></pre></div><p><strong>Print Category and Type Summary Statistics for a Category</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">CATEGORY</span><span class="token operator">=</span>someCategory mdb-print-category-type-summary
+</code></pre></div><p>NOTE: The category name is matched by substring using a SQL <code>LIKE</code> clause</p> <h3 id="print-summary-statistics-by-message-type-cross-referenced-by-stream-name"><a href="#print-summary-statistics-by-message-type-cross-referenced-by-stream-name" class="header-anchor">#</a> Print Summary Statistics by Message Type, Cross-Referenced by Stream Name</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-type-stream-summary
+</code></pre></div><p><strong>Print Type and Stream Summary Statistics for a Type Name</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">TYPE</span><span class="token operator">=</span>SomeType mdb-print-type-stream-summary
+</code></pre></div><p>NOTE: The type is matched by substring using a SQL <code>LIKE</code> clause</p> <h3 id="print-summary-statistics-by-message-type-cross-referenced-by-category"><a href="#print-summary-statistics-by-message-type-cross-referenced-by-category" class="header-anchor">#</a> Print Summary Statistics by Message Type, Cross-Referenced by Category</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-type-category-summary
+</code></pre></div><p><strong>Print Type and Category Summary Statistics for a Type Name</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">TYPE</span><span class="token operator">=</span>SomeType mdb-print-type-category-summary
+</code></pre></div><p>NOTE: The type is matched by substring using a SQL <code>LIKE</code> clause</p> <h2 id="other-tools"><a href="#other-tools" class="header-anchor">#</a> Other Tools</h2> <h3 id="write-a-test-message"><a href="#write-a-test-message" class="header-anchor">#</a> Write a Test Message</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-write-test-message
+</code></pre></div><p>The number of messages and the stream name can be specified using environment variables.</p> <p><strong>Write a test messages to a stream named <code>someStream-111</code></strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">STREAM_NAME</span><span class="token operator">=</span>someStream-111 mdb-write-test-message
+</code></pre></div><p><strong>Write 10 test messages</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">INSTANCES</span><span class="token operator">=</span><span class="token number">10</span> mdb-write-test-message
+</code></pre></div><p><strong>Write 10 test messages to a stream named <code>someStream-111</code></strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">STREAM_NAME</span><span class="token operator">=</span>someStream-111 <span class="token assign-left variable">INSTANCES</span><span class="token operator">=</span><span class="token number">10</span> mdb-write-test-message
+</code></pre></div><h3 id="open-view-the-directory-containing-the-database-definition-script-files"><a href="#open-view-the-directory-containing-the-database-definition-script-files" class="header-anchor">#</a> Open/View the Directory Containing the Database Definition Script Files</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-open-database-scripts-dir
+</code></pre></div><h3 id="print-the-message-store-database-schema-version"><a href="#print-the-message-store-database-schema-version" class="header-anchor">#</a> Print the Message Store Database Schema Version</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>mdb-print-message-store-version
+</code></pre></div><p>NOTE: The message store includes a server function named <a href="/user-guide/message-db/server-functions.html#get-message-store-database-schema-version"><code>message_store_version</code></a> that reports the version of the database schema.</p> <h2 id="use-an-alternate-database-name"><a href="#use-an-alternate-database-name" class="header-anchor">#</a> Use an Alternate Database Name</h2> <p>The database administration tools presume a database named <code>message_store</code>.</p> <p>If you prefer a different database name, you can specify it on the command line using environment variables:</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">DATABASE_NAME</span><span class="token operator">=</span>some_other_database mdb-create-db
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/user-guide/message-db/anatomy.html" class="prev">
+        Anatomy of the Message Store
+      </a></span> <span class="next"><a href="/user-guide/message-db/install.html">
+        Installation
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/48.263c855d.js" defer></script>
+  </body>
+</html>

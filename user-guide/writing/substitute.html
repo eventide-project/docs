@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Message Writer Substitute | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/80.8f5d7dbf.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link router-link-active">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link router-link-active">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Writing Messages</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/writing/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/user-guide/writing/message-writer.html" class="sidebar-link">Message Writer</a></li><li><a href="/user-guide/writing/message-data-writer.html" class="sidebar-link">MessageData Writer</a></li><li><a href="/user-guide/writing/atomic-batches.html" class="sidebar-link">Writing Atomic Batches</a></li><li><a href="/user-guide/writing/expected-version.html" class="sidebar-link">Expected Version and Concurrency</a></li><li><a href="/user-guide/writing/no-stream.html" class="sidebar-link">The :no_stream Expected Version</a></li><li><a href="/user-guide/writing/substitute.html" aria-current="page" class="active sidebar-link">Message Writer Substitute</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#example" class="sidebar-link">Example</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#writer-substitute-facts" class="sidebar-link">Writer Substitute Facts</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#messaging-write-substitute-write-class" class="sidebar-link">Messaging::Write::Substitute::Write Class</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#determine-if-a-message-was-written" class="sidebar-link">Determine If a Message Was Written</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#query-the-messages-written" class="sidebar-link">Query the Messages Written</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#query-one-message-written" class="sidebar-link">Query One Message Written</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#query-the-telemetry-records-of-writes" class="sidebar-link">Query the Telemetry Records of Writes</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#telemetry" class="sidebar-link">Telemetry</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#causing-the-expected-version-error-to-be-raised" class="sidebar-link">Causing the Expected Version Error to be Raised</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#determine-if-a-message-is-a-reply" class="sidebar-link">Determine If a Message Is a Reply</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#query-the-messages-replies" class="sidebar-link">Query the Messages Replies</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#query-one-reply-message" class="sidebar-link">Query One Reply Message</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#query-the-telemetry-records-of-replies" class="sidebar-link">Query the Telemetry Records of Replies</a></li><li class="sidebar-sub-header"><a href="/user-guide/writing/substitute.html#constructing-a-writer-substitute" class="sidebar-link">Constructing a Writer Substitute</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="message-writer-substitute"><a href="#message-writer-substitute" class="header-anchor">#</a> Message Writer Substitute</h1> <p>A <em>substitute</em> is an alternate implementation of an interface. In this case, the <a href="/user-guide/writing/messaging-writer.html">message writer</a> interface.</p> <p>For more information about substitutes in general, see the <a href="/user-guide/useful-objects.html">useful objects</a> user guide.</p> <p>The <code>Messaging::Write</code> class includes a substitute that allows for the inspection of messages written after the writer has been invoked. In this case the message writer substitute is a <em>diagnostic substitute</em>.</p> <p>The writer substitute records the writes that have been actuated, and does not write messages to the message store database. Said otherwise, the substitute has no durable I/O side effects. As such, it's an <em>inert</em> substitute.</p> <div class="note custom-block"><p>
+    Note: The meaning of &quot;substitute&quot; in this context refers to <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov Substitution Principle</a>, which describes the quality of polymorphism in object-oriented systems as objects that can legitimately replace, or <em>substitute</em>, each other without changing the correctness or intention of the program that uses the substitute. From the standpoint of their shared interface, substitutes are not considered either more &quot;real&quot; or less real than other substitutes of the same interface. In this, all substitutes are <em>real</em>, and no substitute is considered <em>secondary</em>.
+  </p></div> <h2 id="example"><a href="#example" class="header-anchor">#</a> Example</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeHandler</span>
+  dependency <span class="token symbol">:write</span><span class="token punctuation">,</span> Messaging<span class="token double-colon punctuation">::</span>Postgres<span class="token double-colon punctuation">::</span>Write
+
+  <span class="token comment"># ...</span>
+
+  handle SomeMessage <span class="token keyword">do</span> <span class="token operator">|</span>some_message<span class="token operator">|</span>
+    other_message <span class="token operator">=</span> OtherMessage<span class="token punctuation">.</span>follow<span class="token punctuation">(</span>some_message<span class="token punctuation">)</span>
+
+    write<span class="token punctuation">.</span><span class="token punctuation">(</span>other_message<span class="token punctuation">,</span> stream_name<span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+handler <span class="token operator">=</span> <span class="token class-name">SomeHandler</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+
+handler<span class="token punctuation">.</span>write<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token comment"># =&gt;  Messaging::Write::Substitute</span>
+
+<span class="token comment"># The result of handling some_message is that</span>
+<span class="token comment"># another message will be written</span>
+handler<span class="token punctuation">.</span><span class="token punctuation">(</span>some_message<span class="token punctuation">)</span>
+
+<span class="token comment"># Since the handler writes a message, the writer</span>
+<span class="token comment"># substitute will respond in the affirmative</span>
+<span class="token comment"># to a query of whether the message was written</span>
+handler<span class="token punctuation">.</span>write<span class="token punctuation">.</span>written<span class="token operator">?</span> <span class="token punctuation">{</span> <span class="token operator">|</span>message<span class="token operator">|</span> message<span class="token punctuation">.</span>instance_of<span class="token operator">?</span> SomeMessage <span class="token punctuation">}</span>
+<span class="token comment"># =&gt; true</span>
+</code></pre></div><h2 id="writer-substitute-facts"><a href="#writer-substitute-facts" class="header-anchor">#</a> Writer Substitute Facts</h2> <ul><li>The writer substitute does not write messages to the message store database</li> <li>Each write is recored as <em>telemetry</em> that is kept in memory for the lifetime of the writer object</li> <li>The substitute offers convenience methods for inspecting the telemetry recorded for each write</li> <li>Telemetry is recorded for all invocations of the writer, including the <code>initial</code> and <code>reply</code> methods</li> <li>By default, a writer declared with the <code>dependency</code> macro will be initialized to the writer's substitute.</li></ul> <h2 id="messaging-write-substitute-write-class"><a href="#messaging-write-substitute-write-class" class="header-anchor">#</a> Messaging::Write::Substitute::Write Class</h2> <p>The <code>Substitute::Write</code> class is a concrete class from the <a href="/user-guide/libraries.html#messaging-postgres"><code>Messaging</code> library</a> in the <code>Messaging::Write</code> namespace.</p> <p>The <code>Messaging::Write::Substitute::Write</code> class provides:</p> <ul><li>Inert implementations of the writer's instance actuator method, as well as the <code>initial</code> and the <code>reply</code> methods.</li> <li>A telemetry recorder with an active telemetry sink that records telemetry recorded by invocations of the writer's methods</li> <li>A telemetry data structure for recording each individual invocation of the writer</li></ul> <h2 id="determine-if-a-message-was-written"><a href="#determine-if-a-message-was-written" class="header-anchor">#</a> Determine If a Message Was Written</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>written<span class="token operator">?</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token keyword">nil</span><span class="token punctuation">,</span> blk<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p><code>true</code> if the arguments match any messages written and recorded as telemetry.</p> <p><strong>Parameters</strong></p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>message</td> <td>A message that may have been written</td> <td>Messaging::Message</td></tr> <tr><td>blk</td> <td>A block into which each telemetry record is passed, and returns true for the first record for which block is not false</td> <td>Proc</td></tr></tbody></table> <p><strong>Block Parameters</strong></p> <p>The following parameters are passed to the <code>blk</code> if <code>blk</code> is passed and thus evaluated:</p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>message</td> <td>A message that may have been written</td> <td>Messaging::Message</td></tr> <tr><td>stream_name</td> <td>The stream name passed to the invocation of the writer</td> <td>String</td></tr> <tr><td>expected_version</td> <td>Expected version passed to the invocation of the writer</td> <td>Integer</td></tr> <tr><td>reply_stream_name</td> <td>Name of the reply stream passed to the invocation of the writer</td> <td>String</td></tr></tbody></table> <p><strong>Permutations</strong></p> <p>If both the <code>message</code> and <code>blk</code> arguments are omitted, then <code>true</code> is returned if there is any record of a write.</p> <p>If the <code>message</code> argument is passed and the <code>blk</code> argument is omitted, then <code>true</code> is returned if any recorded message equals the value of the <code>message</code> argument. Equality is tested using the <code>==</code> equality operator.</p> <p>If the <code>message</code> argument is omitted, the block is evaluated for each telemetry data recorded, and <code>true</code> is returned if the block evaluates to <code>true</code> for any recorded telemetry data.</p> <p>If both the <code>message</code> argument <em>and</em> the <code>blk</code> argument are passed, then both have to evaluate to <code>true</code> for <code>true</code> to be returned. In this case, the message is not passed to the block. Only the <code>stream_name</code>, <code>expected_version</code>, and <code>reply_stream_name</code> are passed to the block, and the message equality is tested using the <code>==</code> equality operator.</p> <p><strong>Examples</strong></p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>message <span class="token operator">=</span> <span class="token class-name">SomeMessage</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+stream_name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'someStream-123'</span></span>
+
+write<span class="token punctuation">.</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> stream_name<span class="token punctuation">,</span> <span class="token symbol">expected_version</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token symbol">reply_stream_name</span><span class="token operator">:</span> <span class="token string-literal"><span class="token string">'someReplyStream'</span></span><span class="token punctuation">)</span>
+
+<span class="token comment"># Returns true if there is a record of any write</span>
+write<span class="token punctuation">.</span>written<span class="token operator">?</span>
+<span class="token comment"># =&gt; true</span>
+
+<span class="token comment"># Returns true if any recorded message equals the value of</span>
+<span class="token comment"># the message argument</span>
+<span class="token comment"># Equality is tested using ==</span>
+write<span class="token punctuation">.</span>written<span class="token operator">?</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token comment"># =&gt; true</span>
+
+<span class="token comment"># Returns false since the message written does not</span>
+<span class="token comment"># equal Object.new</span>
+some_object <span class="token operator">=</span> <span class="token class-name">Object</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+write<span class="token punctuation">.</span>written<span class="token operator">?</span><span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+<span class="token comment"># =&gt; false</span>
+
+<span class="token comment"># Block form passes the message written as an</span>
+<span class="token comment"># argument to the block, making the message</span>
+<span class="token comment"># visible to the block, and available for inspection</span>
+write<span class="token punctuation">.</span>written<span class="token operator">?</span> <span class="token punctuation">{</span> <span class="token operator">|</span>message<span class="token operator">|</span> message <span class="token operator">==</span> some_message <span class="token punctuation">}</span>
+<span class="token comment"># =&gt; true</span>
+
+<span class="token comment"># Block form with message and stream_name visibility</span>
+write<span class="token punctuation">.</span>written<span class="token operator">?</span> <span class="token keyword">do</span> <span class="token operator">|</span>message<span class="token punctuation">,</span> stream_name<span class="token operator">|</span>
+  message<span class="token punctuation">.</span>instance_of<span class="token operator">?</span> SomeMessage <span class="token operator">&amp;&amp;</span>
+    stream_name <span class="token operator">==</span> <span class="token string-literal"><span class="token string">'someStream-123'</span></span>
+<span class="token keyword">end</span>
+<span class="token comment"># =&gt; true</span>
+
+<span class="token comment"># Block form with message, stream_name, expected_version,</span>
+<span class="token comment"># and reply_stream_name visibility</span>
+write<span class="token punctuation">.</span>written<span class="token operator">?</span> <span class="token keyword">do</span> <span class="token operator">|</span>message<span class="token punctuation">,</span> stream_name<span class="token punctuation">,</span> expected_version<span class="token punctuation">,</span> reply_stream_name<span class="token operator">|</span>
+  message<span class="token punctuation">.</span>instance_of<span class="token operator">?</span> SomeMessage <span class="token operator">&amp;&amp;</span>
+    stream_name <span class="token operator">==</span> <span class="token string-literal"><span class="token string">'someStream-123'</span></span> <span class="token operator">&amp;&amp;</span>
+    expected_version <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span>
+    reply_stream_name <span class="token operator">==</span> <span class="token string-literal"><span class="token string">'someReplyStream'</span></span>
+<span class="token keyword">end</span>
+<span class="token comment"># =&gt; true</span>
+
+<span class="token comment"># Note: First block argument is stream_name when message</span>
+<span class="token comment"># argument is passed</span>
+write<span class="token punctuation">.</span>written<span class="token operator">?</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token operator">|</span>stream_name<span class="token punctuation">,</span> expected_version<span class="token punctuation">,</span> reply_stream_name<span class="token operator">|</span>
+  stream_name <span class="token operator">==</span> <span class="token string-literal"><span class="token string">'someStream-123'</span></span> <span class="token operator">&amp;&amp;</span>
+    expected_version <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span>
+    reply_stream_name <span class="token operator">==</span> <span class="token string-literal"><span class="token string">'someReplyStream'</span></span>
+<span class="token keyword">end</span>
+<span class="token comment"># =&gt; true</span>
+</code></pre></div><h2 id="query-the-messages-written"><a href="#query-the-messages-written" class="header-anchor">#</a> Query the Messages Written</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>message_writes<span class="token punctuation">(</span>blk<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p>Array containing the messages written or messages for which the given block returns <code>true</code>.</p> <p><strong>Alias</strong></p> <p><code>writes</code></p> <p><strong>Parameters</strong></p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>blk</td> <td>A block into which each telemetry record is passed and evaluated for inclusion in the result</td> <td>Proc</td></tr></tbody></table> <p><strong>Block Parameters</strong></p> <p>The following parameters are passed to the <code>blk</code> if <code>blk</code> is passed and thus evaluated:</p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>message</td> <td>A message that may have been written</td> <td>Messaging::Message</td></tr> <tr><td>stream_name</td> <td>The stream name passed to the invocation of the writer</td> <td>String</td></tr> <tr><td>expected_version</td> <td>Expected version passed to the invocation of the writer</td> <td>Integer</td></tr> <tr><td>reply_stream_name</td> <td>Name of the reply stream passed to the invocation of the writer</td> <td>String</td></tr></tbody></table> <p><strong>Permutations</strong></p> <p>If the <code>blk</code> argument is omitted, all of the messages recorded are returned.</p> <p>If <code>blk</code> argument is passed, the block is evaluated for each telemetry data recorded, and the messages that match are returned.</p> <p><strong>Examples</strong></p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>message <span class="token operator">=</span> <span class="token class-name">SomeMessage</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+other_message <span class="token operator">=</span> <span class="token class-name">OtherMessage</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+
+stream_name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'someStream-123'</span></span>
+
+write<span class="token punctuation">.</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> stream_name<span class="token punctuation">)</span>
+write<span class="token punctuation">.</span><span class="token punctuation">(</span>other_message<span class="token punctuation">,</span> stream_name<span class="token punctuation">)</span>
+
+<span class="token comment"># Without the block, returns all</span>
+write<span class="token punctuation">.</span>writes
+<span class="token comment"># =&gt; [ &lt;SomeMessage...&gt;, &lt;OtherMessage...&gt; ]</span>
+
+write<span class="token punctuation">.</span>writes <span class="token punctuation">{</span> <span class="token operator">|</span>message<span class="token operator">|</span> message<span class="token punctuation">.</span>instance_of<span class="token operator">?</span> SomeMessage <span class="token punctuation">}</span>
+<span class="token comment"># =&gt; [ &lt;SomeMessage...&gt; ]</span>
+</code></pre></div><h2 id="query-one-message-written"><a href="#query-one-message-written" class="header-anchor">#</a> Query One Message Written</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>one_message_write<span class="token punctuation">(</span>blk<span class="token punctuation">)</span>
+</code></pre></div><p>Returns one matching message, or raises <code>Messaging::Write::Substitute::Write::Error</code> if there are more than one matching message.</p> <p><strong>Returns</strong></p> <p>The message written or the message for which the given block returns <code>true</code>.</p> <p><strong>Alias</strong></p> <p><code>one_message</code></p> <div class="note custom-block"><p>
+    Note: Works exactly as does the <code>message_writes</code> method with the exception of raising an error if more than one record is found.
+  </p></div> <p><strong>Example</strong></p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>message <span class="token operator">=</span> <span class="token class-name">SomeMessage</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+
+stream_name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'someStream-123'</span></span>
+
+write<span class="token punctuation">.</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> stream_name<span class="token punctuation">)</span>
+
+write<span class="token punctuation">.</span>one_message
+<span class="token comment"># =&gt; &lt;SomeMessage...&gt;</span>
+
+write<span class="token punctuation">.</span>one_message <span class="token punctuation">{</span> <span class="token operator">|</span>message<span class="token operator">|</span> message<span class="token punctuation">.</span>instance_of<span class="token operator">?</span> SomeMessage <span class="token punctuation">}</span>
+<span class="token comment"># =&gt; &lt;SomeMessage...&gt;</span>
+
+
+some_message_2 <span class="token operator">=</span> <span class="token class-name">SomeMessage</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+write<span class="token punctuation">.</span><span class="token punctuation">(</span>some_message_2<span class="token punctuation">,</span> stream_name<span class="token punctuation">)</span>
+
+write<span class="token punctuation">.</span>one_message
+<span class="token comment"># =&gt; Messaging::Write::Substitute::Write::Error</span>
+
+write<span class="token punctuation">.</span>one_message <span class="token punctuation">{</span> <span class="token operator">|</span>message<span class="token operator">|</span> message<span class="token punctuation">.</span>instance_of<span class="token operator">?</span> SomeMessage <span class="token punctuation">}</span>
+<span class="token comment"># =&gt; Messaging::Write::Substitute::Write::Error</span>
+</code></pre></div><h2 id="query-the-telemetry-records-of-writes"><a href="#query-the-telemetry-records-of-writes" class="header-anchor">#</a> Query the Telemetry Records of Writes</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>writes<span class="token punctuation">(</span>blk<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p>Array containing the telemetry records for which the given block returns <code>true</code>.</p> <div class="note custom-block"><p>
+    Note: Same functionality and interface as the <code>message_writes</code> method, except returns telemetry records instead of messages.
+  </p></div> <h2 id="telemetry"><a href="#telemetry" class="header-anchor">#</a> Telemetry</h2> <p>The writer records telemetry for each invocation of the writer.</p> <div class="note custom-block"><p>
+    Note: Telemetry is implemented using the Telemetry library. For background on how the Telemetry library works and how to use it, see: <a href="https://github.com/eventide-project/telemetry">https://github.com/eventide-project/telemetry</a>.
+  </p></div> <p>Two different kinds of telemetry signals are recorded, depending on which invocation of the writer was used:</p> <ul><li><code>:written</code></li> <li><code>:replied</code></li></ul> <p>The raw telemetry records can be accessed directly through the substitute writer's interface:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token comment"># Records of the invocation of the writer's actuator</span>
+writer<span class="token punctuation">.</span>sink<span class="token punctuation">.</span>written_records
+
+<span class="token comment"># Records of the invocation of the writer's `reply` method</span>
+writer<span class="token punctuation">.</span>sink<span class="token punctuation">.</span>replied_records
+</code></pre></div><p>For each write recorded, an instance of the <code>Messaging::Write::Telemetry::Data</code> struct is created and assigned to the telemetry record's <code>data</code> attribute.</p> <p>The <code>Messaging::Write::Telemetry::Data</code> struct has the following attributes:</p> <ul><li><code>message</code></li> <li><code>stream_name</code></li> <li><code>expected_version</code></li> <li><code>reply_stream_name</code></li></ul> <p>The recorded data can be accessed directly:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>writer<span class="token punctuation">.</span>sink<span class="token punctuation">.</span>written_records<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>message
+writer<span class="token punctuation">.</span>sink<span class="token punctuation">.</span>written_records<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>stream_name
+writer<span class="token punctuation">.</span>sink<span class="token punctuation">.</span>written_records<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>expected_version
+writer<span class="token punctuation">.</span>sink<span class="token punctuation">.</span>written_records<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>reply_stream_name
+</code></pre></div><h2 id="causing-the-expected-version-error-to-be-raised"><a href="#causing-the-expected-version-error-to-be-raised" class="header-anchor">#</a> Causing the Expected Version Error to be Raised</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>raise_expected_version_error<span class="token operator">!</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>Causes <code>MessageStore::ExpectedVersion::Error</code> to be raised upon the next invocation of the writer.</p> <h2 id="determine-if-a-message-is-a-reply"><a href="#determine-if-a-message-is-a-reply" class="header-anchor">#</a> Determine If a Message Is a Reply</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>replied<span class="token operator">?</span><span class="token punctuation">(</span>message<span class="token operator">=</span><span class="token keyword">nil</span><span class="token punctuation">,</span> blk<span class="token punctuation">)</span>
+</code></pre></div><div class="note custom-block"><p>
+    Note: Same functionality and interface as the <code>written?</code>method, except for replies.
+  </p></div> <h2 id="query-the-messages-replies"><a href="#query-the-messages-replies" class="header-anchor">#</a> Query the Messages Replies</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>message_replies<span class="token punctuation">(</span>blk<span class="token punctuation">)</span>
+</code></pre></div><div class="note custom-block"><p>
+    Note: Same functionality and interface as the <code>message_writes</code> method, except for replies.
+  </p></div> <h2 id="query-one-reply-message"><a href="#query-one-reply-message" class="header-anchor">#</a> Query One Reply Message</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>one_message_reply<span class="token punctuation">(</span>blk<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Alias</strong></p> <p><code>one_reply</code></p> <div class="note custom-block"><p>
+    Note: Same functionality and interface as the <code>one_message_write</code> method, except for replies.
+  </p></div> <h2 id="query-the-telemetry-records-of-replies"><a href="#query-the-telemetry-records-of-replies" class="header-anchor">#</a> Query the Telemetry Records of Replies</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>replies<span class="token punctuation">(</span>blk<span class="token punctuation">)</span>
+</code></pre></div><div class="note custom-block"><p>
+    Note: Same functionality and interface as the <code>writes</code> method, except for replies.
+  </p></div> <h2 id="constructing-a-writer-substitute"><a href="#constructing-a-writer-substitute" class="header-anchor">#</a> Constructing a Writer Substitute</h2> <p>The writer substitute can be constructed in one of two ways:</p> <ul><li>Via the constructor</li> <li>Via the <code>dependency</code> macro</li></ul> <h3 id="via-the-constructor"><a href="#via-the-constructor" class="header-anchor">#</a> Via the Constructor</h3> <div class="language-ruby extra-class"><pre class="language-ruby"><code>Messaging<span class="token double-colon punctuation">::</span>Write<span class="token double-colon punctuation">::</span>Substitute<span class="token punctuation">.</span>build<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p>Instance of the <code>Messaging::Write::Substitute::Write</code> class.</p> <h3 id="via-the-dependency-macro"><a href="#via-the-dependency-macro" class="header-anchor">#</a> Via the <code>dependency</code> Macro</h3> <div class="language-ruby extra-class"><pre class="language-ruby"><code>dependency <span class="token symbol">:write</span><span class="token punctuation">,</span> Messaging<span class="token double-colon punctuation">::</span>Postgres<span class="token double-colon punctuation">::</span>Write
+</code></pre></div><p>A writer declared with the <code>dependency</code> macro will be initialized to the writer's substitute.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeHandler</span>
+  dependency <span class="token symbol">:write</span><span class="token punctuation">,</span> Messaging<span class="token double-colon punctuation">::</span>Postgres<span class="token double-colon punctuation">::</span>Write
+
+  <span class="token comment"># ...</span>
+<span class="token keyword">end</span>
+
+handler <span class="token operator">=</span> <span class="token class-name">SomeHandler</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+
+handler<span class="token punctuation">.</span>write<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token comment"># =&gt;  Messaging::Write::Substitute::Write</span>
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>See the <a href="/user-guide/useful-objects.html">useful objects</a> user guide for background on using dependencies and their substitutes.</p></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/user-guide/writing/no-stream.html" class="prev">
+        The :no_stream Expected Version
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/80.8f5d7dbf.js" defer></script>
+  </body>
+</html>

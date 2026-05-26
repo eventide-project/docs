@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Service Facts | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/16.641c72d3.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Services</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/core-concepts/services/" aria-current="page" class="active sidebar-link">Service Facts</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-don-t-respond-to-queries" class="sidebar-link">Services don't respond to queries</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-don-t-fail-when-other-services-are-unavailable" class="sidebar-link">Services don't fail when other services are unavailable</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-communicate-by-asynchronous-messaging" class="sidebar-link">Services communicate by asynchronous messaging</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-are-made-of-one-or-more-autonomous-components" class="sidebar-link">Services are made of one or more autonomous components</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#the-word-service-can-refer-to-something-logical-or-physical" class="sidebar-link">The word &quot;service&quot; can refer to something logical or physical</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-represent-business-processes" class="sidebar-link">Services represent business processes</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-are-state-machines" class="sidebar-link">Services are state machines</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-are-not-apis-around-data-entities" class="sidebar-link">Services are not APIs around data entities</a></li><li class="sidebar-sub-header"><a href="/core-concepts/services/#services-are-not-apps" class="sidebar-link">Services are not apps</a></li></ul></li><li><a href="/core-concepts/services/message-handlers.html" class="sidebar-link">Message Handlers</a></li><li><a href="/core-concepts/services/entities.html" class="sidebar-link">Entities</a></li><li><a href="/core-concepts/services/projections.html" class="sidebar-link">Projections</a></li><li><a href="/core-concepts/services/stores.html" class="sidebar-link">Stores</a></li><li><a href="/core-concepts/services/components.html" class="sidebar-link">Components</a></li><li><a href="/core-concepts/services/consumers.html" class="sidebar-link">Consumers</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="service-facts"><a href="#service-facts" class="header-anchor">#</a> Service Facts</h1> <p>Services are autonomous units of processing that communicate via messages and are composed of components.</p> <h2 id="services-don-t-respond-to-queries"><a href="#services-don-t-respond-to-queries" class="header-anchor">#</a> Services don't respond to queries</h2> <p>Services don't return data. They don't have <code>GET</code> APIs, or respond to queries. Services process transactions. They <em>do</em> things. They aren't data access points. They receive instructions as messages and perform work. Services that can return data cause the services that request the data to loose their <a href="/glossary.html#autonomy">autonomy</a>.</p> <h2 id="services-don-t-fail-when-other-services-are-unavailable"><a href="#services-don-t-fail-when-other-services-are-unavailable" class="header-anchor">#</a> Services don't fail when other services are unavailable</h2> <p>If a service that communicates with another service fails because the other service is unavailable, then the service is not <em>autonomous</em>. Services are autonomous. If a service isn't autonomous, then it's really not a service at all. A system of services that are not autonomous is not a service architecture. It's a <em>distributed monolith</em>.</p> <h2 id="services-communicate-by-asynchronous-messaging"><a href="#services-communicate-by-asynchronous-messaging" class="header-anchor">#</a> Services communicate by asynchronous messaging</h2> <p>Services receive <em><a href="/glossary.html#command">commands</a></em>, process those commands, and communicate the status of that processing by issuing <em><a href="/glossary.html#event">events</a></em>. A service that sends a command message to another service does not know the outcome of processing that command until the other service issues the resulting event and the originating service receives the event.</p> <h2 id="services-are-made-of-one-or-more-autonomous-components"><a href="#services-are-made-of-one-or-more-autonomous-components" class="header-anchor">#</a> Services are made of one or more autonomous components</h2> <p>Strictly-speaking, services are the infrastructural machinery that sits between the operating system and the service's business logic. The business logic itself is housed in a <a href="/glossary.html#component">component</a>. The service infrastructure provides consumers of inbound messages and dispatches the messages to a component's <a href="/glossary.html#handler">handlers</a>. The handlers then interact with the component's <a href="/glossary.html#entity">entity</a> (or entities) and outputs other messages in response. The combination of entities and handlers are where the business logic resides. Services may host one or more components. The term <em>service</em> is often used interchangeably with <em>component</em>. While this isn't strictly and technically accurate, it's a common informal way of speaking about services and components. The informal ambiguity is especially conspicuous when the service hosts only a single business component.</p> <h2 id="the-word-service-can-refer-to-something-logical-or-physical"><a href="#the-word-service-can-refer-to-something-logical-or-physical" class="header-anchor">#</a> The word &quot;service&quot; can refer to something logical or physical</h2> <p>The word &quot;service&quot; can refer to something logical or physical. Getting them confused can lead to misunderstandings that weaken the necessary separation between services and between components. When used to refer to something physical, the word &quot;service&quot; refers to the infrastructural machinery that sits between the operating system and the business component logic. When used logically, service can represent a number of physical services that are related to a single business function.  Which meaning is being employed depends on context.</p> <h2 id="services-represent-business-processes"><a href="#services-represent-business-processes" class="header-anchor">#</a> Services represent business processes</h2> <p>A service is an implementation of a business process. Services cooperate together in more elaborate business processes. Services track the multiple steps in a process, receiving commands and events from other services or applications, and advancing to the next step based on the outcome of that processing.</p> <h2 id="services-are-state-machines"><a href="#services-are-state-machines" class="header-anchor">#</a> Services are state machines</h2> <p>The core logic of a service is structured as a state machine. The state machine entity gathers the data from various commands and events that the service processes, and informs the surrounding business logic about what steps in the process that the service implements to take next.</p> <h2 id="services-are-not-apis-around-data-entities"><a href="#services-are-not-apis-around-data-entities" class="header-anchor">#</a> Services are not APIs around data entities</h2> <p>A common misconception is that services are APIs wrapped around traditional data <a href="/glossary.html#entity">entities</a>. This perspective is the result of seeing services as typical web APIs without realizing that services are more appropriately modeled as processes and state machines. An <em>entity service</em> is an antipattern that is the chief cause of ending up with a <em>distributed monolith</em> rather than a service architecture. In a service architecture it's unlikely that the data of a traditional aggregate entity, like an Product with a name, a price, and a quantity-in-stock would be housed in the same service.</p> <h2 id="services-are-not-apps"><a href="#services-are-not-apps" class="header-anchor">#</a> Services are not apps</h2> <p>It's far too easy to fall into the trap of presuming that the knowledge and skills acquired while building apps will apply to service design, development, and operations. Services and apps are opposite ends of the architectural spectrum. Failure to recognize this may lead you to implement apps while believing that you're implementing services. Apps may use (or be <em>applications</em> of) services, but the opposite is not true. Apps are about UIs, querying databases, formatting and displaying data, accepting form inputs, and a host of other user-interactive concerns. Services process commands or events. Both of these are <em>messages</em>. So, <em>services process messages</em>. When a service has finished processing a message, it emits an event that tells of the processing of the message. Services are not user-interactive. Services are largely batch-mode and asynchronous, while apps are interactive and synchronous.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/core-concepts/services/message-handlers.html">
+        Message Handlers
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/16.641c72d3.js" defer></script>
+  </body>
+</html>

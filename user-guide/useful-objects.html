@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>The Doctrine of Useful Objects | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/73.5aabb8b9.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>The Doctrine of Useful Objects</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/useful-objects.html#overview" class="sidebar-link">Overview</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#implications" class="sidebar-link">Implications</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#example-implementation" class="sidebar-link">Example Implementation</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#substitutes" class="sidebar-link">Substitutes</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#null-object-dependencies-and-useful-objects" class="sidebar-link">Null Object Dependencies and Useful Objects</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#an-example" class="sidebar-link">An Example</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#primitive-initializer-and-complex-constructor" class="sidebar-link">Primitive Initializer and Complex Constructor</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#secondary-optional-dependencies" class="sidebar-link">Secondary, Optional Dependencies</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#optional-dependencies-and-default-null-object-substitutes" class="sidebar-link">Optional Dependencies and Default Null Object Substitutes</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#not-stubs" class="sidebar-link">Not Stubs</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#configuration-not-configuration" class="sidebar-link">Configuration, not &quot;Configuration&quot;</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#configuring-dependencies" class="sidebar-link">Configuring Dependencies</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#minimizing-the-configuration-implementation" class="sidebar-link">Minimizing the Configuration Implementation</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#objects-are-behaviors-first-and-data-second" class="sidebar-link">Objects are Behaviors First, and Data Second</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#actuators" class="sidebar-link">Actuators</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#elaborated-example" class="sidebar-link">Elaborated Example</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#minimizing-the-primitive-initializer" class="sidebar-link">Minimizing the Primitive Initializer</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#telemetry-and-transparency" class="sidebar-link">Telemetry and Transparency</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#concrete-substitutes" class="sidebar-link">Concrete Substitutes</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#concrete-substitutes-and-telemetry" class="sidebar-link">Concrete Substitutes and Telemetry</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/user-guide/useful-objects.html#addendum" class="sidebar-link">Addendum</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/useful-objects.html#class-interface-and-convenience-versus-object-interface-and-precision" class="sidebar-link">Class Interface and Convenience Versus Object Interface and Precision</a></li><li class="sidebar-sub-header"><a href="/user-guide/useful-objects.html#anticipated-objection-this-approach-causes-too-much-boilerplate-code" class="sidebar-link">Anticipated Objection: This Approach Causes Too Much Boilerplate Code</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="the-doctrine-of-useful-objects"><a href="#the-doctrine-of-useful-objects" class="header-anchor">#</a> The Doctrine of Useful Objects</h1> <p><em>An object must be <em>useful</em> immediately upon instantiation of the object. No dependencies of an object should ever be allowed to be uninitialized. If any use of any of an object's dependencies results in a nil reference exception, then the object is not useful.</em></p> <p>This guide describes the standards and practices for implementation design that are used to build the Eventide toolkit and the examples provided for it by the Eventide team.</p> <p>Having a basic understanding of the <em>useful objects</em> doctrine will facilitate understanding the design patterns and principles that are commonly employed throughout the various libraries and examples.</p> <p><a href="https://github.com/eventide-project/useful-objects/" target="_blank" rel="noopener noreferrer">View Source<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="overview"><a href="#overview" class="header-anchor">#</a> Overview</h2> <p>A useful object:</p> <ul><li>Is usable immediately upon initialization without any nil reference errors resulting from uninitialized dependencies (eg: <code>NoMethodError, undefined method for nil:NilClass</code>)</li> <li>Is behavioral, with state that only directly supports the behavior</li> <li>Has a single purpose</li> <li>Doesn't have any logic in its initializer other than assigning the value of initializer parameters to the object's instance variables</li> <li>Formalizes the difference between initializer arguments and setters, and the circumstances when one is used rather than the other</li> <li>Doesn't require a foreign mechanism outside of the class's own namespace (including inner namespaces) to initialize it and its dependencies (a.k.a.: an <em>Inversion of Control container</em>, etc)</li> <li>Doesn't invite the passing nils or <em>dummy</em> values to its initializer for the purposes of setting up the object for testing</li> <li>Doesn't rely on test doubles (stubs) to disengage dependencies that would cause undesirable side effects while exercising or otherwise testing it</li> <li>Relies on telemetry rather than test doubles (mocks, spies) to inspect an object's execution</li> <li>Doesn't rely on test doubles (mocks, spies) to be used to inspect an object's execution path</li></ul> <h2 id="implications"><a href="#implications" class="header-anchor">#</a> Implications</h2> <p>An object's dependencies are initialized by default to a <em>safe</em>, and <em>inert</em> (in terms of side effects) implementation of the dependency's interface.</p> <p>An object's class interface provides a means of constructing an instance of the object, including the initialization of its dependencies to <em>active</em>, <em>operational</em> implementations of the dependencies' interfaces, eg: an active database connection, an active payment gateway client, etc.</p> <p>An object may record telemetry about its execution as it is executing. The activation of telemetry instrumentation is optional.</p> <h2 id="example-implementation"><a href="#example-implementation" class="header-anchor">#</a> Example Implementation</h2> <p>The useful objects repository on GitHub includes an example implementation:<br> <a href="https://github.com/eventide-project/useful-objects/" target="_blank" rel="noopener noreferrer">https://github.com/eventide-project/useful-objects/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="substitutes"><a href="#substitutes" class="header-anchor">#</a> Substitutes</h2> <p>A dependency has an interface. An object that conforms to that interface (and its semantics) is substitutable for the dependency. That object is a <em>substitute</em>.</p> <p>There is no notion of <em>primary</em> or <em>secondary</em> substitutes. All values that can be assigned to a dependency attribute are substitutable for each other. No single substitute is considered more real than any other.</p> <p>There is no <em>real</em> instance of a dependency versus a <em>fake</em> instance. These perspectives are purely circumstantial, and should be drummed out of the designer's mind as quickly as possible.</p> <p>Substitutability guarantees that all implementations of an interface that respect the interface's contract and intended semantics are no more valuable than any other implementation of the interface, and no less <em>real</em> than any other. All substitutes are <em>real</em> substitutes by the very nature of substitutability.</p> <p>Leveraging <em>substitutability</em>, ensure that an object's dependencies are initialized to an implementation of the dependency's interface immediately upon instantiation of the object.</p> <h2 id="null-object-dependencies-and-useful-objects"><a href="#null-object-dependencies-and-useful-objects" class="header-anchor">#</a> Null Object Dependencies and Useful Objects</h2> <p>The most basic safe and inert substitute for a dependency is a null object.</p> <p>A null object substitute assigned as a default value of a dependency allows that dependency to be actuated without causing a nil reference error to be raised - which is a foundational tenet of useful objects.</p> <p>A null object substitute is a legitimate substitute if all uses of the dependency don't cause a nil reference error to be raised.</p> <p>Null objects can be either weak or strict. A weak null object responds to any invocation sent to it. A strict null object conforms to a specific interface and will raise no-method errors for any invocations that don't conform to that interface</p> <h2 id="an-example"><a href="#an-example" class="header-anchor">#</a> An Example</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">Something</span>
+  attr_reader <span class="token symbol">:some_value</span>
+  attr_reader <span class="token symbol">:some_other_value</span>
+
+  dependency <span class="token symbol">:some_dependency</span><span class="token punctuation">,</span> SomeDependency
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">initialize</span></span><span class="token punctuation">(</span>some_value<span class="token punctuation">,</span> some_other_value<span class="token punctuation">)</span>
+    <span class="token variable">@some_value</span> <span class="token operator">=</span> some_value
+    <span class="token variable">@some_other_value</span> <span class="token operator">=</span> some_other_value
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">build</span></span><span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+    <span class="token keyword">new</span><span class="token punctuation">(</span>some_object<span class="token punctuation">.</span>some_value<span class="token punctuation">,</span> some_object<span class="token punctuation">.</span>some_other_value<span class="token punctuation">)</span><span class="token punctuation">.</span>tap <span class="token keyword">do</span> <span class="token operator">|</span>instance<span class="token operator">|</span>
+      SomeDependency<span class="token punctuation">.</span>configure<span class="token punctuation">(</span>instance<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><p>Usage:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token comment"># Using the initializer results in null object dependencies</span>
+something <span class="token operator">=</span> <span class="token class-name">Something</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>some_value<span class="token punctuation">,</span> some_other_value<span class="token punctuation">)</span>
+puts something<span class="token punctuation">.</span>some_dependency<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token comment"># =&gt; #&lt;Class:0x007f9dcc0886f0&gt;</span>
+
+<span class="token comment"># Using the constructor (factory method) results in operational dependencies</span>
+something <span class="token operator">=</span> Something<span class="token punctuation">.</span>build<span class="token punctuation">(</span>some_obj<span class="token punctuation">)</span>
+puts something<span class="token punctuation">.</span>some_dependency<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token comment"># =&gt; SomeDependency</span>
+</code></pre></div><h2 id="primitive-initializer-and-complex-constructor"><a href="#primitive-initializer-and-complex-constructor" class="header-anchor">#</a> Primitive Initializer and Complex Constructor</h2> <p>The initializer typically accepts <em>precisely</em> the primitive data the object <em>depends on directly</em> to perform its behavior.</p> <p>Any destructuring of more complex objects is provided by a factory method, or <em>constructor</em>, provided by the class interface (the <em>build</em> method, above).</p> <p>By the time the initializer is invoked, the exact data needed by the object in order to do its work is supplied to the initializer. The initializer is not required to do any other work other than capturing the data as the object's instance variables.</p> <p>The class constructor provides a <em>convenience interface</em>. It's the interface used to make invoking the initializer easier for the developer by not requiring all of the initializer's individual arguments.</p> <h2 id="secondary-optional-dependencies"><a href="#secondary-optional-dependencies" class="header-anchor">#</a> Secondary, Optional Dependencies</h2> <p>The <code>some_dependency</code> dependency is not an appropriate initializer argument. It's a <em>collaborator</em> dependency (a better term would be <em>service</em> dependency, but that term is too overloaded to be helpful).</p> <p>An instance of the <code>Something</code> class needs the <code>some_dependency</code> in order to fulfill its obligations at runtime, but it is not necessary to provide the <em>operational</em> implementation of the dependency in all cases (any substitute implementation - due to substitutability - is also a permissible value).</p> <p>The <code>some_dependency</code> can be <em>optionally</em> set to an <em>operational</em> instance of <code>SomeDependency</code>, or to a substitute.</p> <h2 id="optional-dependencies-and-default-null-object-substitutes"><a href="#optional-dependencies-and-default-null-object-substitutes" class="header-anchor">#</a> Optional Dependencies and Default Null Object Substitutes</h2> <p>By default, the <code>some_dependency</code> will be assigned a <em>strict</em> null object that is constructed to conform to the <code>SomeDependency</code> interface.</p> <p>A direct invocation of the initializer will not leave the <code>some_dependency</code> attribute uninitialized as <code>nil</code>.</p> <p>The dependency will be assigned the default null object substitute that is constructed dynamically as a function of the <code>dependency</code> macro. The default null object may be specialized by implementing a <a href="#concrete-substitutes">concrete substitute</a>.</p> <p>The value of <code>some_dependency</code> that is needed in live operation (the <em>operational</em> implementation) is provided by the <code>build</code> constructor (factory) method.</p> <p>This constructor (<code>build</code>) allows for the most convenient use of the class without commingling construction conveniences and machinations with the initializer, and leaves the initializer free of any responsibilities other than capturing only the essential data needed for the object's operation.</p> <h2 id="not-stubs"><a href="#not-stubs" class="header-anchor">#</a> Not Stubs</h2> <p>It's important to see substitutes as substitutes (in the substitutability property sense) rather than as <em>stubs</em>, or any other <em>test double</em>.</p> <p>A <em>stub</em> is a concern of testing. A substitute is a bona fide concern of a class's operational design.</p> <p>While <em>stubs</em> and <em>substitutes</em> may find themselves in similar roles at test time, the perspective that leads a design toward stubs is very different than the design perspective that leads to substitutes.</p> <p>The goal of a stub is to remove undesirable side effects from the course of execution during a test. The goal of a substitute is to allow an object to be useful upon initialization of the object, without needing to use any other tool setup but the class's own interface.</p> <p>The use of test doubles relegates the properties of <em>usefulness</em> and <em>transparency</em> to an afterthought of testing.</p> <p>A test that uses a stub framework is explicitly calling out the design requirement to allow for an object's dependencies to be <em>safe</em> and <em>inert</em> substitutes. These are legitimate use cases of the object and its dependencies that should be accounted for by the design, and the exercise of them in this way is a priori concern of the design.</p> <h2 id="configuration-not-configuration"><a href="#configuration-not-configuration" class="header-anchor">#</a> Configuration, not &quot;Configuration&quot;</h2> <p>The term <em>configuration</em> here does not refer to the kind of preference or settings data used to provide system-wide variables during start up of an application or service.</p> <p>The use of the term <em>configuration</em> here refers to the configuration of an assemblage of collaborators. This is closer to the meaning of <em>configuration</em> more common to the actor model and actor systems. In this context, it refers to the assignment of collaborator dependencies to the objects that depend on them.</p> <h2 id="configuring-dependencies"><a href="#configuring-dependencies" class="header-anchor">#</a> Configuring Dependencies</h2> <p>The job of configuring <em>operational</em> dependencies falls to the class's <em>constructor</em> (or, <em>factory method</em>), implemented above as the <code>build</code> method.</p> <p>Furthermore, it's the job of the dependency's class to decide how the dependency should be constructed, and how it should be assigned to the object that depends on it.</p> <p>This line of code from the example above is where configuration is happening:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>SomeDependency<span class="token punctuation">.</span>configure<span class="token punctuation">(</span>instance<span class="token punctuation">)</span>
+</code></pre></div><p>This form allows <code>SomeDependency</code> to decide for itself how it should be constructed and to be assigned.</p> <p>The simplest implementation would be:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeDependency</span>
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">configure</span></span><span class="token punctuation">(</span>receiver<span class="token punctuation">)</span>
+    instance <span class="token operator">=</span> <span class="token keyword">new</span>
+    receiver<span class="token punctuation">.</span>some_dependency <span class="token operator">=</span> instance
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><p>This pattern is also an example of <em>Tell, Don't Ask</em>, which is a helpful pattern in preserving encapsulation, which in turn help limit the effects of some of the more harmful kinds of coupling.</p> <p>In effect, <em>tell</em> the dependency's class to get an instance of itself (in whichever way it does that, which is not the business of the user of the class), and to assign it back to the instance of the object that has the dependency.</p> <p>While this property might seem negligible, spread over the breadth of an application or system, and over the weeks, months, or years of a work on a system of objects, the cumulative effects of uncontrolled coupling accounts for much of the productivity slow down and increased costs that teams commonly experience.</p> <h2 id="minimizing-the-configuration-implementation"><a href="#minimizing-the-configuration-implementation" class="header-anchor">#</a> Minimizing the Configuration Implementation</h2> <p>The above configuration implementation can be minimized with a macro.</p> <p>Here is the <code>SomeDependency</code> class's configuration minimized by use of a <code>configure</code> macro:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeDependency</span>
+  configure <span class="token symbol">:some_dependency</span><span class="token punctuation">,</span> <span class="token symbol">constructor</span><span class="token operator">:</span> <span class="token symbol">:new</span>
+<span class="token keyword">end</span>
+</code></pre></div><p>Be warned, however, that doing this makes the class more obscure to first-glance intelligence - especially in situations where the configuration must be specialized or is more complicated.</p> <p>It's arguable that pursuing this minimal implementation reduces the usability of this object even while the mechanical details of the boilerplate are reduced.</p> <h2 id="objects-are-behaviors-first-and-data-second"><a href="#objects-are-behaviors-first-and-data-second" class="header-anchor">#</a> Objects are Behaviors First, and Data Second</h2> <p>Most objects in your system should be behavioral. This is a fundamental tenet of Object-Orientation, and really of most programming paradigms.</p> <p>Behaviors aren't really supposed to be bolted on to data objects (a.k.a.: <em>entities</em>) as secondary features of data objects. But it's often the result when designers and developers see the system's <em>data</em> as the purpose of objects. This is more of a common mental quirk than an aspect of design.</p> <p>The pervasiveness of Object-Relational persistence frameworks, and the use of objects to represent storage structures - especially rows in databases - exacerbates the realization of objects as primarily concerned with behavior rather than data.</p> <p>The implication for design is that a good deal of the classes in your systems will reflect the <em>Command Pattern</em>. However, because this is the <em>default</em> use of objects, it doesn't need to be said that an object <em>implements the command pattern</em>. It's enough to say that <em>an object is an object</em>. This is the same as saying that an object <em>is behavioral</em>, or in other words, that an object is a <em>command</em>. In effect, it goes without saying that an object is a <em>command</em>. It should be more rare that an object is a <em>data object</em> or an <em>entity</em> (or an ActiveRecord object).</p> <p>The implication is that objects rarely need to have &quot;command&quot; or &quot;service&quot; (just another name for a behavioral object) in their name. Subsequently, it's not necessary to have words like &quot;do&quot; or &quot;execute&quot; or &quot;perform&quot; in a class's name, or in any of its methods' names.</p> <p>There are always exceptions, but they should be rare. If they're not rare, the design of the namespace should be examined for design flaws.</p> <h2 id="actuators"><a href="#actuators" class="header-anchor">#</a> Actuators</h2> <p>Unlike a data structure, an object is responsible for a single act. That act is set in motion by a single method. That method is termed, &quot;actuator&quot;.</p> <p>It's not necessary to give this method a name like &quot;run&quot;, &quot;perform&quot;, etc. Ruby already provides for implementing actuators with a method named <code>call</code>. This built-in can be invoked implicitly as <code>some_object.()</code> (although <code>some_object.call()</code> will also work).</p> <p>Behavioral objects have <em>actuators</em>. The objects' classes also have actuators. This duality parallels the relationship between a class's initializer and its <code>build</code> method.</p> <p>Once an object is instantiated, it is ready to be actuated, ie: to have its <code>call</code> method invoked. As a convenience, the class also provides a <code>call</code> method. The <em>class actuator</em> constructs the object, and invokes the instance actuator.</p> <h2 id="elaborated-example"><a href="#elaborated-example" class="header-anchor">#</a> Elaborated Example</h2> <p>The above example elaborated with actuators:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">Something</span>
+  attr_reader <span class="token symbol">:some_value</span>
+  attr_reader <span class="token symbol">:some_other_value</span>
+
+  dependency <span class="token symbol">:some_dependency</span><span class="token punctuation">,</span> SomeDependency
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">initialize</span></span><span class="token punctuation">(</span>some_value<span class="token punctuation">,</span> some_other_value<span class="token punctuation">)</span>
+    <span class="token variable">@some_value</span> <span class="token operator">=</span> some_value
+    <span class="token variable">@some_other_value</span> <span class="token operator">=</span> some_other_value
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">build</span></span><span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+    <span class="token keyword">new</span><span class="token punctuation">(</span>some_object<span class="token punctuation">.</span>some_value<span class="token punctuation">,</span> some_object<span class="token punctuation">.</span>some_other_value<span class="token punctuation">)</span><span class="token punctuation">.</span>tap <span class="token keyword">do</span> <span class="token operator">|</span>instance<span class="token operator">|</span>
+      SomeDependency<span class="token punctuation">.</span>configure<span class="token punctuation">(</span>instance<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">call</span></span><span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+    instance <span class="token operator">=</span> build<span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+    instance<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">call</span></span>
+    <span class="token comment"># Execute the object's raison d'etre, making use</span>
+    <span class="token comment"># of the object's attributes and dependencies</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><h2 id="minimizing-the-primitive-initializer"><a href="#minimizing-the-primitive-initializer" class="header-anchor">#</a> Minimizing the Primitive Initializer</h2> <p>The above primitive initializer is ultimately so simple that it could effectively be replaced with a macro:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">Something</span>
+  initializer <span class="token symbol">:some_value</span><span class="token punctuation">,</span> <span class="token symbol">:some_other_value</span>
+
+  dependency <span class="token symbol">:some_dependency</span><span class="token punctuation">,</span> SomeDependency
+
+  <span class="token comment"># ...</span>
+<span class="token keyword">end</span>
+</code></pre></div><p>In the above case, the <code>initializer</code> macro would both generate the <code>initialize</code> method <em>and</em> create the two attributes.</p> <p>Note: While this is a possibility opened by making sure that initializers <em>only</em> capture initial data and do nothing else, representing an initializer and its attributes with such a macro is a personal choice. It has the drawback of being more obscure and esoteric. Such a thing should be standardized and socialized in a team so that it's self-evident for the developers who experience it.</p> <h2 id="telemetry-and-transparency"><a href="#telemetry-and-transparency" class="header-anchor">#</a> Telemetry and Transparency</h2> <p>The ability for an object to provide insight into its own execution is something that should be accounted for by the design, and should be a first class citizen of design.</p> <p>If the execution of an object is important enough to need to verify the execution in a test, then that <em>transparency</em> is a bona fide element of the design, rather than the responsibility of the user of the object (ie: test code).</p> <p>Transparency is not <em>of</em> tests. It is <em>used by</em> tests. Transparency is of design.</p> <p>Said otherwise: the presence of test doubles (mocks, stubs, spies) signifies that an object's design itself is not accounting for the use cases that it is engaged in. The object is being asked to do things that it's not designed for.</p> <p>There's no doubt that a Ruby object can be brute-forced into such a thing, but that doesn't solve the problem of a class expressing its uses in its own code.</p> <p>It should be clear to the reader of the class what the class's user are interested in terms of transparency, what telemetry is published during a class's execution, and how the instrumentation is activated.</p> <p>Here's an elaboration of the implementation that includes a telemetry mechanism:</p> <p>Usage:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>something <span class="token operator">=</span> Something<span class="token punctuation">.</span>build<span class="token punctuation">(</span>some_obj<span class="token punctuation">)</span>
+sink <span class="token operator">=</span> Something<span class="token punctuation">.</span>register_telemetry_sink<span class="token punctuation">(</span>something<span class="token punctuation">)</span>
+something<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+assert<span class="token punctuation">(</span>sink<span class="token punctuation">.</span>recorded_something_done<span class="token operator">?</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">module</span> <span class="token class-name">UsefulObjects</span>
+  <span class="token keyword">class</span> <span class="token class-name">Something</span>
+    attr_reader <span class="token symbol">:some_value</span>
+    attr_reader <span class="token symbol">:some_other_value</span>
+
+    dependency <span class="token symbol">:some_dependency</span><span class="token punctuation">,</span> SomeDependency
+    dependency <span class="token symbol">:telemetry</span><span class="token punctuation">,</span> <span class="token double-colon punctuation">::</span>Telemetry
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">initialize</span></span><span class="token punctuation">(</span>some_value<span class="token punctuation">,</span> some_other_value<span class="token punctuation">)</span>
+      <span class="token variable">@some_value</span> <span class="token operator">=</span> some_value
+      <span class="token variable">@some_other_value</span> <span class="token operator">=</span> some_other_value
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">build</span></span><span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+      <span class="token keyword">new</span><span class="token punctuation">(</span>some_object<span class="token punctuation">.</span>some_value<span class="token punctuation">,</span> some_object<span class="token punctuation">.</span>some_other_value<span class="token punctuation">)</span><span class="token punctuation">.</span>tap <span class="token keyword">do</span> <span class="token operator">|</span>instance<span class="token operator">|</span>
+        SomeDependency<span class="token punctuation">.</span>configure<span class="token punctuation">(</span>instance<span class="token punctuation">)</span>
+        <span class="token double-colon punctuation">::</span>Telemetry<span class="token punctuation">.</span>configure<span class="token punctuation">(</span>instance<span class="token punctuation">)</span>
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">call</span></span><span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+      instance <span class="token operator">=</span> build<span class="token punctuation">(</span>some_object<span class="token punctuation">)</span>
+      instance<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">call</span></span>
+      do_something
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">do_something</span></span>
+      telemetry<span class="token punctuation">.</span>record<span class="token punctuation">(</span><span class="token symbol">:something_done</span><span class="token punctuation">,</span> some_value<span class="token punctuation">)</span>
+      do_something_else
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">do_something_else</span></span>
+      <span class="token comment"># ...</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">module</span> <span class="token class-name">Telemetry</span>
+      <span class="token keyword">class</span> <span class="token class-name">Sink</span>
+        <span class="token keyword">include</span> <span class="token double-colon punctuation">::</span>Telemetry<span class="token double-colon punctuation">::</span>Sink
+
+        record <span class="token symbol">:something_done</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">sink</span></span>
+        <span class="token class-name">Sink</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">register_telemetry_sink</span></span><span class="token punctuation">(</span>something<span class="token punctuation">)</span>
+      sink <span class="token operator">=</span> Telemetry<span class="token punctuation">.</span>sink
+      something<span class="token punctuation">.</span>telemetry<span class="token punctuation">.</span>register<span class="token punctuation">(</span>sink<span class="token punctuation">)</span>
+      sink
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><h2 id="concrete-substitutes"><a href="#concrete-substitutes" class="header-anchor">#</a> Concrete Substitutes</h2> <p>In addition to having dependencies being initialized to null object implementations, substitutes should also provide a means to override the inert null object with a concrete implementation of a substitute (or to specialize the null object).</p> <p>Here's an example of a dependency with a concrete substitute implementation (though a naive one that doesn't demonstrate a realistic case):</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeDependency</span>
+  configure <span class="token symbol">:some_dependency</span><span class="token punctuation">,</span> <span class="token symbol">factory_method</span><span class="token operator">:</span> <span class="token symbol">:new</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">do_something</span></span>
+    do_some_destructive_side_effect
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">module</span> <span class="token class-name">Substitute</span>
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">build</span></span>
+      <span class="token class-name">SomeDependency</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">SomeDependency</span> <span class="token operator">&lt;</span> <span class="token double-colon punctuation">::</span>SomeDependency
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">do_something</span></span>
+        pretend_to_do_some_destructive_side_effect
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><h2 id="concrete-substitutes-and-telemetry"><a href="#concrete-substitutes-and-telemetry" class="header-anchor">#</a> Concrete Substitutes and Telemetry</h2> <p>If a concrete substitute also needs transparency, it can be instrumented with telemetry to record and expose the details of its execution:</p> <p>Usage:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>something <span class="token operator">=</span> <span class="token class-name">Something</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>some_value<span class="token punctuation">,</span> some_other_value<span class="token punctuation">)</span>
+some_dependency <span class="token operator">=</span> something<span class="token punctuation">.</span>some_dependency
+sink <span class="token operator">=</span> SomeDependency<span class="token punctuation">.</span>register_telemetry_sink<span class="token punctuation">(</span>some_dependency<span class="token punctuation">)</span>
+assert<span class="token punctuation">(</span>sink<span class="token punctuation">.</span>recorded_something_done<span class="token operator">?</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeDependency</span>
+  dependency <span class="token symbol">:telemetry</span><span class="token punctuation">,</span> <span class="token double-colon punctuation">::</span>Telemetry
+
+  configure <span class="token symbol">:some_dependency</span> <span class="token keyword">do</span>
+    <span class="token keyword">new</span><span class="token punctuation">.</span>tap <span class="token keyword">do</span> <span class="token operator">|</span>instance<span class="token operator">|</span>
+      <span class="token double-colon punctuation">::</span>Telemetry<span class="token punctuation">.</span>configure<span class="token punctuation">(</span>instance<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">do_something</span></span>
+    do_some_destructive_side_effect
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">do_some_destructive_side_effect</span></span>
+    <span class="token comment"># ...</span>
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">module</span> <span class="token class-name">Telemetry</span>
+    <span class="token keyword">class</span> <span class="token class-name">Sink</span>
+      <span class="token keyword">include</span> <span class="token double-colon punctuation">::</span>Telemetry<span class="token double-colon punctuation">::</span>Sink
+
+      record <span class="token symbol">:something_done</span>
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">sink</span></span>
+      <span class="token class-name">Sink</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">register_telemetry_sink</span></span><span class="token punctuation">(</span>something<span class="token punctuation">)</span>
+    sink <span class="token operator">=</span> Telemetry<span class="token punctuation">.</span>sink
+    something<span class="token punctuation">.</span>telemetry<span class="token punctuation">.</span>register<span class="token punctuation">(</span>sink<span class="token punctuation">)</span>
+    sink
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">module</span> <span class="token class-name">Substitute</span>
+    <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">build</span></span>
+      SomeDependency<span class="token punctuation">.</span>build
+    <span class="token keyword">end</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">SomeDependency</span> <span class="token operator">&lt;</span> UsefulObjects<span class="token double-colon punctuation">::</span>SomeDependency
+      attr_accessor <span class="token symbol">:sink</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">build</span></span>
+        <span class="token keyword">new</span><span class="token punctuation">.</span>tap <span class="token keyword">do</span> <span class="token operator">|</span>instance<span class="token operator">|</span>
+          <span class="token double-colon punctuation">::</span>Telemetry<span class="token punctuation">.</span>configure<span class="token punctuation">(</span>instance<span class="token punctuation">)</span>
+        <span class="token keyword">end</span>
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">do_something</span></span>
+        telemetry<span class="token punctuation">.</span>record<span class="token punctuation">(</span><span class="token symbol">:something_done</span><span class="token punctuation">)</span>
+        pretend_to_do_some_destructive_side_effect
+      <span class="token keyword">end</span>
+
+      <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">pretend_to_do_some_destructive_side_effect</span></span>
+        <span class="token comment"># ...</span>
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><p>Note: The registration of telemetry can also be done during the construction of the substitute.</p> <h2 id="addendum"><a href="#addendum" class="header-anchor">#</a> Addendum</h2> <h3 id="class-interface-and-convenience-versus-object-interface-and-precision"><a href="#class-interface-and-convenience-versus-object-interface-and-precision" class="header-anchor">#</a> Class Interface and Convenience Versus Object Interface and Precision</h3> <p>Illustrated by both the class constructor and class actuator, a <em>class interface</em> is a convenience affordance. It allows for instantiation or actuation of an object in a way that is most convenient to the developer.</p> <p>The instance interface is structured to express the greatest extent of precision and exactness without consideration for developer convenience.</p> <p>The object interface is <em>correct</em>. The class interface is an <em>ease of use</em> provision that does the work of providing more exact and precise arguments to the object interface.</p> <p>The class interface insulates the object interface from the encroachment of imprecision that comes from a developer's desire to have ease of use.</p> <p>For example, it's common (while imprecise and <em>incorrect</em>) for Ruby developers to pass a hash of values to an initializer, and then copy the hash's values to the instantiated object's instance variables. This would be an example of an initializer that does not offer the precision appropriate to an instance interface.</p> <p>Instead, an initializer should only receive exactly the data that will be assigned to the object's instance variables, without any <em>destructuring</em> of more complex objects, like a hash.</p> <p>By providing a class constructor, the initializer's precision can be preserved, while also providing a convenience on the class's interface that can destructure the hash and invoke the initializer with the appropriate level of exactitude and precision.</p> <p>The following example illustrates the principles:</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">Something</span>
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token function">initialize</span></span><span class="token punctuation">(</span>some_arg<span class="token punctuation">,</span> some_other_arg<span class="token punctuation">,</span> another_arg<span class="token punctuation">)</span>
+    <span class="token variable">@some_arg</span> <span class="token operator">=</span> some_arg
+    <span class="token variable">@some_other_arg</span> <span class="token operator">=</span> some_other_arg
+    <span class="token variable">@another_arg</span> <span class="token operator">=</span> another_arg
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token method-definition"><span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">build</span></span><span class="token punctuation">(</span>hash<span class="token punctuation">)</span>
+    <span class="token keyword">new</span><span class="token punctuation">(</span>
+      hash<span class="token punctuation">[</span><span class="token symbol">:some_arg</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      hash<span class="token punctuation">[</span><span class="token symbol">:some_other_arg</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      hash<span class="token punctuation">[</span><span class="token symbol">:another_arg</span><span class="token punctuation">]</span>
+    <span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><h3 id="anticipated-objection-this-approach-causes-too-much-boilerplate-code"><a href="#anticipated-objection-this-approach-causes-too-much-boilerplate-code" class="header-anchor">#</a> Anticipated Objection: This Approach Causes Too Much Boilerplate Code</h3> <p>Boilerplate can be seen as <em>clutter</em> that is obscuring the deeper meaning and purpose of the implementation. However, there's a tipping point beyond which further reduction of mechanical code makes the object's operation incomprehensible.</p> <p>While counter-intuitive to many developers, the reduction of in the amount of code is usually not a factor in increasing productivity. In fact, the opposite is true, and is often plainly observable through static analysis of design and code.</p> <p>The unavoidable side-effect of reducing certain kinds of boilerplate is an increase in abstractness. With an increase in abstractness comes the increase of afferent coupling to abstract members, and with that comes the rigidity that has a compounding effect on the time it takes to get work done. Abstractness is not a <em>gift that keeps on giving</em>. It's a specific countermeasure for a specific set of problems. Used outside of those problems, it creates more problems than it solves.</p> <p>It can't be over-emphasized that the things that need to be done to a design to reduce mechanical boilerplate code can be as harmful to design as they are helpful.</p> <p>There is only a certain amount of boilerplate reduction that can be afforded before efforts to reduce boilerplate create more subtle, but more costly and more entrenched problems.</p> <p>Seeing the same <em>patterns</em> of code repeatedly can trigger the <em>Don't Repeat Yourself</em> instinct. Deeper inspection of design factors as well as the <em>Don't Repeat Yourself</em> adage itself can show that boilerplate reduction is <em>not</em> the intention of the guidance provided by the adage.</p> <p>Rather than reduce mere boilerplate code, look for variations on patterns and see if you can eliminate them. Even if the result is that the same <em>pattern</em> is repeated throughout your code. It's the <em>special variation</em> that is more costly to work with.</p> <p>Any programmer at any level can reduce perceived duplication. It's not difficult, and it's not an unassailable goal of design - except when it does not create countervailing problems. And that assessment is a matter of a judgment call that has to take into effect the unique conditions of the particular system being worked.</p> <p>If you reduce duplication of code patterns indiscriminately, you'll end up creating a <em>framework</em> from which critical business logic cannot be extricated when the framework becomes too cumbersome to continue justifying its use. While not <em>all</em> frameworks end up facing this fate, it's far more common than not, as framework developers struggle to maintain adoption and relevance as time passes by adding more features and specializations through abstraction rather than by extension (ie: plain old <em>vendor lock-in</em>).</p> <p>In effect, the abstractions created by the premature boilerplate reduction can cause the use of the programming language to diverge so far from the language's own foundations that learning the framework becomes an exercise in effectively learning a new language. This in itself is an example of the kind of <em>special variation</em> that must be rigorously controlled rather than automatically indulged.</p> <p>While having to write boilerplate code can seem tedious and annoying, that's all it is. The avoidance of tedium is not a sufficient risk to the design's structural qualities to warrant its indulgence reflexively.</p> <p>Necessary, irreducible boilerplate is just one of those things that we need to face as programmers with increased patience and a shift in focus from short term gains to long-term sustainability and continuity.</p> <p>Boilerplate - as long as its instances in various classes have avoided variation, and as long as consistency is rigorously protected - is a very minimal impact on productivity and quality.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/73.5aabb8b9.js" defer></script>
+  </body>
+</html>

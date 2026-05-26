@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Message Metadata Fixture | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/68.878e211f.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link router-link-active">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link router-link-active">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Test Fixtures</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/test-fixtures/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/user-guide/test-fixtures/handler-fixture.html" class="sidebar-link">Handler Fixture</a></li><li><a href="/user-guide/test-fixtures/message-fixture.html" class="sidebar-link">Message Fixture</a></li><li><a href="/user-guide/test-fixtures/message-metadata-fixture.html" aria-current="page" class="active sidebar-link">Message Metadata Fixture</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#example" class="sidebar-link">Example</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#message-metadata-fixture-facts" class="sidebar-link">Message Metadata Fixture Facts</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#messaging-fixtures-metadata-class" class="sidebar-link">Messaging::Fixtures::Metadata Class</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#running-the-fixture" class="sidebar-link">Running the Fixture</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#message-metadata-fixture-output" class="sidebar-link">Message Metadata Fixture Output</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#detailed-output" class="sidebar-link">Detailed Output</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#actuating-the-fixture" class="sidebar-link">Actuating the Fixture</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#testing-that-source-attributes-have-been-assigned" class="sidebar-link">Testing That Source Attributes Have Been Assigned</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#testing-that-causation-attributes-have-been-assigned" class="sidebar-link">Testing That Causation Attributes Have Been Assigned</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#testing-that-workflow-attributes-have-been-assigned" class="sidebar-link">Testing That Workflow Attributes Have Been Assigned</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#test-that-the-metadata-attributes-have-been-mutated" class="sidebar-link">Test That the Metadata Attributes Have Been Mutated</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#test-the-correlation-stream-name-value" class="sidebar-link">Test the Correlation Stream Name Value</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#test-the-reply-stream-name-value" class="sidebar-link">Test the Reply Stream Name Value</a></li><li class="sidebar-sub-header"><a href="/user-guide/test-fixtures/message-metadata-fixture.html#test-that-the-metadata-follows-the-metadata-of-a-source-message" class="sidebar-link">Test That the Metadata Follows the Metadata of a Source Message</a></li></ul></li><li><a href="/user-guide/test-fixtures/writer-fixture.html" class="sidebar-link">Writer Fixture</a></li><li><a href="/user-guide/test-fixtures/projection-fixture.html" class="sidebar-link">Projection Fixture</a></li><li><a href="/user-guide/test-fixtures/schema-equality-fixture.html" class="sidebar-link">Schema Equality Fixture</a></li><li><a href="/user-guide/test-fixtures/schema-assignment-fixture.html" class="sidebar-link">Schema Assignment Fixture</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="message-metadata-fixture"><a href="#message-metadata-fixture" class="header-anchor">#</a> Message Metadata Fixture</h1> <p>The message metadata fixture tests the attributes of a message's metadata. It can verify that all of a message's attributes have had values assigned to them, and can verify that certain subsets of attributes have had values assigned to them. The metadata fixture also allows testing whether a message's metadata follows another message in a sequence of messages in a workflow.</p> <h2 id="example"><a href="#example" class="header-anchor">#</a> Example</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>context <span class="token string-literal"><span class="token string">&quot;Metadata Fixture&quot;</span></span> <span class="token keyword">do</span>
+  source_metadata <span class="token operator">=</span> Messaging<span class="token double-colon punctuation">::</span>Message<span class="token double-colon punctuation">::</span><span class="token class-name">Metadata</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+  source_metadata<span class="token punctuation">.</span>stream_name<span class="token operator">=</span><span class="token string-literal"><span class="token string">'example:command-00000001-0000-4000-8000-000000000000'</span></span>
+  source_metadata<span class="token punctuation">.</span>position<span class="token operator">=</span><span class="token number">1</span>
+  source_metadata<span class="token punctuation">.</span>global_position<span class="token operator">=</span><span class="token number">111</span>
+  source_metadata<span class="token punctuation">.</span>correlation_stream_name<span class="token operator">=</span><span class="token string-literal"><span class="token string">'someCorrelationStream'</span></span>
+  source_metadata<span class="token punctuation">.</span>reply_stream_name<span class="token operator">=</span><span class="token string-literal"><span class="token string">'someReplyStream'</span></span>
+
+  metadata <span class="token operator">=</span> Controls<span class="token double-colon punctuation">::</span>Metadata<span class="token punctuation">.</span>example
+  metadata<span class="token punctuation">.</span>stream_name<span class="token operator">=</span><span class="token string-literal"><span class="token string">'example-00000001-0000-4000-8000-000000000000'</span></span>
+  metadata<span class="token punctuation">.</span>position<span class="token operator">=</span><span class="token number">11</span>
+  metadata<span class="token punctuation">.</span>global_position<span class="token operator">=</span><span class="token number">1111</span>
+  metadata<span class="token punctuation">.</span>causation_message_stream_name<span class="token operator">=</span><span class="token string-literal"><span class="token string">'example:command-00000001-0000-4000-8000-000000000000'</span></span>
+  metadata<span class="token punctuation">.</span>causation_message_position<span class="token operator">=</span><span class="token number">1</span>
+  metadata<span class="token punctuation">.</span>causation_message_global_position<span class="token operator">=</span><span class="token number">111</span>
+  metadata<span class="token punctuation">.</span>correlation_stream_name<span class="token operator">=</span><span class="token string-literal"><span class="token string">'someCorrelationStream'</span></span>
+  metadata<span class="token punctuation">.</span>reply_stream_name<span class="token operator">=</span><span class="token string-literal"><span class="token string">'someReplyStream'</span></span>
+
+  metadata<span class="token punctuation">.</span>follow<span class="token punctuation">(</span>source_metadata<span class="token punctuation">)</span>
+
+  fixture<span class="token punctuation">(</span>
+    Metadata<span class="token punctuation">,</span>
+    metadata<span class="token punctuation">,</span>
+    source_metadata
+  <span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token operator">|</span>metadata<span class="token operator">|</span>
+
+    metadata<span class="token punctuation">.</span>assert_source_attributes_assigned
+    metadata<span class="token punctuation">.</span>assert_causation_attributes_assigned
+    metadata<span class="token punctuation">.</span>assert_workflow_attributes_assigned
+
+    metadata<span class="token punctuation">.</span>assert_attributes_assigned
+
+    metadata<span class="token punctuation">.</span>assert_correlation_stream_name<span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'someCorrelationStream'</span></span><span class="token punctuation">)</span>
+    metadata<span class="token punctuation">.</span>assert_reply_stream_name<span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'someReplyStream'</span></span><span class="token punctuation">)</span>
+
+    metadata<span class="token punctuation">.</span>assert_follows
+
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre></div><h2 id="message-metadata-fixture-facts"><a href="#message-metadata-fixture-facts" class="header-anchor">#</a> Message Metadata Fixture Facts</h2> <ul><li>The principle concerns of a message metadata test are whether metadata attributes have been mutated (ie: <em>assigned</em>), and whether a message's metadata follows from another message's metadata in a sequence of messages representing a workflow</li> <li>An optional list of attribute names can be given to limit the testing of assignment of attributes to a subset of attributes</li></ul> <h2 id="messaging-fixtures-metadata-class"><a href="#messaging-fixtures-metadata-class" class="header-anchor">#</a> Messaging::Fixtures::Metadata Class</h2> <p>The <code>Metadata</code> class is a concrete class from the <a href="/user-guide/libraries.html#messaging-fixtures"><code>Messaging::Fixtures</code> library</a> and namespace.</p> <p>The <code>Messaging::Fixtures::Metadata</code> class provides:</p> <ul><li>The instance actuator <code>.()</code> (or <code>call</code> method) that begins execution of the fixture and the testing of a message metadata object, as well as the optional comparison with a source object</li> <li>The <code>assert_source_attributes_assigned</code> method for testing that the set of source attributes have been assigned</li> <li>The <code>assert_causation_attributes_assigned</code> method for testing that the set of causation attributes have been assigned</li> <li>The <code>assert_workflow_attributes_assigned</code> method for testing that the set of workflow attributes have been assigned</li> <li>The <code>assert_correlation_stream_name</code> method for testing the value of the <code>correlation_stream_name</code> attribute</li> <li>The <code>assert_reply_stream_name</code> method for testing the value of the <code>reply_stream_name</code> attribute</li> <li>The <code>assert_follows</code> method for testing that a message's metadata follows from another message's metadata in a messaging workflow</li></ul> <h2 id="running-the-fixture"><a href="#running-the-fixture" class="header-anchor">#</a> Running the Fixture</h2> <p>Running the test is no different than <a href="http://test-bench.software/user-guide/running-tests.html" target="_blank" rel="noopener noreferrer">running any TestBench test<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.</p> <p>For example, given a test file named <code>metadata.rb</code> that uses the message metadata fixture, in a directory named <code>test</code>, the test is executed by passing the file name to the <code>ruby</code> executable.</p> <div class="language-bash extra-class"><pre class="language-bash"><code>ruby test/metadata.rb
+</code></pre></div><p>The test script and the fixture work together as if they are part of the same test context, preserving output nesting between the test script file and the test fixture.</p> <h2 id="message-metadata-fixture-output"><a href="#message-metadata-fixture-output" class="header-anchor">#</a> Message Metadata Fixture Output</h2> <div class="language-text extra-class"><pre class="language-text"><code>Metadata Fixture
+  Metadata
+    Source Attributes Assigned
+      stream_name
+      position
+      global_position
+    Causation Attributes Assigned
+      causation_message_stream_name
+      causation_message_position
+      causation_message_global_position
+    Workflow Attributes Assigned
+      causation_message_stream_name
+      causation_message_position
+      causation_message_global_position
+      correlation_stream_name
+      reply_stream_name
+    Attributes Assigned
+      stream_name
+      position
+      global_position
+      causation_message_stream_name
+      causation_message_position
+      causation_message_global_position
+      correlation_stream_name
+      reply_stream_name
+      time
+      schema_version
+    correlation_stream_name
+    reply_stream_name
+    Follows
+</code></pre></div><p>The output below the &quot;Metadata&quot; line is from the metadata fixture. The &quot;Metadata Fixture&quot; line is from the <code>test/metadata.rb</code> test script file that is actuating the metadata fixture.</p> <h2 id="detailed-output"><a href="#detailed-output" class="header-anchor">#</a> Detailed Output</h2> <p>In the event of any error or failed assertion, the test output will include additional detailed output that can be useful in understanding the context of the failure and the state of the fixture itself and the objects that it's testing.</p> <p>The detailed output can also be printed by setting the <code>TEST_BENCH_DETAIL</code> environment variable to <code>on</code>.</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">TEST_BENCH_DETAIL</span><span class="token operator">=</span>on ruby test/metadata.rb
+</code></pre></div><div class="language-text extra-class"><pre class="language-text"><code>Metadata Fixture
+  Metadata
+    Source Attributes Assigned
+      stream_name
+        Default Value: nil
+        Assigned Value: &quot;example-00000001-0000-4000-8000-000000000000&quot;
+      position
+        Default Value: nil
+        Assigned Value: 11
+      global_position
+        Default Value: nil
+        Assigned Value: 1111
+    Causation Attributes Assigned
+      causation_message_stream_name
+        Default Value: nil
+        Assigned Value: &quot;example:command-00000001-0000-4000-8000-000000000000&quot;
+      causation_message_position
+        Default Value: nil
+        Assigned Value: 1
+      causation_message_global_position
+        Default Value: nil
+        Assigned Value: 111
+    Workflow Attributes Assigned
+      causation_message_stream_name
+        Default Value: nil
+        Assigned Value: &quot;example:command-00000001-0000-4000-8000-000000000000&quot;
+      causation_message_position
+        Default Value: nil
+        Assigned Value: 1
+      causation_message_global_position
+        Default Value: nil
+        Assigned Value: 111
+      correlation_stream_name
+        Default Value: nil
+        Assigned Value: &quot;someCorrelationStream&quot;
+      reply_stream_name
+        Default Value: nil
+        Assigned Value: &quot;someReplyStream&quot;
+    correlation_stream_name
+      Metadata Value: someCorrelationStream
+      Compare Value: someCorrelationStream
+    reply_stream_name
+      Metadata Value: someReplyStream
+      Compare Value: someReplyStream
+    Attributes Assigned
+      stream_name
+        Default Value: nil
+        Assigned Value: &quot;example-00000001-0000-4000-8000-000000000000&quot;
+      position
+        Default Value: nil
+        Assigned Value: 11
+      global_position
+        Default Value: nil
+        Assigned Value: 1111
+      causation_message_stream_name
+        Default Value: nil
+        Assigned Value: &quot;example:command-00000001-0000-4000-8000-000000000000&quot;
+      causation_message_position
+        Default Value: nil
+        Assigned Value: 1
+      causation_message_global_position
+        Default Value: nil
+        Assigned Value: 111
+      correlation_stream_name
+        Default Value: nil
+        Assigned Value: &quot;someCorrelationStream&quot;
+      reply_stream_name
+        Default Value: nil
+        Assigned Value: &quot;someReplyStream&quot;
+      time
+        Default Value: nil
+        Assigned Value: 2000-01-01 00:00:00.000011 UTC
+      schema_version
+        Default Value: nil
+        Assigned Value: &quot;1&quot;
+    Follows
+      Source Message Stream Name: &quot;example:command-00000001-0000-4000-8000-000000000000&quot;
+      Causation Stream Name: &quot;example:command-00000001-0000-4000-8000-000000000000&quot;
+      Source Message Position: 1
+      Causation Position: 1
+      Source Message Global Position: 111
+      Causation Global Position: 111
+      Source Message Correlation Stream Name: &quot;someCorrelationStream&quot;
+      Correlation Stream Name: &quot;someCorrelationStream&quot;
+      Source Message Reply Stream Name: &quot;someReplyStream&quot;
+      Reply Stream Name: &quot;someReplyStream&quot;
+</code></pre></div><h2 id="actuating-the-fixture"><a href="#actuating-the-fixture" class="header-anchor">#</a> Actuating the Fixture</h2> <p>The fixture is executed using TestBench's <code>fixture</code> method.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>fixture<span class="token punctuation">(</span>Messaging<span class="token double-colon punctuation">::</span>Fixtures<span class="token double-colon punctuation">::</span>Metadata<span class="token punctuation">,</span> metadata<span class="token punctuation">,</span> source_metadata<span class="token operator">=</span><span class="token keyword">nil</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>test_block<span class="token punctuation">)</span>
+</code></pre></div><p>The first argument sent to the <code>fixture</code> method is always the <code>Messaging::Fixtures::Metadata</code> class. Subsequent arguments are the specific construction parameters of the metadata fixture.</p> <p><strong>Parameters</strong></p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>metadata</td> <td>Message metadata that is the principal subject of the fixture's tests</td> <td>Messaging::Message::Metadata</td></tr> <tr><td>source_metadata</td> <td>Optional message metadata that the principal message follows</td> <td>Messaging::Message::Metadata</td></tr> <tr><td>test_block</td> <td>Block used for invoking other assertions that are part of the metadata fixture's API</td> <td>Proc</td></tr></tbody></table> <p><strong>Block Parameter</strong></p> <p>The <code>metadata_fixture</code> argument is passed to the <code>test_block</code> if the block is given.</p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>metadata_fixture</td> <td>Instance of the metadata fixture that is being actuated</td> <td>Messaging::Fixtures::Metadata</td></tr></tbody></table> <p><strong>Block Parameter Methods</strong></p> <p>The following methods are available from the <code>metadata_fixture</code> block parameter, and on an instance of <code>Messaging::Fixtures::Metadata</code>:</p> <ul><li>assert_source_attributes_assigned</li> <li>assert_causation_attributes_assigned</li> <li>assert_workflow_attributes_assigned</li> <li>assert_attributes_assigned</li> <li>assert_correlation_stream_name</li> <li>assert_reply_stream_name</li> <li>assert_follows</li></ul> <h2 id="testing-that-source-attributes-have-been-assigned"><a href="#testing-that-source-attributes-have-been-assigned" class="header-anchor">#</a> Testing That Source Attributes Have Been Assigned</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_source_attributes_assigned<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>The assertion fails if any of the metadata source attributes are not assigned. This assertion is useful when testing that a metadata object meets the setup prerequisites for simulating a message that has been retrieved from a stream.</p> <p>The source attributes are the metadata about the message's own source stream and position.</p> <ul><li><code>stream_name</code></li> <li><code>position</code></li> <li><code>global_position</code></li></ul> <p>For more information on message metadata attributes, see the <a href="/user-guide/messages-and-message-data/metadata.html#metadata-attributes">metadata user guide</a>.</p> <h2 id="testing-that-causation-attributes-have-been-assigned"><a href="#testing-that-causation-attributes-have-been-assigned" class="header-anchor">#</a> Testing That Causation Attributes Have Been Assigned</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_workflow_attributes_assigned<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>The assertion fails if any of the metadata causation attributes are not assigned. This assertion is useful when testing that a metadata object meets the setup prerequisites for simulating a message that was constructed from a preceding message in a workflow using the message class's <a href="/user-guide/messages-and-message-data/messages.html#message-workflows">follow constructor</a>.</p> <p>The workflow attributes are the metadata that records information about any workflow that the message is a part of:</p> <ul><li><code>causation_message_stream_name</code></li> <li><code>causation_message_position</code></li> <li><code>causation_message_global_position</code></li></ul> <p>For more information on message metadata attributes, see the <a href="/user-guide/messages-and-message-data/metadata.html#metadata-attributes">metadata user guide</a>.</p> <h2 id="testing-that-workflow-attributes-have-been-assigned"><a href="#testing-that-workflow-attributes-have-been-assigned" class="header-anchor">#</a> Testing That Workflow Attributes Have Been Assigned</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_workflow_attributes_assigned<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>The assertion fails if any of the metadata workflow attributes are not assigned.</p> <p>This assertion is useful when testing that a metadata object meets the setup prerequisites for simulating a message that was constructed from a preceding message in a workflow using the message class's <a href="/user-guide/messages-and-message-data/messages.html#message-workflows">follow constructor</a>, and when correlation and reply metadata have both been added to the metadata.</p> <p>The workflow attributes are the metadata that records information about any workflow that the message is a part of:</p> <ul><li><code>causation_message_stream_name</code></li> <li><code>causation_message_position</code></li> <li><code>causation_message_global_position</code></li> <li><code>correlation_stream_name</code></li> <li><code>reply_stream_name</code></li></ul> <p>Workflow metadata is the causation metadata plus the optional correlation metadata that is carried from message to message in a message workflow, as well as any reply metadata that is copied from message to message.</p> <p>For more information on message metadata attributes, see the <a href="/user-guide/messages-and-message-data/metadata.html#metadata-attributes">metadata user guide</a>.</p> <h2 id="test-that-the-metadata-attributes-have-been-mutated"><a href="#test-that-the-metadata-attributes-have-been-mutated" class="header-anchor">#</a> Test That the Metadata Attributes Have Been Mutated</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_attributes_assigned<span class="token punctuation">(</span>attribute_names<span class="token operator">=</span><span class="token keyword">nil</span><span class="token punctuation">)</span>
+</code></pre></div><p>An optional list of attribute names can be passed. When the list of attribute names is passed, only those attributes will be tested. When the list of attribute names is not provided, it defaults to the list of all of the metadata attributes names.</p> <p>The <code>assert_attributes_assigned</code> method uses an instance of the <a href="/user-guide/test-fixtures/schema-assignment-fixture.html">Schema::Fixtures::Assignment</a> fixture to perform the assignment test.</p> <p><strong>Example</strong></p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>attribute_names <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token symbol">:stream_name</span><span class="token punctuation">,</span>
+  <span class="token symbol">:position</span><span class="token punctuation">,</span>
+  <span class="token symbol">:global_position</span><span class="token punctuation">,</span>
+  <span class="token symbol">:causation_message_stream_name</span><span class="token punctuation">,</span>
+  <span class="token symbol">:causation_message_position</span><span class="token punctuation">,</span>
+  <span class="token symbol">:causation_message_global_position</span>
+<span class="token punctuation">]</span>
+
+message_fixture<span class="token punctuation">.</span>assert_attributes_assigned<span class="token punctuation">(</span>attribute_names<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Parameters</strong></p> <p>| attribute_names | Optional list of attribute names to check for assignment | Array of Symbol |</p> <p>The list of attribute names can include any of the metadata attribute names, including:</p> <ul><li><code>stream_name</code></li> <li><code>position</code></li> <li><code>global_position</code></li> <li><code>causation_message_stream_name</code></li> <li><code>causation_message_position</code></li> <li><code>causation_message_global_position</code></li> <li><code>correlation_stream_name</code></li> <li><code>reply_stream_name</code></li> <li><code>time</code></li> <li><code>schema_version</code></li></ul> <p>For more information on message metadata attributes, see the <a href="/user-guide/messages-and-message-data/metadata.html#metadata-attributes">metadata user guide</a>.</p> <h2 id="test-the-correlation-stream-name-value"><a href="#test-the-correlation-stream-name-value" class="header-anchor">#</a> Test the Correlation Stream Name Value</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_correlation_stream_name<span class="token punctuation">(</span>correlation_stream_name<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Example</strong></p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_correlation_stream_name<span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'someCorrelationStream'</span></span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>Parameters</strong></p> <p>| correlation_stream_name | Expected value to compare against the metadata's correlation stream name value | String |</p> <h2 id="test-the-reply-stream-name-value"><a href="#test-the-reply-stream-name-value" class="header-anchor">#</a> Test the Reply Stream Name Value</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_reply_stream_name<span class="token punctuation">(</span>reply_stream_name<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Example</strong></p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_reply_stream_name<span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'someReplyStream'</span></span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>Parameters</strong></p> <p>| reply_stream_name | Expected value to compare against the metadata's reply stream name value | String |</p> <h2 id="test-that-the-metadata-follows-the-metadata-of-a-source-message"><a href="#test-that-the-metadata-follows-the-metadata-of-a-source-message" class="header-anchor">#</a> Test That the Metadata Follows the Metadata of a Source Message</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>assert_follows<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>This assertion requires that the optional <code>source_metadata</code> argument was passed to the metadata fixture's actuator.</p> <p>The <code>assert_follows</code> method uses the <code>Message</code> class's <a href="/user-guide/messages-and-message-data/messages.html#determining-message-precedence">follows?</a> predicate to determine if the message follows the source message.</p> <p>This same assertion is also available on the <a href="/user-guide/test-fixtures/message-fixture.html#test-that-a-message-follows-a-source-message">message fixture</a>. The message fixture will likely serve the vast majority of use cases for testing message precedence, but the assertion is provided here by the metadata fixture for sake of completeness, consistency, and symmetry. It will likely not be useful except in applications that deal explicitly in message metadata rather than messages.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/user-guide/test-fixtures/message-fixture.html" class="prev">
+        Message Fixture
+      </a></span> <span class="next"><a href="/user-guide/test-fixtures/writer-fixture.html">
+        Writer Fixture
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/68.878e211f.js" defer></script>
+  </body>
+</html>

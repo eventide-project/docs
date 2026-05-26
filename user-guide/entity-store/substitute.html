@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Entity Store Substitute | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/41.e9e681ba.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/61.acedc813.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link router-link-active">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" class="nav-link">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link router-link-active">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Entity Store, Caching, Snapshotting</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/entity-store/" aria-current="page" class="sidebar-link">Entity Store</a></li><li><a href="/user-guide/entity-store/entity-cache.html" class="sidebar-link">Entity Cache</a></li><li><a href="/user-guide/entity-store/snapshotting.html" class="sidebar-link">Snapshotting</a></li><li><a href="/user-guide/entity-store/substitute.html" aria-current="page" class="active sidebar-link">Entity Store Substitute</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/entity-store/substitute.html#example" class="sidebar-link">Example</a></li><li class="sidebar-sub-header"><a href="/user-guide/entity-store/substitute.html#entity-store-substitute-facts" class="sidebar-link">Entity Store Substitute Facts</a></li><li class="sidebar-sub-header"><a href="/user-guide/entity-store/substitute.html#entitystore-substitute-class" class="sidebar-link">EntityStore::Substitute Class</a></li><li class="sidebar-sub-header"><a href="/user-guide/entity-store/substitute.html#add-an-entity-to-the-store" class="sidebar-link">Add an Entity to the Store</a></li><li class="sidebar-sub-header"><a href="/user-guide/entity-store/substitute.html#retrieving-an-entity" class="sidebar-link">Retrieving an Entity</a></li><li class="sidebar-sub-header"><a href="/user-guide/entity-store/substitute.html#retrieving-an-entity-s-version" class="sidebar-link">Retrieving an Entity's Version</a></li><li class="sidebar-sub-header"><a href="/user-guide/entity-store/substitute.html#constructing-an-entity-store-substitute" class="sidebar-link">Constructing an Entity Store Substitute</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="entity-store-substitute"><a href="#entity-store-substitute" class="header-anchor">#</a> Entity Store Substitute</h1> <p>A <em>substitute</em> is an alternate implementation of an interface. In this case, the <a href="/user-guide/entity-store/" class="router-link-active">entity store</a> interface.</p> <p>For more information about substitutes in general, see the <a href="/user-guide/useful-objects.html">useful objects</a> user guide.</p> <p>The <code>EntityStore</code> module includes a substitute that allows for an entity to be arbitrarily added to the store, and that can be retrieved using the standard entity store interface.</p> <p>The entity store substitute doesn't interact with the message store. It can only return entities that have been added to it. It doesn't project entities and neither reads nor writes snapshots.</p> <p>The substitute has no durable I/O side effects. As such, it's an <em>inert</em> substitute.</p> <div class="note custom-block"><p>
+    Note: The meaning of &quot;substitute&quot; in this context refers to <a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskov Substitution Principle</a>, which describes the quality of polymorphism in object-oriented systems as objects that can legitimately replace, or <em>substitute</em>, each other without changing the correctness or intention of the program that uses the substitute. From the standpoint of their shared interface, substitutes are not considered either more &quot;real&quot; or less real than other substitutes of the same interface. In this, all substitutes are <em>real</em>, and no substitute is considered <em>secondary</em>.
+  </p></div> <h2 id="example"><a href="#example" class="header-anchor">#</a> Example</h2> <div class="language-ruby extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br></div><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeHandler</span>
+  dependency <span class="token symbol">:store</span><span class="token punctuation">,</span> Store
+
+  <span class="token comment"># ...</span>
+
+  handle SomeMessage <span class="token keyword">do</span> <span class="token operator">|</span>some_message<span class="token operator">|</span>
+    some_entity_id <span class="token operator">=</span> some_message<span class="token punctuation">.</span>some_entity_id
+
+    some_entity<span class="token punctuation">,</span> version <span class="token operator">=</span> some_entity<span class="token punctuation">.</span>fetch<span class="token punctuation">(</span>some_entity_id<span class="token punctuation">,</span> <span class="token symbol">include</span><span class="token operator">:</span> <span class="token symbol">:version</span><span class="token punctuation">)</span>
+
+    puts some_entity<span class="token punctuation">.</span>some_attribute
+    puts version
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+handler <span class="token operator">=</span> <span class="token class-name">SomeHandler</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+handler<span class="token punctuation">.</span>store<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token comment"># =&gt;  EntityStore::Substitute</span>
+
+id <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'123'</span></span>
+
+some_entity <span class="token operator">=</span> <span class="token class-name">SomeEntity</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+some_entity<span class="token punctuation">.</span>id <span class="token operator">=</span> id
+some_entity<span class="token punctuation">.</span>some_attribute <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'Some Value'</span></span>
+
+handler<span class="token punctuation">.</span>store<span class="token punctuation">.</span>add<span class="token punctuation">(</span>id<span class="token punctuation">,</span> some_entity<span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span>
+
+handler<span class="token punctuation">.</span><span class="token punctuation">(</span>some_message<span class="token punctuation">)</span>
+<span class="token comment"># =&gt; &quot;Some Value&quot;</span>
+<span class="token comment"># =&gt; 11</span>
+</code></pre></div><h2 id="entity-store-substitute-facts"><a href="#entity-store-substitute-facts" class="header-anchor">#</a> Entity Store Substitute Facts</h2> <ul><li>The entity store substitute doesn't interact with the message store</li> <li>The substitute respects the public entity store API, and augments it with the capability to add entities to the store directly</li> <li>The substitute adds entities to the store's internal, in-memory cache</li> <li>Entities retrieved from the substitute store have to have been explicitly added to the store</li> <li>An entity's version can be optionally added to and retrieved from the substitute's internal, in memory cache</li></ul> <h2 id="entitystore-substitute-class"><a href="#entitystore-substitute-class" class="header-anchor">#</a> EntityStore::Substitute Class</h2> <p>The <code>EntityStore::Substitute</code> class is a concrete class from the <a href="/user-guide/libraries.html#entity-store"><code>EntityStore</code> library</a> in the <code>EntityStore</code> namespace.</p> <p>The <code>EntityStore::Substitute</code> class provides:</p> <ul><li>The <code>add</code> method for initializing a cache record with an arbitrary entity that is not the result of projecting an event stream</li> <li>Inert implementations of the entity store's <code>fetch</code>, <code>get</code>, and <code>get_version</code> methods that don't interact with the message store</li></ul> <h2 id="add-an-entity-to-the-store"><a href="#add-an-entity-to-the-store" class="header-anchor">#</a> Add an Entity to the Store</h2> <div class="language-ruby extra-class"><pre class="language-ruby"><code>add<span class="token punctuation">(</span>id<span class="token punctuation">,</span> entity<span class="token punctuation">,</span> version<span class="token operator">=</span><span class="token keyword">nil</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p>The <a href="/user-guide/entity-store/entity-cache.html#cache-record">cache record</a> that was created or updated.</p> <p><strong>Parameters</strong></p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>id</td> <td>The ID of the entity being added</td> <td>String</td></tr> <tr><td>entity</td> <td>The entity object being added</td> <td>Object</td></tr> <tr><td>version</td> <td>The stream version of the entity added</td> <td>Integer</td></tr></tbody></table> <h2 id="retrieving-an-entity"><a href="#retrieving-an-entity" class="header-anchor">#</a> Retrieving an Entity</h2> <p>Retrieving an entity for the substitute entity store doesn't project an entity's event stream, nor read or write snapshots.</p> <p>Entities can be retrieved in one of two ways:</p> <ul><li>Via the <code>fetch</code> method</li> <li>Via the <code>get</code> method</li></ul> <p>The significant difference between the <code>fetch</code> and <code>get</code> methods is the return value when a non-existent entity is attempted to be retrieved. The <code>fetch</code> method will return a newly-constructed instance of the store's declared entity class. The <code>get</code> method will return a <code>nil</code>.</p> <p>It's more common in handler business logic to use the <code>fetch</code> method so that the returned entity does not have to be checked for a <code>nil</code> value before being used.</p> <h3 id="fetch"><a href="#fetch" class="header-anchor">#</a> Fetch</h3> <div class="language-ruby extra-class"><pre class="language-ruby"><code>fetch<span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token symbol">include</span><span class="token operator">:</span> <span class="token keyword">nil</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p>The entity that was added to the store.</p> <p>If the optional <code>include</code> argument is specified, data from the entity's cache record can be returned as well.</p> <div class="note custom-block"><p>
+    Note: The <code>fetch</code> method never returns a <code>nil</code> when the entity retrieved does not exist (ie: There's no entity stream with the entity's ID). When the entity does not exist, rather than returning a <code>nil</code>, the <code>fetch</code> method will return a newly-constructed instance of the store's declared entity class.
+  </p></div> <p><strong>Parameters</strong></p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>id</td> <td>The ID of the entity to retrieve</td> <td>String</td></tr> <tr><td>include</td> <td>List of cache record attributes to retrieve</td> <td>Symbol or Array</td></tr></tbody></table> <h4 id="including-cache-record-data-in-the-returned-values"><a href="#including-cache-record-data-in-the-returned-values" class="header-anchor">#</a> Including Cache Record Data in the Returned Values</h4> <p>The <code>include</code> named parameter returns selected data from the entity's cache record along with the entity.</p> <p>The most common use of the <code>include</code> parameter is to retrieve the entity's version along with the entity.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>entity<span class="token punctuation">,</span> version <span class="token operator">=</span> store<span class="token punctuation">.</span>fetch<span class="token punctuation">(</span>some_id<span class="token punctuation">,</span> <span class="token symbol">include</span><span class="token operator">:</span> <span class="token symbol">:version</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="cache-record-attributes-that-can-be-included"><a href="#cache-record-attributes-that-can-be-included" class="header-anchor">#</a> Cache Record Attributes That Can Be Included</h4> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>id</td> <td>The ID of the cached entity</td> <td>String</td></tr> <tr><td>entity</td> <td>The cached entity itself</td> <td>Object</td></tr> <tr><td>version</td> <td>The stream version of the cached entity at the time it was cached</td> <td>Integer</td></tr></tbody></table> <div class="note custom-block"><p>
+    Note: All cache record attributes can be requested, but other than the <code>id</code>, the <code>entity</code> itself, and the <code>version</code>, the <a href="./#cache-record-attributes-that-can-be-included">  other attributes</a> will be <code>nil</code>.
+  </p></div> <h4 id="the-no-stream-stream-version"><a href="#the-no-stream-stream-version" class="header-anchor">#</a> The no_stream Stream Version</h4> <p>When an attempt is made to retrieve an entity that has not been added to the store, the symbol <code>:no_stream</code> is returned as the value of <code>version</code>.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>entity<span class="token punctuation">,</span> version <span class="token operator">=</span> store<span class="token punctuation">.</span>fetch<span class="token punctuation">(</span>some_non_existant_id<span class="token punctuation">,</span> <span class="token symbol">include</span><span class="token operator">:</span> <span class="token symbol">:version</span><span class="token punctuation">)</span>
+
+version
+<span class="token comment"># =&gt; :no_stream</span>
+</code></pre></div><p>The <code>:no_stream</code> symbol is equivalent to a stream version of <code>-1</code>.</p> <h3 id="get"><a href="#get" class="header-anchor">#</a> Get</h3> <div class="language-ruby extra-class"><pre class="language-ruby"><code>get<span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token symbol">include</span><span class="token operator">:</span> <span class="token keyword">nil</span><span class="token punctuation">)</span>
+</code></pre></div><p>The <code>get</code> method is almost identical to the <code>fetch</code> method.</p> <p>The significant difference between the <code>get</code> and <code>fetch</code> methods is the return value when a non-existent entity is attempted to be retrieved. The <code>get</code> method will return a <code>nil</code>. Whereas the <code>fetch</code> method will return a newly-constructed instance of the store's declared entity class.</p> <p>The <code>get</code> method isn't typically a good choice in handler business logic, as it will require a <code>nil</code> check for each entity returned from the store due to the possibility that an entity returned from <code>get</code> may be <code>nil</code></p> <h2 id="retrieving-an-entity-s-version"><a href="#retrieving-an-entity-s-version" class="header-anchor">#</a> Retrieving an Entity's Version</h2> <p>In order for the version to be a value other that <code>nil</code>, the version will have had to have been <a href="#add-an-entity-to-the-store">added</a> along with the entity.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code>get_version<span class="token punctuation">(</span>id<span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p>Version of the entity identified by the <code>id</code> argument, or the <code>:no_stream</code> symbol if not found.</p> <p><strong>Parameters</strong></p> <table><thead><tr><th>Name</th> <th>Description</th> <th>Type</th></tr></thead> <tbody><tr><td>id</td> <td>The ID of the entity whose version to retrieve</td> <td>String</td></tr></tbody></table> <h2 id="constructing-an-entity-store-substitute"><a href="#constructing-an-entity-store-substitute" class="header-anchor">#</a> Constructing an Entity Store Substitute</h2> <p>The entity store substitute can be constructed in one of two ways:</p> <ul><li>Via the constructor</li> <li>Via the <code>dependency</code> macro</li></ul> <h3 id="via-the-constructor"><a href="#via-the-constructor" class="header-anchor">#</a> Via the Constructor</h3> <div class="language-ruby extra-class"><pre class="language-ruby"><code>EntityStore<span class="token double-colon punctuation">::</span>Substitute<span class="token punctuation">.</span>build<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>Returns</strong></p> <p>Instance of the <code>EntityStore::Substitute</code> class.</p> <h3 id="via-the-dependency-macro"><a href="#via-the-dependency-macro" class="header-anchor">#</a> Via the <code>dependency</code> Macro</h3> <div class="language-ruby extra-class"><pre class="language-ruby"><code>dependency <span class="token symbol">:store</span><span class="token punctuation">,</span> SomeStore
+</code></pre></div><p>A store declared with the <code>dependency</code> macro will be initialized to the store's substitute.</p> <div class="language-ruby extra-class"><pre class="language-ruby"><code><span class="token keyword">class</span> <span class="token class-name">SomeHandler</span>
+  dependency <span class="token symbol">:store</span><span class="token punctuation">,</span> SomeStore
+
+  <span class="token comment"># ...</span>
+<span class="token keyword">end</span>
+
+handler <span class="token operator">=</span> <span class="token class-name">SomeHandler</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+
+handler<span class="token punctuation">.</span>store<span class="token punctuation">.</span><span class="token keyword">class</span>
+<span class="token comment"># =&gt;  EntityStore::Substitute</span>
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>See the <a href="/user-guide/entity-store/useful-objects.html">useful objects</a> user guide for background on using dependencies and their substitutes.</p></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/user-guide/entity-store/snapshotting.html" class="prev">
+        Snapshotting
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/41.e9e681ba.js" defer></script>
+  </body>
+</html>

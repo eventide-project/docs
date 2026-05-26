@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Overview | Eventide</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="Event Sourcing, Message-Based Autonomous Components, Pub/Sub">
+    
+    <link rel="preload" href="/assets/css/0.styles.83b7b470.css" as="style"><link rel="preload" href="/assets/js/app.d8b11c4e.js" as="script"><link rel="preload" href="/assets/js/2.fa91ca9b.js" as="script"><link rel="preload" href="/assets/js/61.acedc813.js" as="script"><link rel="prefetch" href="/assets/js/10.a0f043b2.js"><link rel="prefetch" href="/assets/js/11.045d37dc.js"><link rel="prefetch" href="/assets/js/12.444c7f0d.js"><link rel="prefetch" href="/assets/js/13.f15ba649.js"><link rel="prefetch" href="/assets/js/14.56338b2b.js"><link rel="prefetch" href="/assets/js/15.05f93bcd.js"><link rel="prefetch" href="/assets/js/16.641c72d3.js"><link rel="prefetch" href="/assets/js/17.a01ad0ca.js"><link rel="prefetch" href="/assets/js/18.7e5633e1.js"><link rel="prefetch" href="/assets/js/19.1a77e9df.js"><link rel="prefetch" href="/assets/js/20.54700c00.js"><link rel="prefetch" href="/assets/js/21.467ecbfa.js"><link rel="prefetch" href="/assets/js/22.22a7257b.js"><link rel="prefetch" href="/assets/js/23.b1862979.js"><link rel="prefetch" href="/assets/js/24.2de64bfc.js"><link rel="prefetch" href="/assets/js/25.95229296.js"><link rel="prefetch" href="/assets/js/26.5cf9ca44.js"><link rel="prefetch" href="/assets/js/27.3247fd0a.js"><link rel="prefetch" href="/assets/js/28.96febf04.js"><link rel="prefetch" href="/assets/js/29.f35dc936.js"><link rel="prefetch" href="/assets/js/3.df6edcb4.js"><link rel="prefetch" href="/assets/js/30.daf456fc.js"><link rel="prefetch" href="/assets/js/31.d0db329a.js"><link rel="prefetch" href="/assets/js/32.ddad683c.js"><link rel="prefetch" href="/assets/js/33.b17a00ae.js"><link rel="prefetch" href="/assets/js/34.b7527626.js"><link rel="prefetch" href="/assets/js/35.e9c7b993.js"><link rel="prefetch" href="/assets/js/36.58aa32ac.js"><link rel="prefetch" href="/assets/js/37.cc232f58.js"><link rel="prefetch" href="/assets/js/38.05aa291b.js"><link rel="prefetch" href="/assets/js/39.27afa87f.js"><link rel="prefetch" href="/assets/js/4.60983ea8.js"><link rel="prefetch" href="/assets/js/40.e7e585cd.js"><link rel="prefetch" href="/assets/js/41.e9e681ba.js"><link rel="prefetch" href="/assets/js/42.40eec764.js"><link rel="prefetch" href="/assets/js/43.a36719d4.js"><link rel="prefetch" href="/assets/js/44.b821ddd4.js"><link rel="prefetch" href="/assets/js/45.74b56cc2.js"><link rel="prefetch" href="/assets/js/46.da08c7ea.js"><link rel="prefetch" href="/assets/js/47.61560e09.js"><link rel="prefetch" href="/assets/js/48.263c855d.js"><link rel="prefetch" href="/assets/js/49.8ec4a49c.js"><link rel="prefetch" href="/assets/js/5.efc17c1d.js"><link rel="prefetch" href="/assets/js/50.b58689d2.js"><link rel="prefetch" href="/assets/js/51.887c06ce.js"><link rel="prefetch" href="/assets/js/52.797a0fcc.js"><link rel="prefetch" href="/assets/js/53.aa906eb8.js"><link rel="prefetch" href="/assets/js/54.394eabe3.js"><link rel="prefetch" href="/assets/js/55.feadbefe.js"><link rel="prefetch" href="/assets/js/56.be1823b9.js"><link rel="prefetch" href="/assets/js/57.585b1913.js"><link rel="prefetch" href="/assets/js/58.75a97b74.js"><link rel="prefetch" href="/assets/js/59.17bb2308.js"><link rel="prefetch" href="/assets/js/6.7907e106.js"><link rel="prefetch" href="/assets/js/60.32499654.js"><link rel="prefetch" href="/assets/js/62.19b489d6.js"><link rel="prefetch" href="/assets/js/63.d333ab11.js"><link rel="prefetch" href="/assets/js/64.154be5e2.js"><link rel="prefetch" href="/assets/js/65.6d7104b3.js"><link rel="prefetch" href="/assets/js/66.fbdd6247.js"><link rel="prefetch" href="/assets/js/67.75146bd9.js"><link rel="prefetch" href="/assets/js/68.878e211f.js"><link rel="prefetch" href="/assets/js/69.927ce231.js"><link rel="prefetch" href="/assets/js/7.fd8ab3b5.js"><link rel="prefetch" href="/assets/js/70.97bc1a7e.js"><link rel="prefetch" href="/assets/js/71.40cb378d.js"><link rel="prefetch" href="/assets/js/72.b33e3f25.js"><link rel="prefetch" href="/assets/js/73.5aabb8b9.js"><link rel="prefetch" href="/assets/js/74.29763bb0.js"><link rel="prefetch" href="/assets/js/75.274ed3d0.js"><link rel="prefetch" href="/assets/js/76.c644d49d.js"><link rel="prefetch" href="/assets/js/77.b98437b8.js"><link rel="prefetch" href="/assets/js/78.e14b4b4a.js"><link rel="prefetch" href="/assets/js/79.690e0e59.js"><link rel="prefetch" href="/assets/js/8.467e62e4.js"><link rel="prefetch" href="/assets/js/80.8f5d7dbf.js"><link rel="prefetch" href="/assets/js/9.0023b4e8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.83b7b470.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Eventide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Setup" class="dropdown-title"><span class="title">Setup</span> <span class="arrow down"></span></button> <button type="button" aria-label="Setup" class="mobile-dropdown-title"><span class="title">Setup</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setup/postgres.html" class="nav-link">
+  Postgres
+</a></li><li class="dropdown-item"><!----> <a href="/setup/eventstore.html" class="nav-link">
+  EventStore
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Core Concepts" class="dropdown-title"><span class="title">Core Concepts</span> <span class="arrow down"></span></button> <button type="button" aria-label="Core Concepts" class="mobile-dropdown-title"><span class="title">Core Concepts</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/core-concepts/streams/" class="nav-link">
+  Streams
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/services/" class="nav-link">
+  Services
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/messages-and-messaging/" class="nav-link">
+  Messages and Messaging
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/pub-sub.html" class="nav-link">
+  Pub/Sub
+</a></li><li class="dropdown-item"><!----> <a href="/core-concepts/event-sourcing.html" class="nav-link">
+  Event Sourcing
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="User Guide" class="dropdown-title"><span class="title">User Guide</span> <span class="arrow down"></span></button> <button type="button" aria-label="User Guide" class="mobile-dropdown-title"><span class="title">User Guide</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/user-guide/message-db/" class="nav-link">
+  Message DB
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/message-handlers.html" class="nav-link">
+  Message Handlers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/messages-and-message-data/" class="nav-link">
+  Messages and Message Data
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/stream-names/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Stream Names
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/projection.html" class="nav-link">
+  Entity Projection
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entity-store/" class="nav-link">
+  Entity Store, Caching, Snapshotting
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/entities.html" class="nav-link">
+  Entities
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/writing/" class="nav-link">
+  Writing Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/retrieving/" class="nav-link">
+  Retrieving Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/reading.html" class="nav-link">
+  Reading Messages
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/consumers.html" class="nav-link">
+  Consumers
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/component-host.html" class="nav-link">
+  Component Host
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/session.html" class="nav-link">
+  Session
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/settings.html" class="nav-link">
+  Settings
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/logging/" class="nav-link">
+  Logging
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/test-fixtures/" class="nav-link">
+  Test Fixtures
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/code-generator.html" class="nav-link">
+  Code Generator
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/libraries.html" class="nav-link">
+  Libraries
+</a></li><li class="dropdown-item"><!----> <a href="/user-guide/useful-objects.html" class="nav-link">
+  Doctrine of Useful Objects
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Examples" class="dropdown-title"><span class="title">Examples</span> <span class="arrow down"></span></button> <button type="button" aria-label="Examples" class="mobile-dropdown-title"><span class="title">Examples</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/examples/" class="nav-link">
+  Overview
+</a></li><li class="dropdown-item"><!----> <a href="/examples/at-a-glance.html" class="nav-link">
+  Service at a Glance
+</a></li><li class="dropdown-item"><!----> <a href="/examples/quickstart.html" class="nav-link">
+  Quickstart
+</a></li><li class="dropdown-item"><!----> <a href="/examples/example-projects.html" class="nav-link">
+  Example Projects
+</a></li></ul></div></div><div class="nav-item"><a href="/glossary.html" class="nav-link">
+  Glossary
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Stream Names</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/user-guide/stream-names/" aria-current="page" class="active sidebar-link">Overview</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#parts" class="sidebar-link">Parts</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#examples" class="sidebar-link">Examples</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#utilities" class="sidebar-link">Utilities</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#entity-stream-names" class="sidebar-link">Entity Stream Names</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#category-stream-names" class="sidebar-link">Category Stream Names</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#category-types" class="sidebar-link">Category Types</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#entity-ids" class="sidebar-link">Entity IDs</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#casing" class="sidebar-link">Casing</a></li><li class="sidebar-sub-header"><a href="/user-guide/stream-names/#separators" class="sidebar-link">Separators</a></li></ul></li><li><a href="/user-guide/stream-names/messaging-stream-name.html" class="sidebar-link">Messaging::StreamName</a></li><li><a href="/user-guide/stream-names/messaging-category.html" class="sidebar-link">Messaging::Category Module</a></li><li><a href="/user-guide/stream-names/message-store-stream-name.html" class="sidebar-link">MessageStore::StreamName</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="overview"><a href="#overview" class="header-anchor">#</a> Overview</h1> <p>Messages like <a href="/glossary.html#event">events</a> and <a href="/glossary.html#command">commands</a> are written to and read from streams. To write and read from streams, the subject stream is identified by its name.</p> <p>A <a href="/glossary.html#stream">stream</a> name not only identifies the stream, but also its purpose.</p> <p>A stream name is made up of a <em><a href="/glossary.html#category">category</a></em> and an <em>ID</em>.</p> <p>A category can include types that indicate even further specialized uses of the stream. An ID can be a single value or a compound ID made of multiple values.</p> <p>The most minimal form of a stream name consists only of a category.</p> <h2 id="parts"><a href="#parts" class="header-anchor">#</a> Parts</h2> <p>Stream names typically have up to three parts:</p> <ul><li>Category Name</li> <li>Category Types</li> <li>Entity ID</li></ul> <h2 id="examples"><a href="#examples" class="header-anchor">#</a> Examples</h2> <h3 id="stream-name-with-category-and-id"><a href="#stream-name-with-category-and-id" class="header-anchor">#</a> Stream Name with Category and ID</h3> <p><code>someStream-123</code></p> <h3 id="stream-name-with-category-and-compound-ids"><a href="#stream-name-with-category-and-compound-ids" class="header-anchor">#</a> Stream Name with Category and Compound IDs</h3> <p><code>someStream-123+abc</code></p> <h3 id="category"><a href="#category" class="header-anchor">#</a> Category</h3> <p><code>someStream</code></p> <h3 id="stream-name-with-a-category-type"><a href="#stream-name-with-a-category-type" class="header-anchor">#</a> Stream Name with a Category Type</h3> <p><code>someStream:someType-123</code></p> <h3 id="stream-name-with-compound-category-types"><a href="#stream-name-with-compound-category-types" class="header-anchor">#</a> Stream Name with Compound Category Types</h3> <p><code>someStream:someType+someOtherType-123</code></p> <h3 id="stream-name-with-compound-category-types-and-compound-id"><a href="#stream-name-with-compound-category-types-and-compound-id" class="header-anchor">#</a> Stream Name with Compound Category Types and Compound ID</h3> <p><code>someStream:someType+someOtherType-123+abc</code></p> <h2 id="utilities"><a href="#utilities" class="header-anchor">#</a> Utilities</h2> <p>The Eventide toolkit provides a handful of utilities that institute useful and consistent standards for the various kinds of streams used in various common scenarios.</p> <ul><li><a href="/user-guide/stream-names/messaging-stream-name.html">Messaging::StreamName</a> Module</li> <li><a href="/user-guide/stream-names/messaging-category.html">Messaging::Category</a> Module</li> <li><a href="/user-guide/stream-names/message-store-stream-name.html">MessageStore::StreamName</a> Module</li></ul> <h2 id="entity-stream-names"><a href="#entity-stream-names" class="header-anchor">#</a> Entity Stream Names</h2> <p>An <em>entity</em> stream name contains all of the events for one specific entity. For example, an <code>Account</code> entity with an ID of <code>123</code> would have the name, <code>account-123</code>.</p> <h2 id="category-stream-names"><a href="#category-stream-names" class="header-anchor">#</a> Category Stream Names</h2> <p>A <em>category</em> stream name does not have an ID. For example, the stream name for the category of all accounts is <code>account</code>.</p> <h2 id="category-types"><a href="#category-types" class="header-anchor">#</a> Category Types</h2> <p>Stream names can also have an optional list of category <em>types</em>.</p> <p>The <code>command</code> type is one of the most common types. It's used to indicate a stream that is used to transport <em>commands</em> rather than <em>events</em>.</p> <p>For example, a stream name for the stream that holds commands for the <code>account-123</code> entity would be named <code>account:command-123</code>.</p> <p>The stream name is separated from the type list by the <code>:</code> character.</p> <p>Types can be present in both entity stream names as well as category stream names.</p> <p>For example, the stream name for all commands for the <code>account</code> category would be <code>account:command</code>.</p> <h3 id="compound-category-types"><a href="#compound-category-types" class="header-anchor">#</a> Compound Category Types</h3> <p>A stream name's category can have more than one type. The <code>+</code> symbol joins types when there are more than one.</p> <p>For example, a stream name that keeps track of a <a href="/glossary.html#consumer">consumer's</a> last read position of a command category stream would be <code>account:command+position</code>.</p> <h2 id="entity-ids"><a href="#entity-ids" class="header-anchor">#</a> Entity IDs</h2> <p>An entity ID is any value in a stream name following the first <code>-</code> character.</p> <p>For a stream named <code>someStream-123</code>, the <code>123</code> is the entity ID.</p> <p>The ID itself can have <code>-</code> characters in it. Only the first <code>-</code> character in a stream name is significant. For a stream named <code>someStream-123-456</code>, the <code>123-456</code> is the entity ID.</p> <h3 id="compound-entity-ids"><a href="#compound-entity-ids" class="header-anchor">#</a> Compound Entity IDs</h3> <p>A stream name can have more than one ID. The <code>+</code> symbol joins individual IDs when there are more than one.</p> <p>For example, a stream name of the category <code>someStream</code> that has the IDs <code>123</code> and <code>abc</code> would be <code>someStream-123+abc</code>.</p> <h3 id="cardinal-id"><a href="#cardinal-id" class="header-anchor">#</a> Cardinal ID</h3> <p>The <em>cardinal ID</em> is the first ID that appears in an entity stream's compound ID. If the stream name has only a single ID, then the cardinal ID is that single ID.</p> <h2 id="casing"><a href="#casing" class="header-anchor">#</a> Casing</h2> <p>Stream names are camel-cased.</p> <p><code>someStream</code> is considered a valid stream name. <code>some_stream</code> is not considered a valid stream name.</p> <p>The casing of a stream name, however, is not enforced. The <code>some_stream</code> form can be used, and it will not cause an error. Standard practice is to use camel case, and some utility methods, like the <code>category</code> macro, will normalize the category name to camel case.</p> <h2 id="separators"><a href="#separators" class="header-anchor">#</a> Separators</h2> <h3 id="the-id-separator"><a href="#the-id-separator" class="header-anchor">#</a> <code>-</code> The ID Separator</h3> <p>The <code>-</code> character separates a stream's category and its ID.</p> <p>For example: <code>account-123</code></p> <h3 id="the-compound-id-separator"><a href="#the-compound-id-separator" class="header-anchor">#</a> <code>+</code> The Compound ID Separator</h3> <p>The <code>+</code> character separates individual IDs in a stream name that has a combination of more than one ID.</p> <p>For example: <code>account-123+abc</code></p> <h3 id="the-category-type-separator"><a href="#the-category-type-separator" class="header-anchor">#</a> <code>:</code> The Category Type Separator</h3> <p>The ':' character separates the category from the category type (or types) in a stream name that includes both a category and type.</p> <p>For example: <code>account:command</code></p> <h3 id="the-compound-category-type-separator"><a href="#the-compound-category-type-separator" class="header-anchor">#</a> <code>+</code> The Compound Category Type Separator</h3> <p>The <code>+</code> character separates category types in a stream name that has a combination of more than one category type.</p> <p>For example: <code>account:command+position</code></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/user-guide/stream-names/messaging-stream-name.html">
+        Messaging::StreamName
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d8b11c4e.js" defer></script><script src="/assets/js/2.fa91ca9b.js" defer></script><script src="/assets/js/61.acedc813.js" defer></script>
+  </body>
+</html>
