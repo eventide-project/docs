@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-./node_modules/.bin/vuepress build
+NODE_OPTIONS=--openssl-legacy-provider npx vuepress build
