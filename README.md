@@ -1,16 +1,16 @@
 ---
 home: true
 heroImage: /eventide-icon-132.png
-description: 'Evented Autonomous Components'
+description: "Message-Based Autonomous Components"
 actionText: Get Started →
 actionLink: /examples/quickstart.md
 features:
-- title: Pub/Sub
-  details: Pub/Sub services based on persistent event streams with support for event sourcing, parallelization, and a hosting runtime
+- title: Event Sourcing
+  details: Business entities projected from persistent streams of events recording the complete history of business activity, with support for caching and snapshotting
 - title: Autonomous Components
   details: Message-based components hosted in any number of operating system processes or servers, with actor-based pub-sub consumers, consumer groups, message dispatching, and message handlers
-- title: Event Sourcing
-  details: Business logic entities projected from event streams with caching and snapshotting
+- title: Pub/Sub
+  details: Pub/Sub services built on persistent event streams, delivering to consumers in parallel under a hosting runtime
 footer: MIT Licensed | Copyright © 2015-present The Eventide Project
 ---
 
