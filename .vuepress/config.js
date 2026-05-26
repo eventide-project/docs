@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Eventide',
-  description: 'Pub/Sub, Autonomous Components, Event Sourcing',
+  description: 'Event Sourcing, Message-Based Autonomous Components, Pub/Sub',
   base: '/',
   dest: './_build',
   themeConfig: {
