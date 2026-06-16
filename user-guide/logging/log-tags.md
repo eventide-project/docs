@@ -236,7 +236,7 @@ The following tags _may_ be applied to log messages recorded by a message writer
 | message | Applied to log messages that record the writing of a typed message |
 | data | Applied to log messages that record the data content of a typed message |
 
-See the [message writer user guide](/user-guide/writers/message-writer.md) for more information on message writers.
+See the [message writer user guide](/user-guide/writing/message-writer.md) for more information on message writers.
 
 ## Message Data Writer
 
@@ -254,4 +254,4 @@ The following tags _may_ be applied to log messages recorded by a message data w
 | message_data | Applied to log messages that record the writing of a MessageData instance |
 | data | Applied to log messages that record the data content of a MessageData instance |
 
-See the [message data writer user guide](/user-guide/writers/message-data-writer.md) for more information on message data writers.
+See the [message data writer user guide](/user-guide/writing/message-data-writer.md) for more information on message data writers.

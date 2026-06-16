@@ -250,13 +250,13 @@ Log messages at the `trace` level are typically worded to indicate that somethin
 
 ### Info Level
 
-The `info` level is used to log the completion of the principle operation of a class or utility, like a callable class or object's actuator. For example: A [message writer's](/user-guide/writers/message-writer.md) principle actuator.
+The `info` level is used to log the completion of the principle operation of a class or utility, like a callable class or object's actuator. For example: A [message writer's](/user-guide/writing/message-writer.md) principle actuator.
 
 Log messages at the `info` level are typically worded to indicate that something has been done or completed. The _ed_ past tense form of verbs is used in `trace` messages, for example "Wrote message".
 
 ### Debug Level
 
-The `debug` level is used to log the completion of a secondary operation of a class or utility, or for recording other details. For example: A [message writer's](/user-guide/writers/message-writer.md) secondary operation, like it's `initial` method or its `reply` method.
+The `debug` level is used to log the completion of a secondary operation of a class or utility, or for recording other details. For example: A [message writer's](/user-guide/writing/message-writer.md) secondary operation, like it's `initial` method or its `reply` method.
 
 Log messages at the `debug` level are typically worded to indicate that something has been done or completed. The _ed_ past tense form of verbs is used in `debug` messages, for example "Wrote initial message".
 

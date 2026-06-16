@@ -227,7 +227,7 @@ WHERE @hash_64(cardinal_id(stream_name)) % {group_size} = {group_member}
 ```
 
 ::: warning
-Consumer groups should always be used in conjunction with the concurrency protection offered by the message writer. Handler logic should always write messages using the writer's `expected_version` feature, irrespective of the use of consumer groups. However, the use of concurrency protection is even more imperative when using consumer groups. For more on concurrent writes, see the [writers user guide](/user-guide/writers/expected-version.md).
+Consumer groups should always be used in conjunction with the concurrency protection offered by the message writer. Handler logic should always write messages using the writer's `expected_version` feature, irrespective of the use of consumer groups. However, the use of concurrency protection is even more imperative when using consumer groups. For more on concurrent writes, see the [writers user guide](/user-guide/writing/expected-version.md).
 :::
 
 ## Filtering Messages with a SQL Condition
